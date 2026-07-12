@@ -1,4 +1,4 @@
-{*
+﻿{*
 * NOTICE OF LICENSE
 *
 * This source file is subject to the Open Software License version 3.0
@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="col-sm-6">
-                <label class="control-label">{l s='Payment method'}</label>
+                <label class="control-label">{l s='Méthode de paiement'}</label>
                 <div>
                     <input name="payment_method" list="payment_method" class="form-control payment_method">
                     <datalist id="payment_method">
@@ -46,7 +46,7 @@
         </div>
         <div class="form-group row">
             <div class="col-sm-6">
-                <label class="control-label">{l s='Payment source'}</label>
+                <label class="control-label">{l s='Source du paiement'}</label>
                 <select name="payment_type" class="payment_type form-control">
                     {foreach from=$payment_types item=payment_type}
                         <option value="{$payment_type['value']}">{$payment_type['name']}</option>
@@ -54,17 +54,17 @@
                 </select>
             </div>
             <div class="col-sm-6">
-                <label class="control-label">{l s='Transaction ID'}</label>
+                <label class="control-label">{l s='ID de transaction'}</label>
                 <input type="text" name="payment_transaction_id" value="" class="form-control"/>
             </div>
         </div>
         <div class="form-group row">
             <div class="col-sm-6">
-                <label class="control-label">{l s='Amount'}</label>
+                <label class="control-label">{l s='Montant'}</label>
                 <input type="text" name="payment_amount" value="" class="form-control" />
             </div>
             <div class="col-sm-6">
-                <label class="control-label">{l s='Currency'}</label>
+                <label class="control-label">{l s='Devise'}</label>
                 <select name="payment_currency" class="payment_currency form-control pull-left">
                     {foreach from=$currencies item=current_currency}
                         <option value="{$current_currency['id_currency']}"{if $current_currency['id_currency'] == $currency->id} selected="selected"{/if}>{$current_currency['sign']}</option>
@@ -75,7 +75,7 @@
         {if count($invoices_collection) > 0}
             <div class="form-group row" style="display: none;">
                 <div class="col-sm-6">
-                    <label class="control-label">{l s='Invoice'}</label>
+                    <label class="control-label">{l s='Facture'}</label>
                     <select name="payment_invoice" id="payment_invoice">
                         {foreach from=$invoices_collection item=invoice}
                             <option value="{$invoice->id}" selected="selected">{$invoice->getInvoiceNumberFormatted($current_id_lang, $order->id_shop)}</option>
@@ -85,7 +85,7 @@
             </div>
         {/if}
         <button style="display:none" class="btn btn-primary pull-right" type="submit" name="submitAddPayment" id="submitAddPayment">
-            {l s='Add payment'}
+            {l s='Ajouter le paiement'}
         </button>
     </form>
 

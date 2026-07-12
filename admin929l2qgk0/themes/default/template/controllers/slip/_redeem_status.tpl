@@ -21,7 +21,7 @@
  *}
 
 {if $redeem_status == OrderSlip::REDEEM_STATUS_REDEEMED}
-    <span class="badge badge-danger">{l s='Redeemed'}</span>
+    <span class="badge badge-danger">{l s='Utilisé'}</span>
 {else}
-    <span class="badge badge-success">{l s='Active'}</span>
+    <span class="badge badge-success">{l s='Actif'}</span>
 {/if}

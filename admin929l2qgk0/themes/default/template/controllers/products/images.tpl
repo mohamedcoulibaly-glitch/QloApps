@@ -34,23 +34,23 @@
 		<div class="form-group">
 			<label class="control-label col-lg-3 file_upload_label">
 				<span class="label-tooltip" data-toggle="tooltip"
-					title="{l s='Format:'} JPG, GIF, PNG. {l s='Filesize:'} {$max_image_size|string_format:"%.2f"} {l s='MB max.'}">
-					{if isset($id_image)}{l s='Edit this room type\'s image:'}{else}{l s='Add a new image to this room type'}{/if}
+					title="{l s='Format :'} JPG, GIF, PNG. {l s='Taille du fichier :'} {$max_image_size|string_format:"%.2f"} {l s='Mo max.'}">
+					{if isset($id_image)}{l s='Modifier l&#039;image de ce type de chambre :'}{else}{l s='Ajouter une nouvelle image à ce type de chambre'}{/if}
 				</span>
 			</label>
 			<div class="col-lg-9">
 				{$image_uploader}
 			</div>
 			<div class="col-lg-9 col-lg-offset-3">
-				<div class="help-block">{l s='Please upload a square image (Recommended resolution 800 x 800px)'}
+				<div class="help-block">{l s='Veuillez télécharger une image carrée (Résolution recommandée 800 x 800px)'}
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-lg-3">
 				<span class="label-tooltip" data-toggle="tooltip"
-					title="{l s='Update all captions at once, or select the position of the image whose caption you wish to edit. Invalid characters: %s' sprintf=['<>;=#{}']}">
-					{l s='Caption'}
+					title="{l s='Mettre à jour toutes les légendes d&#039;un coup, ou sélectionner la position de l&#039;image dont vous souhaitez modifier la légende. Caractères invalides : %s' sprintf=['<>;=#{}']}">
+					{l s='Légende'}
 				</span>
 			</label>
 			<div class="col-lg-4">
@@ -81,7 +81,7 @@
 			</div>
 			<div class="col-lg-2{if $images|count <= 1} hidden{/if}" id="caption_selection">
 				<select name="id_caption">
-					<option value="0">{l s='All captions'}</option>
+					<option value="0">{l s='Toutes les légendes'}</option>
 					{foreach from=$images item=image}
 					<option value="{$image->id_image|intval}">
 						{l s='Position %d' sprintf=$image->position|intval}
@@ -90,7 +90,7 @@
 				</select>
 			</div>
 			<div class="col-lg-2">
-				<button type="submit" class="btn btn-default" name="submitAddproductAndStay" value="update_legends"><i class="icon-random"></i> {l s='Update'}</button>
+				<button type="submit" class="btn btn-default" name="submitAddproductAndStay" value="update_legends"><i class="icon-random"></i> {l s='Mettre à jour'}</button>
 			</div>
 		</div>
 	</div>
@@ -98,14 +98,14 @@
 		<thead>
 			<tr class="nodrag nodrop">
 				<th class="fixed-width-lg"><span class="title_box">{l s='Image'}</span></th>
-				<th class="fixed-width-lg"><span class="title_box">{l s='Caption'}</span></th>
+				<th class="fixed-width-lg"><span class="title_box">{l s='Légende'}</span></th>
 				<th class="fixed-width-xs"><span class="title_box">{l s='Position'}</span></th>
 				{if $shops}
 					{foreach from=$shops item=shop}
 						<th class="fixed-width-xs"><span class="title_box">{$shop.name}</span></th>
 					{/foreach}
 				{/if}
-				<th class="fixed-width-xs"><span class="title_box">{l s='Cover'}</span></th>
+				<th class="fixed-width-xs"><span class="title_box">{l s='Couverture'}</span></th>
 				<th></th> <!-- action -->
 			</tr>
 		</thead>
@@ -150,20 +150,20 @@
 			</td>
 			<td>
 				<a href="#" class="delete_product_image pull-right btn btn-default" >
-					<i class="icon-trash"></i> {l s='Delete this image'}
+					<i class="icon-trash"></i> {l s='Supprimer cette image'}
 				</a>
 			</td>
 		</tr>
 	</table>
 	<div class="panel-footer">
-		<a href="{$link->getAdminLink('AdminProducts')|escape:'html':'UTF-8'}{if isset($smarty.request.page) && $smarty.request.page > 1}&amp;submitFilterproduct={$smarty.request.page|intval}{/if}" class="btn btn-default"><i class="process-icon-cancel"></i> {l s='Cancel'}</a>
-		<button type="submit" name="submitAddproduct" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Save'}</button>
-		<button type="submit" name="submitAddproductAndStay" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Save and stay'}</button>
+		<a href="{$link->getAdminLink('AdminProducts')|escape:'html':'UTF-8'}{if isset($smarty.request.page) && $smarty.request.page > 1}&amp;submitFilterproduct={$smarty.request.page|intval}{/if}" class="btn btn-default"><i class="process-icon-cancel"></i> {l s='Annuler'}</a>
+		<button type="submit" name="submitAddproduct" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Enregistrer'}</button>
+		<button type="submit" name="submitAddproductAndStay" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Enregistrer et rester'}</button>
 	</div>
 	<script type="text/javascript">
-		var upbutton = '{l s='Upload an image'}';
+		var upbutton = '{l s='Télécharger une image'}';
 		var come_from = '{$table}';
-		var success_add =  '{l s='The image has been successfully added.'}';
+		var success_add =  '{l s='L&#039;image a été ajoutée avec succès.'}';
 		var id_tmp = 0;
 		var current_shop_id = {$current_shop_id|intval};
 		{literal}
@@ -274,7 +274,7 @@
 			{
 				e.preventDefault();
 				id = $(this).parent().parent().attr('id');
-				if (confirm("{/literal}{l s='Delete selected item?' js=1}{literal}"))
+				if (confirm("{/literal}{l s='Supprimer l&#039;élément sélectionné ?' js=1}{literal}"))
 				doAdminAjax({
 						"action":"deleteProductImage",
 						"id_image":id,

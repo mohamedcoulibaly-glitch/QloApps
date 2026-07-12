@@ -26,7 +26,7 @@
             <tr>
                 <th class="text-center">{l s='Image Id' mod='hotelreservationsystem'}</th>
                 <th class="text-center">{l s='Image' mod='hotelreservationsystem'}</th>
-                <th class="text-center">{l s='Cover' mod='hotelreservationsystem'}</th>
+                <th class="text-center">{l s='Couverture' mod='hotelreservationsystem'}</th>
                 <th class="text-center">{l s='Action' mod='hotelreservationsystem'}</th>
             </tr>
         </thead>
@@ -37,10 +37,10 @@
                 {/foreach}
             {else}
                 <tr class="list-empty-tr">
-                    <td class="list-empty" colspan="5">
+                    <td class="list-empty" colspan="4">
                         <div class="list-empty-msg">
                             <i class="icon-warning-sign list-empty-icon"></i>
-                            {l s='No Image Found' mod='hotelreservationsystem'}
+                            {l s='Aucune image trouvée' mod='hotelreservationsystem'}
                         </div>
                     </td>
                 </tr>

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /*
 * 2007-2017 PrestaShop
 *
@@ -3990,7 +3990,10 @@ class CartCore extends ObjectModel
         );
         $hook = Hook::exec('actionCartSummary', $summary, null, true);
         if (is_array($hook)) {
-            $summary = array_merge($summary, array_shift($hook));
+            $hookSummary = array_shift($hook);
+            if (is_array($hookSummary)) {
+                $summary = array_merge($summary, $hookSummary);
+            }
         }
 
         return $summary;

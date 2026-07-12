@@ -31,28 +31,28 @@
 	<input type="hidden" name="updatesupply_order" value="1" />
 
 	<div class="panel">
-		<h3><i class="icon-cogs"></i> {l s='Manage the products you want to order from the supplier.'}</h3>
+		<h3><i class="icon-cogs"></i> {l s='Gérez les produits que vous souhaitez commander au fournisseur.'}</h3>
 		<div class="alert alert-info">{l s='To add a product to the order, type the first letters of the product name, then select it from the drop-down list.'}</div>
 		<div class="row">
 			<div class="col-lg-9">
 				<input type="text" size="100" id="cur_product_name" />
 			</div>
 			<div class="col-lg-2">
-				<button type="button" class="btn btn-default" onclick="addProduct();"><i class="icon-plus-sign"></i> {l s='Add a product to the supply order'}</button>
+				<button type="button" class="btn btn-default" onclick="addProduct();"><i class="icon-plus-sign"></i> {l s='Ajouter un produit à la commande d&#039;approvisionnement'}</button>
 			</div>
 		</div>
 		<table id="products_in_supply_order" class="table">
 			<thead>
 				<tr class="nodrag nodrop">
-					<th><span class="title_box">{l s='Reference'}</span></th>
+					<th><span class="title_box">{l s='Référence'}</span></th>
 					<th><span class="title_box">{l s='EAN13'}</span></th>
 					<th><span class="title_box">{l s='UPC'}</span></th>
-					<th><span class="title_box">{l s='Supplier Reference'}</span></th>
-					<th><span class="title_box">{l s='Name'}</span></th>
-					<th class="fixed-width-md"><span class="title_box">{l s='Unit Price (tax excl.)'}</span></th>
-					<th class="fixed-width-xs"><span class="title_box">{l s='Quantity'}</span></th>
-					<th class="fixed-width-md"><span class="title_box">{l s='Discount rate'}</span></th>
-					<th class="fixed-width-md"><span class="title_box">{l s='Tax rate'}</span></th>
+					<th><span class="title_box">{l s='Référence fournisseur'}</span></th>
+					<th><span class="title_box">{l s='Nom'}</span></th>
+					<th class="fixed-width-md"><span class="title_box">{l s='Prix unitaire (HT)'}</span></th>
+					<th class="fixed-width-xs"><span class="title_box">{l s='Quantité'}</span></th>
+					<th class="fixed-width-md"><span class="title_box">{l s='Taux de remise'}</span></th>
+					<th class="fixed-width-md"><span class="title_box">{l s='Taux de taxe'}</span></th>
 					<th class="fixed-width-sm">&nbsp;</th>
 				</tr>
 			</thead>
@@ -100,7 +100,7 @@
 							</div>
 						</td>
 						<td>
-							<a href="#" id="deletelink|{$product.id_product}_{$product.id_product_attribute}" class="btn btn-default removeProductFromSupplyOrderLink"><i class="icon-trash"></i> {l s='Remove'}
+							<a href="#" id="deletelink|{$product.id_product}_{$product.id_product_attribute}" class="btn btn-default removeProductFromSupplyOrderLink"><i class="icon-trash"></i> {l s='Retirer'}
 							</a>
 						</td>
 					</tr>
@@ -109,12 +109,12 @@
 		</table>
 		<div class="panel-footer">
 			<button type="submit" value="1" id="supply_order_form_submit_btn" name="submitAddsupply_order" class="btn btn-default pull-right">
-				<i class="process-icon-save"></i> {l s='Save order'}
+				<i class="process-icon-save"></i> {l s='Enregistrer la commande'}
 			</button>
 			<a class="btn btn-default" onclick="window.history.back();">
-				<i class="process-icon-cancel"></i> {l s='Cancel'}
+				<i class="process-icon-cancel"></i> {l s='Annuler'}
 			</a>
-			<button type="submit" class="btn btn-default btn btn-default pull-right" name="submitAddsupply_orderAndStay"><i class="process-icon-save"></i> {l s='Save order and stay'}</button>
+			<button type="submit" class="btn btn-default btn btn-default pull-right" name="submitAddsupply_orderAndStay"><i class="process-icon-save"></i> {l s='Enregistrer la commande et rester'}</button>
 		</div>
 	</div>
 

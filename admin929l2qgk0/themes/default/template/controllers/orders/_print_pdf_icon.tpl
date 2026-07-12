@@ -27,7 +27,7 @@
 <span class="btn-group-action">
 	<span class="btn-group">
 	{if Configuration::get('PS_INVOICE') && $order->invoice_number}
-		<a class="btn btn-default _blank" href="{$link->getAdminLink('AdminPdf')|escape:'html':'UTF-8'}&amp;submitAction=generateInvoicePDF&amp;id_order={$order->id}">
+		<a class="btn btn-default" target="_blank" rel="noopener noreferrer" href="{$link->getAdminLink('AdminPdf')|escape:'html':'UTF-8'}&amp;submitAction=generateInvoicePDF&amp;id_order={$order->id}">
 			<i class="icon-file-text"></i>
 		</a>
 	{/if}

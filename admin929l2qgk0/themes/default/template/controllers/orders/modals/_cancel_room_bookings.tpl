@@ -25,10 +25,10 @@
         {if $bookingOrderInfo|count > 0 && $serviceProducts|count > 0}
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active">
-                    <a href="#refund_rooms_tab" role="tab" data-toggle="tab">{l s='Rooms'}</a>
+                    <a href="#refund_rooms_tab" role="tab" data-toggle="tab">{l s='Chambres'}</a>
                 </li>
                 <li role="presentation">
-                    <a href="#refund_products_tab" aria-controls="products" role="tab" data-toggle="tab">{l s='Products'}</a>
+                    <a href="#refund_products_tab" aria-controls="products" role="tab" data-toggle="tab">{l s='Produits'}</a>
                 </li>
             </ul>
         {/if}
@@ -43,11 +43,11 @@
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>{l s='Room No.'}</th>
-                                    <th>{l s='Room Type'}</th>
-                                    <th>{l s='Hotel Name'}</th>
-                                    <th>{l s='Duration'}</th>
-                                    <th>{l s='Total Price (Tax incl.)'}</th>
+                                    <th>{l s='N° de chambre'}</th>
+                                    <th>{l s='Type de chambre'}</th>
+                                    <th>{l s='Nom de l&#039;hôtel'}</th>
+                                    <th>{l s='Durée'}</th>
+                                    <th>{l s='Prix total (TTC)'}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -74,9 +74,9 @@
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>{l s='Name'}</th>
-                                    <th>{l s='Quantity'}</th>
-                                    <th>{l s='Total Price (Tax incl.)'}</th>
+                                    <th>{l s='Nom'}</th>
+                                    <th>{l s='Quantité'}</th>
+                                    <th>{l s='Prix total (TTC)'}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -98,12 +98,12 @@
                 </div>
             {/if}
             <div class="form-group">
-                <label class="control-label">{l s='Reason to Cancel'}</label>
+                <label class="control-label">{l s='Motif d&#039;annulation'}</label>
                 <textarea rows="3" class="textarea-autosize cancellation_reason" name="cancellation_reason"></textarea>
             </div>
 
             <button style="display: none;" type="submit" name="initiateRefund" class="btn btn-primary" id="initiateRefund">
-                {if $order->hasBeenPaid()}<i class="icon-undo"></i> {l s='Initiate Refund'}{else}{l s='Submit'}{/if}
+                {if $order->hasBeenPaid()}<i class="icon-undo"></i> {l s='Initier le remboursement'}{else}{l s='Soumettre'}{/if}
             </button>
 
         </form>
@@ -111,7 +111,7 @@
         <div class="list-empty">
             <div class="list-empty-msg">
                 <i class="icon-warning-sign list-empty-icon"></i>
-                {l s='No room bookings found to cancel'}
+                {l s='Aucune réservation de chambre trouvée à annuler'}
             </div>
         </div>
     {/if}

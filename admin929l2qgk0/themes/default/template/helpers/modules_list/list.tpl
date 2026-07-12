@@ -25,7 +25,7 @@
 <div class="panel">
 	<h3>
 		<i class="icon-list-ul"></i>
-		{if isset($panel_title)}{$panel_title|escape:'html':'UTF-8'}{else}{l s='Modules list'}{/if}
+		{if isset($panel_title)}{$panel_title|escape:'html':'UTF-8'}{else}{l s='Liste des modules'}{/if}
 	</h3>
 	<div class="modules_list_container_tab row">
 		<div class="col-lg-12">
@@ -51,11 +51,11 @@
 				<table class="table">
 					<tr>
 						<td>
-							<div class="alert alert-warning">
+							<div class="alert alert-info">
 							{if $controller_name == 'AdminPayment'}
-							{l s='It seems there are no recommended payment solutions for your country.'}<br />
-							<a class="_blank" href="https://qloapps.com/contact/">{l s='Do you think there should be one? Let us know!'}</a>
-							{else}{l s='No modules available in this section.'}{/if}</div>
+							{l s='Il semble qu&#039;il n&#039;y ait pas de solutions de paiement recommandées pour votre pays.'}<br />
+							<a class="_blank" href="https://qloapps.com/contact/">{l s='Pensez-vous qu&#039;il devrait y en avoir un ? Faites-le nous savoir !'}</a>
+							{else}{l s='Aucun module disponible dans cette section.'}{/if}</div>
 						</td>
 					</tr>
 				</table>

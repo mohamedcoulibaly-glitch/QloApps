@@ -39,7 +39,7 @@
 					- <span class="module-badge-partner help-tooltip text-warning" data-title="{l s="This module is available for free thanks to our partner."}"><i class="icon-pushpin"></i> <small>{l s="Official"}</small></span>
 				{elseif isset($module->id) && $module->id gt 0}
 					{if isset($module->version_addons) && $module->version_addons}
-						<span class="label label-warning">{l s='Need update'}</span>
+						<span class="label label-warning">{l s='Mise à jour nécessaire'}</span>
 					{/if}
 				{/if}
 			</div>
@@ -48,7 +48,7 @@
 					{$module->description}
 				{/if}
 				{if isset($module->show_quick_view) &&  $module->show_quick_view}
-					<br><a href="{$currentIndex|escape:'html':'UTF-8'}&amp;token={$token|escape:'html':'UTF-8'}&amp;ajax=1&amp;action=GetModuleQuickView&amp;module={$module->name|urlencode}" class="fancybox-quick-view"><i class="icon-search"></i> {l s='Read more'}</a>
+					<br><a href="{$currentIndex|escape:'html':'UTF-8'}&amp;token={$token|escape:'html':'UTF-8'}&amp;ajax=1&amp;action=GetModuleQuickView&amp;module={$module->name|urlencode}" class="fancybox-quick-view"><i class="icon-search"></i> {l s='En savoir plus'}</a>
 				{/if}
 			</p>
 			{if isset($module->message) && (empty($module->name) !== false) && (!isset($module->type) || ($module->type != 'addonsMustHave' || $module->type !== 'addonsNative'))}<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>{$module->message}</div>{/if}
@@ -60,7 +60,7 @@
 			<p>
 				<a href="{$module->addons_buy_url|replace:' ':'+'|escape:'html':'UTF-8'}" class="button updated _blank">
 					<span class="btn btn-default">
-						<i class="icon-shopping-cart"></i>{if isset($module->price)}{if $module->price|floatval == 0}{l s='Free'}{elseif isset($module->id_currency)} &nbsp;&nbsp;{displayPrice price=$module->price currency=$module->id_currency}{/if}{/if}
+						<i class="icon-shopping-cart"></i>{if isset($module->price)}{if $module->price|floatval == 0}{l s='Gratuit'}{elseif isset($module->id_currency)} &nbsp;&nbsp;{displayPrice price=$module->price currency=$module->id_currency}{/if}{/if}
 					</span>
 				</a>
 			</p>
@@ -100,7 +100,7 @@
 			<p>
 				<a href="{$module->options.install_url|escape:'html':'UTF-8'}" class="btn btn-success">
 					<i class="icon-plus-sign-alt"></i>
-					{l s='Install'}
+					{l s='Installer'}
 				</a>
 			</p>
 		</td>

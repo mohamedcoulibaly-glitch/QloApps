@@ -59,6 +59,7 @@
 		{/if}
 		<script type="text/javascript" src="../js/admin/login.js?v={$smarty.const._PS_VERSION_|escape:'html':'UTF-8'}"></script>
 
+			<link rel="stylesheet" href="themes/default/css/reception-modern.css?v=2026071208" type="text/css" media="all" />
 	</head>
 	<body class="ps_back-office bootstrap">
 		<div id="login">

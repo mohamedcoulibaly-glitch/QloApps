@@ -44,7 +44,7 @@
 			{if isset($imageTextureExists) && $imageTextureExists}
 				<img src="{$imageTexture}" alt="{l s='Texture'}" class="img-thumbnail" />
 			{else}
-				<p class="form-control-static">{l s='None'}</p>
+				<p class="form-control-static">{l s='Aucun'}</p>
 			{/if}
 		</div>
 	{else}

@@ -29,8 +29,8 @@
                     <div class="form-group">
                         <label class="control-label col-lg-3">
                             <span class="label-tooltip" data-toggle="tooltip" data-html="true"
-                                title="{l s="Select hotel to assign duplicated room type to."}">
-                                {l s="Select hotel"}
+                                title="{l s="Sélectionnez l'hôtel auquel assigner le type de chambre dupliqué."}">
+                                {l s="Sélectionner l'hôtel"}
                             </span>
                         </label>
                         <div class="col-lg-9">
@@ -47,18 +47,18 @@
                     <div class="form-group">
                         <label class="control-label col-lg-3">
                             <span class="label-tooltip" data-toggle="tooltip" data-html="true"
-                                title="{l s="Choose whether to copy images to duplicated room type."}">
-                                {l s="Duplicate images"}
+                                title="{l s="Choisissez si vous souhaitez copier les images vers le type de chambre dupliqué."}">
+                                {l s="Dupliquer les images"}
                             </span>
                         </label>
                         <div class="col-lg-9">
                             <span class="switch prestashop-switch fixed-width-lg">
                                 <input type="radio" name="noimage" id="noimage_on" value="0"
                                     {if $duplicate_images|intval}checked="checked"{/if}>
-                                <label for="noimage_on">{l s="Yes"}</label>
+                                <label for="noimage_on">{l s="Oui"}</label>
                                 <input type="radio" name="noimage" id="noimage_off" value="1"
                                     {if !$duplicate_images|intval}checked="checked"{/if}>
-                                <label for="noimage_off">{l s="No"}</label>
+                                <label for="noimage_off">{l s="Non"}</label>
                                 <a class="slide-button btn"></a>
                             </span>
                         </div>

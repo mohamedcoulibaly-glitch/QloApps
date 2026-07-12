@@ -25,10 +25,10 @@
 
 {*
 		<form action="{$smarty.server.REQUEST_URI|escape}" method="post" id="settings_form" name="settings_form" class="form-horizontal">
-			<h3><i class="icon-cog"></i> {l s='Settings'}</h3>
+			<h3><i class="icon-cog"></i> {l s='Paramètres'}</h3>
 
 			<div class="form-group">
-				<label for="engine_stats_render">{l s='Graph engine'} </label>
+				<label for="engine_stats_render">{l s='Moteur de graphiques'} </label>
 				{if count($array_graph_engines)}
 					<select name="PS_STATS_RENDER" id="engine_stats_render">
 						{foreach $array_graph_engines as $k => $value}
@@ -36,12 +36,12 @@
 						{/foreach}
 					</select>
 				{else}
-					{l s='No graph engine module has been installed.'}
+					{l s='Aucun module de moteur de graphiques n&#039;a été installé.'}
 				{/if}
 			</div>
 
 			<div class="form-group">
-				<label for="engine_grid_render">{l s='Grid engine'} </label>
+				<label for="engine_grid_render">{l s='Moteur de grilles'} </label>
 				{if count($array_grid_engines)}
 					<select name="PS_STATS_GRID_RENDER" id="engine_grid_render">
 						{foreach $array_grid_engines as $k => $value}
@@ -49,12 +49,12 @@
 						{/foreach}
 					</select>
 				{else}
-					{l s='No grid engine module has been installed.'}
+					{l s='Aucun module de moteur de grilles n&#039;a été installé.'}
 				{/if}
 			</div>
 
 			<div class="form-group">
-				<label for="engine_auto_clean">{l s='Auto-clean period'}</label>
+				<label for="engine_auto_clean">{l s='Période de nettoyage automatique'}</label>
 				<select name="PS_STATS_OLD_CONNECT_AUTO_CLEAN" id="engine_auto_clean">
 					{foreach $array_auto_clean as $k => $value}
 						<option value="{$k}" {if $k == $auto_clean}selected="selected"{/if}>{$value}</option>
@@ -63,7 +63,7 @@
 			</div>
 
 			<p>
-				<input type="submit" value="{l s='Save'}" name="submitSettings" id="submitSettings" class="btn btn-default" />
+				<input type="submit" value="{l s='Enregistrer'}" name="submitSettings" id="submitSettings" class="btn btn-default" />
 			</p>
 		</form>
 *}

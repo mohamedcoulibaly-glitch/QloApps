@@ -24,20 +24,20 @@
 *}
 {extends file="helpers/form/form.tpl"}
 {block name="script"}
-	var string_price = '{l s='Will be applied when the price is' js=1}';
-	var string_weight = '{l s='Will be applied when the weight is' js=1}';
+	var string_price = '{l s='Sera appliqué lorsque le prix est' js=1}';
+	var string_weight = '{l s='Sera appliqué lorsque le poids est' js=1}';
 {/block}
 
 {block name="field"}
 	{if $input.name == 'zones'}
 		<div class="ranges_not_follow warn" style="display:none">
-			<label>{l s="Ranges are not correctly ordered:"}</label>
-			<a href="#" onclick="checkRangeContinuity(true); return false;" class="btn btn-default">{l s="Reordering"}</a>
+			<label>{l s="Les plages ne sont pas correctement ordonnées :"}</label>
+			<a href="#" onclick="checkRangeContinuity(true); return false;" class="btn btn-default">{l s="Réordonner"}</a>
 		</div>
 		{include file='controllers/carrier_wizard/helpers/form/form_ranges.tpl'}
 
 		<div class="new_range">
-			<a href="#" onclick="add_new_range();return false;" class="btn btn-default" id="add_new_range">{l s='Add new range'}</a>
+			<a href="#" onclick="add_new_range();return false;" class="btn btn-default" id="add_new_range">{l s='Ajouter une nouvelle plage'}</a>
 		</div>
 	{/if}
 	{if $input.name == 'logo'}
@@ -49,13 +49,13 @@
 				<input id="attachement_filename" type="text" name="filename" readonly="" />
 				<span class="input-group-btn">
 					<button id="attachement_fileselectbutton" type="button" name="submitAddAttachments" class="btn btn-default">
-						<i class="icon-folder-open"></i> {l s='Choose a file'}
+						<i class="icon-folder-open"></i> {l s='Choisir un fichier'}
 					</button>
 				</span>
 			</div>
 			<p class="help-block">
-					{l s='Format:'} JPG, GIF, PNG. {l s='Filesize:'} {$max_image_size|string_format:"%.2f"} {l s='MB max.'}
-					{l s='Current size:'} <span id="carrier_logo_size">{l s='undefined'}</span>.
+					{l s='Format :'} JPG, GIF, PNG. {l s='Taille du fichier :'} {$max_image_size|string_format:"%.2f"} {l s='Mo max.'}
+					{l s='Taille actuelle :'} <span id="carrier_logo_size">{l s='indéfini'}</span>.
 			</p>
 		</div>
 	{/if}

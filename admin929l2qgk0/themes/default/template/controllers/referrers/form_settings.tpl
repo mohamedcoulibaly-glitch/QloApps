@@ -27,11 +27,11 @@
 			<form action="{$current|escape:'html':'UTF-8'}&amp;token={$token|escape:'html':'UTF-8'}" method="post" id="refresh_index_form" name="refresh_index_form" class="form-horizontal">
 				<div class="panel">
 					<h3>
-						<i class="icon-fullscreen"></i> {l s='Indexing'}
+						<i class="icon-fullscreen"></i> {l s='Indexation'}
 					</h3>
-					<div class="alert alert-info">{l s='There is a huge quantity of data, so each connection corresponding to a referrer is indexed. You can also refresh this index by clicking the "Refresh index" button. This process may take a while, and it\'s only needed if you modified or added a referrer, or if you want changes to be retroactive.'}</div>
+					<div class="alert alert-info">{l s='There is a huge quantity of data, so each connection corresponding to a referrer is indexed. You can also refresh this index by clicking the "Refresh index" button. This process may take a while, and it&#039;s only needed if you modified or added a referrer, or if you want changes to be retroactive.'}</div>
 					<button type="submit" class="btn btn-default" name="submitRefreshIndex" id="submitRefreshIndex">
-						<i class="icon-refresh"></i> {l s='Refresh index'}
+						<i class="icon-refresh"></i> {l s='Actualiser l&#039;index'}
 					</button>
 				</div>
 			</form>
@@ -44,7 +44,7 @@
 					</h3>
 					<div class="alert alert-info">{l s='Your data is cached in order to sort it and filter it. You can refresh the cache by clicking on the "Refresh cache" button.'}</div>
 					<button type="submit" class="btn btn-default" name="submitRefreshCache" id="submitRefreshCache">
-						<i class="icon-refresh"></i> {l s='Refresh cache'}
+						<i class="icon-refresh"></i> {l s='Actualiser le cache'}
 					</button>
 				</div>
 			</form>
@@ -57,22 +57,22 @@
 		<form action="{$current|escape:'html':'UTF-8'}&amp;token={$token|escape:'html':'UTF-8'}" method="post" id="settings_form" name="settings_form" class="form-horizontal">
 			<div class="panel">
 				<h3>
-					<i class="icon-cog"></i> {l s='Settings'}
+					<i class="icon-cog"></i> {l s='Paramètres'}
 				</h3>
-				<div class="alert alert-info">{l s='Direct traffic can be quite resource-intensive. You should consider enabling it only if you have a strong need for it.'}</div>
+				<div class="alert alert-info">{l s='Le trafic direct peut être très gourmand en ressources. Envisagez de l&#039;activer uniquement si vous en avez un besoin important.'}</div>
 				<div class="form-group">
-					<label class="control-label col-lg-6">{l s='Save direct traffic?'}</label>
+					<label class="control-label col-lg-6">{l s='Enregistrer le trafic direct ?'}</label>
 					<div class="col-lg-6">
 						<div class="row">
 							<div class="input-group fixed-width-md">
 								<span class="switch prestashop-switch">
 									<input type="radio" name="tracking_dt" id="tracking_dt_on" value="1" {if $tracking_dt}checked="checked"{/if} />
 									<label class="t" for="tracking_dt_on">
-										{l s='Yes'}
+										{l s='Oui'}
 									</label>
 									<input type="radio" name="tracking_dt" id="tracking_dt_off" value="0" {if !$tracking_dt}checked="checked"{/if}  />
 									<label class="t" for="tracking_dt_off">
-										{l s='No'}
+										{l s='Non'}
 									</label>
 									<a class="slide-button btn"></a>
 								</span>
@@ -81,7 +81,7 @@
 					</div>
 				</div>
 				<button type="submit" class="btn btn-default" name="submitSettings" id="submitSettings">
-					<i class="icon-save"></i> {l s='Save'}
+					<i class="icon-save"></i> {l s='Enregistrer'}
 				</button>
 			</div>
 		</form>

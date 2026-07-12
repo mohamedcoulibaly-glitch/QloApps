@@ -24,10 +24,10 @@
         <div id="suggested-modules-list" class="row list-container">
             <div class="col-sm-12">
                 <div class="row form-horizontal list-header">
-                    <div class="pull-left col-sm-6 title">{l s='Suggested Modules'}&nbsp;</div>
+                    <div class="pull-left col-sm-6 title">{l s='Modules suggérés'}&nbsp;</div>
                     <div class="pull-right col-sm-3">
                         <div class="input-group">
-                            <input type="text" name="module-search" id="module-search" placeholder="{l s='Search module name...'}">
+                            <input type="text" name="module-search" id="module-search" placeholder="{l s='Rechercher un nom de module...'}">
                             <span class="input-group-addon">
                                 <i class="icon-search"></i>
                             </span>
@@ -36,7 +36,7 @@
                     {if isset($sort_criterta) && $sort_criterta}
                         <div class="pull-right col-sm-3">
                             <div class="row">
-                                <label class="pull-left sort-label"><span>{l s='Sort By :'}</span></label>
+                                <label class="pull-left sort-label"><span>{l s='Trier par :'}</span></label>
                                 <div class="col-sm-9">
                                     <select name="module-sort" id="module-sort">
                                         {foreach $sort_criterta as $criteria}
@@ -53,7 +53,7 @@
                 <div class="list-empty" style="display:none">
                     <div class="list-empty-msg">
                         <i class="icon-warning-sign list-empty-icon"></i>
-                        {l s='No modules found'}
+                        {l s='Aucun module trouvé'}
                     </div>
                 </div>
                 <div class="pagination-container">
@@ -62,7 +62,7 @@
             </div>
         </div>
         <div class="panel explore-panel text-center">
-            {l s='Explore all addon of Qloapps'}&nbsp;
+            {l s='Explorer tous les addons de QloApps'}&nbsp;
             <a href="https://qloapps.com/addons/" class="btn btn-primary btn-lg">{l s='QloApps Addons'}</a>
         </div>
     {/if}
@@ -71,11 +71,11 @@
             <div class="col-sm-12">
                 <div class="row form-horizontal list-header">
                     {* <div class="row"> *}
-                        <div class="pull-left col-sm-6 title">{l s='Suggested Themes'}&nbsp;</div>
+                        <div class="pull-left col-sm-6 title">{l s='Thèmes suggérés'}&nbsp;</div>
 
                         <div class="pull-right col-sm-3">
                             <div class="input-group">
-                                <input type="text" name="theme-search" id="theme-search" placeholder="{l s='Search theme name...'}">
+                                <input type="text" name="theme-search" id="theme-search" placeholder="{l s='Rechercher un nom de thème...'}">
                                 <span class="input-group-addon">
                                     <i class="icon-search"></i>
                                 </span>
@@ -85,7 +85,7 @@
                             <div class="pull-right col-sm-3">
                                 <div class="row">
                                     {* <div class="col-sm-3"> *}
-                                        <label class="pull-left sort-label"><span>{l s='Sort By :'}</span></label>
+                                        <label class="pull-left sort-label"><span>{l s='Trier par :'}</span></label>
                                     {* </div> *}
                                     <div class="col-sm-9">
                                         <select name="theme-sort" id="theme-sort">
@@ -103,7 +103,7 @@
                 <div class="list-empty" style="display:none">
                     <div class="list-empty-msg">
                         <i class="icon-warning-sign list-empty-icon"></i>
-                        {l s='No themes found'}
+                        {l s='Aucun thème trouvé'}
                     </div>
                 </div>
                 <div class="pagination-container">
@@ -112,7 +112,7 @@
             </div>
         </div>
         <div class="panel explore-panel text-center">
-            {l s='Explore all themes of QloApps'}&nbsp;
+            {l s='Explorer tous les thèmes de QloApps'}&nbsp;
             <a href="https://store.webkul.com/Qloapps/responsive.html" class="btn btn-primary btn-lg">{l s='QloApps Themes'}</a>
         </div>
     {/if}

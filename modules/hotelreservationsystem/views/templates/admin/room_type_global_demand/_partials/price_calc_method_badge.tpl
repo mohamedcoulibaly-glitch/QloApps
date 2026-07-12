@@ -21,7 +21,7 @@
 *}
 
 {if isset($priceCalcMethod) && $priceCalcMethod}
-    <span class="badge badge-success">{l s='Yes' mod='hotelreservationsystem'}</span>
+    <span class="badge badge-success">{l s='Oui' mod='hotelreservationsystem'}</span>
 {else}
-    <span class="badge badge-danger">{l s='No' mod='hotelreservationsystem'}</span>
+    <span class="badge badge-danger">{l s='Non' mod='hotelreservationsystem'}</span>
 {/if}

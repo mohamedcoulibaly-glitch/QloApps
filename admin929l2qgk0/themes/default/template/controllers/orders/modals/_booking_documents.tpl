@@ -28,9 +28,9 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th class="text-center">{l s='Preview'}</th>
-                            <th class="text-left">{l s='Title'}</th>
-                            <th class="text-center">{l s='Upload Date'}</th>
+                            <th class="text-center">{l s='Aperçu'}</th>
+                            <th class="text-left">{l s='Titre'}</th>
+                            <th class="text-center">{l s='Date de téléchargement'}</th>
                             <th class="text-center">{l s='Actions'}</th>
                         </tr>
                     </thead>
@@ -45,18 +45,18 @@
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <label class="control-label">
-                                    <span class="label-tooltip" data-toggle="tooltip" title="" data-original-title="{l s='Write the title for the document. Invalid characters <>;=#{}'}">
-                                        {l s='Title'}
+                                    <span class="label-tooltip" data-toggle="tooltip" title="" data-original-title="{l s='Écrivez le titre du document. Caractères invalides <>;=#{}'}">
+                                        {l s='Titre'}
                                     </span>
                                 </label>
-                                <input class="form-control" type="text" name="title" value="" placeholder="{l s='eg. passport, driving license'}" />
+                                <input class="form-control" type="text" name="title" value="" placeholder="{l s='ex. passeport, permis de conduire'}" />
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <label class="control-label required">
-                                    <span class="label-tooltip" data-toggle="tooltip" title="" data-original-title="{l s='Choose the document file to be uploaded.'}">
-                                        {l s='File'}
+                                    <span class="label-tooltip" data-toggle="tooltip" title="" data-original-title="{l s='Choisissez le fichier document à télécharger.'}">
+                                        {l s='Fichier'}
                                     </span>
                                 </label>
                                 <div class="input-file-wrap"></div>
@@ -65,17 +65,17 @@
                                     <span class="input-group-btn">
                                         <button type="button" class="btn btn-primary btn-add-file">
                                             <i class="icon-folder-open"></i>
-                                            {l s='Add file'}
+                                            {l s='Ajouter un fichier'}
                                         </button>
                                     </span>
                                 </div>
                                 <p class="text-left" style="margin-top: 4px; font-style: italic;">
-                                    {l s='Upload a PDF or an image file. Allowed image formats: .gif, .jpg, .jpeg and .png'}
+                                    {l s='Téléchargez un fichier PDF ou image. Formats d&#039;image autorisés : .gif, .jpg, .jpeg et .png'}
                                 </p>
                             </div>
                         </div>
                         <button class="btn btn-primary pull-right upload" type="submit" name="uploadDocument" id="uploadDocument" style="display:none;">
-                            {l s='Upload'}
+                            {l s='Télécharger'}
                         </button>
                     </form>
                 </div>

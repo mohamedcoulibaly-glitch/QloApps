@@ -33,11 +33,11 @@
 		{if isset($file.image) && $file.type == 'image'}
 		<div class="img-thumbnail text-center">
 			<p>{$file.image}</p>
-			{if isset($file.size)}<p>{l s='File size'} {$file.size}kb</p>{/if}
+			{if isset($file.size)}<p>{l s='Taille du fichier'} {$file.size}kb</p>{/if}
 			{if isset($file.delete_url)}
 			<p>
 				<a class="btn btn-default" href="{$file.delete_url}">
-					<i class="icon-trash"></i> {l s='Delete'}
+					<i class="icon-trash"></i> {l s='Supprimer'}
 				</a>
 			</p>
 			{/if}
@@ -61,12 +61,12 @@
 			<input id="{$id|escape:'html':'UTF-8'}-name" type="text" name="filename" readonly />
 			<span class="input-group-btn">
 				<button id="{$id|escape:'html':'UTF-8'}-selectbutton" type="button" name="submitAddAttachments" class="btn btn-default">
-					<i class="icon-folder-open"></i> {if isset($multiple) && $multiple}{l s='Add files'}{else}{l s='Add file'}{/if}
+					<i class="icon-folder-open"></i> {if isset($multiple) && $multiple}{l s='Ajouter des fichiers'}{else}{l s='Ajouter un fichier'}{/if}
 				</button>
 				{if (!isset($multiple) || !$multiple) && isset($files) && $files|count == 1 && isset($files[0].download_url)}
 					<a href="{$files[0].download_url|escape:'html':'UTF-8'}" class="btn btn-default">
 						<i class="icon-cloud-download"></i>
-						{if isset($size)}{l s='Download current file (%skb)' sprintf=$size}{else}{l s='Download current file'}{/if}
+						{if isset($size)}{l s='Download current file (%skb)' sprintf=$size}{else}{l s='Télécharger le fichier actuel'}{/if}
 					</a>
 				{/if}
 			</span>

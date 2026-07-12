@@ -27,59 +27,59 @@
 {block name="override_tpl"}
 {if isset($warehouse)}
 <div class="panel">
-	<h3><i class="icon-cogs"></i> {l s='General information'}</h3>
+	<h3><i class="icon-cogs"></i> {l s='Informations générales'}</h3>
 	<div class="form-horizontal">
 		<div class="row">
-			<label class="control-label col-lg-3">{l s='Reference:'}</label>
+			<label class="control-label col-lg-3">{l s='Référence :'}</label>
 			<div class="col-lg-9"><p class="form-control-static">{$warehouse->reference}</p></div>
 		</div>
 		<div class="row">
-			<label class="control-label col-lg-3">{l s='Name:'}</label>
+			<label class="control-label col-lg-3">{l s='Nom :'}</label>
 			<div class="col-lg-9"><p class="form-control-static">{$warehouse->name}</p></div>
 		</div>
 		<div class="row">
-			<label class="control-label col-lg-3">{l s='Manager:'}</label>
+			<label class="control-label col-lg-3">{l s='Gérant :'}</label>
 			<div class="col-lg-9"><p class="form-control-static">{$employee->lastname} {$employee->firstname}</p></div>
 		</div>
 		<div class="row">
-			<label class="control-label col-lg-3">{l s='Country:'}</label>
+			<label class="control-label col-lg-3">{l s='Pays :'}</label>
 			<div class="col-lg-9"><p class="form-control-static">{if $address->country != ''}{$address->country}{else}{l s='N/A'}{/if}</p></div>
 		</div>
 		<div class="row">
-			<label class="control-label col-lg-3">{l s='Phone:'}</label>
+			<label class="control-label col-lg-3">{l s='Téléphone :'}</label>
 			<div class="col-lg-9"><p class="form-control-static">{if $address->phone != ''}{$address->phone}{else}{l s='N/A'}{/if}</p></div>
 		</div>
 		<div class="row">
-			<label class="control-label col-lg-3">{l s='Management type:'}</label>
+			<label class="control-label col-lg-3">{l s='Type de gestion :'}</label>
 			<div class="col-lg-9"><p class="form-control-static">{l s=$warehouse->management_type}</p></div>
 		</div>
 		<div class="row">
-			<label class="control-label col-lg-3">{l s='Valuation currency:'}</label>
+			<label class="control-label col-lg-3">{l s='Devise de valorisation :'}</label>
 			<div class="col-lg-9"><p class="form-control-static">{$currency->name} ({$currency->sign})</p></div>
 		</div>
 		<div class="row">
-			<label class="control-label col-lg-3">{l s='Product references:'}</label>
+			<label class="control-label col-lg-3">{l s='Références produits :'}</label>
 			<div class="col-lg-9"><p class="form-control-static">{$warehouse_num_products}</p></div>
 		</div>
 		<div class="row">
-			<label class="control-label col-lg-3">{l s='Physical product quantities:'}</label>
+			<label class="control-label col-lg-3">{l s='Quantités physiques de produits :'}</label>
 			<div class="col-lg-9"><p class="form-control-static">{$warehouse_quantities}</p></div>
 		</div>
 		<div class="row">
-			<label class="control-label col-lg-3">{l s='Stock valuation:'}</label>
+			<label class="control-label col-lg-3">{l s='Valorisation du stock :'}</label>
 			<div class="col-lg-9"><p class="form-control-static">{$warehouse_value}</p></div>
 		</div>
 	</div>
 </div>
 <div class="panel">
-	<h3><i class="icon-sitemap"></i> {l s='Shops'}</h3>
+	<h3><i class="icon-sitemap"></i> {l s='Boutiques'}</h3>
 	{if isset($shops) && count($shops) > 0}
-	<div class="alert alert-info">{l s='The following are the shops associated with this warehouse.'}</div>
+	<div class="alert alert-info">{l s='Voici les boutiques associées à cet entrepôt.'}</div>
 	<table class="table">
 		<thead>
 			<tr>
 				<th class="fixed-width-xs align-center"><span class="title_box">{l s='ID'}</span></th>
-				<th><span class="title_box">{l s='Name'}</span></th>
+				<th><span class="title_box">{l s='Nom'}</span></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -92,18 +92,18 @@
 		</tbody>
 	</table>
 	{else}
-	<div class="alert alert-warning">{l s='Currently there is no shop associated with this warehouse.'}</div>
+	<div class="alert alert-warning">{l s='Actuellement, aucune boutique n&#039;est associée à cet entrepôt.'}</div>
 	{/if}
 </div>
 <div class="panel">
 	<h3><i class="icon-archive"></i> {l s='Stock'}</h3>
-	<a class="btn btn-link" href="{$link->getAdminLink('AdminStockInstantState')|escape:'html':'UTF-8'}&amp;id_warehouse={$warehouse->id|intval}&amp;token={getAdminToken tab='AdminStockInstantState'}">{l s='See products details'} <i class="icon-external-link-sign"></i></a>
+	<a class="btn btn-link" href="{$link->getAdminLink('AdminStockInstantState')|escape:'html':'UTF-8'}&amp;id_warehouse={$warehouse->id|intval}&amp;token={getAdminToken tab='AdminStockInstantState'}">{l s='Voir les détails des produits'} <i class="icon-external-link-sign"></i></a>
 </div>
 <div class="panel">
-	<h3><i class="icon-reorder"></i> {l s='History'}</h3>
-	<a class="btn btn-link" href="{$link->getAdminLink('AdminStockMvt')|escape:'html':'UTF-8'}&amp;id_warehouse={$warehouse->id|intval}&amp;token={getAdminToken tab='AdminStockMvt'}">{l s='See warehouse\'s activity details'} <i class="icon-external-link-sign"></i></a>
+	<h3><i class="icon-reorder"></i> {l s='Historique'}</h3>
+	<a class="btn btn-link" href="{$link->getAdminLink('AdminStockMvt')|escape:'html':'UTF-8'}&amp;id_warehouse={$warehouse->id|intval}&amp;token={getAdminToken tab='AdminStockMvt'}">{l s='See warehouse&#039;s activity details'} <i class="icon-external-link-sign"></i></a>
 </div>
 {else}
-	<div class="panel"><div class="alert alert danger">{l s='This warehouse does not exist.'}</div></div>
+	<div class="panel"><div class="alert alert danger">{l s='Cet entrepôt n&#039;existe pas.'}</div></div>
 {/if}
 {/block}

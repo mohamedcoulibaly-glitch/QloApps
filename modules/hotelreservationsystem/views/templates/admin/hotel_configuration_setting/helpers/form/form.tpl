@@ -26,24 +26,24 @@
 	<div class="panel" id="general">
 		<div class="panel-heading">
 			<i class="icon-info-circle"></i>
-			{l s='Link Information' mod='hotelreservationsystem'}
+			{l s='Informations sur le lien' mod='hotelreservationsystem'}
 		</div>
 
 		<div class="form-wrapper" id="fields-meta-tags-rule">
 			<div class="form-group">
 				<label class="control-label col-lg-3">
-					<span class="label-tooltip" data-toggle="tooltip" data-html="true" title="{l s='Enable to show this link.' mod='hotelreservationsystem'}">
-						{l s='Enabled' mod='hotelreservationsystem'}
+					<span class="label-tooltip" data-toggle="tooltip" data-html="true" title="{l s='Activer pour afficher ce lien.' mod='hotelreservationsystem'}">
+						{l s='Activé' mod='hotelreservationsystem'}
 					</span>
 				</label>
 				<div class="col-lg-9">
 					<span class="switch prestashop-switch fixed-width-lg">
 						<input type="radio" name="active" id="active_on" value="1"
 							{if $currentTab->getFieldValue($currentObject, 'active')|intval}checked="checked"{/if}>
-						<label for="active_on">{l s='Yes' mod='hotelreservationsystem'}</label>
+						<label for="active_on">{l s='Oui' mod='hotelreservationsystem'}</label>
 						<input type="radio" name="active" id="active_off" value="0"
 							{if !$currentTab->getFieldValue($currentObject, 'active')|intval}checked="checked"{/if}>
-						<label for="active_off">{l s='No' mod='hotelreservationsystem'}</label>
+						<label for="active_off">{l s='Non' mod='hotelreservationsystem'}</label>
 						<a class="slide-button btn"></a>
 					</span>
 				</div>
@@ -51,8 +51,8 @@
 
 			<div class="form-group">
 				<label class="control-label col-lg-3 required">
-					<span class="label-tooltip" data-toggle="tooltip" data-html="true" title="{l s='Enter a memorable name for this link.' mod='hotelreservationsystem'}">
-						{l s='Name' mod='hotelreservationsystem'}
+					<span class="label-tooltip" data-toggle="tooltip" data-html="true" title="{l s='Saisissez un nom mémorable pour ce lien.' mod='hotelreservationsystem'}">
+						{l s='Nom' mod='hotelreservationsystem'}
 					</span>
 				</label>
 				<div class="col-lg-9">
@@ -84,8 +84,8 @@
 
 			<div class="form-group">
 				<label class="control-label col-lg-3 required">
-					<span class="label-tooltip" data-toggle="tooltip" data-html="true" title="{l s='Enter a hint for this link.' mod='hotelreservationsystem'}">
-						{l s='Hint' mod='hotelreservationsystem'}
+					<span class="label-tooltip" data-toggle="tooltip" data-html="true" title="{l s='Saisissez une description pour ce lien.' mod='hotelreservationsystem'}">
+						{l s='Description' mod='hotelreservationsystem'}
 					</span>
 				</label>
 				<div class="col-lg-9">
@@ -117,27 +117,27 @@
 
 			<div class="form-group">
 				<label class="control-label col-lg-3 required">
-					<span class="label-tooltip" data-toggle="tooltip" data-html="true" title="{l s='Set icon class for this link.' mod='hotelreservationsystem'}">
-						{l s='Icon' mod='hotelreservationsystem'}
+					<span class="label-tooltip" data-toggle="tooltip" data-html="true" title="{l s='Définir la classe d\'icône pour ce lien.' mod='hotelreservationsystem'}">
+						{l s='Icône' mod='hotelreservationsystem'}
 					</span>
 				</label>
 				<div class="col-lg-5">
-					<input name="icon" class="form-control" placeholder="{l s='Eg. icon-user' mod='hotelreservationsystem'}" value="{$currentTab->getFieldValue($currentObject, 'icon')|escape}">
+					<input name="icon" class="form-control" placeholder="{l s='Ex. icon-user' mod='hotelreservationsystem'}" value="{$currentTab->getFieldValue($currentObject, 'icon')|escape}">
 				</div>
 				<div class="col-lg-9 col-lg-offset-3">
 					<div class="help-block">
-						{l s='Refer to the following link for available icons.' mod='hotelreservationsystem'}
+						{l s='Consultez le lien suivant pour les icônes disponibles.' mod='hotelreservationsystem'}
 						<a href="https://fontawesome.com/v4/cheatsheet" target="_blank">
 							https://fontawesome.com/v4/cheatsheet <i class="icon icon-external-link"></i>
 						</a>
-						{l s=' Note: Replace fa- with icon- in icon name.' mod='hotelreservationsystem'}
+						{l s=' Note : Remplacez fa- par icon- dans le nom de l\'icône.' mod='hotelreservationsystem'}
 					</div>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label class="control-label col-lg-3 required">
-					<span class="label-tooltip" data-toggle="tooltip" data-html="true" title="{l s='Set URL of the desired page. If it is a Back office URL please remove the token from it.' mod='hotelreservationsystem'}">
+					<span class="label-tooltip" data-toggle="tooltip" data-html="true" title="{l s='Définissez l\'URL de la page souhaitée. Si c\'est une URL du back-office, veuillez supprimer le token.' mod='hotelreservationsystem'}">
 						{l s='URL' mod='hotelreservationsystem'}
 					</span>
 				</label>
@@ -148,18 +148,18 @@
 
 			<div class="form-group">
 				<label class="control-label col-lg-3">
-					<span class="label-tooltip" data-toggle="tooltip" data-html="true" title="{l s='Enable to open the link in a new window.' mod='hotelreservationsystem'}">
-						{l s='Open in new window' mod='hotelreservationsystem'}
+					<span class="label-tooltip" data-toggle="tooltip" data-html="true" title="{l s='Activer pour ouvrir le lien dans une nouvelle fenêtre.' mod='hotelreservationsystem'}">
+						{l s='Ouvrir dans une nouvelle fenêtre' mod='hotelreservationsystem'}
 					</span>
 				</label>
 				<div class="col-lg-9">
 					<span class="switch prestashop-switch fixed-width-lg">
 						<input type="radio" name="new_window" id="new_window_on" value="1"
 							{if $currentTab->getFieldValue($currentObject, 'new_window')|intval}checked="checked"{/if}>
-						<label for="new_window_on">{l s='Yes' mod='hotelreservationsystem'}</label>
+						<label for="new_window_on">{l s='Oui' mod='hotelreservationsystem'}</label>
 						<input type="radio" name="new_window" id="new_window_off" value="0"
 							{if !$currentTab->getFieldValue($currentObject, 'new_window')|intval}checked="checked"{/if}>
-						<label for="new_window_off">{l s='No' mod='hotelreservationsystem'}</label>
+						<label for="new_window_off">{l s='Non' mod='hotelreservationsystem'}</label>
 						<a class="slide-button btn"></a>
 					</span>
 				</div>
@@ -169,15 +169,15 @@
 		<div class="panel-footer">
 			<button type="submit" value="1" name="submitHotelSettingsLink" class="btn btn-default pull-right">
 				<i class="process-icon-save"></i>
-				{l s='Save' mod='hotelreservationsystem'}
+				{l s='Enregistrer' mod='hotelreservationsystem'}
 			</button>
 			<button type="submit" value="1" name="submitHotelSettingsLinkAndStay" class="btn btn-default pull-right">
 				<i class="process-icon-save"></i>
-				{l s='Save and stay' mod='hotelreservationsystem'}
+				{l s='Enregistrer et rester' mod='hotelreservationsystem'}
 			</button>
 			<a href="{$link->getAdminLink('AdminHotelConfigurationSetting')}&display=list" class="btn btn-default" onclick="window.history.back();">
 				<i class="process-icon-back"></i>
-				{l s='Back to list' mod='hotelreservationsystem'}
+				{l s='Retour à la liste' mod='hotelreservationsystem'}
 			</a>
 		</div>
 	</div>

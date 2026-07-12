@@ -26,17 +26,17 @@
 
 {block name="input"}
 	{if $input.type == 'resources'}
-		<div class="alert alert-info">{l s='Set the resource permissions for this key:'}</div>
+		<div class="alert alert-info">{l s='Définir les permissions des ressources pour cette clé :'}</div>
 		<table class="table accesses">
 			<thead>
 				<tr>
-					<th><span class="title_box">{l s='Resource'}</span></th>
-					<th class="center fixed-width-xs"><span class="title_box">{l s='All'}</span></th>
-					<th class="center fixed-width-xs"><span class="title_box">{l s='View (GET)'}</span></th>
-					<th class="center fixed-width-xs"><span class="title_box">{l s='Modify (PUT)'}</span></th>
-					<th class="center fixed-width-xs"><span class="title_box">{l s='Add (POST)'}</span></th>
-					<th class="center fixed-width-xs"><span class="title_box">{l s='Delete (DELETE)'}</span></th>
-					<th class="center fixed-width-xs"><span class="title_box">{l s='Fast view (HEAD)'}</span></th>
+					<th><span class="title_box">{l s='Ressource'}</span></th>
+					<th class="center fixed-width-xs"><span class="title_box">{l s='Tout'}</span></th>
+					<th class="center fixed-width-xs"><span class="title_box">{l s='Voir (GET)'}</span></th>
+					<th class="center fixed-width-xs"><span class="title_box">{l s='Modifier (PUT)'}</span></th>
+					<th class="center fixed-width-xs"><span class="title_box">{l s='Ajouter (POST)'}</span></th>
+					<th class="center fixed-width-xs"><span class="title_box">{l s='Supprimer (DELETE)'}</span></th>
+					<th class="center fixed-width-xs"><span class="title_box">{l s='Vue rapide (HEAD)'}</span></th>
 				</tr>
 			</thead>
 			<tbody>

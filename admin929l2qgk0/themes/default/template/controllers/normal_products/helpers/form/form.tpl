@@ -48,7 +48,7 @@
 						count = tinyMCE.activeEditor.getBody().textContent.length;
 						rest = max - count;
 						if (rest < 0)
-							textarea.parent('div').find('span.counter').html('<span style="color:red;">{l s='Maximum'} '+ max +' {l s='characters'} : '+rest+'</span>');
+							textarea.parent('div').find('span.counter').html('<span style="color:red;">{l s='Maximum'} '+ max +' {l s='caractères'} : '+rest+'</span>');
 						else
 							textarea.parent('div').find('span.counter').html(' ');
 					}
@@ -261,16 +261,16 @@
 			// <![CDATA[
 				ThickboxI18nImage = "{l s='Image'}";
 				ThickboxI18nOf = "{l s='of'}";
-				ThickboxI18nClose = "{l s='Close'}";
+				ThickboxI18nClose = "{l s='Fermer'}";
 				ThickboxI18nOrEscKey = "{l s='(or "Esc")'}";
-				ThickboxI18nNext = "{l s='Next >'}";
+				ThickboxI18nNext = "{l s='Suivant >'}";
 				ThickboxI18nPrev = "{l s='< Previous'}";
 				tb_pathToImage = "../img/loadingAnimation.gif";
 			//]]>
 		</script>
 
 		<div id="product-tab-content-wait" style="display:none">
-			<div id="loading"><i class="icon-refresh icon-spin"></i>&nbsp;{l s='Loading...'}</div>
+			<div id="loading"><i class="icon-refresh icon-spin"></i>&nbsp;{l s='Chargement...'}</div>
 		</div>
 
 		<form id="product_form" class="form-horizontal col-lg-10 col-md-9" action="{$form_action|escape:'html':'UTF-8'}" method="post" enctype="multipart/form-data" name="product" novalidate>
@@ -284,8 +284,8 @@
 			{/if}
 			{if !$product->active && $product->isAssociatedToShop()}
 			<div class="alert alert-info draft">
-				{l s='Your product will be saved as a draft.'}
-				<a href="#" class="btn btn-default" onclick="submitAddProduct()" ><i class="icon-save"></i>&nbsp;{l s='Save'}</a>
+				{l s='Votre produit sera enregistré en brouillon.'}
+				<a href="#" class="btn btn-default" onclick="submitAddProduct()" ><i class="icon-save"></i>&nbsp;{l s='Enregistrer'}</a>
 				<input type="hidden" name="submitAddProduct" id="submitAddProduct" />
 			</div>
 			{/if}

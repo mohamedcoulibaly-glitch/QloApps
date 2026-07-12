@@ -37,5 +37,5 @@
 	</table>
 {/if}
 <div class="alert alert-addons row-margin-top">
-	<a href="https://qloapps.com/addons" onclick="return !window.open(this.href);">{l s='More modules on qloapps.com/addons/'}</a>
+	<a href="https://qloapps.com/addons" onclick="return !window.open(this.href);">{l s='Plus de modules sur qloapps.com/addons/'}</a>
 </div>

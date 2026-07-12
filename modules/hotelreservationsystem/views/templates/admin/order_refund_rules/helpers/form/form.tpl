@@ -1,16 +1,16 @@
 <div class="panel">
 	<div class="panel-heading">
 		{if isset($edit)}
-			<i class='icon-pencil'></i>&nbsp{l s='Edit Refund Rule' mod='hotelreservationsystem'}
+			<i class='icon-pencil'></i>&nbsp{l s='Modifier la règle de remboursement' mod='hotelreservationsystem'}
 		{else}
-			<i class='icon-plus'></i>&nbsp{l s='Add New Refund Rule' mod='hotelreservationsystem'}
+			<i class='icon-plus'></i>&nbsp{l s='Ajouter une nouvelle règle de remboursement' mod='hotelreservationsystem'}
 		{/if}
 	</div>
 	<form id="{$table|escape:'htmlall':'UTF-8'}_form" class="defaultForm {$name_controller|escape:'htmlall':'UTF-8'} form-horizontal" action="{$current|escape:'htmlall':'UTF-8'}&{if !empty($submit_action)}{$submit_action|escape:'htmlall':'UTF-8'}{/if}&token={$token|escape:'htmlall':'UTF-8'}" method="post" {if isset($style)}style="{$style|escape:'htmlall':'UTF-8'}"{/if}>
 
 		{if count($languages) > 1}
 			<div class="col-lg-12">
-				<label class="control-label">{l s='Choose Language' mod='hotelreservationsystem'}</label>
+				<label class="control-label">{l s='Choisir la langue' mod='hotelreservationsystem'}</label>
 				<input type="hidden" name="choosedLangId" id="choosedLangId" value="{$currentLang.id_lang|escape:'htmlall':'UTF-8'}">
 				<button type="button" id="multi_lang_btn" class="btn btn-default dropdown-toggle wk_language_toggle" data-toggle="dropdown">
 					{$currentLang.name|escape:'htmlall':'UTF-8'}
@@ -25,7 +25,7 @@
 						</li>
 					{/foreach}
 				</ul>
-				<p class="help-block">{l s='Change language for updating information in multiple language.' mod='hotelreservationsystem'}</p>
+				<p class="help-block">{l s='Changez la langue pour mettre à jour les informations dans plusieurs langues.' mod='hotelreservationsystem'}</p>
 				<hr>
 			</div>
 		{/if}
@@ -36,7 +36,7 @@
 
 		<div class="form-group">
 			<label class="col-sm-3 control-label required" for="name" >
-				{l s='Name' mod='hotelreservationsystem'}
+				{l s='Nom' mod='hotelreservationsystem'}
 				{include file="../../../_partials/htl-form-fields-flag.tpl"}
 			</label>
 			<div class="col-lg-6">
@@ -73,14 +73,14 @@
 
 		<div class="form-group">
 			<label for="refund_payment_type" class="required control-label col-lg-3">
-				<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title='{l s="Select type of deduction (percentage or fixed amount)." mod='hotelreservationsystem'}'>{l s="Select deduction type" mod='hotelreservationsystem'}</span>
+				<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title='{l s="Sélectionnez le type de déduction (pourcentage ou montant fixe)." mod='hotelreservationsystem'}'>{l s="Sélectionner le type de déduction" mod='hotelreservationsystem'}</span>
 			</label>
 			<div class="col-lg-8">
 				<div class="row">
 					<div class="col-lg-3">
 						<select id="refund_payment_type" name="refund_payment_type">
-							<option {if isset($edit)} {if $refund_rules_info['payment_type'] == $WK_REFUND_RULE_PAYMENT_TYPE_PERCENTAGE}selected{/if}{/if} value="{$WK_REFUND_RULE_PAYMENT_TYPE_PERCENTAGE|escape:'htmlall':'UTF-8'}">{l s="Percentage" mod='hotelreservationsystem'}</option>
-							<option value="{$WK_REFUND_RULE_PAYMENT_TYPE_FIXED|escape:'htmlall':'UTF-8'}" {if isset($edit)} {if $refund_rules_info['payment_type'] == $WK_REFUND_RULE_PAYMENT_TYPE_FIXED}selected{/if}{/if}>{l s="Fixed amount" mod='hotelreservationsystem'}</option>
+							<option {if isset($edit)} {if $refund_rules_info['payment_type'] == $WK_REFUND_RULE_PAYMENT_TYPE_PERCENTAGE}selected{/if}{/if} value="{$WK_REFUND_RULE_PAYMENT_TYPE_PERCENTAGE|escape:'htmlall':'UTF-8'}">{l s="Pourcentage" mod='hotelreservationsystem'}</option>
+							<option value="{$WK_REFUND_RULE_PAYMENT_TYPE_FIXED|escape:'htmlall':'UTF-8'}" {if isset($edit)} {if $refund_rules_info['payment_type'] == $WK_REFUND_RULE_PAYMENT_TYPE_FIXED}selected{/if}{/if}>{l s="Montant fixe" mod='hotelreservationsystem'}</option>
 						</select>
 					</div>
 				</div>
@@ -89,7 +89,7 @@
 
 		<div class="form-group">
 			<label for="deduction_value_adv_pay" class="required control-label col-lg-3">
-				<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title='{l s="Enter deduction value (percentage or fixed amount) from the total amount, which will be deducted as cancellation charges for advance payment." mod='hotelreservationsystem'}'>{l s='Deduction value for advance payment' mod='hotelreservationsystem'}</span>
+				<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title='{l s="Saisissez la valeur de déduction (pourcentage ou montant fixe) du montant total, qui sera déduite comme frais d'annulation pour le paiement d'avance." mod='hotelreservationsystem'}'>{l s='Valeur de déduction pour le paiement d\'avance' mod='hotelreservationsystem'}</span>
 			</label>
 			<div class="col-lg-2">
 				<div class="input-group">
@@ -101,7 +101,7 @@
 
 		<div class="form-group">
 			<label for="deduction_value_full_pay" class="required control-label col-lg-3">
-				<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title='{l s="Enter deduction value (percentage or fixed amount) from the total amount, which will be deducted as cancellation charges for full payment." mod='hotelreservationsystem'}'>{l s='Deduction value for full payment' mod='hotelreservationsystem'}</span>
+				<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title='{l s="Saisissez la valeur de déduction (pourcentage ou montant fixe) du montant total, qui sera déduite comme frais d'annulation pour le paiement complet." mod='hotelreservationsystem'}'>{l s='Valeur de déduction pour le paiement complet' mod='hotelreservationsystem'}</span>
 			</label>
 			<div class="col-lg-2">
 				<div class="input-group">
@@ -113,7 +113,7 @@
 
 		<div class="form-group">
 			<label for="cancelation_days" class="required control-label col-lg-3">
-				<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title='{l s="Enter number of days before check-in date for this rule to be applicable." mod='hotelreservationsystem'}'>{l s='Days before check-in' mod='hotelreservationsystem'}</span>
+				<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title='{l s="Saisissez le nombre de jours avant la date d'arrivée pour que cette règle s'applique." mod='hotelreservationsystem'}'>{l s='Jours avant l\'arrivée' mod='hotelreservationsystem'}</span>
 			</label>
 			<div class="col-lg-2">
 				<input class="form-control" type="text" id="cancelation_days" name="cancelation_days" {if isset($edit)} {if isset($refund_rules_info['days'])}style = "display:block;" value="{$refund_rules_info['days']}" {/if}{/if}>
@@ -122,13 +122,13 @@
 
 		<div class="panel-footer">
 			<a href="{$link->getAdminLink('AdminOrderRefundRules')|escape:'html':'UTF-8'}" class="btn btn-default">
-				<i class="process-icon-cancel"></i>{l s='Cancel' mod='hotelreservationsystem'}
+				<i class="process-icon-cancel"></i>{l s='Annuler' mod='hotelreservationsystem'}
 			</a>
 			<button type="submit" name="submitAddorder_refund_rules" class="btn btn-default pull-right">
-				<i class="process-icon-save"></i> {l s='Save' mod='hotelreservationsystem'}
+				<i class="process-icon-save"></i> {l s='Enregistrer' mod='hotelreservationsystem'}
 			</button>
 			<button type="submit" name="submitAdd{$table|escape:'html':'UTF-8'}AndStay" class="btn btn-default pull-right">
-				<i class="process-icon-save"></i> {l s='Save and stay' mod='hotelreservationsystem'}
+				<i class="process-icon-save"></i> {l s='Enregistrer et rester' mod='hotelreservationsystem'}
 			</button>
 		</div>
 	</form>

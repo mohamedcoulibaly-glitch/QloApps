@@ -44,7 +44,7 @@
 						<label class="control-label col-lg-4" style="text-align: left">{l s='Show'}</label>
 						<div class="col-lg-7">
 							<select id="show_modules" class="filter" style="width: 100%;">
-								<option value="all">{l s='All modules'}&nbsp;</option>
+								<option value="all">{l s='Tous les modules'}&nbsp;</option>
 								{foreach $modules as $module}
 									<option value="{$module->id|intval}"{if $display_key == $module->id} selected="selected"{/if}>{$module->displayName|escape:'html':'UTF-8'}</option>
 								{/foreach}
@@ -52,7 +52,7 @@
 						</div>
 					</div>
 					<div class="form-group col-lg-6 col-sm-12">
-						<label class="control-label col-lg-offset-1 col-lg-4" style="text-align: left">{l s='Search for a hook'}</label>
+						<label class="control-label col-lg-offset-1 col-lg-4" style="text-align: left">{l s='Rechercher un hook'}</label>
 						<div class="col-lg-7">
 							<div class="input-group">
 								<div class="input-group-addon"><i class="icon icon-search"></i></div>
@@ -66,7 +66,7 @@
 							<p class="checkbox">
 								<label class="control-label" for="hook_position">
 									<input type="checkbox" id="hook_position"/>
-									{l s='Display non-positionable hooks'}
+									{l s='Afficher les hooks non positionnables'}
 								</label>
 							</p>
 					</div>
@@ -133,7 +133,7 @@
 									<div class="btn-group">
 										<a class="btn btn-default" href="{$current|escape:'html':'UTF-8'}&amp;id_module={$module['instance']->id|intval}&amp;id_hook={$hook['id_hook']}&amp;editGraft{if $display_key}&amp;show_modules={$display_key}{/if}&amp;token={$token|escape:'html':'UTF-8'}">
 											<i class="icon-pencil"></i>
-											{l s='Edit'}
+											{l s='Modifier'}
 										</a>
 										<a class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 											<span class="caret"></span>&nbsp;
@@ -142,7 +142,7 @@
 											<li>
 												<a href="{$current|escape:'html':'UTF-8'}&amp;id_module={$module['instance']->id|intval}&amp;id_hook={$hook['id_hook']}&amp;deleteGraft{if $display_key}&amp;show_modules={$display_key}{/if}&amp;token={$token|escape:'html':'UTF-8'}">
 													<i class="icon-minus-sign-alt"></i>
-													{l s='Unhook'}
+													{l s='Déconnecter'}
 												</a>
 											</li>
 										</ul>
@@ -154,14 +154,14 @@
 						</ul>
 						</section>
 	{else}
-							<!-- <p>{l s='No module was found for this hook.'}</p> -->
+							<!-- <p>{l s='Aucun module n&#039;a été trouvé pour ce hook.'}</p> -->
 	{/if}
 					</section>
 {/foreach}
 					<div id="unhook_button_position_bottom">
 						<button type="submit" class="btn btn-default" name="unhookform">
 							<i class="icon-minus-sign-alt"></i>
-							{l s='Unhook the selection'}
+							{l s='Déconnecter la sélection'}
 						</button>
 					</div>
 				</form>
@@ -170,27 +170,27 @@
 	</div>
 	<div class="col-lg-3">
 		<div class="panel">
-			<h3><i class="icon-eye-open"></i> {l s='Live Edit'}</h3>
+			<h3><i class="icon-eye-open"></i> {l s='Édition en direct'}</h3>
 			{if $live_edit}
 				<p>{l s='You have to select a shop to use Live Edit'}</p>
 			{else}
 				<p>{l s='Click here to be redirected to the front office of your website where you can move and delete modules directly.'}</p>
 					<a class="btn btn-default _blank" href="{$url_live_edit|escape:'html':'UTF-8'}">
 						<i class="icon-edit"></i>
-						{l s='Run Live Edit'}
+						{l s='Lancer l&#039;édition en direct'}
 					</a>
 			{/if}
 		</div>
 		<div class="panel" id="modules-position-selection-panel">
-			<h3><i class="icon-check"></i> {l s='Selection'}</h3>
+			<h3><i class="icon-check"></i> {l s='Sélection'}</h3>
 			<p>
 				<span id="modules-position-single-selection">{l s='1 module selected'}</span>
 				<span id="modules-position-multiple-selection">
-					<span id="modules-position-selection-count"></span> {l s='modules selected'}
+					<span id="modules-position-selection-count"></span> {l s='modules sélectionnés'}
 				</span>
 			</p>
 			<div class="text-center">
-				<button class="btn btn-default"><i class="icon-remove"></i> {l s='Unhook the selection'}</button>
+				<button class="btn btn-default"><i class="icon-remove"></i> {l s='Déconnecter la sélection'}</button>
 			</div>
 		</div>
 	</div>

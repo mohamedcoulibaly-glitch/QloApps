@@ -24,7 +24,7 @@
 *}
 {if count($ad_modules.not_installed)}
 <div class="bootstrap panel">
-	<h3><i class="icon-certificate"></i> {l s='You might be interested in'}</h3>
+	<h3><i class="icon-certificate"></i> {l s='Vous pourriez être intéressé par'}</h3>
 	<div class="row">
 		<table id="tab_modules_list_not_installed" class="table">
 			{foreach from=$ad_modules.not_installed item=module}

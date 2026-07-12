@@ -35,7 +35,7 @@
 {assign var='identifier_bk' value=$identifier scope='parent'}
 {if isset($table_bk) && $table_bk == $table}{capture name='table_count'}{counter name='table_count'}{/capture}{/if}
 {assign var='table_bk' value=$table scope='parent'}
-<form id="{if isset($fields.form.form.id_form)}{$fields.form.form.id_form|escape:'html':'UTF-8'}{else}{if $table == null}configuration_form{else}{$table}_form{/if}{if isset($smarty.capture.table_count) && $smarty.capture.table_count}_{$smarty.capture.table_count|intval}{/if}{/if}" class="defaultForm form-horizontal{if isset($name_controller) && $name_controller} {$name_controller}{/if}"{if isset($current) && $current} action="{$current|escape:'html':'UTF-8'}{if isset($token) && $token}&amp;token={$token|escape:'html':'UTF-8'}{/if}"{/if} method="post" enctype="multipart/form-data"{if isset($style)} style="{$style}"{/if} novalidate>
+<form id="{if isset($fields.form.form.id_form)}{$fields.form.form.id_form|escape:'html':'UTF-8'}{else}{if $table == null}configuration_form{else}{$table}_form{/if}{if isset($smarty.capture.table_count) && $smarty.capture.table_count}_{$smarty.capture.table_count|intval}{/if}{/if}" class="defaultForm form-horizontal{if isset($name_controller) && $name_controller} {$name_controller}{/if}"{if isset($current) && $current} action="{$current|escape:'html':'UTF-8'}{if isset($token) && $token}&amp;token={$token|escape:'html':'UTF-8'}{/if}"{/if} method="post" enctype="multipart/form-data"{if isset($style)} style="{$style}"{/if}>
 	{if $form_id}
 		<input type="hidden" name="{$identifier}" id="{$identifier}{if isset($smarty.capture.identifier_count) && $smarty.capture.identifier_count}_{$smarty.capture.identifier_count|intval}{/if}" value="{$form_id}" />
 	{/if}
@@ -114,7 +114,7 @@
 														<script type="text/javascript">
 															$().ready(function () {
 																var input_id = '{/literal}{if isset($input.id)}{$input.id}_{$language.id_lang}{else}{$input.name}_{$language.id_lang}{/if}{literal}';
-																$('#'+input_id).tagify({delimiters: [13,44], addTagPrompt: '{/literal}{l s='Add tag' js=1}{literal}'});
+																$('#'+input_id).tagify({delimiters: [13,44], addTagPrompt: '{/literal}{l s='Ajouter un tag' js=1}{literal}'});
 																$({/literal}'#{$table}{literal}_form').submit( function() {
 																	$(this).find('#'+input_id).val($('#'+input_id).tagify('serialize'));
 																});
@@ -191,7 +191,7 @@
 											<script type="text/javascript">
 												$().ready(function () {
 													var input_id = '{/literal}{if isset($input.id)}{$input.id}{else}{$input.name}{/if}{literal}';
-													$('#'+input_id).tagify({delimiters: [13,44], addTagPrompt: '{/literal}{l s='Add tag'}{literal}'});
+													$('#'+input_id).tagify({delimiters: [13,44], addTagPrompt: '{/literal}{l s='Ajouter un tag'}{literal}'});
 													$({/literal}'#{$table}{literal}_form').submit( function() {
 														$(this).find('#'+input_id).val($('#'+input_id).tagify('serialize'));
 													});
@@ -308,7 +308,7 @@
 														{/if}
 													{/foreach}
 													</select>
-													<a href="#" id="addSwap" class="btn btn-default btn-block">{l s='Add'} <i class="icon-arrow-right"></i></a>
+													<a href="#" id="addSwap" class="btn btn-default btn-block">{l s='Ajouter'} <i class="icon-arrow-right"></i></a>
 												</div>
 												<div class="col-xs-6">
 													<select {if isset($input.size)}size="{$input.size|escape:'html':'utf-8'}"{/if}{if isset($input.onchange)} onchange="{$input.onchange|escape:'html':'utf-8'}"{/if} class="{if isset($input.class)}{$input.class|escape:'html':'utf-8'}{/if}" id="selectedSwap" name="{$input.name|escape:'html':'utf-8'}_selected[]" multiple="multiple">
@@ -326,7 +326,7 @@
 														{/if}
 													{/foreach}
 													</select>
-													<a href="#" id="removeSwap" class="btn btn-default btn-block"><i class="icon-arrow-left"></i> {l s='Remove'}</a>
+													<a href="#" id="removeSwap" class="btn btn-default btn-block"><i class="icon-arrow-left"></i> {l s='Retirer'}</a>
 												</div>
 											</div>
 										</div>
@@ -420,14 +420,14 @@
 										{strip}
 										<label {if $value.value == 1} for="{$input.name}_on"{else} for="{$input.name}_off"{/if}>
 											{if $value.value == 1}
-												{l s='Yes'}
+												{l s='Oui'}
 											{else}
-												{l s='No'}
+												{l s='Non'}
 											{/if}
 										</label>
 										{/strip}
 										{/foreach}
-										<a class="slide-button btn"></a>
+										<a class="slide-button btn" role="switch" aria-label="{l s='Basculer'}"></a>
 									</span>
 								{elseif $input.type == 'textarea'}
 									{if isset($input.maxchar) && $input.maxchar}<div class="input-group">{/if}
@@ -520,12 +520,12 @@
 										<div class="col-lg-12">
 											<button type="button" id="{$input.name}-btn-change" class="btn btn-default">
 												<i class="icon-lock"></i>
-												{l s='Change password...'}
+												{l s='Changer le mot de passe...'}
 											</button>
 											<div id="{$input.name}-change-container" class="form-password-change well hide">
 												<div class="form-group">
 													<label for="old_passwd" class="control-label col-lg-2 required">
-														{l s='Current password'}
+														{l s='Mot de passe actuel'}
 													</label>
 													<div class="col-lg-10">
 														<div class="input-group fixed-width-lg">
@@ -539,8 +539,8 @@
 												<hr />
 												<div class="form-group">
 													<label for="{$input.name}" class="required control-label col-lg-2">
-														<span class="label-tooltip" data-toggle="tooltip" data-html="true" title="" data-original-title="{l s='Password should be at least 8 characters long.'}">
-															{l s='New password'}
+														<span class="label-tooltip" data-toggle="tooltip" data-html="true" title="" data-original-title="{l s='Le mot de passe doit comporter au moins 8 caractères.'}">
+															{l s='Nouveau mot de passe'}
 														</span>
 													</label>
 													<div class="col-lg-9">
@@ -555,7 +555,7 @@
 												</div>
 												<div class="form-group">
 													<label for="{$input.name}2" class="required control-label col-lg-2">
-														{l s='Confirm password'}
+														{l s='Confirmer le mot de passe'}
 													</label>
 													<div class="col-lg-4">
 														<div class="input-group fixed-width-lg">
@@ -571,7 +571,7 @@
 														<input type="text" class="form-control fixed-width-md pull-left" id="{$input.name}-generate-field" disabled="disabled">
 														<button type="button" id="{$input.name}-generate-btn" class="btn btn-default">
 															<i class="icon-random"></i>
-															{l s='Generate password'}
+															{l s='Générer le mot de passe'}
 														</button>
 													</div>
 												</div>
@@ -580,7 +580,7 @@
 														<p class="checkbox">
 															<label for="{$input.name}-checkbox-mail">
 																<input name="passwd_send_email" id="{$input.name}-checkbox-mail" type="checkbox" checked="checked">
-																{l s='Send me this new password by Email'}
+																{l s='M&#039;envoyer ce nouveau mot de passe par e-mail'}
 															</label>
 														</p>
 													</div>
@@ -589,7 +589,7 @@
 													<div class="col-lg-12">
 														<button type="button" id="{$input.name}-cancel-btn" class="btn btn-default">
 															<i class="icon-remove"></i>
-															{l s='Cancel'}
+															{l s='Annuler'}
 														</button>
 													</div>
 												</div>
@@ -606,10 +606,10 @@
 											var $cancelBtn = $('#{$input.name}-cancel-btn');
 
 											var feedback = [
-												{ badge: 'text-danger', text: '{l s="Invalid" js=1}' },
-												{ badge: 'text-warning', text: '{l s="Okay" js=1}' },
-												{ badge: 'text-success', text: '{l s="Good" js=1}' },
-												{ badge: 'text-success', text: '{l s="Fabulous" js=1}' }
+												{ badge: 'text-danger', text: '{l s="Invalide" js=1}' },
+												{ badge: 'text-warning', text: '{l s="Acceptable" js=1}' },
+												{ badge: 'text-success', text: '{l s="Bon" js=1}' },
+												{ badge: 'text-success', text: '{l s="Excellent" js=1}' }
 											];
 											$.passy.requirements.length.min = 8;
 											$.passy.requirements.characters = 'DIGIT';
@@ -646,7 +646,7 @@
 
 											$.validator.addMethod('password_same', function(value, element) {
 												return $passwordField.val() == $confirmPwd.val();
-											}, '{l s="Invalid password confirmation" js=1}');
+											}, '{l s="Confirmation du mot de passe invalide" js=1}');
 
 											$('#employee_form').validate({
 												rules: {
@@ -861,7 +861,7 @@
 						{/if}
 						{if isset($show_cancel_button) && $show_cancel_button}
 						<a href="{$back_url|escape:'html':'UTF-8'}" class="btn btn-default" onclick="window.history.back();">
-							<i class="process-icon-cancel"></i> {l s='Cancel'}
+							<i class="process-icon-cancel"></i> {l s='Annuler'}
 						</a>
 						{/if}
 						{if isset($fieldset['form']['reset'])}
@@ -965,16 +965,16 @@
 				nextText: '',
 				dateFormat: 'yy-mm-dd',
 				// Define a custom regional settings in order to use PrestaShop translation tools
-				currentText: '{l s='Now' js=1}',
-				closeText: '{l s='Done' js=1}',
+				currentText: '{l s='Maintenant' js=1}',
+				closeText: '{l s='Terminé' js=1}',
 				ampm: false,
 				amNames: ['AM', 'A'],
 				pmNames: ['PM', 'P'],
 				timeFormat: 'hh:mm:ss tt',
 				timeSuffix: '',
-				timeOnlyTitle: '{l s='Choose Time' js=1}',
-				timeText: '{l s='Time' js=1}',
-				hourText: '{l s='Hour' js=1}',
+				timeOnlyTitle: '{l s='Choisir l&#039;heure' js=1}',
+				timeText: '{l s='Heure' js=1}',
+				hourText: '{l s='Heure' js=1}',
 				minuteText: '{l s='Minute' js=1}',
 			});
 			{if isset($use_textarea_autosize)}

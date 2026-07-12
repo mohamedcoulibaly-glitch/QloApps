@@ -27,9 +27,9 @@
 
 {block name="override_tpl"}
 <div class="panel">
-	<h3><i class="icon-cog"></i> {l s='SQL query result'}</h3>
+	<h3><i class="icon-cog"></i> {l s='Résultat de la requête SQL'}</h3>
 	{if isset($view['error'])}
-		<div class="alert alert-warning">{l s='This SQL query has no result.'}</div>
+		<div class="alert alert-warning">{l s='Cette requête SQL n&#039;a pas de résultat.'}</div>
 	{else}
 		<table class="table" id="viewRequestSql">
 			<thead>

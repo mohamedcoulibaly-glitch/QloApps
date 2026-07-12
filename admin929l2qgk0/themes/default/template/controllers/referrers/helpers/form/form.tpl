@@ -28,17 +28,17 @@
 	{if $f == 1}
 		<div class="panel">
 			<h3>
-				<i class="icon-question-sign"></i> {l s='Help'}
+				<i class="icon-question-sign"></i> {l s='Aide'}
 			</h3>
-			<div class="row"><button type="button" class="btn btn-default toggle_help"><i class="icon-chevron-sign-down"></i> {l s='Show me more'}</button></div>
+			<div class="row"><button type="button" class="btn btn-default toggle_help"><i class="icon-chevron-sign-down"></i> {l s='Afficher plus'}</button></div>
 			<div id="tracking_help" style="display: none;">
-				<p>{l s='Definitions:'}</p>
+				<p>{l s='Définitions :'}</p>
 				<ul>
 					<li>
 						{l s='The "http_referer" field is the website from which your customers arrive.'}<br />
 						{l s='For example, visitors coming from Google will have an "http_referer" value like this one: "http://www.google.com/search?q=prestashop".'}<br />
 						{l s='If the visitor arrives directly (by typing the URL of your shop, or by using their bookmarks, for example), the http_referer will be empty.'}<br />
-						{l s='If you\'d like to view all the visitors coming from Google, you can type "%google%" in this field. Alternatively, you can type "%google.fr%" if you want to view visitors coming from Google France, only.'}<br />
+						{l s='If you&#039;d like to view all the visitors coming from Google, you can type "%google%" in this field. Alternatively, you can type "%google.fr%" if you want to view visitors coming from Google France, only.'}<br />
 					</li>
 					<br />
 					<li>
@@ -66,8 +66,8 @@
 					</li>
 					<br />
 					<li>
-						{l s='The Simple mode uses the MySQL "LIKE" pattern matching, but for a higher potency you can use MySQL\'s regular expressions in the Expert mode.'}
-						<a class="btn btn-link _blank" href="http://dev.mysql.com/doc/refman/5.0/en/regexp.html" style="font-style: italic;"><i class="icon-external-link-sign"></i> {l s='Take a look at MySQL\'s documentation for more details.'}</a>
+						{l s='The Simple mode uses the MySQL "LIKE" pattern matching, but for a higher potency you can use MySQL&#039;s regular expressions in the Expert mode.'}
+						<a class="btn btn-link _blank" href="http://dev.mysql.com/doc/refman/5.0/en/regexp.html" style="font-style: italic;"><i class="icon-external-link-sign"></i> {l s='Take a look at MySQL&#039;s documentation for more details.'}</a>
 					</li>
 				</ul>
 			</div>
@@ -78,7 +78,7 @@
 {block name="other_input"}
 	{if $key == 'help'}
 		<a class="btn btn-default toggle_help">
-			<i class="icon-question-sign"></i> {l s='Get help!'}
+			<i class="icon-question-sign"></i> {l s='Obtenir de l&#039;aide !'}
 		</a>
 	{/if}
 {/block}

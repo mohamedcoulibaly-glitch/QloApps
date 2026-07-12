@@ -66,7 +66,7 @@
 				var lang = $('#translations-languages li.active').data('type');
 
 				if (lang == null)
-					return !alert('{l s='Please select your language!'}');
+					return !alert('{l s='Veuillez sélectionner votre langue !'}');
 
 				chooseTypeTranslation($('#translations-languages li.active').data('type'));
 			});
@@ -76,16 +76,16 @@
 		<div class="panel">
 			<h3>
 				<i class="icon-file-text"></i>
-				{l s='Modify translations'}
+				{l s='Modifier les traductions'}
 			</h3>
 			<p class="alert alert-info">
-				{l s='Here you can modify translations for every line of text inside QloApps.'}<br />
+				{l s='Ici, vous pouvez modifier les traductions pour chaque ligne de texte dans QloApps.'}<br />
 				{l s='First, select a type of translation (such as "Back office" or "Installed modules"), and then select the language you want to translate strings in.'}
 			</p>
 			<div class="form-group">
 				<input type="hidden" name="controller" value="AdminTranslations" />
 				<input type="hidden" name="lang" id="translation_lang" value="0" />
-				<label class="control-label col-lg-3" for="type">{l s='Type of translation'}</label>
+				<label class="control-label col-lg-3" for="type">{l s='Type de traduction'}</label>
 				<div class="col-lg-4">
 					<select name="type" id="type">
 						{foreach $translations_type as $type => $array}
@@ -95,7 +95,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-lg-3" for="theme">{l s='Select your theme'}</label>
+				<label class="control-label col-lg-3" for="theme">{l s='Sélectionnez votre thème'}</label>
 				<div class="col-lg-4">
 					<select name="theme" id="theme">
 						{if !$host_mode}
@@ -108,10 +108,10 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-lg-3" for="language-button">{l s='Select your language'}</label>
+				<label class="control-label col-lg-3" for="language-button">{l s='Sélectionnez votre langue'}</label>
 				<div class="col-lg-4">
 					<button type="button" id="language-button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-						{l s='Language'} <span class="caret"></span>
+						{l s='Langue'} <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu" id="translations-languages">
 						{foreach $languages as $language}
@@ -123,7 +123,7 @@
 			</div>
 			<div class="panel-footer">
 				<button type="button" class="btn btn-default pull-right" id="modify-translations">
-					<i class="process-icon-edit"></i> {l s='Modify'}
+					<i class="process-icon-edit"></i> {l s='Modifier'}
 				</button>
 			</div>
 		</div>
@@ -132,25 +132,25 @@
 		<div class="panel">
 			<h3>
 				<i class="icon-download"></i>
-				{l s='Add / Update a language'}
+				{l s='Ajouter / Mettre à jour une langue'}
 			</h3>
 			<div id="submitAddLangContent" class="form-group">
 				<p class="alert alert-info">
-					{l s='You can add or update a language directly from the QloApps website here.'}<br/>
+					{l s='Vous pouvez ajouter ou mettre à jour une langue directement depuis le site QloApps ici.'}<br/>
 					{l s='If you choose to update an existing language pack, all of your previous customizations in the theme named "hotel-reservation-theme" will be lost. This includes front office expressions and default email templates.'}
 				</p>
 				{if $packs_to_update || $packs_to_install}
-					<label class="control-label col-lg-3" for="params_import_language">{l s='Please select the language you want to add or update'}</label>
+					<label class="control-label col-lg-3" for="params_import_language">{l s='Veuillez sélectionner la langue que vous souhaitez ajouter ou mettre à jour'}</label>
 					<div class="col-lg-9">
 						<div class="row">
 							<div class="col-lg-6">
 								<select id="params_import_language" name="params_import_language" class="chosen">
-								<optgroup label="{l s='Update a language'}">
+								<optgroup label="{l s='Mettre à jour une langue'}">
 									{foreach $packs_to_update as $lang_pack}
 										<option value="{$lang_pack['iso_code']}|{$lang_pack['version']}">{$lang_pack['name']}</option>
 									{/foreach}
 								</optgroup>
-								<optgroup label="{l s='Add a language'}">
+								<optgroup label="{l s='Ajouter une langue'}">
 									{foreach $packs_to_install as $lang_pack}
 										<option value="{$lang_pack['iso_code']}|{$lang_pack['version']}">{$lang_pack['name']}</option>
 									{/foreach}
@@ -161,12 +161,12 @@
 					</div>
 
 				{else}
-					<p class="text-danger">{l s='Cannot connect to the QloApps website to get the language list.'}</p>
+					<p class="text-danger">{l s='Impossible de se connecter au site QloApps pour obtenir la liste des langues.'}</p>
 				{/if}
 			</div>
 			<div class="panel-footer">
 				<button type="submit" name="submitAddLanguage" class="btn btn-default pull-right">
-					<i class="process-icon-cogs"></i> {l s='Add or update a language'}
+					<i class="process-icon-cogs"></i> {l s='Ajouter ou mettre à jour une langue'}
 				</button>
 			</div>
 		</div>
@@ -175,14 +175,14 @@
 		<div class="panel">
 			<h3>
 				<i class="icon-download"></i>
-				{l s='Import a language pack manually'}
+				{l s='Importer un pack de langue manuellement'}
 			</h3>
 			<p class="alert alert-info">
 				{l s='If the language file format is ISO_code.gzip (e.g. "us.gzip"), and the language corresponding to this package does not exist, it will automatically be created.'}
-				{l s='Warning: This will replace all of the existing data inside the destination language.'}
+				{l s='Attention : Cela remplacera toutes les données existantes dans la langue de destination.'}
 			</p>
 			<div class="form-group">
-				<label for="importLanguage" class="control-label col-lg-3">{l s='Language pack to import'}</label>
+				<label for="importLanguage" class="control-label col-lg-3">{l s='Pack de langue à importer'}</label>
 				<div class="col-lg-4">
 					<div class="form-group">
 						<div class="col-lg-12">
@@ -192,7 +192,7 @@
 								<input id="file-name" type="text" class="disabled" name="filename" readonly />
 								<span class="input-group-btn">
 									<button id="file-selectbutton" type="button" name="submitAddAttachments" class="btn btn-default">
-										<i class="icon-folder-open"></i> {l s='Add file'}
+										<i class="icon-folder-open"></i> {l s='Ajouter un fichier'}
 									</button>
 								</span>
 							</div>
@@ -201,7 +201,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="selectThemeForImport" class="control-label col-lg-3">{l s='Select your theme'}</label>
+				<label for="selectThemeForImport" class="control-label col-lg-3">{l s='Sélectionnez votre thème'}</label>
 				<div class="col-lg-4">
 					<select name="theme[]" id="selectThemeForImport" {if count($themes) > 1}multiple="multiple"{/if} >
 						{foreach $themes as $theme}
@@ -211,7 +211,7 @@
 				</div>
 			</div>
 			<div class="panel-footer">
-				<button type="submit" name="submitImport" class="btn btn-default pull-right"><i class="process-icon-upload"></i> {l s='Import'}</button>
+				<button type="submit" name="submitImport" class="btn btn-default pull-right"><i class="process-icon-upload"></i> {l s='Importer'}</button>
 			</div>
 		</div>
 	</form>
@@ -219,14 +219,14 @@
 		<div class="panel">
 			<h3>
 				<i class="icon-upload"></i>
-				{l s='Export a language'}
+				{l s='Exporter une langue'}
 			</h3>
 			<p class="alert alert-info">
-				{l s='Export data from one language to a file (language pack).'}<br />
-				{l s='Select which theme you would like to export your translations to.'}
+				{l s='Exporter les données d&#039;une langue vers un fichier (pack de langue).'}<br />
+				{l s='Sélectionnez le thème vers lequel vous souhaitez exporter vos traductions.'}
 			</p>
 			<div class="form-group">
-				<label class="control-label col-lg-3" for="iso_code">{l s='Language'}</label>
+				<label class="control-label col-lg-3" for="iso_code">{l s='Langue'}</label>
 				<div class="col-lg-4">
 					<select name="iso_code" id="iso_code">
 						{foreach $languages as $language}
@@ -236,7 +236,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-lg-3" for="export-theme">{l s='Select your theme'}</label>
+				<label class="control-label col-lg-3" for="export-theme">{l s='Sélectionnez votre thème'}</label>
 				<div class="col-lg-4">
 					<select name="theme" id="export-theme">
 						{foreach $themes as $theme}
@@ -246,7 +246,7 @@
 				</div>
 			</div>
 			<div class="panel-footer">
-				<button type="submit" name="submitExport" class="btn btn-default pull-right"><i class="process-icon-download"></i> {l s='Export'}</button>
+				<button type="submit" name="submitExport" class="btn btn-default pull-right"><i class="process-icon-download"></i> {l s='Exporter'}</button>
 			</div>
 		</div>
 	</form>
@@ -254,15 +254,15 @@
 		<div class="panel">
 			<h3>
 				<i class="icon-copy"></i>
-				{l s='Copy'}
+				{l s='Copier'}
 			</h3>
 			<p class="alert alert-info">
-				{l s='Copies data from one language to another.'}<br />
-				{l s='Warning: This will replace all of the existing data inside the destination language.'}<br />
-				{l s='If necessary'}, <b><a href="{$url_create_language|escape:'html':'UTF-8'}" class="btn btn-link"><i class="icon-external-link-sign"></i> {l s='you must first create a new language.'}</a></b>.
+				{l s='Copie les données d&#039;une langue à une autre.'}<br />
+				{l s='Attention : Cela remplacera toutes les données existantes dans la langue de destination.'}<br />
+				{l s='Si nécessaire'}, <b><a href="{$url_create_language|escape:'html':'UTF-8'}" class="btn btn-link"><i class="icon-external-link-sign"></i> {l s='vous devez d&#039;abord créer une nouvelle langue.'}</a></b>.
 			</p>
 			<div class="form-group">
-				<label class="control-label col-lg-3 required" for="fromLang"> {l s='From'}</label>
+				<label class="control-label col-lg-3 required" for="fromLang"> {l s='De'}</label>
 				<div class="col-lg-4">
 					<select name="fromLang" id="fromLang">
 						{foreach $languages as $language}
@@ -279,7 +279,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-lg-3" for="toLang">{l s='To'}</label>
+				<label class="control-label col-lg-3" for="toLang">{l s='À'}</label>
 				<div class="col-lg-4">
 					<select name="toLang" id="toLang">
 						{foreach $languages as $language}
@@ -298,11 +298,11 @@
 			<div class="form-group">
 				<p class="col-lg-12 text-muted required">
 					<span class="text-danger">*</span>
-					{l s='Language files must be complete to allow copying of translations.'}
+					{l s='Les fichiers de langue doivent être complets pour permettre la copie des traductions.'}
 				</p>
 			</div>
 			<div class="panel-footer">
-				<button type="submit" name="submitCopyLang" class="btn btn-default pull-right"><i class="process-icon-duplicate"></i> {l s='Copy'}</button>
+				<button type="submit" name="submitCopyLang" class="btn btn-default pull-right"><i class="process-icon-duplicate"></i> {l s='Copier'}</button>
 			</div>
 		</div>
 	</form>

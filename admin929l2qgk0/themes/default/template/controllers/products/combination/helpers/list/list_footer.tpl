@@ -28,8 +28,8 @@
 {block name="after"}
 	<div class="alert alert-info" style="display:block">
 		<ul>
-			<li>{l s='The blue row indicates the default combination.'}</li>
-			<li>{l s='Each product that has combinations must have one default combination.'}</li>
+			<li>{l s='La ligne bleue indique la combinaison par défaut.'}</li>
+			<li>{l s='Chaque produit avec combinaisons doit avoir une combinaison par défaut.'}</li>
 		</ul>
 	</div>
 {/block}

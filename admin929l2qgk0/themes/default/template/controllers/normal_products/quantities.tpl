@@ -23,9 +23,9 @@
 {if isset($product->id)}
 	<div id="product-quantities" class="panel product-tab">
 		<input type="hidden" name="submitted_tabs[]" value="Quantities" />
-		<h3>{l s='Available quantities for sale'}</h3>
+		<h3>{l s='Quantités disponibles à la vente'}</h3>
 		{if !$ps_stock_management}
-			<div class="alert alert-info">{l s='The stock management is disabled'}</div>
+			<div class="alert alert-info">{l s='La gestion des stocks est désactivée'}</div>
 		{else}
 			{include file="controllers/products/multishop/check_fields.tpl" product_tab="Quantities"}
 			{* <div class="alert alert-info">
@@ -124,7 +124,7 @@
 						<p class="radio">
 							<label id="label_pack_stock_4" for="pack_stock_type_4">
 								<input type="radio" class="pack_stock_type" value="3" name="pack_stock_type" id="pack_stock_type_4" {if !isset($product->pack_stock_type) || $product->pack_stock_type == 3} checked="checked" {/if}/>
-								{l s='Default'}:
+								{l s='Par défaut'}:
 								{if $pack_stock_type == 0}
 									{l s='Decrement pack only.'}
 								{elseif $pack_stock_type == 1}
@@ -150,8 +150,8 @@
 						<table class="table">
 							<thead>
 								<tr>
-									<th><span class="title_box">{l s='Quantity'}</span></th>
-									<th><span class="title_box">{l s='Designation'}</span></th>
+									<th><span class="title_box">{l s='Quantité'}</span></th>
+									<th><span class="title_box">{l s='Désignation'}</span></th>
 								</tr>
 							</thead>
 							{foreach from=$attributes item=attribute}
@@ -167,28 +167,28 @@
 					</div>
 				</div>
 				<div id="when_out_of_stock" class="form-group">
-					<label class="control-label col-lg-3">{l s='When out of stock'}</label>
+					<label class="control-label col-lg-3">{l s='En cas de rupture de stock'}</label>
 					<div class="col-lg-9">
 						<p class="radio">
 							<label id="label_out_of_stock_1" for="out_of_stock_1">
 								<input type="radio" id="out_of_stock_1" name="out_of_stock" checked="checked" value="0" class="out_of_stock" {if $product->out_of_stock == 0} checked="checked" {/if}>
-								{l s='Deny orders'}
+								{l s='Refuser les commandes'}
 							</label>
 						</p>
 						<p class="radio">
 							<label id="label_out_of_stock_2" for="out_of_stock_2">
 								<input type="radio" id="out_of_stock_2" name="out_of_stock" value="1" class="out_of_stock" {if $product->out_of_stock == 1} checked="checked" {/if}>
-								{l s='Allow orders'}
+								{l s='Autoriser les commandes'}
 							</label>
 						</p>
 						<p class="radio">
 							<label id="label_out_of_stock_3" for="out_of_stock_3">
 								<input type="radio" id="out_of_stock_3" name="out_of_stock" value="2" class="out_of_stock" {if $product->out_of_stock == 2} checked="checked" {/if}>
-								{l s='Default'}:
+								{l s='Par défaut'}:
 								{if $order_out_of_stock == 1}
-								{l s='Allow orders'}
+								{l s='Autoriser les commandes'}
 								{else}
-								{l s='Deny orders'}
+								{l s='Refuser les commandes'}
 								{/if}
 								<a class="confirm_leave" href="index.php?tab=AdminPPreferences&amp;token={$token_preferences}">
 									{l s='as set in the Products Preferences page'}
@@ -210,23 +210,23 @@
 			{/if}
 		{/if}
 		<div class="panel-footer">
-			<a href="{$link->getAdminLink('AdminNormalProducts')|escape:'html':'UTF-8'}{if isset($smarty.request.page) && $smarty.request.page > 1}&amp;submitFilterproduct={$smarty.request.page|intval}{/if}" class="btn btn-default"><i class="process-icon-cancel"></i> {l s='Cancel'}</a>
-			<button type="submit" name="submitAddproduct" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i></i> {l s='Save'}</button>
-			<button type="submit" name="submitAddproductAndStay" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Save and stay'}</button>
+			<a href="{$link->getAdminLink('AdminNormalProducts')|escape:'html':'UTF-8'}{if isset($smarty.request.page) && $smarty.request.page > 1}&amp;submitFilterproduct={$smarty.request.page|intval}{/if}" class="btn btn-default"><i class="process-icon-cancel"></i> {l s='Annuler'}</a>
+			<button type="submit" name="submitAddproduct" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i></i> {l s='Enregistrer'}</button>
+			<button type="submit" name="submitAddproductAndStay" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Enregistrer et rester'}</button>
 		</div>
 	</div>
 	{* <div class="panel">
-		<h3>{l s='Availability settings'}</h3>
+		<h3>{l s='Paramètres de disponibilité'}</h3>
 
 		{if !$has_attribute}
 			<div class="form-group">
 				<div class="col-lg-1"><span class="pull-right">{include file="controllers/products/multishop/checkbox.tpl" field="minimal_quantity" type="default"}</span></div>
 				<label class="control-label col-lg-2" for="minimal_quantity">
-					{l s='Minimum quantity'}
+					{l s='Quantité minimale'}
 				</label>
 				<div class="col-lg-9">
 					<input type="text" id="minimal_quantity" name="minimal_quantity" class="form-control fixed-width-sm" maxlength="6" value="{$product->minimal_quantity|default:1}" />
-					<p class="help-block">{l s='The minimum quantity to buy this product (set to 1 to disable this feature)'}</p>
+					<p class="help-block">{l s='La quantité minimale pour acheter ce produit (mettre à 1 pour désactiver cette fonctionnalité)'}</p>
 				</div>
 			</div>
 		{/if}
@@ -235,8 +235,8 @@
 			<div class="form-group">
 				<div class="col-lg-1"><span class="pull-right">{include file="controllers/products/multishop/checkbox.tpl" field="available_now" type="default" multilang="true"}</span></div>
 				<label class="control-label col-lg-2" for="available_now_{$default_language}">
-					<span class="label-tooltip" data-toggle="tooltip" title="{l s='Forbidden characters:'} &#60;&#62;;&#61;#&#123;&#125;">
-						{l s='Displayed text when in-stock'}
+					<span class="label-tooltip" data-toggle="tooltip" title="{l s='Caractères interdits :'} &#60;&#62;;&#61;#&#123;&#125;">
+						{l s='Texte affiché en stock'}
 					</span>
 				</label>
 				<div class="col-lg-9">
@@ -250,8 +250,8 @@
 				<div class="col-lg-1"><span class="pull-right">{include file="controllers/products/multishop/checkbox.tpl" field="available_later" type="default" multilang="true"}</span></div>
 				<label class="control-label col-lg-2" for="available_later_{$default_language}">
 					<span class="label-tooltip" data-toggle="tooltip"
-						title="{l s='If empty, the message "in stock" will be displayed.'} {l s='Forbidden characters:'} &#60;&#62;;&#61;#&#123;&#125;">
-						{l s='Displayed text when backordering is allowed'}
+						title="{l s='If empty, the message "in stock" will be displayed.'} {l s='Caractères interdits :'} &#60;&#62;;&#61;#&#123;&#125;">
+						{l s='Texte affiché lorsque la commande en attente est autorisée'}
 					</span>
 				</label>
 				<div class="col-lg-9">
@@ -266,7 +266,7 @@
 			<div class="form-group">
 				<div class="col-lg-1"><span class="pull-right">{include file="controllers/products/multishop/checkbox.tpl" field="available_date" type="default"}</span></div>
 				<label class="control-label col-lg-2" for="available_date">
-					{l s='Availability date:'}
+					{l s='Date de disponibilité :'}
 				</label>
 				<div class="col-lg-9">
 					<div class="input-group fixed-width-md">
@@ -282,9 +282,9 @@
 			{/if}
 		{/if}
 		<div class="panel-footer">
-			<a href="{$link->getAdminLink('AdminProducts')|escape:'html':'UTF-8'}{if isset($smarty.request.page) && $smarty.request.page > 1}&amp;submitFilterproduct={$smarty.request.page|intval}{/if}" class="btn btn-default"><i class="process-icon-cancel"></i> {l s='Cancel'}</a>
-			<button type="submit" name="submitAddproduct" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Save'}</button>
-			<button type="submit" name="submitAddproductAndStay" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Save and stay'}</button>
+			<a href="{$link->getAdminLink('AdminProducts')|escape:'html':'UTF-8'}{if isset($smarty.request.page) && $smarty.request.page > 1}&amp;submitFilterproduct={$smarty.request.page|intval}{/if}" class="btn btn-default"><i class="process-icon-cancel"></i> {l s='Annuler'}</a>
+			<button type="submit" name="submitAddproduct" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Enregistrer'}</button>
+			<button type="submit" name="submitAddproductAndStay" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Enregistrer et rester'}</button>
 		</div>
 		<script type="text/javascript">
 			var quantities_ajax_success = '{l s='Data saved' js=1}';

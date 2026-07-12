@@ -61,7 +61,7 @@
 									// adding the little
 									if ($('.ac_results').find('.separation').length == 0)
 										$('.ac_results').css('background-color', '#EFEFEF')
-											.prepend('<div style="color:#585A69; padding:2px 5px">{l s='Use a product from the list'}<div class="separation"></div></div>');
+											.prepend('<div style="color:#585A69; padding:2px 5px">{l s='Utiliser un produit de la liste'}<div class="separation"></div></div>');
 									return value;
 								},
 								parse: function(data) {
@@ -80,7 +80,7 @@
 						.result(function(event, data, formatted) {
 							// keep the searched term in the input
 							$('#name_{$id_lang}').val(search_term);
-							jConfirm('{l s='Do you want to use this product?'}&nbsp;<strong>'+data.name+'</strong>', '{l s='Confirmation'}', function(confirm){
+							jConfirm('{l s='Voulez-vous utiliser ce produit ?'}&nbsp;<strong>'+data.name+'</strong>', '{l s='Confirmation'}', function(confirm){
 								if (confirm == true)
 									document.location.href = '{$link->getAdminLink('AdminNormalProducts', true)}&updateproduct&id_product='+data.id_product;
 								else
@@ -103,8 +103,8 @@
 	<div class="form-group">
 		<div class="col-lg-1"><span class="pull-right">{include file="controllers/products/multishop/checkbox.tpl" field="name" type="default" multilang="true"}</span></div>
 		<label class="control-label col-lg-2 required" id="name" for="name_{$id_lang}">
-			<span class="label-tooltip" data-toggle="tooltip" title="{l s='Write the name of the Product for ex. water bottle, etc.'} {l s='Invalid characters:'} &lt;&gt;;=#{}">
-				{l s='Name'}
+			<span class="label-tooltip" data-toggle="tooltip" title="{l s='Écrivez le nom du produit par ex. bouteille d&#039;eau, etc.'} {l s='Caractères non valides :'} &lt;&gt;;=#{}">
+				{l s='Nom'}
 			</span>
 		</label>
 		<div class="col-lg-5">
@@ -121,8 +121,8 @@
 	<div class="form-group hidden">
 		<label class="control-label col-lg-3" for="reference">
 			<span class="label-tooltip" data-toggle="tooltip"
-			title="{l s='Your internal reference code for this product.'} {l s='Allowed special characters:'} .-_#\">
-				{$bullet_common_field} {l s='Reference code'}
+			title="{l s='Votre code de référence interne pour ce produit.'} {l s='Caractères spéciaux autorisés :'} .-_#\">
+				{$bullet_common_field} {l s='Code de référence'}
 			</span>
 		</label>
 		<div class="col-lg-5">
@@ -134,7 +134,7 @@
 		<label class="control-label col-lg-3" for="ean13">
 			<span class="label-tooltip" data-toggle="tooltip"
 				title="{l s='This type of product code is specific to Europe and Japan, but is widely used internationally. It is a superset of the UPC code: all products marked with an EAN will be accepted in North America.'}">
-				{$bullet_common_field} {l s='EAN-13 or JAN barcode'}
+				{$bullet_common_field} {l s='Code-barres EAN-13 ou JAN'}
 			</span>
 		</label>
 		<div class="col-lg-3">
@@ -146,7 +146,7 @@
 		<label class="control-label col-lg-3" for="upc">
 			<span class="label-tooltip" data-toggle="tooltip"
 				title="{l s='This type of product code is widely used in the United States, Canada, the United Kingdom, Australia, New Zealand and in other countries.'}">
-				{$bullet_common_field} {l s='UPC barcode'}
+				{$bullet_common_field} {l s='Code-barres UPC'}
 			</span>
 		</label>
 		<div class="col-lg-3">
@@ -160,17 +160,17 @@
 	<div class="form-group">
 		<div class="col-lg-1"><span class="pull-right">{include file="controllers/products/multishop/checkbox.tpl" field="active" type="radio" onclick=""}</span></div>
 		<label class="control-label col-lg-2">
-			{l s='Enabled'}
+			{l s='Activé'}
 		</label>
 		<div class="col-lg-9">
 			<span class="switch prestashop-switch fixed-width-lg">
 				<input onclick="toggleDraftWarning(false);showOptions(true);showRedirectProductOptions(false);" type="radio" name="active" id="active_on" value="1" {if $product->active || !$product->isAssociatedToShop()}checked="checked" {/if} />
 				<label for="active_on" class="radioCheck">
-					{l s='Yes'}
+					{l s='Oui'}
 				</label>
 				<input onclick="toggleDraftWarning(true);showOptions(false);showRedirectProductOptions(true);"  type="radio" name="active" id="active_off" value="0" {if !$product->active && $product->isAssociatedToShop()}checked="checked"{/if} />
 				<label for="active_off" class="radioCheck">
-					{l s='No'}
+					{l s='Non'}
 				</label>
 				<a class="slide-button btn"></a>
 			</span>
@@ -180,13 +180,13 @@
 	<div class="form-group redirect_product_options" style="display:none">
 		<div class="col-lg-1"><span class="pull-right">{include file="controllers/products/multishop/checkbox.tpl" field="redirect_type" type="radio" onclick=""}</span></div>
 		<label class="control-label col-lg-2" for="redirect_type">
-			{l s='Redirect when disabled'}
+			{l s='Rediriger lorsque désactivé'}
 		</label>
 		<div class="col-lg-5">
 			<select name="redirect_type" id="redirect_type">
-				<option value="404" {if $product->redirect_type == '404'} selected="selected" {/if}>{l s='No redirect (404)'}</option>
-				<option value="301" {if $product->redirect_type == '301'} selected="selected" {/if}>{l s='Redirected permanently (301)'}</option>
-				<option value="302" {if $product->redirect_type == '302'} selected="selected" {/if}>{l s='Redirected temporarily (302)'}</option>
+				<option value="404" {if $product->redirect_type == '404'} selected="selected" {/if}>{l s='Pas de redirection (404)'}</option>
+				<option value="301" {if $product->redirect_type == '301'} selected="selected" {/if}>{l s='Redirigé définitivement (301)'}</option>
+				<option value="302" {if $product->redirect_type == '302'} selected="selected" {/if}>{l s='Redirigé temporairement (302)'}</option>
 			</select>
 		</div>
 	</div>
@@ -203,7 +203,7 @@
 	<div class="form-group redirect_product_options redirect_product_options_product_choise" style="display:none">
 		<div class="col-lg-1"><span class="pull-right">{include file="controllers/products/multishop/checkbox.tpl" field="id_product_redirected" type="radio" onclick=""}</span></div>
 		<label class="control-label col-lg-2" for="related_product_autocomplete_input">
-			{l s='Related product:'}
+			{l s='Produit associé :'}
 		</label>
 		<div class="col-lg-7">
 			<input type="hidden" value="" name="id_product_redirected" />
@@ -214,7 +214,7 @@
 			</div>
 
 			<div class="form-control-static">
-				<span id="related_product_name"><i class="icon-warning-sign"></i>&nbsp;{l s='No related product.'}</span>
+				<span id="related_product_name"><i class="icon-warning-sign"></i>&nbsp;{l s='Aucun produit associé.'}</span>
 				<span id="related_product_remove" style="display:none">
 					<a class="btn btn-default" href="#" onclick="removeRelatedProduct(); return false" id="related_product_remove_link">
 						<i class="icon-remove text-danger"></i>
@@ -224,7 +224,7 @@
 
 		</div>
 		<script>
-			var no_related_product = '{l s='No related product'}';
+			var no_related_product = '{l s='Aucun produit associé'}';
 			var id_product_redirected = {$product->id_product_redirected|intval};
 			var product_name_redirected = '{$product_name_redirected|escape:'html':'UTF-8'}';
 		</script>
@@ -232,24 +232,24 @@
     {* Code For Standard product working *}
 	{* <div class="form-group" id="global_product_type_container">
 		<label class="control-label col-lg-3" for="selling_preference_type">
-			<span class="label-tooltip" data-toggle="tooltip" title="{l s='Select whether this product will be sold with room type or as an standalone product'}">
-				{l s='Product selling preference'}
+			<span class="label-tooltip" data-toggle="tooltip" title="{l s='Sélectionnez si ce produit sera vendu avec un type de chambre ou comme produit autonome'}">
+				{l s='Préférence de vente du produit'}
 			<span>
 		</label>
 		<div class="col-lg-4">
 			<select name="selling_preference_type" id="selling_preference_type">
-                <option value="{Product::SELLING_PREFERENCE_WITH_ROOM_TYPE}" {if $product->selling_preference_type == Product::SELLING_PREFERENCE_WITH_ROOM_TYPE}selected="selected"{/if} >{l s='Sell with room types'}</option>
-                <option value="{Product::SELLING_PREFERENCE_HOTEL_STANDALONE}" {if $product->selling_preference_type == Product::SELLING_PREFERENCE_HOTEL_STANDALONE}selected="selected"{/if} >{l s='Sell with hotels'}</option>
-                <option value="{Product::SELLING_PREFERENCE_HOTEL_STANDALONE_AND_WITH_ROOM_TYPE}" {if $product->selling_preference_type == Product::SELLING_PREFERENCE_HOTEL_STANDALONE_AND_WITH_ROOM_TYPE}selected="selected"{/if} >{l s='Sell with hotels and room types'}</option>
-                <option value="{Product::SELLING_PREFERENCE_STANDALONE}" {if $product->selling_preference_type == Product::SELLING_PREFERENCE_STANDALONE}selected="selected"{/if} >{l s='Sell as standalone product'}</option>
+                <option value="{Product::SELLING_PREFERENCE_WITH_ROOM_TYPE}" {if $product->selling_preference_type == Product::SELLING_PREFERENCE_WITH_ROOM_TYPE}selected="selected"{/if} >{l s='Vendre avec les types de chambre'}</option>
+                <option value="{Product::SELLING_PREFERENCE_HOTEL_STANDALONE}" {if $product->selling_preference_type == Product::SELLING_PREFERENCE_HOTEL_STANDALONE}selected="selected"{/if} >{l s='Vendre avec les hôtels'}</option>
+                <option value="{Product::SELLING_PREFERENCE_HOTEL_STANDALONE_AND_WITH_ROOM_TYPE}" {if $product->selling_preference_type == Product::SELLING_PREFERENCE_HOTEL_STANDALONE_AND_WITH_ROOM_TYPE}selected="selected"{/if} >{l s='Vendre avec les hôtels et les types de chambre'}</option>
+                <option value="{Product::SELLING_PREFERENCE_STANDALONE}" {if $product->selling_preference_type == Product::SELLING_PREFERENCE_STANDALONE}selected="selected"{/if} >{l s='Vendre comme produit autonome'}</option>
 			</select>
 		</div>
 	</div> *}
     <div class="form-group" id="associated_hotel_tree" {if ($product->selling_preference_type != Product::SELLING_PREFERENCE_HOTEL_STANDALONE && $product->selling_preference_type != Product::SELLING_PREFERENCE_HOTEL_STANDALONE_AND_WITH_ROOM_TYPE)}style="display:none;"{/if}>
 		<div class="col-lg-1"><span class="pull-right">{include file="controllers/products/multishop/checkbox.tpl" field="category_box" type="category_box"}</span></div>
 		<label class="control-label col-lg-2" for="hotel_block">
-			<span class="label-tooltip" data-toggle="tooltip" title="{l s='Select hotels for which this service will be available.'}">
-				{l s='Associated Hotels'}
+			<span class="label-tooltip" data-toggle="tooltip" title="{l s='Sélectionnez les hôtels pour lesquels ce service sera disponible.'}">
+				{l s='Hôtels associés'}
 			</span>
 		</label>
 		<div class="col-lg-9">
@@ -261,8 +261,8 @@
 	<div class="form-group" id="associated_hotel_rooms_tree" {if ($product->selling_preference_type != Product::SELLING_PREFERENCE_WITH_ROOM_TYPE && $product->selling_preference_type != Product::SELLING_PREFERENCE_HOTEL_STANDALONE_AND_WITH_ROOM_TYPE && $product->selling_preference_type != 0)}style="display:none;"{/if}>
 		<div class="col-lg-1"><span class="pull-right">{include file="controllers/products/multishop/checkbox.tpl" field="category_box" type="category_box"}</span></div>
 		<label class="control-label col-lg-2" for="hotel_room_block">
-			<span class="label-tooltip" data-toggle="tooltip" title="{l s='Select room type and hotels for which this service will be available.'}">
-				{l s='Associated Room Types'}
+			<span class="label-tooltip" data-toggle="tooltip" title="{l s='Sélectionnez le type de chambre et les hôtels pour lesquels ce service sera disponible.'}">
+				{l s='Types de chambre associés'}
 			</span>
 		</label>
 		<div class="col-lg-9">
@@ -274,18 +274,18 @@
 	<div class="form-group" id="auto_add_to_cart_container" {if $product->selling_preference_type != Product::SELLING_PREFERENCE_WITH_ROOM_TYPE && $product->selling_preference_type != 0}style="display:none;"{/if}>
 		<label class="control-label col-lg-3" for="">
 			<span class="label-tooltip" data-toggle="tooltip" title="{l s='When enabled, this service will be added in cart for each associated Room type or Hotel when they are added in cart. Also auto added services will not be visible to customers.'}">
-				{l s='Auto add to cart this product'}
+				{l s='Ajouter automatiquement ce produit au panier'}
 			</span>
 		</label>
 		<div class="col-lg-3">
 			<span class="switch prestashop-switch fixed-width-lg">
 				<input type="radio" name="auto_add_to_cart" id="auto_add_to_cart_on" value="1" {if $product->auto_add_to_cart}checked="checked"{/if}/>
 				<label for="auto_add_to_cart_on" class="radioCheck">
-					{l s='Yes'}
+					{l s='Oui'}
 				</label>
 				<input type="radio" name="auto_add_to_cart" id="auto_add_to_cart_off" value="0" {if !$product->auto_add_to_cart || !$product->isAssociatedToShop()}checked="checked"{/if}/>
 				<label for="auto_add_to_cart_off" class="radioCheck">
-					{l s='No'}
+					{l s='Non'}
 				</label>
 				<a class="slide-button btn"></a>
 			</span>
@@ -295,26 +295,26 @@
 	<div id="price_addition_type_container" {if !$product->auto_add_to_cart || !$product->isAssociatedToShop()}style="display:none;"{/if}>
 		<div class="form-group">
 			<label class="control-label col-lg-3" for="selling_preference_type">
-				<span class="label-tooltip" data-toggle="tooltip" title="{l s='Select whether price will be added in the base room price or as Convenience Fee'}">
-					{l s='Price display preference'}
+				<span class="label-tooltip" data-toggle="tooltip" title="{l s='Sélectionnez si le prix sera ajouté au prix de base de la chambre ou comme frais de commodité'}">
+					{l s='Préférence d&#039;affichage du prix'}
 				<span>
 			</label>
 			<div class="col-lg-4">
 				<select name="price_addition_type" id="price_addition_type">
-					<option value="{Product::PRICE_ADDITION_TYPE_WITH_ROOM}" {if $product->price_addition_type == Product::PRICE_ADDITION_TYPE_WITH_ROOM}selected="selected"{/if} >{l s='Add price in room price'}</option>
-					<option value="{Product::PRICE_ADDITION_TYPE_INDEPENDENT}" {if $product->price_addition_type == Product::PRICE_ADDITION_TYPE_INDEPENDENT}selected="selected"{/if} >{l s='Add price as convenience Fee'}</option>
+					<option value="{Product::PRICE_ADDITION_TYPE_WITH_ROOM}" {if $product->price_addition_type == Product::PRICE_ADDITION_TYPE_WITH_ROOM}selected="selected"{/if} >{l s='Ajouter le prix dans le prix de la chambre'}</option>
+					<option value="{Product::PRICE_ADDITION_TYPE_INDEPENDENT}" {if $product->price_addition_type == Product::PRICE_ADDITION_TYPE_INDEPENDENT}selected="selected"{/if} >{l s='Ajouter le prix comme frais de commodité'}</option>
 				</select>
 			</div>
 		</div>
 		<div class="form-group">
 			<div class="col-lg-8 col-lg-offset-3">
 				<div class="alert alert-info">
-					{l s='Select how this service price will be added in booking.'}
+					{l s='Sélectionnez comment le prix de ce service sera ajouté à la réservation.'}
 					<ul>
 						<li>
-							<b>{l s='Add price in room price'}</b> : {l s='Service price will be added in room base price.'}<br>{l s='(e.g., Room price : 500, service price: 50, final room price : 550)'}
+							<b>{l s='Ajouter le prix dans le prix de la chambre'}</b> : {l s='Le prix du service sera ajouté au prix de base de la chambre.'}<br>{l s='(e.g., Room price : 500, service price: 50, final room price : 550)'}
 						</li>
-						<li><b>{l s='Add price as convenience fee'}</b> : {l s='Service price will be dispalyed in order summary as "Convenience Fees"'}</li>
+						<li><b>{l s='Ajouter le prix comme frais de commodité'}</b> : {l s='Le prix du service sera affiché dans le résumé de commande sous "Frais de commodité"'}</li>
 					</ul>
 				</div>
 			</div>
@@ -322,19 +322,19 @@
 	</div>
 	<div class="form-group" id="show_at_front_container" {if $product->auto_add_to_cart}style="display:none;"{/if}>
 		<label class="control-label col-lg-3" for="">
-			<span class="label-tooltip" data-toggle="tooltip" title="{l s='Enable if you want this product to be visible at front office of your website.'}">
-				{l s='Show at front office'}
+			<span class="label-tooltip" data-toggle="tooltip" title="{l s='Activez si vous voulez que ce produit soit visible sur le front office de votre site.'}">
+				{l s='Afficher sur le front office'}
 			</span>
 		</label>
 		<div class="col-lg-3">
 			<span class="switch prestashop-switch fixed-width-lg">
 				<input type="radio" name="show_at_front" id="show_at_front_on" value="1" {if $product->show_at_front || !$product->isAssociatedToShop()}checked="checked"{/if}/>
 				<label for="show_at_front_on" class="radioCheck">
-					{l s='Yes'}
+					{l s='Oui'}
 				</label>
 				<input type="radio" name="show_at_front" id="show_at_front_off" value="0" {if !$product->show_at_front && $product->isAssociatedToShop()}checked="checked"{/if}/>
 				<label for="show_at_front_off" class="radioCheck">
-					{l s='No'}
+					{l s='Non'}
 				</label>
 				<a class="slide-button btn"></a>
 			</span>
@@ -342,19 +342,19 @@
 	</div>
 	<div class="form-group" id="available_for_order_container" {if (!$product->show_at_front  && $product->isAssociatedToShop()) || $product->auto_add_to_cart}style="display:none;"{/if}>
 		<label class="control-label col-lg-3" for="">
-			<span class="label-tooltip" data-toggle="tooltip" title="{l s='Enable if you want this product to be sold from front office of your website.'}">
-				{l s='Availabe for order'}
+			<span class="label-tooltip" data-toggle="tooltip" title="{l s='Activez si vous voulez que ce produit soit vendu depuis le front office de votre site.'}">
+				{l s='Disponible à la commande'}
 			</span>
 		</label>
 		<div class="col-lg-3">
 			<span class="switch prestashop-switch fixed-width-lg">
 				<input type="radio" name="available_for_order" id="available_for_order_on" value="1" {if $product->available_for_order || !$product->isAssociatedToShop()}checked="checked"{/if}/>
 				<label for="available_for_order_on" class="radioCheck">
-					{l s='Yes'}
+					{l s='Oui'}
 				</label>
 				<input type="radio" name="available_for_order" id="available_for_order_off" value="0" {if !$product->available_for_order && $product->isAssociatedToShop()}checked="checked"{/if}/>
 				<label for="available_for_order_off" class="radioCheck">
-					{l s='No'}
+					{l s='Non'}
 				</label>
 				<a class="slide-button btn"></a>
 			</span>
@@ -362,19 +362,19 @@
 	</div>
 	<div class="form-group" id="show_price_container" {if $product->available_for_order || (!$product->show_at_front  && $product->isAssociatedToShop()) || !$product->isAssociatedToShop() || $product->auto_add_to_cart}style="display:none;"{/if}>
 		<label class="control-label col-lg-3" for="">
-			<span class="label-tooltip" data-toggle="tooltip" title="{l s='Enable if you want show product price even when product is not availabe to be sold at front office.'}">
-				{l s='Show price'}
+			<span class="label-tooltip" data-toggle="tooltip" title="{l s='Activez si vous voulez afficher le prix du produit même quand il n&#039;est pas disponible à la vente sur le front office.'}">
+				{l s='Afficher le prix'}
 			</span>
 		</label>
 		<div class="col-lg-3">
 			<span class="switch prestashop-switch fixed-width-lg">
 				<input type="radio" name="show_price" id="show_price_on" value="1" {if $product->show_price || !$product->isAssociatedToShop()}checked="checked"{/if}/>
 				<label for="show_price_on" class="radioCheck">
-					{l s='Yes'}
+					{l s='Oui'}
 				</label>
 				<input type="radio" name="show_price" id="show_price_off" value="0" {if !$product->show_price && $product->isAssociatedToShop()}checked="checked"{/if}/>
 				<label for="show_price_off" class="radioCheck">
-					{l s='No'}
+					{l s='Non'}
 				</label>
 				<a class="slide-button btn"></a>
 			</span>
@@ -384,14 +384,14 @@
 	<div class="form-group hidden">
 		<div class="col-lg-1"><span class="pull-right">{include file="controllers/products/multishop/checkbox.tpl" field="visibility" type="default"}</span></div>
 		<label class="control-label col-lg-2" for="visibility">
-			{l s='Visibility'}
+			{l s='Visibilité'}
 		</label>
 		<div class="col-lg-3">
 			<select name="visibility" id="visibility">
-				<option value="both" {if $product->visibility == 'both'}selected="selected"{/if} >{l s='Everywhere'}</option>
-				<option value="catalog" {if $product->visibility == 'catalog'}selected="selected"{/if} >{l s='Catalog only'}</option>
-				<option value="search" {if $product->visibility == 'search'}selected="selected"{/if} >{l s='Search only'}</option>
-				<option value="none" {if $product->visibility == 'none'}selected="selected"{/if} selected="selected">{l s='Nowhere'}</option>
+				<option value="both" {if $product->visibility == 'both'}selected="selected"{/if} >{l s='Partout'}</option>
+				<option value="catalog" {if $product->visibility == 'catalog'}selected="selected"{/if} >{l s='Catalogue uniquement'}</option>
+				<option value="search" {if $product->visibility == 'search'}selected="selected"{/if} >{l s='Recherche uniquement'}</option>
+				<option value="none" {if $product->visibility == 'none'}selected="selected"{/if} selected="selected">{l s='Nulle part'}</option>
 			</select>
 		</div>
 	</div>
@@ -400,18 +400,18 @@
 		<div class="form-group">
 			<label class="control-label col-lg-3">
 				<span class="label-tooltip" data-toggle="tooltip" title="{l s='When enabled, customer can order multiple quantity of product otherwise only one quantity can be purchased by customer per room/hotel'}">
-					{l s='Allow ordering of multiple quantities'}
+					{l s='Autoriser la commande de quantités multiples'}
 				</span>
 			</label>
 			<div class="col-lg-9">
 				<span class="switch prestashop-switch fixed-width-lg">
 					<input type="radio" name="allow_multiple_quantity" id="allow_multiple_quantity_on"{if $product->allow_multiple_quantity}checked="checked"{/if} value="1"/>
 					<label for="allow_multiple_quantity_on" class="radioCheck">
-						{l s='Yes'}
+						{l s='Oui'}
 					</label>
 					<input type="radio" name="allow_multiple_quantity" id="allow_multiple_quantity_off"{if !$product->allow_multiple_quantity}checked="checked"{/if} value="0"/>
 					<label for="allow_multiple_quantity_off" class="radioCheck">
-						{l s='No'}
+						{l s='Non'}
 					</label>
 					<a class="slide-button btn"></a>
 				</span>
@@ -421,8 +421,8 @@
 			<div class="form-group">
 				<label class="control-label col-lg-3" for="max_quantity">
 					<span class="label-tooltip" data-toggle="tooltip"
-						title="{l s='Enter max allowed quantity per room, enter 0 for unlimited.'}">
-						{l s='Max quantity allow'}
+						title="{l s='Entrez la quantité maximale autorisée par chambre, entrez 0 pour illimité.'}">
+						{l s='Quantité max autorisée'}
 					</span>
 				</label>
 				<div class="col-lg-3">
@@ -446,7 +446,7 @@
 		<div class="col-lg-1"><span class="pull-right">{include file="controllers/products/multishop/checkbox.tpl" field="description_short" type="tinymce" multilang="true"}</span></div>
 		<label class="control-label col-lg-2" for="description_short_{$id_lang}">
 			<span class="label-tooltip" data-toggle="tooltip" title="{l s='Appears in the product list(s), and at the top of the product page.'}">
-				{l s='Short description'}
+				{l s='Description courte'}
 			</span>
 		</label>
 		<div class="col-lg-9">
@@ -462,7 +462,7 @@
 		<div class="col-lg-1"><span class="pull-right">{include file="controllers/products/multishop/checkbox.tpl" field="description" type="tinymce" multilang="true"}</span></div>
 		<label class="control-label col-lg-2" for="description_{$id_lang}">
 			<span class="label-tooltip" data-toggle="tooltip"
-				title="{l s='Appears in the body of the room type.'}">
+				title="{l s='Apparaît dans le corps du type de chambre.'}">
 				{l s='Description'}
 			</span>
 		</label>
@@ -478,14 +478,14 @@
 	<div class="form-group">
 		<div class="col-lg-9 col-lg-offset-3">
 			<div class="alert alert-info">
-				{capture}<a class="addImageDescription" href="javascript:void(0);">{l s='Click here'}</a>{/capture}
+				{capture}<a class="addImageDescription" href="javascript:void(0);">{l s='Cliquez ici'}</a>{/capture}
 				{l s='Would you like to add an image in your description? %s and paste the given tag in the description.' sprintf=$smarty.capture.default}
 			</div>
 		</div>
 	</div>
 	<div id="createImageDescription" class="panel" style="display:none">
 		<div class="form-group">
-			<label class="control-label col-lg-3" for="smallImage_0">{l s='Select your image'}</label>
+			<label class="control-label col-lg-3" for="smallImage_0">{l s='Sélectionnez votre image'}</label>
 			<div class="col-lg-9">
 				<ul class="list-inline">
 					{foreach from=$images item=image key=key}
@@ -504,16 +504,16 @@
 			<div class="col-lg-5">
 				<p class="checkbox">
 					<input type="radio" name="leftRight" id="leftRight_1" value="left" checked>
-					<label for="leftRight_1" >{l s='left'}</label>
+					<label for="leftRight_1" >{l s='gauche'}</label>
 				</p>
 				<p class="checkbox">
 					<input type="radio" name="leftRight" id="leftRight_2" value="right">
-					<label for="leftRight_2" >{l s='right'}</label>
+					<label for="leftRight_2" >{l s='droite'}</label>
 				</p>
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="control-label col-lg-3" for="imageTypes_0">{l s='Select the type of picture'}</label>
+			<label class="control-label col-lg-3" for="imageTypes_0">{l s='Sélectionnez le type d&#039;image'}</label>
 			<div class="col-lg-5">
 				{foreach from=$imagesTypes key=key item=type}
 				<p class="checkbox">
@@ -528,8 +528,8 @@
 		<div class="form-group">
 			<label class="control-label col-lg-3" for="resultImage">
 				<span class="label-tooltip" data-toggle="tooltip"
-				title="{l s='The tag to copy/paste into the description.'}">
-					{l s='Image tag to insert'}
+				title="{l s='Le tag à copier/coller dans la description.'}">
+					{l s='Tag d&#039;image à insérer'}
 				</span>
 			</label>
 			<div class="col-lg-4">
@@ -544,7 +544,7 @@
 		<label class="control-label col-lg-3" for="tags_{$id_lang}">
 			<span class="label-tooltip" data-toggle="tooltip"
 				title="{l s='Will be displayed in the tags block when enabled. Tags help customers easily find your room types.'}">
-				{l s='Tags:'}
+				{l s='Tags :'}
 			</span>
 		</label>
 		<div class="col-lg-9">
@@ -596,9 +596,9 @@
 		</div>
 	</div> *}
 	<div class="panel-footer">
-		<a href="{$link->getAdminLink('AdminNormalProducts')|escape:'html':'UTF-8'}{if isset($smarty.request.page) && $smarty.request.page > 1}&amp;submitFilterproduct={$smarty.request.page|intval}{/if}" class="btn btn-default"><i class="process-icon-cancel"></i> {l s='Cancel'}</a>
-		<button type="submit" name="submitAddproduct" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Save'}</button>
-		<button type="submit" name="submitAddproductAndStay" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Save and stay'}</button>
+		<a href="{$link->getAdminLink('AdminNormalProducts')|escape:'html':'UTF-8'}{if isset($smarty.request.page) && $smarty.request.page > 1}&amp;submitFilterproduct={$smarty.request.page|intval}{/if}" class="btn btn-default"><i class="process-icon-cancel"></i> {l s='Annuler'}</a>
+		<button type="submit" name="submitAddproduct" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Enregistrer'}</button>
+		<button type="submit" name="submitAddproductAndStay" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Enregistrer et rester'}</button>
 	</div>
 </div>
 <script type="text/javascript">

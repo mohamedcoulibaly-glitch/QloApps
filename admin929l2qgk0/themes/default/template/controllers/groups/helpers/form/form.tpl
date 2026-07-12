@@ -28,7 +28,7 @@
 {block name="label"}
 	{if $input['type'] == 'modules'}
 		<div {if !$form_id}class="hide"{/if}>
-			<label class="control-label col-lg-3">{l s='Authorized modules:'}</label>
+			<label class="control-label col-lg-3">{l s='Modules autorisés :'}</label>
 		</div>
 	{elseif $input['type'] == 'group_discount_category'}
 		<div {if !$form_id}class="hide"{/if}>
@@ -104,7 +104,7 @@
 					}
 					else
 					{
-						$('#group_discount_category_table').append('<tr class="alt_row" id="'+jsonData.id_category+'"><td>'+jsonData.catPath+'</td><td>{l s='Discount:'}' + ' ' + jsonData.discount+'{l s='%'}</td><td><a href="#" onclick="deleteCategoryReduction('+jsonData.id_category+');" class="btn btn-default"><i class="icon-trash"></i> {l s='Delete'}</a></td></tr>');
+						$('#group_discount_category_table').append('<tr class="alt_row" id="'+jsonData.id_category+'"><td>'+jsonData.catPath+'</td><td>{l s='Remise :'}' + ' ' + jsonData.discount+'{l s='%'}</td><td><a href="#" onclick="deleteCategoryReduction('+jsonData.id_category+');" class="btn btn-default"><i class="icon-trash"></i> {l s='Supprimer'}</a></td></tr>');
 						var input_hidden = document.createElement("input");
 						input_hidden.setAttribute('type', 'hidden');
 						input_hidden.setAttribute('value', jsonData.discount);
@@ -128,7 +128,7 @@
 		</script>
 
 		<div class="col-lg-9">
-			<a class="btn btn-default" href="#group_discount_category_fancybox" id="group_discount_category">{l s='Add a category discount'}</a>
+			<a class="btn btn-default" href="#group_discount_category_fancybox" id="group_discount_category">{l s='Ajouter une remise de catégorie'}</a>
 			<table class="table" id="group_discount_category_table">
 				{foreach $input['values'] key=key item=category }
 					<tr class="alt_row" id="{$category.id_category}">
@@ -136,7 +136,7 @@
 						<td>{l s='Discount: %.2f%%' sprintf=$category.reduction}</td>
 						<td>
 							<a href="#" onclick="deleteCategoryReduction({$category.id_category});"class="btn btn-default">
-								<i class="icon-trash"></i> {l s='Delete'}
+								<i class="icon-trash"></i> {l s='Supprimer'}
 							</a>
 							<input type="hidden" class="category_reduction" name="category_reduction[{$category.id_category}]" value="{$category.reduction}">
 						</td>
@@ -147,14 +147,14 @@
 		<div id="group_discount_category_fancybox" class="bootstrap" style="display:none" >
 			<div class="panel">
 				<div class="panel-heading">
-					<i class="icon-group"></i> {l s='New group category discount'}
+					<i class="icon-group"></i> {l s='Nouvelle remise de catégorie de groupe'}
 				</div>
 				{$categoryTreeView}
 				<div class="form-horizontal">
-				<div class="alert alert-info">{l s='Caution: The discount applied to a category does not stack with the overall reduction but instead replaces it.'}</div>
-				<div class="alert alert-warning">{l s='Only products that have this category as the default category will be affected.'}</div>
+				<div class="alert alert-info">{l s='Attention : La remise appliquée à une catégorie ne s&#039;accumule pas avec la réduction globale mais la remplace.'}</div>
+				<div class="alert alert-warning">{l s='Seuls les produits ayant cette catégorie comme catégorie par défaut seront affectés.'}</div>
 				<div class="form-group">
-					<label class="control-label col-lg-3" for="category_reduction_fancybox">{l s='Discount (%):'}</label>
+					<label class="control-label col-lg-3" for="category_reduction_fancybox">{l s='Remise (%) :'}</label>
 					<div class="col-lg-9">
 						<input type="text" name="category_reduction_fancybox" id="category_reduction_fancybox" value="0.00" class="form-control" />
 					</div>
@@ -189,9 +189,9 @@
 				<div class="input-group col-lg-8">
 					<span class="switch prestashop-switch fixed-width-lg">
 						<input type="radio" name="{$module->name|escape:'html':'UTF-8'}" id="{$module->name|escape:'html':'UTF-8'}_on" value="1" checked="checked"/>
-						<label for="{$module->name|escape:'html':'UTF-8'}_on">{l s='Yes'}</label>
+						<label for="{$module->name|escape:'html':'UTF-8'}_on">{l s='Oui'}</label>
 						<input type="radio" name="{$module->name|escape:'html':'UTF-8'}" id="{$module->name|escape:'html':'UTF-8'}_off" value="0"/>
-						<label for="{$module->name|escape:'html':'UTF-8'}_off">{l s='No'}</label>
+						<label for="{$module->name|escape:'html':'UTF-8'}_off">{l s='Non'}</label>
 						<a class="slide-button btn"></a>
 					</span>
 					<input type="hidden" name="modulesBoxAuth[]" value="{$module->id|intval}"/>
@@ -204,9 +204,9 @@
 				<div class="input-group col-lg-8">
 					<span class="switch prestashop-switch fixed-width-lg">
 						<input type="radio" name="{$module->name|escape:'html':'UTF-8'}" id="{$module->name|escape:'html':'UTF-8'}_on" value="1"/>
-						<label for="{$module->name|escape:'html':'UTF-8'}_on">{l s='Yes'}</label>
+						<label for="{$module->name|escape:'html':'UTF-8'}_on">{l s='Oui'}</label>
 						<input type="radio" name="{$module->name|escape:'html':'UTF-8'}" id="{$module->name|escape:'html':'UTF-8'}_off" value="0" checked="checked"/>
-						<label for="{$module->name|escape:'html':'UTF-8'}_off">{l s='No'}</label>
+						<label for="{$module->name|escape:'html':'UTF-8'}_off">{l s='Non'}</label>
 						<a class="slide-button btn"></a>
 					</span>
 					<input type="hidden" name="modulesBoxUnauth[]" value="{$module->id|intval}"/>

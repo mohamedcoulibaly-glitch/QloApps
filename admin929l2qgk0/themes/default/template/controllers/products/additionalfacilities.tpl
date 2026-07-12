@@ -24,10 +24,10 @@
     <input type="hidden" name="submitted_tabs[]" value="AdditionalFacilities" />
     <div class="panel">
         <div class="panel-heading">
-            <i class="icon-user"></i> {l s='Room Type Additional Facilities'}
+            <i class="icon-user"></i> {l s='Équipements supplémentaires du type de chambre'}
         </div>
         <div class="alert alert-info">
-            {l s='To create new additional facilities please visit'} <a target="_blank" href="{$link->getAdminLink('AdminRoomTypeGlobalDemand')}">{l s='Additional facilities'}</a> {l s='page.'}
+            {l s='Pour créer de nouveaux équipements supplémentaires, veuillez visiter'} <a target="_blank" href="{$link->getAdminLink('AdminRoomTypeGlobalDemand')}">{l s='Équipements supplémentaires'}</a> {l s='page.'}
         </div>
         {if isset($allDemands) && $allDemands}
 
@@ -37,19 +37,19 @@
                         <tr>
                             <th></th>
                             <th>
-                                {l s='Name'}
+                                {l s='Nom'}
                             </th>
                             <th>
                                 {l s='Option'}
                             </th>
                             <th class="fixed-width-xl">
-                                {l s='Price'}
+                                {l s='Prix'}
                             </th>
                             <th>
-                                {l s='Tax rule'}
+                                {l s='Règle de taxe'}
                             </th>
                             <th class="fixed-width-lg text-center">
-                                {l s='Per day price calculation'}
+                                {l s='Calcul du prix par jour'}
                             </th>
                         </tr>
                     </thead>
@@ -94,9 +94,9 @@
                                             </td>
                                             <td class="text-center" rowspan="{$rowspan}">
                                                 {if $demand['price_calc_method'] == 1}
-                                                    <span class="badge badge-success">{l s='Yes'}</span>
+                                                    <span class="badge badge-success">{l s='Oui'}</span>
                                                 {else}
-                                                    <span>{l s='No'}</span>
+                                                    <span>{l s='Non'}</span>
                                                 {/if}
                                             </td>
                                         {/if}
@@ -126,9 +126,9 @@
                                         </td>
                                         <td class="text-center">
                                             {if $demand['price_calc_method'] == 1}
-                                                <span class="badge badge-success">{l s='Yes'}</span>
+                                                <span class="badge badge-success">{l s='Oui'}</span>
                                             {else}
-                                                <span>{l s='No'}</span>
+                                                <span>{l s='Non'}</span>
                                             {/if}
                                         </td>
                                     </tr>
@@ -140,15 +140,15 @@
             <div class="panel-footer">
                 <a href="{$link->getAdminLink('AdminProducts')|escape:'html':'UTF-8'}{if isset($smarty.request.page) && $smarty.request.page > 1}&amp;submitFilterproduct={$smarty.request.page|intval}{/if}" class="btn btn-default">
                     <i class="process-icon-cancel"></i>
-                    {l s='Cancel'}
+                    {l s='Annuler'}
                 </a>
                 <button type="submit" name="submitAddproduct" class="btn btn-default pull-right" disabled="disabled">
                     <i class="process-icon-loading"></i>
-                    {l s='Save'}
+                    {l s='Enregistrer'}
                 </button>
                 <button type="submit" name="submitAddproductAndStay" class="btn btn-default pull-right"  disabled="disabled">
                     <i class="process-icon-loading"></i>
-                        {l s='Save and stay'}
+                        {l s='Enregistrer et rester'}
                 </button>
             </div>
         {/if}

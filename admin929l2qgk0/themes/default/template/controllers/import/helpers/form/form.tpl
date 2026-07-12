@@ -25,7 +25,7 @@
 <div class="leadin">{block name="leadin"}{/block}</div>
 {if $module_confirmation}
 <div class="alert alert-success clearfix">
-	{l s='Your .CSV file has been successfully imported to your website.'}
+	{l s='Votre fichier .CSV a été importé avec succès sur votre site.'}
 </div>
 {/if}
 <div class="row">
@@ -34,14 +34,14 @@
 		<div class="panel">
 			<h3>
 				<i class="icon-upload"></i>
-				{l s='Import'}
+				{l s='Importer'}
 			</h3>
 			<div class="alert alert-info">
 				<ul class="list-unstyled">
-					{* <li>{l s='You can read information on CSV import at:'}
+					{* <li>{l s='Vous pouvez lire des informations sur l&#039;import CSV à :'}
 						<a href="http://doc.prestashop.com/display/PS16/CSV+Import+Parameters" class="_blank">http://doc.prestashop.com/display/PS16/CSV+Import+Parameters</a>
 					</li> *}
-					<li>{l s='Read more about the CSV format at:'}
+					<li>{l s='En savoir plus sur le format CSV à :'}
 						<a href="http://en.wikipedia.org/wiki/Comma-separated_values" class="_blank">http://en.wikipedia.org/wiki/Comma-separated_values</a>
 					</li>
 				</ul>
@@ -49,7 +49,7 @@
 			<hr />
 			<form id="preview_import" action="{$current|escape:'html':'UTF-8'}&amp;token={$token|escape:'html':'UTF-8'}" method="post" enctype="multipart/form-data" class="form-horizontal">
 				<div class="form-group">
-					<label for="entity" class="control-label col-lg-4">{l s='What kind of entity would you like to import?'} </label>
+					<label for="entity" class="control-label col-lg-4">{l s='Quel type d&#039;entité souhaitez-vous importer ?'} </label>
 					<div class="col-lg-8">
 						<select name="entity" id="entity" class="fixed-width-xxl form-control">
 							{foreach $entities AS $entity => $i }
@@ -62,7 +62,7 @@
 				</div>
 				<div class="alert alert-warning import_products_categories">
 					<ul>
-						<li>{l s='Note that the Category import does not support having two categories with the same name.'}</li>
+						<li>{l s='Notez que l&#039;import de catégories ne prend pas en charge deux catégories avec le même nom.'}</li>
 					</ul>
 				</div>
 				<div class="alert alert-warning import_supply_orders_details">
@@ -70,12 +70,12 @@
 				</div>
 				<hr />
 				<div class="form-group" id="csv_file_uploader">
-					<label for="file" class="control-label col-lg-4">{l s='Select a CSV file to import'}</label>
+					<label for="file" class="control-label col-lg-4">{l s='Sélectionnez un fichier CSV à importer'}</label>
 					<div class="col-lg-8">
 						<input id="file" type="file" name="file" data-url="{$current|escape:'html':'UTF-8'}&amp;token={$token|escape:'html':'UTF-8'}&amp;ajax=1&amp;action=uploadCsv" class="hide" />
 						<button class="ladda-button btn btn-default" data-style="expand-right" data-size="s" type="button" id="file-add-button">
 							<i class="icon-folder-open"></i>
-							{l s='Upload a file'}
+							{l s='Télécharger un fichier'}
 						</button>
 						{l s='or'}
 						<button class="btn btn-default csv-history-btn" type="button">
@@ -83,7 +83,7 @@
 							{l s="Choose from history / FTP"}
 						</button>
 						<p class="help-block">
-							{l s='Only UTF-8 and ISO 8859-1 encodings are allowed'}.<br/>
+							{l s='Seuls les encodages UTF-8 et ISO 8859-1 sont autorisés'}.<br/>
 							{l s='You can also upload your file via FTP to the following directory: %s .' sprintf=$path_import}
 						</p>
 					</div>
@@ -92,7 +92,7 @@
 				<div class="form-group" id="csv_files_history" style="display:none;" >
 					<div class="panel">
 						<div class="panel-heading">
-							{l s='History of uploaded .CSV'}
+							{l s='Historique des fichiers .CSV téléchargés'}
 							<span class="csv-history-nb badge">{$files_to_import|count}</span>
 							<button type="button" class="btn btn-link pull-right csv-history-btn">
 								<i class="icon-remove"></i>
@@ -114,14 +114,14 @@
 											<li>
 												<a class="csv-download-link _blank" href="#">
 													<i class="icon-download"></i>
-													{l s='Download'}
+													{l s='Télécharger'}
 												</a>
 											</li>
 											<li class="divider"></li>
 											<li>
 												<a class="csv-delete-link" href="#">
 													<i class="icon-trash"></i>
-													{l s='Delete'}
+													{l s='Supprimer'}
 												</a>
 											</li>
 										</ul>
@@ -146,14 +146,14 @@
 											<li>
 												<a href="{$current|escape:'html':'UTF-8'}&amp;token={$token|escape:'html':'UTF-8'}&amp;csvfilename={$filename|@urlencode}" class="_blank">
 													<i class="icon-download"></i>
-													{l s='Download'}
+													{l s='Télécharger'}
 												</a>
 											</li>
 											<li class="divider"></li>
 											<li>
 												<a href="{$current|escape:'html':'UTF-8'}&amp;token={$token|escape:'html':'UTF-8'}&amp;csvfilename={$filename|@urlencode}&amp;delete=1">
 													<i class="icon-trash"></i>
-													{l s='Delete'}
+													{l s='Supprimer'}
 												</a>
 											</li>
 										</ul>
@@ -174,7 +174,7 @@
 							<div class="btn-group pull-right">
 								<button id="file-remove-button" type="button" class="btn btn-default">
 									<i class="icon-refresh"></i>
-									{l s='Change'}
+									{l s='Changer'}
 								</button>
 							</div>
 						</div>
@@ -183,8 +183,8 @@
 				<hr />
 				<div class="form-group">
 					<label for="iso_lang" class="control-label col-lg-4">
-						<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='The locale must be installed'}">
-							{l s='Language of the file'}
+						<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='La locale doit être installée'}">
+							{l s='Langue du fichier'}
 						</span>
 					</label>
 					<div class="col-lg-8">
@@ -196,26 +196,26 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="convert" class="control-label col-lg-4">{l s='ISO 8859-1 encoded file?'}</label>
+					<label for="convert" class="control-label col-lg-4">{l s='Fichier encodé en ISO 8859-1 ?'}</label>
 					<div class="col-lg-8">
 						<span class="switch prestashop-switch fixed-width-lg">
 							<input type="radio" name="convert" id="convert_on" value="1">
-								<label for="convert_on">{l s='Yes'}</label>
+								<label for="convert_on">{l s='Oui'}</label>
 							<input type="radio" name="convert" id="convert_off" value="0" checked="checked">
-								<label for="convert_off">{l s='No'}</label>
+								<label for="convert_off">{l s='Non'}</label>
 							<a class="slide-button btn"></a>
 						</span>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="separator" class="control-label col-lg-4">{l s='Field separator'}</label>
+					<label for="separator" class="control-label col-lg-4">{l s='Séparateur de champs'}</label>
 					<div class="col-lg-8">
 						<input id="separator" name="separator" class="fixed-width-xs form-control" type="text" value="{if isset($separator_selected)}{$separator_selected|escape:'html':'UTF-8'}{else};{/if}" />
 						<div class="help-block">{l s='e.g. '} 6; 1; The Sunshine Luxury</div>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="multiple_value_separator" class="control-label col-lg-4">{l s='Multiple value separator'}</label>
+					<label for="multiple_value_separator" class="control-label col-lg-4">{l s='Séparateur de valeurs multiples'}</label>
 					<div class="col-lg-8">
 						<input id="multiple_value_separator" name="multiple_value_separator" class="fixed-width-xs form-control" type="text" value="{if isset($multiple_value_separator_selected)}{$multiple_value_separator_selected|escape:'html':'UTF-8'}{else},{/if}" />
 						<div class="help-block">{l s='e.g. '} The Sunshine Luxury; News Paper:2.jpg, Gym:7.jpg</div>
@@ -223,70 +223,70 @@
 				</div>
 				<hr />
 				<div class="form-group">
-					<label for="truncate" class="control-label col-lg-4">{l s='Delete all'} <span id="entitie">{l s='categories'}</span> {l s='before import'} </label>
+					<label for="truncate" class="control-label col-lg-4">{l s='Tout supprimer'} <span id="entitie">{l s='categories'}</span> {l s='avant l&#039;import'} </label>
 					<div class="col-lg-8">
 						<span class="switch prestashop-switch fixed-width-lg">
 							<input type="radio" name="truncate" id="truncate_on" value="1">
-								<label for="truncate_on">{l s='Yes'}</label>
+								<label for="truncate_on">{l s='Oui'}</label>
 							<input type="radio" name="truncate" id="truncate_off" value="0" checked="checked">
-								<label for="truncate_off">{l s='No'}</label>
+								<label for="truncate_off">{l s='Non'}</label>
 							<a class="slide-button btn"></a>
 						</span>
 					</div>
 				</div>
 				<div class="form-group" style="display: none">
 					<label for="match_ref" class="control-label col-lg-4">
-						<span data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='If enabled, the product\'s reference number MUST be unique!'}">
-							{l s='Use product reference as key'}
+						<span data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='If enabled, the product&#039;s reference number MUST be unique!'}">
+							{l s='Utiliser la référence produit comme clé'}
 						</span>
 					</label>
 					<div class="col-lg-8">
 						<span class="switch prestashop-switch fixed-width-lg">
 							<input type="radio" name="match_ref" id="match_ref_on" value="1">
-								<label for="match_ref_on">{l s='Yes'}</label>
+								<label for="match_ref_on">{l s='Oui'}</label>
 							<input type="radio" name="match_ref" id="match_ref_off" value="0" checked="checked">
-								<label for="match_ref_off">{l s='No'}</label>
+								<label for="match_ref_off">{l s='Non'}</label>
 							<a class="slide-button btn"></a>
 						</span>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="regenerate" class="control-label col-lg-4">{l s='Skip thumbnails regeneration'}</label>
+					<label for="regenerate" class="control-label col-lg-4">{l s='Ignorer la régénération des miniatures'}</label>
 					<div class="col-lg-8">
 						<span class="switch prestashop-switch fixed-width-lg">
 							<input type="radio" name="regenerate" id="regenerate_on" value="1">
-								<label for="regenerate_on">{l s='Yes'}</label>
+								<label for="regenerate_on">{l s='Oui'}</label>
 							<input type="radio" name="regenerate" id="regenerate_off" value="0" checked="checked">
-								<label for="regenerate_off">{l s='No'}</label>
+								<label for="regenerate_off">{l s='Non'}</label>
 							<a class="slide-button btn"></a>
 						</span>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="forceIDs" class="control-label col-lg-4">
-						<span data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='If you enable this option, your imported items\' ID number will be used as-is. If you do not enable this option, the imported ID number will be ignored, and QloApps will instead create auto-incremented ID numbers for all the imported items.'}">
-							{l s='Force all ID numbers'}
+						<span data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='If you enable this option, your imported items&#039; ID number will be used as-is. If you do not enable this option, the imported ID number will be ignored, and QloApps will instead create auto-incremented ID numbers for all the imported items.'}">
+							{l s='Forcer tous les numéros d&#039;ID'}
 						</span>
 					</label>
 					<div class="col-lg-8">
 						<span class="switch prestashop-switch fixed-width-lg">
 							<input type="radio" name="forceIDs" id="forceIDs_on" value="1">
-								<label for="forceIDs_on">{l s='Yes'}</label>
+								<label for="forceIDs_on">{l s='Oui'}</label>
 							<input type="radio" name="forceIDs" id="forceIDs_off" value="0" checked="checked">
-								<label for="forceIDs_off">{l s='No'}</label>
+								<label for="forceIDs_off">{l s='Non'}</label>
 							<a class="slide-button btn"></a>
 						</span>
 					</div>
 				</div>
 	<!--
 				{*if empty($files_to_import)*}
-				<div class="alert alert-info">{l s='You must upload a file in order to proceed to the next step'}</div>
+				<div class="alert alert-info">{l s='Vous devez télécharger un fichier pour passer à l&#039;étape suivante'}</div>
 				{*if !count($files_to_import)*}
-				<p>{l s='There is no CSV file available. Please upload one using the \'Upload\' button above.'}</p>
+				<p>{l s='There is no CSV file available. Please upload one using the &#039;Upload&#039; button above.'}</p>
 	-->
 				<div class="panel-footer">
 					<button type="submit" name="submitImportFile" id="submitImportFile" class="btn btn-default pull-right" >
-						<i class="process-icon-next"></i> <span>{l s='Next step'}</span>
+						<i class="process-icon-next"></i> <span>{l s='Étape suivante'}</span>
 					</button>
 				</div>
 			</form>
@@ -297,7 +297,7 @@
 		<div class="panel">
 			<h3>
 				<i class="icon-list-alt"></i>
-				{l s='Available fields'}
+				{l s='Champs disponibles'}
 			</h3>
 			<div id="availableFields" class="alert alert-info">
 				{$available_fields}
@@ -307,37 +307,37 @@
 		<div class="panel">
 			<div class="panel-heading">
 				<i class="icon-download"></i>
-				{l s='Download sample csv files'}
+				{l s='Télécharger des fichiers CSV d&#039;exemple'}
 			</div>
 
 			<div class="list-group">
 				<a class="list-group-item _blank" href="../docs/csv_import/hotels_import.csv">
-					{l s='Sample Hotels file'}
+					{l s='Fichier exemple Hôtels'}
 				</a>
 				<a class="list-group-item _blank" href="../docs/csv_import/room_types_import.csv">
-					{l s='Sample Room Types file'}
+					{l s='Fichier exemple Types de chambres'}
 				</a>
 				<a class="list-group-item _blank" href="../docs/csv_import/rooms_import.csv">
-					{l s='Sample Rooms file'}
+					{l s='Fichier exemple Chambres'}
 				</a>
 				<a class="list-group-item _blank" href="../docs/csv_import/service_products_import.csv">
-					{l s='Sample Service Products file'}
+					{l s='Fichier exemple Produits de service'}
 				</a>
 				<a class="list-group-item _blank" href="../docs/csv_import/categories_import.csv">
-					{l s='Sample Categories file'}
+					{l s='Fichier exemple Catégories'}
 				</a>
 				<a class="list-group-item _blank" href="../docs/csv_import/customers_import.csv">
-					{l s='Sample Customers file'}
+					{l s='Fichier exemple Clients'}
 				</a>
 				<a class="list-group-item _blank" href="../docs/csv_import/bookings_import.csv">
-					{l s='Sample Bookings file'}
+					{l s='Fichier exemple Réservations'}
 				</a>
 				{if $PS_ADVANCED_STOCK_MANAGEMENT}
 				<a class="list-group-item _blank" href="../docs/csv_import/supply_orders_import.csv">
-					{l s='Sample Supply Orders file'}
+					{l s='Fichier exemple Commandes d&#039;approvisionnement'}
 				</a>
 				<a class="list-group-item _blank" href="../docs/csv_import/supply_orders_details_import.csv">
-					{l s='Sample Supply Order Details file'}
+					{l s='Fichier exemple Détails des commandes d&#039;approvisionnement'}
 				</a>
 				{/if}
 			</div>

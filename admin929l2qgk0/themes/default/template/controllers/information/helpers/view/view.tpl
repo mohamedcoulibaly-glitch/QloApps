@@ -41,14 +41,14 @@
 				success: function(json)
 				{
 					var tab = {
-						'missing': '{l s='Missing files'}',
-						'updated': '{l s='Updated files'}'
+						'missing': '{l s='Fichiers manquants'}',
+						'updated': '{l s='Fichiers mis à jour'}'
 					};
 
 					if (json.missing.length || json.updated.length)
-						$('#changedFiles').html('<div class="alert alert-warning">{l s='Changed/missing files have been detected.'}</div>');
+						$('#changedFiles').html('<div class="alert alert-warning">{l s='Des fichiers modifiés/manquants ont été détectés.'}</div>');
 					else
-						$('#changedFiles').html('<div class="alert alert-success">{l s='No change has been detected in your files.'}</div>');
+						$('#changedFiles').html('<div class="alert alert-success">{l s='Aucun changement n&#039;a été détecté dans vos fichiers.'}</div>');
 
 					$.each(tab, function(key, lang)
 					{
@@ -74,32 +74,32 @@
 			<div class="panel">
 				<h3>
 					<i class="icon-info"></i>
-					{l s='Configuration information'}
+					{l s='Informations de configuration'}
 				</h3>
-				<p>{l s='This information must be provided when you report an issue on our bug tracker or forum.'}</p>
+				<p>{l s='Cette information doit être fournie lorsque vous signalez un problème sur notre tracker de bugs ou forum.'}</p>
 			</div>
 			{if !$host_mode}
 			<div class="panel">
 				<h3>
 					<i class="icon-info"></i>
-					{l s='Server information'}
+					{l s='Informations serveur'}
 				</h3>
 				{if Tools::strlen($uname) > 0}
 				<p>
-					<strong>{l s='Server information:'}</strong> {$uname|escape:'html':'UTF-8'}
+					<strong>{l s='Informations serveur :'}</strong> {$uname|escape:'html':'UTF-8'}
 				</p>
 				{/if}
 				<p>
-					<strong>{l s='Server software version:'}</strong> {$version.server|escape:'html':'UTF-8'}
+					<strong>{l s='Version du logiciel serveur :'}</strong> {$version.server|escape:'html':'UTF-8'}
 				</p>
 				<p>
-					<strong>{l s='PHP version:'}</strong> {$version.php|escape:'html':'UTF-8'}
+					<strong>{l s='Version PHP :'}</strong> {$version.php|escape:'html':'UTF-8'}
 				</p>
 				<p>
-					<strong>{l s='Memory limit:'}</strong> {$version.memory_limit|escape:'html':'UTF-8'}
+					<strong>{l s='Limite mémoire :'}</strong> {$version.memory_limit|escape:'html':'UTF-8'}
 				</p>
 				<p>
-					<strong>{l s='Max execution time:'}</strong> {$version.max_execution_time|escape:'html':'UTF-8'}
+					<strong>{l s='Temps d&#039;exécution max :'}</strong> {$version.max_execution_time|escape:'html':'UTF-8'}
 				</p>
 				{if $apache_instaweb}
 					<p>{l s='PageSpeed module for Apache installed (mod_instaweb)'}</p>
@@ -108,28 +108,28 @@
 			<div class="panel">
 				<h3>
 					<i class="icon-info"></i>
-					{l s='Database information'}
+					{l s='Informations base de données'}
 				</h3>
 				<p>
-					<strong>{l s='MySQL version:'}</strong> {$database.version|escape:'html':'UTF-8'}
+					<strong>{l s='Version MySQL :'}</strong> {$database.version|escape:'html':'UTF-8'}
 				</p>
 				<p>
-					<strong>{l s='MySQL server:'}</strong> {$database.server|escape:'html':'UTF-8'}
+					<strong>{l s='Serveur MySQL :'}</strong> {$database.server|escape:'html':'UTF-8'}
 				</p>
 				<p>
-					<strong>{l s='MySQL name:'}</strong> {$database.name|escape:'html':'UTF-8'}
+					<strong>{l s='Nom MySQL :'}</strong> {$database.name|escape:'html':'UTF-8'}
 				</p>
 				<p>
-					<strong>{l s='MySQL user:'}</strong> {$database.user|escape:'html':'UTF-8'}
+					<strong>{l s='Utilisateur MySQL :'}</strong> {$database.user|escape:'html':'UTF-8'}
 				</p>
 				<p>
-					<strong>{l s='Tables prefix:'}</strong> {$database.prefix|escape:'html':'UTF-8'}
+					<strong>{l s='Préfixe des tables :'}</strong> {$database.prefix|escape:'html':'UTF-8'}
 				</p>
 				<p>
-					<strong>{l s='MySQL engine:'}</strong> {$database.engine|escape:'html':'UTF-8'}
+					<strong>{l s='Moteur MySQL :'}</strong> {$database.engine|escape:'html':'UTF-8'}
 				</p>
 				<p>
-					<strong>{l s='MySQL driver:'}</strong> {$database.driver|escape:'html':'UTF-8'}
+					<strong>{l s='Pilote MySQL :'}</strong> {$database.driver|escape:'html':'UTF-8'}
 				</p>
 			</div>
 		</div>
@@ -138,79 +138,79 @@
 			<div class="panel">
 				<h3>
 					<i class="icon-info"></i>
-					{l s='Website information'}
+					{l s='Informations du site'}
 				</h3>
 				<p>
-					<strong>{l s='QloApps version:'}</strong> {$shop.qloappsV|escape:'html':'UTF-8'}
+					<strong>{l s='Version QloApps :'}</strong> {$shop.qloappsV|escape:'html':'UTF-8'}
 				</p>
 				<p>
-					<strong>{l s='Website URL:'}</strong> {$shop.url|escape:'html':'UTF-8'}
+					<strong>{l s='URL du site :'}</strong> {$shop.url|escape:'html':'UTF-8'}
 				</p>
 				<p>
-					<strong>{l s='Current theme in use:'}</strong> {$shop.theme|escape:'html':'UTF-8'}
+					<strong>{l s='Thème actuel utilisé :'}</strong> {$shop.theme|escape:'html':'UTF-8'}
 				</p>
 			</div>
 			<div class="panel">
 				<h3>
 					<i class="icon-info"></i>
-					{l s='Mail configuration'}
+					{l s='Configuration des e-mails'}
 				</h3>
 				<p>
-					<strong>{l s='Mail method:'}</strong>
+					<strong>{l s='Méthode d&#039;e-mail :'}</strong>
 
 			{if $mail}
 				{l s='You are using the PHP mail() function.'}</p>
 			{else}
-				{l s='You are using your own SMTP parameters.'}</p>
+				{l s='Vous utilisez vos propres paramètres SMTP.'}</p>
 				<p>
-					<strong>{l s='SMTP server'}:</strong> {$smtp.server|escape:'html':'UTF-8'}
+					<strong>{l s='Serveur SMTP'}:</strong> {$smtp.server|escape:'html':'UTF-8'}
 				</p>
 				<p>
-					<strong>{l s='SMTP username'}:</strong>
+					<strong>{l s='Utilisateur SMTP'}:</strong>
 					{if $smtp.user neq ''}
-						{l s='Defined'}
+						{l s='Défini'}
 					{else}
-						<span style="color:red;">{l s='Not defined'}</span>
+						<span style="color:red;">{l s='Non défini'}</span>
 					{/if}
 				</p>
 				<p>
-					<strong>{l s='SMTP password'}:</strong>
+					<strong>{l s='Mot de passe SMTP'}:</strong>
 					{if $smtp.password neq ''}
-						{l s='Defined'}
+						{l s='Défini'}
 					{else}
-						<span style="color:red;">{l s='Not defined'}</span>
+						<span style="color:red;">{l s='Non défini'}</span>
 					{/if}
 				</p>
 				<p>
-					<strong>{l s='Encryption:'}</strong> {$smtp.encryption|escape:'html':'UTF-8'}
+					<strong>{l s='Chiffrement :'}</strong> {$smtp.encryption|escape:'html':'UTF-8'}
 				</p>
 				<p>
-					<strong>{l s='SMTP port:'}</strong> {$smtp.port|escape:'html':'UTF-8'}
+					<strong>{l s='Port SMTP :'}</strong> {$smtp.port|escape:'html':'UTF-8'}
 				</p>
 			{/if}
 			</div>
 			<div class="panel">
 				<h3>
 					<i class="icon-info"></i>
-					{l s='Your information'}
+					{l s='Vos informations'}
 				</h3>
 				<p>
-					<strong>{l s='Your web browser:'}</strong> {$user_agent|escape:'html':'UTF-8'}
+					<strong>{l s='Votre navigateur web :'}</strong> {$user_agent|escape:'html':'UTF-8'}
 				</p>
 			</div>
 
 			<div class="panel" id="checkConfiguration">
 				<h3>
 					<i class="icon-info"></i>
-					{l s='Check your configuration'}
+					{l s='Vérifiez votre configuration'}
 				</h3>
 				<p>
-					<strong>{l s='Required parameters:'}</strong>
+					<strong>{l s='Paramètres requis :'}</strong>
 				{if !$failRequired}
 					<span class="text-success">{l s='OK'}</span>
 				</p>
 				{else}
-					<span class="text-danger">{l s='Please fix the following error(s)'}</span>
+					<span class="text-danger">{l s='Veuillez corriger la(les) erreur(s) suivante(s)'}</span>
 				</p>
 				<ul>
 					{foreach from=$testsRequired item='value' key='key'}
@@ -222,12 +222,12 @@
 				{/if}
 				{if isset($failOptional)}
 					<p>
-						<strong>{l s='Optional parameters:'}</strong>
+						<strong>{l s='Paramètres optionnels :'}</strong>
 					{if !$failOptional}
 						<span class="text-success">{l s='OK'}</span>
 					</p>
 					{else}
-						<span class="text-danger">{l s='Please fix the following error(s)'}</span>
+						<span class="text-danger">{l s='Veuillez corriger la(les) erreur(s) suivante(s)'}</span>
 					</p>
 					<ul>
 						{foreach from=$testsOptional item='value' key='key'}
@@ -245,9 +245,9 @@
 	<div class="panel">
 		<h3>
 			<i class="icon-info"></i>
-			{l s='List of changed files'}
+			{l s='Liste des fichiers modifiés'}
 		</h3>
-		<div id="changedFiles"><i class="icon-spin icon-refresh"></i> {l s='Checking files...'}</div>
+		<div id="changedFiles"><i class="icon-spin icon-refresh"></i> {l s='Vérification des fichiers...'}</div>
 	</div>
 	{/if}
 {/block}

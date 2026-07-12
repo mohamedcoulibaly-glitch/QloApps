@@ -1,5 +1,5 @@
 <div class="panel">
-	<h3><i class="icon-tag"></i> {l s='Cart rule'}</h3>
+	<h3><i class="icon-tag"></i> {l s='Règle de panier'}</h3>
 	<div class="productTabs">
 		<ul class="tab nav nav-tabs">
 			<li class="tab-row">
@@ -25,9 +25,9 @@
 		<div id="cart_rule_actions" class="panel cart_rule_tab">
 			{include file='controllers/cart_rules/actions.tpl'}
 		</div>
-		<button type="submit" class="btn btn-default pull-right" name="submitAddcart_rule" id="{$table|escape}_form_submit_btn">{l s='Save'}
+		<button type="submit" class="btn btn-default pull-right" name="submitAddcart_rule" id="{$table|escape}_form_submit_btn">{l s='Enregistrer'}
 		</button>
-		<!--<input type="submit" value="{l s='Save and stay'}" class="button" name="submitAddcart_ruleAndStay" id="" />-->
+		<!--<input type="submit" value="{l s='Enregistrer et rester'}" class="button" name="submitAddcart_ruleAndStay" id="" />-->
 	</form>
 
 	<script type="text/javascript">
@@ -35,11 +35,11 @@
 		var product_rule_counters = new Array();
 		var currentToken = '{$currentToken|escape:'quotes'}';
 		var currentFormTab = '{if isset($smarty.post.currentFormTab)}{$smarty.post.currentFormTab|escape:'quotes'}{else}informations{/if}';
-		var currentText = '{l s='Now' js=1}';
-		var closeText = '{l s='Done' js=1}';
-		var timeOnlyTitle = '{l s='Choose Time' js=1}';
-		var timeText = '{l s='Time' js=1}';
-		var hourText = '{l s='Hour' js=1}';
+		var currentText = '{l s='Maintenant' js=1}';
+		var closeText = '{l s='Terminé' js=1}';
+		var timeOnlyTitle = '{l s='Choisir l&#039;heure' js=1}';
+		var timeText = '{l s='Heure' js=1}';
+		var hourText = '{l s='Heure' js=1}';
 		var minuteText = '{l s='Minute' js=1}';
 
 		var languages = new Array();

@@ -21,51 +21,51 @@
 *}
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal"><i class="icon-remove-sign"></i></button>
-    <h4 class="modal-title"><i class="icon icon-exclamation-triangle"></i> {l s='Confirm Delete'}</h4>
-    <p>{l s='Are you sure, you want to delete this cart rule?'}</p>
+    <h4 class="modal-title"><i class="icon icon-exclamation-triangle"></i> {l s='Confirmer la suppression'}</h4>
+    <p>{l s='Êtes-vous sûr de vouloir supprimer cette règle de panier ?'}</p>
 </div>
 {if isset($cartRule)}
     <div class="modal-body">
         <div class="row">
             <div class="col-sm-4">
-                <label>{l s='Voucher'}</label>
+                <label>{l s='Bon de réduction'}</label>
                 <p class="control-value">
                     {$cartRule->code} (<a href="{$link->getAdminLink('AdminCartRules')}&updatecart_rule&id_cart_rule={$cartRule->id}" target="_blank">#{$cartRule->id}</a>)
                 </p>
             </div>
             <div class="col-sm-4">
-                <label>{l s='Reason'}</label>
+                <label>{l s='Raison'}</label>
                 <p class="control-value">
                     {if $generatedBy == CartRule::GENERATED_BY_REFUND}
-                        {l s='Generated against refund'}
+                        {l s='Généré contre un remboursement'}
                         (<a href="{$link->getAdminLink('AdminOrderRefundRequests')}&vieworder_return&id_order_return={$generatedById}" target="_blank">#{$generatedById}</a>)
                     {else if $generatedBy == CartRule::GENERATED_BY_ORDER_SLIP}
-                        {l s='Generated against credit slip'}
+                        {l s='Généré contre un avoir'}
                         (<a href="{$link->getAdminLink('AdminPdf')}&submitAction=generateOrderSlipPDF&id_order_slip={$generatedById}" target="_blank">#{$generatedById}</a>)
                     {/if}
                 </p>
             </div>
             <div class="col-sm-4">
-                <label>{l s='Amount'}</label>
+                <label>{l s='Montant'}</label>
                 <p class="control-value">{displayPrice price=$cartRule->reduction_amount currency=$cartRule->reduction_currency}</p>
             </div>
             <div class="col-sm-4">
-                <label>{l s='Customer'}</label>
+                <label>{l s='Client'}</label>
                 <p class="control-value">
                     {$customer->firstname} {$customer->lastname} (<a href="{$link->getAdminLink('AdminCustomers')}&viewcustomer&id_customer={$customer->id}" target="_blank">#{$customer->id}</a>)
                 </p>
             </div>
             <div class="col-sm-4">
-                <label>{l s='Order'}</label>
+                <label>{l s='Commande'}</label>
                 <p class="control-value">
                     {$order->reference} (<a href="{$link->getAdminLink('AdminOrders')}&vieworder&id_order={$order->id}" target="_blank">#{$order->id}</a>)
                 </p>
             </div>
             {if !$cartRule->quantity}
                 <div class="col-sm-4">
-                    <label>{l s='Status'}</label>
+                    <label>{l s='Statut'}</label>
                     <p class="control-value">
-                        <span class="badge badge-danger">{l s='Used'}</span>
+                        <span class="badge badge-danger">{l s='Utilisé'}</span>
                     </p>
                 </div>
             {/if}

@@ -137,12 +137,12 @@ class TabCore extends ObjectModel
         }
 
         /* Query definition */
-        $query = 'REPLACE INTO `'._DB_PREFIX_.'access` (`id_profile`, `id_tab`, `view`, `add`, `edit`, `delete`) VALUES ';
-        $query .= '(1, '.(int)$id_tab.', 1, 1, 1, 1),';
+        $query = 'REPLACE INTO `'._DB_PREFIX_.'access` (`id_profile`, `id_tab`, `view`, `add`, `edit`, `delete`, `kpi`) VALUES ';
+        $query .= '(1, '.(int)$id_tab.', 1, 1, 1, 1, 1),';
 
         foreach ($profiles as $profile) {
             $rights = $profile['id_profile'] == $context->employee->id_profile ? 1 : 0;
-            $query .= '('.(int)$profile['id_profile'].', '.(int)$id_tab.', '.(int)$rights.', '.(int)$rights.', '.(int)$rights.', '.(int)$rights.'),';
+            $query .= '('.(int)$profile['id_profile'].', '.(int)$id_tab.', '.(int)$rights.', '.(int)$rights.', '.(int)$rights.', '.(int)$rights.', '.(int)$rights.'),';
         }
         $query = trim($query, ', ');
         return Db::getInstance()->execute($query);

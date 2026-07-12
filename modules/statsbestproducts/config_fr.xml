@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
 	<name>statsbestproducts</name>
-	<displayName><![CDATA[Best-selling room types]]></displayName>
+	<displayName><![CDATA[Types de chambres les plus vendus]]></displayName>
 	<version><![CDATA[1.5.5]]></version>
-	<description><![CDATA[Adds a list of the best-selling room types to the Stats dashboard.]]></description>
+	<description><![CDATA[Ajoute la liste des types de chambres les plus vendus au tableau de bord des statistiques.]]></description>
 	<author><![CDATA[PrestaShop]]></author>
 	<tab><![CDATA[analytics_stats]]></tab>
 	<confirmUninstall><![CDATA[]]></confirmUninstall>

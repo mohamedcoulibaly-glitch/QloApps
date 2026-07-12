@@ -39,7 +39,7 @@
 										<div class="action-buttons">
 											<div class="btn-group">
 												<a href="{$link->getAdminLink('AdminThemes')|escape:'html':'UTF-8'}&amp;submitOptionstheme&amp;id_theme={$theme->id}" class="btn btn-default">
-													<i class="icon-check"></i> {l s='Use this theme'}
+													<i class="icon-check"></i> {l s='Utiliser ce thème'}
 												</a>
 												{if $theme->name != 'hotel-reservation-theme' || ($theme->name == 'hotel-reservation-theme'  && $host_mode == 0)}
 												<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -48,7 +48,7 @@
 												<ul class="dropdown-menu">
 													<li>
 														<a href="{$link->getAdminLink('AdminThemes')|escape:'html':'UTF-8'}&amp;deletetheme&amp;id_theme={$theme->id}" title="Delete this theme" class="delete">
-															<i class="icon-trash"></i> {l s='Delete this theme'}
+															<i class="icon-trash"></i> {l s='Supprimer ce thème'}
 														</a>
 													</li>
 												</ul>
@@ -71,7 +71,7 @@
 										<div class="action-buttons">
 											<div class="btn-group">
 												<a href="{$link->getAdminLink('AdminThemes')|escape:'html':'UTF-8'}&amp;installThemeFromFolder&amp;theme_dir={$theme.directory}" class="btn btn-default">
-													<i class="icon-check"></i> {l s='Install this theme'}
+													<i class="icon-check"></i> {l s='Installer ce thème'}
 												</a>
 												<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 													<i class="icon-caret-down"></i>&nbsp;
@@ -79,7 +79,7 @@
 												<ul class="dropdown-menu">
 													<li>
 														<a href="{$link->getAdminLink('AdminThemes')|escape:'html':'UTF-8'}&amp;deletetheme&amp;theme_dir={$theme.directory}" title="Delete this theme" class="delete">
-															<i class="icon-trash"></i> {l s='Delete this theme'}
+															<i class="icon-trash"></i> {l s='Supprimer ce thème'}
 														</a>
 													</li>
 												</ul>
@@ -122,29 +122,29 @@
 
 				{if isset($cur_theme.tc) && $cur_theme.tc}
 				<hr />
-				<h4>{l s='Customize your theme'}</h4>
+				<h4>{l s='Personnalisez votre thème'}</h4>
 				<div class="row">
 					<div class="col-sm-8">
-						<p>{l s='Customize the main elements of your theme: sliders, banners, colors, etc.'}</p>
+						<p>{l s='Personnalisez les principaux éléments de votre thème : diaporamas, bannières, couleurs, etc.'}</p>
 					</div>
 					<div class="col-sm-4">
 						<a class="btn btn-default pull-right" href="{$link->getAdminLink('AdminModules')|escape:'html':'UTF-8'}&amp;configure=themeconfigurator">
 							<i class="icon icon-list-alt"></i>
-							{l s='Theme Configurator'}
+							{l s='Configurateur de thème'}
 						</a>
 					</div>
 				</div>
 				{/if}
 				<hr />
-				<h4>{l s='Configure your theme'}</h4>
+				<h4>{l s='Configurez votre thème'}</h4>
 				<div class="row">
 					<div class="col-sm-8">
-						<p>{l s='Configure your theme\'s advanced settings, such as the number of columns you want for each page. This setting is mostly for advanced users.'}</p>
+						<p>{l s='Configure your theme&#039;s advanced settings, such as the number of columns you want for each page. This setting is mostly for advanced users.'}</p>
 					</div>
 					<div class="col-sm-4">
 						<a class="btn btn-default pull-right" href="{$link->getAdminLink('AdminThemes')|escape:'html':'UTF-8'}&amp;updatetheme&amp;id_theme={$cur_theme.theme_id}">
 							<i class="icon icon-cog"></i>
-							{l s='Advanced settings'}
+							{l s='Paramètres avancés'}
 						</a>
 					</div>
 				</div>

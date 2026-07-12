@@ -25,7 +25,7 @@
         <a href="{$link->getAdminLink('AdminOrders')}&vieworder&id_order={$id_order}" style="margin: 1px 0;" target="_blank">#{$id_order}</a>{if !$smarty.foreach.orders.last},{/if}
     {/foreach}
 {elseif $type == 'abandoned'}
-    <span class="badge badge-danger">{l s='Abandoned cart'}</span>
+    <span class="badge badge-danger">{l s='Panier abandonné'}</span>
 {elseif $type == 'non_orderd'}
-    <span class="badge badge-danger">{l s='Non-orderd cart'}</span>
+    <span class="badge badge-danger">{l s='Panier non commandé'}</span>
 {/if}

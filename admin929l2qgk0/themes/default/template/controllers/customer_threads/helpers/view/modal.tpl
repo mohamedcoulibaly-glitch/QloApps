@@ -32,28 +32,28 @@
 		</div>
 		<div class="modal-body">
 			<div class="row row-margin-bottom">
-				<label class="control-label col-lg-6">{l s='Forward this discussion to an employee:'}</label>
+				<label class="control-label col-lg-6">{l s='Transférer cette discussion à un employé :'}</label>
 				<div class="col-lg-3">
 					<select name="id_employee_forward">
-						<option value="-1">{l s='-- Choose --'}</option>
+						<option value="-1">{l s='-- Choisir --'}</option>
 						{foreach $employees as $employee}
 							<option value="{$employee.id_employee}"> {Tools::substr($employee.firstname, 0, 1)}. {$employee.lastname}</option>
 						{/foreach}
-						<option value="0">{l s='Someone else'}</option>
+						<option value="0">{l s='Quelqu&#039;un d&#039;autre'}</option>
 					</select>
 				</div>
 			</div>
 			<div id="message_forward_email" class="row row-margin-bottom" style="display:none">
-				<label class="control-label col-lg-3">{l s='Email'}</label>
+				<label class="control-label col-lg-3">{l s='E-mail'}</label>
 				<div class="col-lg-3"> 
 					<input type="email" name="email" />
 				</div>
 			</div>
 			<div id="message_forward" style="display:none;">
 				<div class="row row-margin-bottom">
-					<label class="control-label col-lg-3">{l s='Comment:'}</label>
+					<label class="control-label col-lg-3">{l s='Commentaire :'}</label>
 					<div class="col-lg-7"> 
-						<textarea name="message_forward" rows="6">{l s='You can add a comment here.'}</textarea>
+						<textarea name="message_forward" rows="6">{l s='Vous pouvez ajouter un commentaire ici.'}</textarea>
 					</div>
 				</div>
 			</div>

@@ -40,11 +40,11 @@
 
 				<b>{$limit_warning['post.max_vars']}</b> {l s='for suhosin.post.max_vars.'}<br/>
 				<b>{$limit_warning['request.max_vars']}</b> {l s='for suhosin.request.max_vars.'}<br/>
-				{l s='Please ask your hosting provider to increase the Suhosin limit to'}
+				{l s='Veuillez demander à votre hébergeur d&#039;augmenter la limite Suhosin à'}
 			{else}
 				{l s='Warning! Your PHP configuration limits the maximum number of fields allowed in a form:'}<br/>
 				<b>{$limit_warning['max_input_vars']}</b> {l s='for max_input_vars.'}<br/>
-				{l s='Please ask your hosting provider to increase this limit to'}
+				{l s='Veuillez demander à votre hébergeur d&#039;augmenter cette limite à'}
 			{/if}
 			{l s='%s at least, or you will have to edit the translation files.' sprintf=$limit_warning['needed_limit']}
 		</div>
@@ -72,29 +72,29 @@
 						<ul>
 							<li>"{l s='There are [1]%d[/1] products' tags=['<strong>']}": {l s='"%s" will be replaced by a number.' sprintf='%d'}</li>
 							<li>"{l s='List of pages in [1]%s[/1]' tags=['<strong>']}": {l s='"%s" will be replaced by a string.' sprintf='%s'}</li>
-							<li>"{l s='Feature: [1]%1$s[/1] ([1]%2$d[/1] values)' tags=['<strong>']}": {l s='The numbers enable you to reorder the variables when necessary.'}</li>
+							<li>"{l s='Feature: [1]%1$s[/1] ([1]%2$d[/1] values)' tags=['<strong>']}": {l s='Les numéros vous permettent de réorganiser les variables si nécessaire.'}</li>
 						</ul>
 					</div>
 				</div>
 				<div id="translation_mails-control-actions" class="panel-footer">
 					<a name="submitTranslations{$type|ucfirst}" href="{$cancel_url}" class="btn btn-default">
-						<i class="process-icon-cancel"></i> {l s='Cancel'}
+						<i class="process-icon-cancel"></i> {l s='Annuler'}
 					</a>
 					{*$toggle_button*}
 					<button type="submit" id="{$table}_form_submit_btn" name="submitTranslations{$type|ucfirst}" class="btn btn-default pull-right">
 						<i class="process-icon-save"></i>
-						{l s='Save'}
+						{l s='Enregistrer'}
 					</button>
 					<button type="submit" id="{$table}_form_submit_btn" name="submitTranslations{$type|ucfirst}AndStay" class="btn btn-default pull-right">
 						<i class="process-icon-save"></i>
-						{l s='Save and stay'}
+						{l s='Enregistrer et rester'}
 					</button>
 				</div>
 			</div>
 			<div class="panel">
 				<h3>
 					<i class="icon-envelope"></i>
-					{l s='Core emails'}
+					{l s='E-mails principaux'}
 					<span class="badge">
 						<i class="icon-folder"></i>
 						mails/{$lang|strtolower}/
@@ -155,7 +155,7 @@
 			<div class="panel">
 				<h3>
 					<i class="icon-puzzle-piece"></i>
-					{l s='Module emails'}
+					{l s='E-mails du module'}
 					<span class="badge">
 						<i class="icon-folder"></i>
 						modules/name_of_module/mails/{$lang|strtolower}/

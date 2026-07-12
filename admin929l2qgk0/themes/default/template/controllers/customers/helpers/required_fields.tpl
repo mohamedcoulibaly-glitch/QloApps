@@ -23,16 +23,16 @@
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 <a class="btn btn-default" href="#" onclick="if ($('.requiredFieldsParameters:visible').length == 0) $('.requiredFieldsParameters').slideDown('slow'); else $('.requiredFieldsParameters').slideUp('slow'); return false;">
-  <i class="icon-plus-sign"></i> {l s='Set required fields for this section'}
+  <i class="icon-plus-sign"></i> {l s='Définir les champs obligatoires pour cette section'}
 </a>
 <div class="clearfix">&nbsp;</div>
 <div style="display:none" class="panel requiredFieldsParameters">
-  <h3><i class="icon-asterisk"></i> {l s='Required Fields'}</h3>
+  <h3><i class="icon-asterisk"></i> {l s='Champs obligatoires'}</h3>
   <form name="updateFields" action="{$current|escape:'html':'UTF-8'}&amp;submitFields=1&amp;token={$token|escape:'html':'UTF-8'}" method="post">
     <div class="alert alert-info">
-      {l s='Select the fields you would like to be required for this section.'}
+      {l s='Sélectionnez les champs que vous souhaitez rendre obligatoires pour cette section.'}
       <br/>
-      {l s='Please make sure you are complying with the opt-in legislation applicable in your country.'}
+      {l s='Veuillez vous assurer de respecter la législation sur l&#039;opt-in applicable dans votre pays.'}
     </div>
     <div class="row">
       <table class="table">
@@ -41,7 +41,7 @@
             <th class="fixed-width-xs">
               <input type="checkbox" onclick="checkDelBoxes(this.form, 'fieldsBox[]', this.checked)" class="noborder" name="checkme">
             </th>
-            <th><span class="title_box">{l s='Field Name'}</span></th>
+            <th><span class="title_box">{l s='Nom du champ'}</span></th>
           </tr>
         </thead>
         <tbody>
@@ -62,7 +62,7 @@
     </div>
     <div class="panel-footer">
       <button name="submitFields" type="submit" class="btn btn-default pull-right">
-        <i class="process-icon-save "></i> <span>{l s='Save'}</span>
+        <i class="process-icon-save "></i> <span>{l s='Enregistrer'}</span>
       </button>
     </div>
   </form>

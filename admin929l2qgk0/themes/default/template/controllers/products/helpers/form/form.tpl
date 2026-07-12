@@ -51,7 +51,7 @@
 						count = tinyMCE.activeEditor.getBody().textContent.length;
 						rest = max - count;
 						if (rest < 0)
-							textarea.parent('div').find('span.counter').html('<span style="color:red;">{l s='Maximum'} '+ max +' {l s='characters'} : '+rest+'</span>');
+							textarea.parent('div').find('span.counter').html('<span style="color:red;">{l s='Maximum'} '+ max +' {l s='caractères'} : '+rest+'</span>');
 						else
 							textarea.parent('div').find('span.counter').html(' ');
 					}
@@ -253,16 +253,16 @@
 			// <![CDATA[
 				ThickboxI18nImage = "{l s='Image'}";
 				ThickboxI18nOf = "{l s='of'}";
-				ThickboxI18nClose = "{l s='Close'}";
+				ThickboxI18nClose = "{l s='Fermer'}";
 				ThickboxI18nOrEscKey = "{l s='(or "Esc")'}";
-				ThickboxI18nNext = "{l s='Next >'}";
+				ThickboxI18nNext = "{l s='Suivant >'}";
 				ThickboxI18nPrev = "{l s='< Previous'}";
 				tb_pathToImage = "../img/loadingAnimation.gif";
 			//]]>
 		</script>
 
 		<div id="product-tab-content-wait" style="display:none">
-			<div id="loading"><i class="icon-refresh icon-spin"></i>&nbsp;{l s='Loading...'}</div>
+			<div id="loading"><i class="icon-refresh icon-spin"></i>&nbsp;{l s='Chargement...'}</div>
 		</div>
 
 		<form id="product_form" class="form-horizontal col-lg-10 col-md-9" action="{$form_action|escape:'html':'UTF-8'}" method="post" enctype="multipart/form-data" name="product" novalidate>
@@ -276,8 +276,8 @@
 			{/if}
 			{if !$product->active && $product->isAssociatedToShop()}
 			<div class="alert alert-info draft" >
-				{l s='Your room type will be saved as a draft.'}
-				<a href="#" class="btn btn-default" onclick="submitAddProductAndPreview()" ><i class="icon-eye-open"></i>&nbsp;{l s='Save and preview'}</a>
+				{l s='Votre type de chambre sera enregistré en brouillon.'}
+				<a href="#" class="btn btn-default" onclick="submitAddProductAndPreview()" ><i class="icon-eye-open"></i>&nbsp;{l s='Enregistrer et aperçu'}</a>
 				<input type="hidden" name="fakeSubmitAddProductAndPreview" id="fakeSubmitAddProductAndPreview" />
 			</div>
 			{/if}

@@ -34,7 +34,7 @@
 {block name="input"}
 	{if $input.type == 'radio' && $input.name == 'combination' && $input.disabled}
 		<div class="alert alert-warning">
-			{l s='This feature cannot be disabled because it is currently in use.'}
+			{l s='Cette fonctionnalité ne peut pas être désactivée car elle est actuellement utilisée.'}
 		</div>
 	{/if}
 	{$smarty.block.parent}
@@ -44,15 +44,15 @@
 	{$smarty.block.parent}
 	{if $input.type == 'radio' && $input.name == 'combination'}
 		<ul>
-			<li>{l s='Combinations tab on product page'}</li>
-			<li>{l s='Value'}</li>
-			<li>{l s='Attribute'}</li>
+			<li>{l s='Onglet combinaisons sur la page produit'}</li>
+			<li>{l s='Valeur'}</li>
+			<li>{l s='Attribut'}</li>
 		</ul>
 	{elseif $input.type == 'radio' && $input.name == 'feature'}
 		<ul>
-			<li>{l s='Features tab on product page'}</li>
-			<li>{l s='Feature'}</li>
-			<li>{l s='Feature value'}</li>
+			<li>{l s='Onglet caractéristiques sur la page produit'}</li>
+			<li>{l s='Caractéristique'}</li>
+			<li>{l s='Valeur de caractéristique'}</li>
 		</ul>
 	{/if}
 {/block}
@@ -63,13 +63,13 @@
 			<div class="form-group">
 				<div class="col-lg-9 col-lg-push-3">
 					<button id="addMemcachedServer" class="btn btn-default" type="button" >
-						<i class="icon-plus-sign-alt"></i>&nbsp;{l s='Add server'}
+						<i class="icon-plus-sign-alt"></i>&nbsp;{l s='Ajouter un serveur'}
 					</button>
 				</div>
 			</div>
 			<div id="formMemcachedServer" style="display:none;">
 					<div class="form-group">
-						<label class="control-label col-lg-3">{l s='IP Address'} </label>
+						<label class="control-label col-lg-3">{l s='Adresse IP'} </label>
 						<div class="col-lg-9">
 							<input class="form-control" type="text" name="memcachedIp" />
 						</div>
@@ -81,15 +81,15 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-lg-3">{l s='Weight'} </label>
+						<label class="control-label col-lg-3">{l s='Poids'} </label>
 						<div class="col-lg-9">
 							<input class="form-control" type="text" name="memcachedWeight" value="1" />
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-lg-9 col-lg-push-3">
-							<input type="submit" value="{l s='Add Server'}" name="submitAddServer" class="btn btn-default" />
-							<input type="button" value="{l s='Test Server'}" id="testMemcachedServer" class="btn btn-default" />
+							<input type="submit" value="{l s='Ajouter un serveur'}" name="submitAddServer" class="btn btn-default" />
+							<input type="button" value="{l s='Tester le serveur'}" id="testMemcachedServer" class="btn btn-default" />
 	                	</div>
 					</div>
 			</div>
@@ -99,9 +99,9 @@
 					<thead>
 						<tr>
 							<th class="fixed-width-xs"><span class="title_box">{l s='ID'}</span></th>
-							<th><span class="title_box">{l s='IP address'}</span></th>
+							<th><span class="title_box">{l s='Adresse IP'}</span></th>
 							<th class="fixed-width-xs"><span class="title_box">{l s='Port'}</span></th>
-							<th class="fixed-width-xs"><span class="title_box">{l s='Weight'}</span></th>
+							<th class="fixed-width-xs"><span class="title_box">{l s='Poids'}</span></th>
 							<th>&nbsp;</th>
 						</tr>
 					</thead>
@@ -113,7 +113,7 @@
 						<td>{$server.port}</td>
 						<td>{$server.weight}</td>
 						<td>
-							<a class="btn btn-default" href="{$currentIndex|escape:'html':'UTF-8'}&amp;token={$token|escape:'html':'UTF-8'}&amp;deleteMemcachedServer={$server.id_memcached_server}" onclick="if (!confirm('{l s='Do you really want to remove the server %s:%s' sprintf=[$server.ip, $server.port] js=1}')) return false;"><i class="icon-minus-sign-alt"></i> {l s='Remove'}</a>
+							<a class="btn btn-default" href="{$currentIndex|escape:'html':'UTF-8'}&amp;token={$token|escape:'html':'UTF-8'}&amp;deleteMemcachedServer={$server.id_memcached_server}" onclick="if (!confirm('{l s='Do you really want to remove the server %s:%s' sprintf=[$server.ip, $server.port] js=1}')) return false;"><i class="icon-minus-sign-alt"></i> {l s='Retirer'}</a>
 						</td>
 					</tr>
 				{/foreach}

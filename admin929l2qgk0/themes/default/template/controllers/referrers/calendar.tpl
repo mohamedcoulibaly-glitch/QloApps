@@ -34,7 +34,7 @@
 					<input type="submit" name="submitDateMonthPrev" class="btn btn-default submitDateMonthPrev" value="{$translations.Month}-1" />
 					<input type="submit" name="submitDateYearPrev" class="btn btn-default submitDateYearPrev" value="{$translations.Year}-1" />
 					<p>
-						<span>{if isset($translations.From)}{$translations.From}{else}{l s='From:'}{/if}</span>
+						<span>{if isset($translations.From)}{$translations.From}{else}{l s='Du :'}{/if}</span>
 						<input type="text" name="datepickerFrom" id="datepickerFrom" value="{$datepickerFrom|escape}" class="datepicker" />
 					</p>
 					<p>
@@ -42,7 +42,7 @@
 						<input type="text" name="datepickerTo" id="datepickerTo" value="{$datepickerTo|escape}" class="datepicker" />
 					</p>
 					<button type="submit" name="submitDatePicker" id="submitDatePicker" class="btn btn-default">
-						<i class="icon-save"></i> {if isset($translations.Save)}{$translations.Save}{else}{l s='Save'}{/if}
+						<i class="icon-save"></i> {if isset($translations.Save)}{$translations.Save}{else}{l s='Enregistrer'}{/if}
 					</button>
 				</div>
 			</form>

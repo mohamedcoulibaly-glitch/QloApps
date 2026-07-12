@@ -23,14 +23,14 @@
 	<div class="col-lg-12">
 		<input id="{$id|escape:'html':'UTF-8'}" type="file" name="{$name|escape:'html':'UTF-8'}[]"{if isset($url)} data-url="{$url}"{/if}{if isset($multiple) && $multiple} multiple="multiple"{/if} style="width:0px;height:0px;" />
 		<button class="btn btn-default" data-style="expand-right" data-size="s" type="button" id="{$id|escape:'html':'UTF-8'}-add-button">
-			<i class="icon-folder-open"></i> {if isset($multiple) && $multiple}{l s='Add files...'}{else}{l s='Add file...'}{/if}
+			<i class="icon-folder-open"></i> {if isset($multiple) && $multiple}{l s='Ajouter des fichiers...'}{else}{l s='Ajouter un fichier...'}{/if}
 		</button>
 	</div>
 </div>
 <div class="well" style="display:none">
 	<div id="{$id|escape:'html':'UTF-8'}-files-list"></div>
 	<button class="ladda-button btn btn-primary" data-style="expand-right" type="button" id="{$id|escape:'html':'UTF-8'}-upload-button" style="display:none;">
-		<span class="ladda-label"><i class="icon-check"></i> {if isset($multiple) && $multiple}{l s='Upload files'}{else}{l s='Upload file'}{/if}</span>
+		<span class="ladda-label"><i class="icon-check"></i> {if isset($multiple) && $multiple}{l s='Télécharger les fichiers'}{else}{l s='Télécharger le fichier'}{/if}</span>
 	</button>
 </div>
 <div class="row" style="display:none">
@@ -142,7 +142,7 @@
 			data.context = $('<div/>').addClass('form-group').appendTo($('#{$id|escape:'html':'UTF-8'}-files-list'));
 			var file_name = $('<span/>').append('<i class="icon-picture-o"></i> <strong>'+data.files[0].name+'</strong> ('+humanizeSize(data.files[0].size)+')').appendTo(data.context);
 
-			var button = $('<button/>').addClass('btn btn-default pull-right').prop('type', 'button').html('<i class="icon-trash"></i> {l s='Remove file'}').appendTo(data.context).on('click', function() {
+			var button = $('<button/>').addClass('btn btn-default pull-right').prop('type', 'button').html('<i class="icon-trash"></i> {l s='Supprimer le fichier'}').appendTo(data.context).on('click', function() {
 				{$id|escape:'html':'UTF-8'}_total_files--;
 				data.files = null;
 

@@ -29,20 +29,20 @@
 	var labelNext = '{$labels.next|addslashes}';
 	var labelPrevious = '{$labels.previous|addslashes}';
 	var	labelFinish = '{$labels.finish|addslashes}';
-	var	labelDelete = '{l s='Delete' js=1}';
-	var	labelValidate = '{l s='Validate' js=1}';
+	var	labelDelete = '{l s='Supprimer' js=1}';
+	var	labelValidate = '{l s='Valider' js=1}';
 	var validate_url = '{$validate_url|addslashes}';
 	var carrierlist_url = '{$carrierlist_url|addslashes}';
 	var nbr_steps = {$wizard_steps.steps|count};
 	var enableAllSteps = {if $enableAllSteps|intval == 1}true{else}false{/if};
-	var need_to_validate = '{l s='Please validate the last range before create a new one.' js=1}';
-	var delete_range_confirm = '{l s='Are you sure to delete this range ?' js=1}';
+	var need_to_validate = '{l s='Veuillez valider la dernière plage avant d&#039;en créer une nouvelle.' js=1}';
+	var delete_range_confirm = '{l s='Êtes-vous sûr de vouloir supprimer cette plage ?' js=1}';
 	var currency_sign = '{$currency_sign}';
 	var PS_WEIGHT_UNIT = '{$PS_WEIGHT_UNIT}';
-	var invalid_range = '{l s='This range is not valid' js=1}';
-	var overlapping_range = '{l s='Ranges are overlapping' js=1}';
-	var range_is_overlapping = '{l s='Ranges are overlapping' js=1}';
-	var select_at_least_one_zone = '{l s='Please select at least one zone' js=1}';
+	var invalid_range = '{l s='Cette plage n&#039;est pas valide' js=1}';
+	var overlapping_range = '{l s='Les plages se chevauchent' js=1}';
+	var range_is_overlapping = '{l s='Les plages se chevauchent' js=1}';
+	var select_at_least_one_zone = '{l s='Veuillez sélectionner au moins une zone' js=1}';
 	var multistore_enable = '{$multistore_enable}';
 </script>
 

@@ -41,7 +41,7 @@
 				</div>
 			{else}
 				<div class="alert alert-success">
-					{l s='There are no alerts regarding your modules.'}
+					{l s='Il n&#039;y a pas d&#039;alertes concernant vos modules.'}
 				</div>
 			{/if}
 		</div>
@@ -49,7 +49,7 @@
 			<hr>
 			{if $upgrade_available|@count}
 				<div class="alert alert-info">
-					{l s='An upgrade is available for some of your modules!'}
+					{l s='Une mise à jour est disponible pour certains de vos modules !'}
 					<ul>
 					{foreach from=$upgrade_available item='module'}
 						<li><a href="{$currentIndex|escape:'html':'UTF-8'}&amp;token={$token|escape:'html':'UTF-8'}&amp;anchor={$module.anchor|escape:'html':'UTF-8'}"><b>{$module.displayName|escape:'html':'UTF-8'}</b></a></li>
@@ -58,7 +58,7 @@
 				</div>
 			{else}
 				<div class="alert alert-success">
-					{l s='All modules are up to date!'}
+					{l s='Tous les modules sont à jour !'}
 				</div>
 			{/if}
 		</div>
@@ -75,12 +75,12 @@
 <div id="module_install" class="row" style="{if !isset($smarty.post.downloadflag)}display: none;{/if}">
 	<div class="panel col-lg-12">
 		<form id="module_install_form" action="{$currentIndex|escape:'html':'UTF-8'}&amp;token={$token|escape:'html':'UTF-8'}" method="post" enctype="multipart/form-data" class="form-horizontal">
-			<h3>{l s='Add a new module'}</h3>
+			<h3>{l s='Ajouter un nouveau module'}</h3>
 			<p class="alert alert-info">{l s='The module must either be a Zip file (.zip) or a tarball file (.tar, .tar.gz, .tgz).'}</p>
 			<div class="form-group">
 				<label for="file" class="control-label col-lg-3">
-					<span class="label-tooltip" data-toggle="tooltip" title="{l s='Upload a module from your computer.'}">
-						{l s='Module file'}
+					<span class="label-tooltip" data-toggle="tooltip" title="{l s='Télécharger un module depuis votre ordinateur.'}">
+						{l s='Fichier module'}
 					</span>
 				</label>
 				<div class="col-sm-9">
@@ -92,7 +92,7 @@
 								<input id="file-name" type="text" class="disabled" name="filename" readonly />
 								<span class="input-group-btn">
 									<button id="file-selectbutton" type="button" name="submitAddAttachments" class="btn btn-default">
-										<i class="icon-folder-open"></i> {l s='Choose a file'}
+										<i class="icon-folder-open"></i> {l s='Choisir un fichier'}
 									</button>
 								</span>
 							</div>
@@ -104,22 +104,22 @@
 				<div class="col-lg-9 col-lg-push-3">
 					<button class="btn btn-default" type="submit" name="uploadAndInstall">
 						<i class="icon-upload-alt" ></i>
-						{l s='Upload  and install this module'}
+						{l s='Télécharger et installer ce module'}
 					</button>
 				</div>
 			</div>
 			<div id="module_install_status" class="form-group" style="display:none">
 				<div class="col-lg-6 col-lg-push-3">
 					<ul class="list-unstyled">
-						<li class="mod_status_upload" style="display:none"><i class="icon-refresh icon-spin"></i>&nbsp;{l s='Uploading module.'}</li>
-						<li class="mod_status_check" style="display:none"><i class="icon-refresh icon-spin"></i>&nbsp;{l s='Checking module if module is trusted.'}</li>
-						<li class="mod_status_install" style="display:none"><i class="icon-refresh icon-spin"></i>&nbsp;{l s='Installing module.'}</li>
-						<li class="mod_status_update" style="display:none"><i class="icon-refresh icon-spin"></i>&nbsp;{l s='Module already installed, checking and installing updates.'}</li>
-						<li class="mod_status_rollback" style="display:none"><i class="icon-refresh icon-spin"></i>&nbsp;{l s='Rolling back changes.'}</li>
+						<li class="mod_status_upload" style="display:none"><i class="icon-refresh icon-spin"></i>&nbsp;{l s='Téléchargement du module.'}</li>
+						<li class="mod_status_check" style="display:none"><i class="icon-refresh icon-spin"></i>&nbsp;{l s='Vérification si le module est de confiance.'}</li>
+						<li class="mod_status_install" style="display:none"><i class="icon-refresh icon-spin"></i>&nbsp;{l s='Installation du module.'}</li>
+						<li class="mod_status_update" style="display:none"><i class="icon-refresh icon-spin"></i>&nbsp;{l s='Module déjà installé, vérification et installation des mises à jour.'}</li>
+						<li class="mod_status_rollback" style="display:none"><i class="icon-refresh icon-spin"></i>&nbsp;{l s='Annulation des modifications.'}</li>
 					</ul>
 					<div class="install_msg"></div>
 					<div class="install_errors" style="display:none">
-						{l s='Errors.'}
+						{l s='Erreurs.'}
 						<div class="list"></div>
 					</div>
 				</div>
@@ -131,7 +131,7 @@
 <div class="panel">
 	<div class="panel-heading">
 		<i class="icon-list-ul"></i>
-		{l s='Modules list'}
+		{l s='Liste des modules'}
 	</div>
 	<!--start sidebar module-->
 	<div class="row">
@@ -142,14 +142,14 @@
 						<span class="input-group-addon">
 							<i class="icon-search"></i>
 						</span>
-						<input class="form-control" placeholder="{l s='Search'}" type="text" value="" name="moduleQuicksearch" id="moduleQuicksearch" autocomplete="off" />
+						<input class="form-control" placeholder="{l s='Rechercher'}" type="text" value="" name="moduleQuicksearch" id="moduleQuicksearch" autocomplete="off" />
 					</div>
 				</form>
 				<a class="categoryModuleFilterLink list-group-item {if isset($categoryFiltered.favorites)}active{/if}" href="{$currentIndex|escape:'html':'UTF-8'}&amp;token={$token|escape:'html':'UTF-8'}&amp;filterCategory=favorites" id="filter_favorite">
 					{l s='Favorites'} <span id="favorite-count" class="badge pull-right">{$nb_modules_favorites}</span>
 				</a>
 				<a class="categoryModuleFilterLink list-group-item {if count($categoryFiltered) lte 0}active{/if}" href="{$currentIndex|escape:'html':'UTF-8'}&amp;token={$token|escape:'html':'UTF-8'}&amp;unfilterCategory=yes" id="filter_all">
-					{l s='All'} <span class="badge pull-right">{$nb_modules}</span>
+					{l s='Tout'} <span class="badge pull-right">{$nb_modules}</span>
 				</a>
 				{foreach from=$list_modules_categories item=module_category key=module_category_key}
 					<a class="categoryModuleFilterLink list-group-item {if isset($categoryFiltered[$module_category_key])}active{/if}" href="{$currentIndex|escape:'html':'UTF-8'}&amp;token={$token|escape:'html':'UTF-8'}&amp;filterCategory={$module_category_key}" id="filter_{$module_category_key}">

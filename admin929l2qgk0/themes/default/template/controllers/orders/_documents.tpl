@@ -1,4 +1,4 @@
-{*
+﻿{*
 * 2007-2017 PrestaShop
 *
 * NOTICE OF LICENSE
@@ -33,10 +33,10 @@
 					<span class="title_box ">{l s='Document'}</span>
 				</th>
 				<th>
-					<span class="title_box ">{l s='Number'}</span>
+					<span class="title_box ">{l s='Numéro'}</span>
 				</th>
 				<th>
-					<span class="title_box ">{l s='Amount'}</span>
+					<span class="title_box ">{l s='Montant'}</span>
 				</th>
 				<th><span class="title_box ">{l s='Note'}</span></th>
 			</tr>
@@ -52,16 +52,16 @@
                         <td>{dateFormat date=$document->date_add}</td>
                         <td>
                             {if get_class($document) eq 'OrderInvoice'}
-                                {l s='Invoice'}
+                                {l s='Facture'}
                             {elseif get_class($document) eq 'OrderSlip'}
-                                {l s='Credit Slip'}
+                                {l s='Avoir'}
                             {/if}
                         </td>
                         <td>
                             {if get_class($document) eq 'OrderInvoice'}
-                                <a class="_blank" title="{l s='See the document'}" href="{$link->getAdminLink('AdminPdf')|escape:'html':'UTF-8'}&amp;submitAction=generateInvoicePDF&amp;id_order_invoice={$document->id}">
+                                <a class="btn btn-default" target="_blank" rel="noopener noreferrer" title="{l s='Voir le document'}" href="{$link->getAdminLink('AdminPdf')|escape:'html':'UTF-8'}&amp;submitAction=generateInvoicePDF&amp;id_order_invoice={$document->id}">
                             {elseif get_class($document) eq 'OrderSlip'}
-                                <a class="_blank" title="{l s='See the document'}" href="{$link->getAdminLink('AdminPdf')|escape:'html':'UTF-8'}&amp;submitAction=generateOrderSlipPDF&amp;id_order_slip={$document->id}">
+                                <a class="btn btn-default" target="_blank" rel="noopener noreferrer" title="{l s='Voir le document'}" href="{$link->getAdminLink('AdminPdf')|escape:'html':'UTF-8'}&amp;submitAction=generateOrderSlipPDF&amp;id_order_slip={$document->id}">
                             {/if}
                             {if get_class($document) eq 'OrderInvoice'}
                                 {$document->getInvoiceNumberFormatted($current_id_lang, $order->id_shop)}
@@ -76,9 +76,9 @@
                             {if $document->getTotalPaid()}
                                 <span>
                                 {if $document->getRestPaid() > 0}
-                                    ({displayPrice price=$document->getRestPaid() currency=$currency->id} {l s='not paid'})
+                                    ({displayPrice price=$document->getRestPaid() currency=$currency->id} {l s='non payé'})
                                 {elseif $document->getRestPaid() < 0}
-                                    ({displayPrice price=-$document->getRestPaid() currency=$currency->id} {l s='overpaid'})
+                                    ({displayPrice price=-$document->getRestPaid() currency=$currency->id} {l s='trop-perçu'})
                                 {/if}
                                 </span>
                             {/if}
@@ -88,16 +88,16 @@
                         </td>
                         <td class="document_action">
                             {if get_class($document) eq 'OrderInvoice'}
-                                <a href="#" class="btn btn-default add_document_note" data-id_order_invoice="{$document->id}" data-edit_note="{$document->note|escape:'html':'UTF-8'}" title="{if $document->note eq ''}{l s='Add note'}{else}{l s='Edit note'}{/if}">
+                                <a href="#" class="btn btn-default add_document_note" data-id_order_invoice="{$document->id}" data-edit_note="{$document->note|escape:'html':'UTF-8'}" title="{if $document->note eq ''}{l s='Ajouter une note'}{else}{l s='Modifier la note'}{/if}">
                                     {if $document->note eq ''}
-                                        <i class="icon-file-alt"></i> &nbsp;{l s='Add note'}
+                                        <i class="icon-file-alt"></i> &nbsp;{l s='Ajouter une note'}
                                     {else}
-                                        <i class="icon-pencil"></i> &nbsp;{l s='Edit note'}
+                                        <i class="icon-pencil"></i> &nbsp;{l s='Modifier la note'}
                                     {/if}
                                 </a>
                                 {if $can_edit && $document->getRestPaid()}
-                                    <a href="#form_add_payment_panel" class="btn btn-default js-set-payment anchor pull-right" data-amount="{$document->getRestPaid()}" data-id-invoice="{$document->id}" title="{l s='Set payment form'}">
-                                        <i class="icon-money"></i> &nbsp;{l s='Enter payment'}
+                                    <a href="#form_add_payment_panel" class="btn btn-default js-set-payment anchor pull-right" data-amount="{$document->getRestPaid()}" data-id-invoice="{$document->id}" title="{l s='Formulaire de paiement'}">
+                                        <i class="icon-money"></i> &nbsp;{l s='Saisir le paiement'}
                                     </a>
                                 {/if}
                             {/if}
@@ -109,7 +109,7 @@
 					<td colspan="5" class="list-empty">
 						<div class="list-empty-msg">
 							<i class="icon-warning-sign list-empty-icon"></i>
-							{l s='There is no available document'}
+							{l s='Aucun document disponible'}
 						</div>
 					</td>
 				</tr>
@@ -120,7 +120,7 @@
     {if $can_edit && !$orderDocuments|count && isset($invoice_management_active) && $invoice_management_active}
         <div class="well hidden-print">
             <a class="btn btn-primary" href="{$current_index}&amp;viewOrder&amp;submitGenerateInvoice&amp;id_order={$order->id}{if isset($smarty.get.token)}&amp;token={$smarty.get.token|escape:'html':'UTF-8'}{/if}">
-                <i class="icon-file-text"></i> {l s='Generate invoice'}
+                <i class="icon-file-text"></i> {l s='Générer la facture'}
             </a>
         </div>
     {/if}

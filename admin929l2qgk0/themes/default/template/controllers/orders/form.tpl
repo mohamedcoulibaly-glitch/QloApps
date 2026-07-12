@@ -36,8 +36,8 @@
 	var currencies = new Array();
 	var id_currency = '';
 	var id_lang = '';
-	//var txt_show_carts = '{l s='Show carts and orders for this customer.' js=1}';
-	//var txt_hide_carts = '{l s='Hide carts and orders for this customer.' js=1}';
+	//var txt_show_carts = '{l s='Afficher les paniers et commandes de ce client.' js=1}';
+	//var txt_hide_carts = '{l s='Masquer les paniers et commandes de ce client.' js=1}';
 	var customization_errors = false;
 	var pic_dir = '{$pic_dir}';
 	var currency_format = 5;
@@ -94,7 +94,7 @@
 					},
 					parse: function(data) {
 						if (!data.found)
-							$('#vouchers_err').html('{l s='No voucher was found'}').show();
+							$('#vouchers_err').html('{l s='Aucun bon de réduction trouvé'}').show();
 						else
 							$('#vouchers_err').hide();
 						var mytab = new Array();
@@ -137,7 +137,7 @@
 
 		/*By Webkul to delete the rooms added in the cart*/
 		$('body').on('click', '.delete_hotel_cart_data', function(){
-			if (confirm("{l s='Are you sure?'}"))
+			if (confirm("{l s='Êtes-vous sûr ?'}"))
         	{
                 var idCart = $(this).data('id_cart');
 				$.ajax({
@@ -158,7 +158,7 @@
 					{
 						if (data.status == 'deleted')
 						{
-							showSuccessMessage("{l s='Remove successful'}");
+							showSuccessMessage("{l s='Suppression réussie'}");
 							if (data.cart_rooms)
 								window.location.href = "{$link->getAdminLink('AdminOrders',true)}" + '&addorder&cart_id=' + idCart;
 							else
@@ -166,7 +166,7 @@
 						}
 						else
 						{
-							alert("l s='Some error occured.please try again.'}");
+							alert("{l s='Une erreur s&#039;est produite. Veuillez réessayer.'}");
 						}
 					}
 				});
@@ -175,7 +175,7 @@
 		});
 
 		$('body').on('click', '.delete_service_product', function(){
-			if (confirm("{l s='Are you sure?'}"))
+			if (confirm("{l s='Êtes-vous sûr ?'}"))
         	{
                 $(".loading_overlay").show();
 				$.ajax({
@@ -193,7 +193,7 @@
 					{
 						if (data.status == 'deleted')
 						{
-							showSuccessMessage("{l s='Remove successful'}");
+							showSuccessMessage("{l s='Suppression réussie'}");
 							location.reload();
 							{* if (data.cart_rooms)
 								location.reload();
@@ -202,7 +202,7 @@
 						}
 						else
 						{
-							alert("l s='Some error occured.please try again.'}");
+							alert("{l s='Une erreur s&#039;est produite. Veuillez réessayer.'}");
 						}
 					},
                     complete: function(){
@@ -918,15 +918,15 @@
 						html += '<span>'+this.email+'</span><br/>';
 						html += '<span class="text-muted">'+((this.birthday != '0000-00-00') ? this.birthday : '')+'</span><br/>';
 						html += '<div class="panel-footer">';
-						html += '<a href="{$link->getAdminLink('AdminCustomers')}&id_customer='+this.id_customer+'&viewcustomer&liteDisplaying=1" class="btn btn-default fancybox"><i class="icon-search"></i> {l s='Details'}</a>';
-						html += '<button type="button" data-id_cart="'+id_cart+'" data-customer="'+this.id_customer+'" class="setup-customer btn btn-default pull-right"><i class="icon-arrow-right"></i> {l s='Choose'}</button>';
+						html += '<a href="{$link->getAdminLink('AdminCustomers')}&id_customer='+this.id_customer+'&viewcustomer&liteDisplaying=1" class="btn btn-default fancybox"><i class="icon-search"></i> {l s='Détails'}</a>';
+						html += '<button type="button" data-id_cart="'+id_cart+'" data-customer="'+this.id_customer+'" class="setup-customer btn btn-default pull-right"><i class="icon-arrow-right"></i> {l s='Choisir'}</button>';
 						html += '</div>';
 						html += '</div>';
 						html += '</div>';
 					});
 				}
 				else
-					html = '<div class="alert alert-warning"><i class="icon-warning-sign"></i>&nbsp;{l s='No customers found'}</div>';
+					html = '<div class="alert alert-warning"><i class="icon-warning-sign"></i>&nbsp;{l s='Aucun client trouvé'}</div>';
 				$('#customers').html(html);
 				resetBind();
 			}
@@ -979,8 +979,8 @@
 						html_carts += '<td>'+this.date_add+'</td>';
 						html_carts += '<td>'+this.total_price+'</td>';
 						html_carts += '<td class="text-right">';
-						html_carts += '<a title="{l s='View this cart'}" class="fancybox btn btn-default" href="index.php?tab=AdminCarts&id_cart='+this.id_cart+'&viewcart&token={getAdminToken tab='AdminCarts'}&liteDisplaying=1#"><i class="icon-search"></i>&nbsp;{l s="Details"}</a>';
-						html_carts += '&nbsp;<a href="#" title="{l s='Use this cart'}" class="use_cart btn btn-default" rel="'+this.id_cart+'"><i class="icon-arrow-right"></i>&nbsp;{l s="Use"}</a>';
+						html_carts += '<a title="{l s='Voir ce panier'}" class="fancybox btn btn-default" href="index.php?tab=AdminCarts&id_cart='+this.id_cart+'&viewcart&token={getAdminToken tab='AdminCarts'}&liteDisplaying=1#"><i class="icon-search"></i>&nbsp;{l s="Détails"}</a>';
+						html_carts += '&nbsp;<a href="#" title="{l s='Utiliser ce panier'}" class="use_cart btn btn-default" rel="'+this.id_cart+'"><i class="icon-arrow-right"></i>&nbsp;{l s="Utiliser"}</a>';
 						html_carts += '</td>';
 						html_carts += '</tr>';
 					});
@@ -989,8 +989,8 @@
 						html_orders += '<tr>';
 						html_orders += '<td>'+this.id_order+'</td><td>'+this.date_add+'</td><td>'+(this.nb_products ? this.nb_products : '0')+'</td><td>'+this.total_paid_real+'</span></td><td>'+this.payment+'</td><td>'+this.order_state+'</td>';
 						html_orders += '<td class="text-right">';
-						html_orders += '<a href="{$link->getAdminLink('AdminOrders')}&id_order='+this.id_order+'&vieworder&liteDisplaying=1#" title="{l s='View this order'}" class="fancybox btn btn-default"><i class="icon-search"></i>&nbsp;{l s="Details"}</a>';
-						html_orders += '&nbsp;<a href="#" "title="{l s='Duplicate this order'}" class="duplicate_order btn btn-default" rel="'+this.id_order+'"><i class="icon-arrow-right"></i>&nbsp;{l s="Use"}</a>';
+						html_orders += '<a href="{$link->getAdminLink('AdminOrders')}&id_order='+this.id_order+'&vieworder&liteDisplaying=1#" title="{l s='Voir cette commande'}" class="fancybox btn btn-default"><i class="icon-search"></i>&nbsp;{l s="Détails"}</a>';
+						html_orders += '&nbsp;<a href="#" "title="{l s='Dupliquer cette commande'}" class="duplicate_order btn btn-default" rel="'+this.id_order+'"><i class="icon-arrow-right"></i>&nbsp;{l s="Utiliser"}</a>';
 						html_orders += '</td>';
 						html_orders += '</tr>';
 					});
@@ -1023,7 +1023,7 @@
 		else
 		{
 			$('#carrier_form').hide();
-			$('#carriers_err').show().html('{l s='No carrier can be applied to this order'}');
+			$('#carriers_err').show().html('{l s='Aucun transporteur ne peut être appliqué à cette commande'}');
 		}
 	}
 
@@ -1058,8 +1058,8 @@
 					else
 						customization_errors = false;
 					$('#products_found').show();
-					products_found += '<label class="control-label col-lg-3">{l s='Product'}</label><div class="col-lg-6"><select id="id_product" onchange="display_product_attributes();display_product_customizations();"></div>';
-					attributes_html += '<label class="control-label col-lg-3">{l s='Combination'}</label><div class="col-lg-6">';
+					products_found += '<label class="control-label col-lg-3">{l s='Produit'}</label><div class="col-lg-6"><select id="id_product" onchange="display_product_attributes();display_product_customizations();"></div>';
+					attributes_html += '<label class="control-label col-lg-3">{l s='Combinaison'}</label><div class="col-lg-6">';
 					$.each(res.products, function() {
 						products_found += '<option '+(this.combinations.length > 0 ? 'rel="'+this.qty_in_stock+'"' : '')+' value="'+this.id_product+'">'+this.name+(this.combinations.length == 0 ? ' - '+this.formatted_price : '')+'</option>';
 						attributes_html += '<select class="id_product_attribute" id="ipa_'+this.id_product+'" style="display:none;">';
@@ -1067,7 +1067,7 @@
 						stock[id_product] = new Array();
 						if (this.customizable == '1' || this.customizable == '2')
 						{
-							customization_html += '<div class="bootstrap"><div class="panel"><div class="panel-heading">{l s='Customization'}</div><form id="customization_'+id_product+'" class="id_customization" method="post" enctype="multipart/form-data" action="'+admin_cart_link+'" style="display:none;">';
+							customization_html += '<div class="bootstrap"><div class="panel"><div class="panel-heading">{l s='Personnalisation'}</div><form id="customization_'+id_product+'" class="id_customization" method="post" enctype="multipart/form-data" action="'+admin_cart_link+'" style="display:none;">';
 							customization_html += '<input type="hidden" name="id_product" value="'+id_product+'" />';
 							customization_html += '<input type="hidden" name="id_cart" value="'+id_cart+'" />';
 							customization_html += '<input type="hidden" name="action" value="updateCustomizationFields" />';
@@ -1110,7 +1110,7 @@
 				else
 				{
 					$('#products_found').hide();
-					$('#products_err').html('{l s='No products found'}');
+					$('#products_err').html('{l s='Aucun produit trouvé'}');
 					$('#products_err').removeClass('hide');
 				}
 				resetBind();
@@ -1185,7 +1185,7 @@
 
 		$.each(gifts, function() {
 			cart_content += '<tr><td><img src="'+this.image_link+'" title="'+this.name+'" /></td><td>'+this.name+'<br />'+this.attributes_small+'</td><td>'+this.reference+'</td>';
-			cart_content += '<td>{l s='Gift'}</td><td>'+this.cart_quantity+'</td><td>{l s='Gift'}</td></tr>';
+			cart_content += '<td>{l s='Cadeau'}</td><td>'+this.cart_quantity+'</td><td>{l s='Cadeau'}</td></tr>';
 		});
 		$('#customer_cart tbody').html(cart_content);
 	}
@@ -1196,11 +1196,11 @@
 		if (typeof(vouchers) == 'object')
 			$.each(vouchers, function(){
 				if (parseFloat(this.value_real) === 0 && parseInt(this.free_shipping) === 1)
-					var value = '{l s='Free shipping'}';
+					var value = '{l s='Livraison gratuite'}';
 				else
 					var value = this.value_real;
 
-				vouchers_html += '<tr><td>'+this.name+'</td><td>'+this.description+'</td><td>'+value+'</td><td class="text-right"><a href="#" class="btn btn-default delete_discount" rel="'+this.id_discount+'"><i class="icon-remove text-danger"></i>&nbsp;{l s='Delete'}</a></td></tr>';
+				vouchers_html += '<tr><td>'+this.name+'</td><td>'+this.description+'</td><td>'+value+'</td><td class="text-right"><a href="#" class="btn btn-default delete_discount" rel="'+this.id_discount+'"><i class="icon-remove text-danger"></i>&nbsp;{l s='Supprimer'}</a></td></tr>';
 			});
 		$('#voucher_list tbody').html($.trim(vouchers_html));
 		if ($('#voucher_list tbody').html().length == 0)
@@ -1875,12 +1875,12 @@
     <div class="panel form-horizontal" id="customer_part" {if isset($is_order_created) && $is_order_created}style="display:none;"{/if}>
         <div class="panel-heading">
             <i class="icon-user"></i>
-            {l s='Customer'}
+            {l s='Client'}
         </div>
         <div id="search-customer-form-group" class="form-group">
             <label class="control-label col-lg-3">
-                <span title="" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Search for an existing customer by typing the first letters of his/her name.'}">
-                    {l s='Search for a customer'}
+                <span title="" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Recherchez un client existant en tapant les premières lettres de son nom.'}">
+                    {l s='Rechercher un client'}
                 </span>
             </label>
             <div class="col-lg-9">
@@ -1894,10 +1894,10 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <span class="form-control-static">{l s='Or'}&nbsp;</span>
+                        <span class="form-control-static">{l s='Ou'}&nbsp;</span>
                         <a class="fancybox_customer btn btn-default" href="{$link->getAdminLink('AdminCustomers')|escape:'html':'UTF-8'}&amp;addcustomer&amp;liteDisplaying=1&amp;submitFormAjax=1#">
                             <i class="icon-plus-sign-alt"></i>
-                            {l s='Add new customer'}
+                            {l s='Ajouter un nouveau client'}
                         </a>
                     </div>
                 </div>
@@ -1915,13 +1915,13 @@
                 <li class="active">
                     <a href="#nonOrderedCarts" data-toggle="tab">
                         <i class="icon-shopping-cart"></i>
-                        {l s='Carts'}
+                        {l s='Paniers'}
                     </a>
                 </li>
                 <li>
                     <a href="#lastOrders" data-toggle="tab">
                         <i class="icon-credit-card"></i>
-                        {l s='Orders'}
+                        {l s='Commandes'}
                     </a>
                 </li>
             </ul>
@@ -1946,10 +1946,10 @@
                             <tr>
                                 <th><span class="title_box">{l s='ID'}</span></th>
                                 <th><span class="title_box">{l s='Date'}</span></th>
-                                <th><span class="title_box">{l s='Products'}</span></th>
-                                <th><span class="title_box">{l s='Total paid'}</span></th>
-                                <th><span class="title_box">{l s='Payment'}</span></th>
-                                <th><span class="title_box">{l s='Status'}</span></th>
+                                <th><span class="title_box">{l s='Produits'}</span></th>
+                                <th><span class="title_box">{l s='Total payé'}</span></th>
+                                <th><span class="title_box">{l s='Paiement'}</span></th>
+                                <th><span class="title_box">{l s='Statut'}</span></th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -1966,15 +1966,15 @@
         <div class="panel" id="products_part" style="display:none;">
             <div class="panel-heading">
                 <i class="icon-shopping-cart"></i>
-                {l s='Cart'}
+                {l s='Panier'}
             </div>
             <div class="form-group">
                 <input type="hidden" value="{$cart->id}" id="id_cart" name="id_cart" />
             </div>
             {*<div class="form-group">
                 <label class="control-label col-lg-3">
-                    <span title="" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Search for an existing product by typing the first letters of its name.'}">
-                        {l s='Search for a product'}
+                    <span title="" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Recherchez un produit existant en tapant les premières lettres de son nom.'}">
+                        {l s='Rechercher un produit'}
                     </span>
                 </label>
                 <div class="col-lg-9">
@@ -2011,10 +2011,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-lg-3" for="qty">{l s='Quantity'}</label>
+                    <label class="control-label col-lg-3" for="qty">{l s='Quantité'}</label>
                     <div class="col-lg-9">
                         <input type="text" name="qty" id="qty" class="form-control fixed-width-sm" value="1" />
-                        <p class="help-block">{l s='In stock'} <span id="qty_in_stock"></span></p>
+                        <p class="help-block">{l s='En stock'} <span id="qty_in_stock"></span></p>
                     </div>
                 </div>
 
@@ -2022,7 +2022,7 @@
                     <div class="col-lg-9 col-lg-offset-3">
                         <button type="button" class="btn btn-default" id="submitAddProduct" />
                         <i class="icon-ok text-success"></i>
-                        {l s='Add to cart'}
+                        {l s='Ajouter au panier'}
                     </div>
                 </div>
             </div>
@@ -2036,12 +2036,12 @@
                     <table class="table" id="customer_cart">
                         <thead>
                             <tr>
-                                <th><span class="title_box">{l s='Product'}</span></th>
+                                <th><span class="title_box">{l s='Produit'}</span></th>
                                 <th><span class="title_box">{l s='Description'}</span></th>
-                                <th><span class="title_box">{l s='Reference'}</span></th>
-                                <th><span class="title_box">{l s='Unit price'}</span></th>
-                                <th><span class="title_box">{l s='Quantity'}</span></th>
-                                <th><span class="title_box">{l s='Price'}</span></th>
+                                <th><span class="title_box">{l s='Référence'}</span></th>
+                                <th><span class="title_box">{l s='Prix unitaire'}</span></th>
+                                <th><span class="title_box">{l s='Quantité'}</span></th>
+                                <th><span class="title_box">{l s='Prix'}</span></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -2052,14 +2052,14 @@
 
             <div class="form-group">
                 <div class="col-lg-9 col-lg-offset-3">
-                    <div class="alert alert-warning">{l s='The prices are without taxes.'}</div>
+                    <div class="alert alert-warning">{l s='Les prix sont hors taxes.'}</div>
                 </div>
             </div> *}<!-- by webkul to hide unnessesary content -->
 
 
             <div class="form-group">
                 <label class="control-label col-lg-3" for="id_currency">
-                    {l s='Currency'}
+                    {l s='Devise'}
                 </label>
                 <script type="text/javascript">
                     {foreach from=$currencies item='currency'}
@@ -2076,7 +2076,7 @@
             </div>
             <div class="form-group">
                 <label class="control-label col-lg-3" for="id_lang">
-                    {l s='Language'}
+                    {l s='Langue'}
                 </label>
                 <div class="col-lg-9">
                     <select id="id_lang" name="id_lang">
@@ -2091,11 +2091,11 @@
         <div class="panel" id="vouchers_part" style="display:none;">
             <div class="panel-heading">
                 <i class="icon-ticket"></i>
-                {l s='Vouchers'}
+                {l s='Bons de réduction'}
             </div>
             <div class="form-group">
                 <label class="control-label col-lg-3">
-                    {l s='Search for a voucher'}
+                    {l s='Rechercher un bon de réduction'}
                 </label>
                 <div class="col-lg-9">
                     <div class="row">
@@ -2108,10 +2108,10 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <span class="form-control-static">{l s='Or'}&nbsp;</span>
+                            <span class="form-control-static">{l s='Ou'}&nbsp;</span>
                             <a class="fancybox btn btn-default" href="{$link->getAdminLink('AdminCartRules')|escape:'html':'UTF-8'}&amp;addcart_rule&amp;liteDisplaying=1&amp;submitFormAjax=1#">
                                 <i class="icon-plus-sign-alt"></i>
-                                {l s='Add new voucher'}
+                                {l s='Ajouter un nouveau bon de réduction'}
                             </a>
                         </div>
                     </div>
@@ -2121,9 +2121,9 @@
                 <table class="table" id="voucher_list">
                     <thead>
                         <tr>
-                            <th><span class="title_box">{l s='Name'}</span></th>
+                            <th><span class="title_box">{l s='Nom'}</span></th>
                             <th><span class="title_box">{l s='Description'}</span></th>
-                            <th><span class="title_box">{l s='Value'}</span></th>
+                            <th><span class="title_box">{l s='Valeur'}</span></th>
                             <th></th>
                         </tr>
                     </thead>
@@ -2137,7 +2137,7 @@
         <div class="panel" id="address_part" style="">
             <div class="panel-heading">
                 <i class="icon-envelope"></i>
-                {l s='Addresses'}
+                {l s='Adresses'}
             </div>
             <div id="addresses_err" class="alert alert-warning" style="display:none;"></div>
 
@@ -2145,26 +2145,26 @@
                 <div id="address_delivery" class="col-xs-6 col-sm-6 hidden">
                     <h4>
                         <i class="icon-map-marker"></i>
-                        {l s='Customer Address'}
+                        {l s='Adresse du client'}
                     </h4>
                     <div class="row-margin-bottom">
                         <select id="id_address_delivery" name="id_address_delivery"></select>
                     </div>
                     <div class="well">
-                        <a href="" id="edit_delivery_address" class="btn btn-default pull-right fancybox"><i class="icon-pencil"></i> {l s='Edit'}</a>
+                        <a href="" id="edit_delivery_address" class="btn btn-default pull-right fancybox"><i class="icon-pencil"></i> {l s='Modifier'}</a>
                         <div id="address_delivery_detail"></div>
                     </div>
                 </div>
                 <div id="address_invoice" class="col-lg-6">
                     <h4>
                         <i class="icon-file-text"></i>
-                        {l s='Invoice'}
+                        {l s='Facture'}
                     </h4>
                     <div class="row-margin-bottom">
                         <select id="id_address_invoice" name="id_address_invoice"></select>
                     </div>
                     <div class="well">
-                        <a href="" id="edit_invoice_address" class="btn btn-default pull-right fancybox"><i class="icon-pencil"></i> {l s='Edit'}</a>
+                        <a href="" id="edit_invoice_address" class="btn btn-default pull-right fancybox"><i class="icon-pencil"></i> {l s='Modifier'}</a>
                         <div id="address_invoice_detail"></div>
                     </div>
                 </div>
@@ -2173,7 +2173,7 @@
                 <div class="col-lg-12">
                     <a class="fancybox btn btn-default" id="new_address" href="{$link->getAdminLink('AdminAddresses')|escape:'html':'UTF-8'}&amp;addaddress&amp;id_customer=42&amp;liteDisplaying=1&amp;submitFormAjax=1#">
                         <i class="icon-plus-sign-alt"></i>
-                        {l s='Add a new address'}
+                        {l s='Ajouter une nouvelle adresse'}
                     </a>
                 </div>
             </div>
@@ -2181,13 +2181,13 @@
         <div class="panel" id="carriers_part" style="display:none;">
             <div class="panel-heading">
                 <i class="icon-truck"></i>
-                {l s='Shipping'}
+                {l s='Livraison'}
             </div>
             <div id="carriers_err" style="display:none;" class="alert alert-warning"></div>
             <div id="carrier_form">
                 <div class="form-group">
                     <label class="control-label col-lg-3">
-                        {l s='Delivery option'}
+                        {l s='Option de livraison'}
                     </label>
                     <div class="col-lg-9">
                         <select name="delivery_option" id="delivery_option">
@@ -2196,7 +2196,7 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label col-lg-3" for="shipping_price">
-                        {l s='Shipping price (Tax incl.)'}
+                        {l s='Prix de livraison (TTC)'}
                     </label>
                     <div class="col-lg-9">
                         <p id="shipping_price" class="form-control-static" name="shipping_price"></p>
@@ -2204,17 +2204,17 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label col-lg-3" for="free_shipping">
-                        {l s='Free shipping'}
+                        {l s='Livraison gratuite'}
                     </label>
                     <div class="input-group col-lg-9 fixed-width-lg">
                         <span class="switch prestashop-switch">
                             <input type="radio" name="free_shipping" id="free_shipping" value="1">
                             <label for="free_shipping" class="radioCheck">
-                                {l s='yes'}
+                                {l s='oui'}
                             </label>
                             <input type="radio" name="free_shipping" id="free_shipping_off" value="0" checked="checked">
                             <label for="free_shipping_off" class="radioCheck">
-                                {l s='No'}
+                                {l s='Non'}
                             </label>
                             <a class="slide-button btn"></a>
                         </span>
@@ -2226,7 +2226,7 @@
                     <div class="checkbox col-lg-9 col-offset-3">
                         <label for="carrier_recycled_package">
                             <input type="checkbox" name="carrier_recycled_package" value="1" id="carrier_recycled_package" />
-                            {l s='Recycled package'}
+                            {l s='Emballage recyclé'}
                         </label>
                     </div>
                 </div>
@@ -2237,12 +2237,12 @@
                     <div class="checkbox col-lg-9 col-offset-3">
                         <label for="order_gift">
                             <input type="checkbox" name="order_gift" id="order_gift" value="1" />
-                            {l s='Gift'}
+                            {l s='Cadeau'}
                         </label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-lg-3" for="gift_message">{l s='Gift message'}</label>
+                    <label class="control-label col-lg-3" for="gift_message">{l s='Message du cadeau'}</label>
                     <div class="col-lg-9">
                         <textarea id="gift_message" class="form-control" cols="40" rows="4"></textarea>
                     </div>
@@ -2253,7 +2253,7 @@
         <div class="panel" id="summary_part" style="display:none;">
             <div class="panel-heading">
                 <i class="icon-align-justify"></i>
-                {l s='Summary'}
+                {l s='Résumé'}
             </div>
 
             <div id="send_email_feedback" class="hide alert"></div>
@@ -2262,49 +2262,49 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="data-focus">
-                            <span>{l s='Total rooms (Tax excl.)'}</span><br/>
+                            <span>{l s='Total chambres (HT)'}</span><br/>
                             <span id="total_rooms" class="size_l text-success"></span>
                         </div>
                     </div>
                     {* <div class="col-lg-2">
                         <div class="data-focus">
-                            <span>{l s='Total extra services (Tax excl.)'}</span><br/>
+                            <span>{l s='Total services supplémentaires (HT)'}</span><br/>
                             <span id="total_extra_services" class="size_l text-success"></span>
                         </div>
                     </div> *}
                     {* <div class="col-lg-2">
                         <div class="data-focus">
-                            <span>{l s='Total Total service products (Tax excl.)'}</span><br/>
+                            <span>{l s='Total produits service (HT)'}</span><br/>
                             <span id="total_service_products" class="size_l text-success"></span>
                         </div>
                     </div> *}
 					<div class="col-lg-2">
 						<div class="data-focus">
-							<span>{l s='Convenience fees (Tax excl.)'}</span><br/>
+							<span>{l s='Frais de commodité (HT)'}</span><br/>
 							<span id="total_convenience_fees" class="size_l"></span>
 						</div>
 					</div>
 					<div class="col-lg-2">
 						<div class="data-focus">
-							<span>{l s='Total (Tax excl.)'}</span><br/>
+							<span>{l s='Total (HT)'}</span><br/>
 							<span id="total_without_taxes" class="size_l"></span>
 						</div>
 					</div>
 					<div class="col-lg-2">
 						<div class="data-focus">
-							<span>{l s='Total taxes'}</span><br/>
+							<span>{l s='Total des taxes'}</span><br/>
 							<span id="total_taxes" class="size_l"></span>
 						</div>
 					</div>
                     <div class="col-lg-2">
                         <div class="data-focus">
-                            <span>{l s='Total vouchers'}</span><br/>
+                            <span>{l s='Total des bons de réduction'}</span><br/>
                             <span id="total_vouchers" class="size_l text-danger"></span>
                         </div>
                     </div>
                     <div class="col-lg-2">
                         <div class="data-focus data-focus-primary">
-                            <span>{l s='Total (Tax incl.)'}</span><br/>
+                            <span>{l s='Total (TTC)'}</span><br/>
                             <span id="total_with_taxes" class="size_l"></span>
                         </div>
                     </div>
@@ -2314,7 +2314,7 @@
             <div class="row">
                 <div class="order_message_right col-lg-12">
                     <div class="form-group">
-                        <label class="control-label col-lg-3" for="order_message">{l s='Order message'}</label>
+                        <label class="control-label col-lg-3" for="order_message">{l s='Message de la commande'}</label>
                         <div class="col-lg-6">
                             <textarea name="order_message" id="order_message" rows="3" cols="45"></textarea>
                         </div>
@@ -2324,7 +2324,7 @@
 						<p class="checkbox col-lg-6">
 							<label class="control-label" for="visibility">
 								<input type="checkbox" name="visibility" id="visibility" value="1" />
-								{l s='Display Message to Customer?'}
+								{l s='Afficher le message au client ?'}
 							</label>
 						</p>
 					</div>
@@ -2333,10 +2333,10 @@
                         <div class="col-lg-9 col-lg-offset-3">
                             <a href="javascript:void(0);" id="send_email_to_customer" class="btn btn-default">
                                 <i class="icon-credit-card"></i>
-                                {l s='Send an email to the customer with the link to process the payment.'}
+                                {l s='Envoyer un email au client avec le lien pour effectuer le paiement.'}
                             </a>
                             <a id="go_order_process" href="" class="btn btn-link _blank">
-                                {l s='Go on payment page to process the payment.'}
+                                {l s='Aller à la page de paiement pour effectuer le paiement.'}
                                 <i class="icon-external-link"></i>
                             </a>
                         </div>
@@ -2357,7 +2357,7 @@
 								<label for="send_mails_off">{l s="No"}</label>
 								<a class="slide-button btn"></a>
 							</span>
-							<p class="help-block">{l s='If disabled, no mail related to this order will be sent during order creation.'}</p>
+							<p class="help-block">{l s='Si désactivé, aucun email lié à cette commande ne sera envoyé lors de la création.'}</p>
 						</div>
 					</div>
                     <div class="form-group" {if $order_total <= 0}style="display: none;"{/if}>
@@ -2370,24 +2370,24 @@
                                 <label for="is_full_payment_off">{l s="No"}</label>
                                 <a class="slide-button btn"></a>
                             </span>
-                            <p class="help-block">{l s='Keep this option enabled for full payment and disable it to take partial payment of the booking.'}</p>
+                            <p class="help-block">{l s='Gardez cette option activée pour le paiement complet et désactivez-la pour un paiement partiel.'}</p>
                         </div>
                     </div>
                     <div class="form-group" {if $order_total <= 0}style="display: none;"{/if}>
-                        <label class="control-label required col-lg-3">{l s='Payment amount'}</label>
+                        <label class="control-label required col-lg-3">{l s='Montant du paiement'}</label>
                         <div class="col-lg-9">
                             <div class="input-group fixed-width-xxl">
                                 <span class="input-group-addon">{$currency->sign}</span>
                                 <input type="text" name="payment_amount" id="payment_amount" value="{if isset($smarty.post.payment_amount)}{$smarty.post.payment_amount|escape:'html':'UTF-8'}{elseif $is_full_payment}{$order_total}{/if}" {if $is_full_payment}disabled{/if} />
                             </div>
                             <p class="help-block" id="advance_payment_amount_block" {if isset($is_advance_payment_active) && $is_advance_payment_active}style="display: block;"{else}style="display: none;"{/if}>
-                                <span>{l s='Advance payment amount: '}</span>
+                                <span>{l s='Montant de l&#039;acompte : '}</span>
                                 <span id="advance_payment_amount">{displayPrice price=$advance_payment_amount_with_tax currency=$currency->id}</span>
                             </p>
                         </div>
                     </div>
                     <div class="form-group" {if $order_total <= 0}style="display: none;"{/if}>
-                        <label class="control-label col-lg-3">{l s='Payment source'}</label>
+                        <label class="control-label col-lg-3">{l s='Source du paiement'}</label>
                         <div class="col-lg-9">
                             <select class="fixed-width-xxl" name="payment_type" id="payment_type">
                                 {foreach from=$payment_types item=payment_type}
@@ -2399,7 +2399,7 @@
                         </div>
                     </div>
                     <div class="form-group" {if $order_total <= 0}style="display: none;"{/if}>
-                        <label class="control-label col-lg-3 required">{l s='Payment method'}</label>
+                        <label class="control-label col-lg-3 required">{l s='Méthode de paiement'}</label>
                         <div class="col-lg-9">
                             <input name="payment_module_name" id="payment_module_name" list="payment_module_name_list" class="form-control fixed-width-xxl" {if isset($smarty.post.payment_module_name) && $smarty.post.payment_module_name}value="{$smarty.post.payment_module_name|escape:'html':'UTF-8'}"{/if}>
                             <datalist id="payment_module_name_list">
@@ -2407,11 +2407,11 @@
                                     <option value="{$payment_module->displayName}" data-name="{$payment_module->name}" data-payment-type="{$payment_module->payment_type}">
                                 {/foreach}
                             </datalist>
-                            <p class="help-block">{l s='Select or type the payment method using which payment for booking will be made.'}</p>
+                            <p class="help-block">{l s='Sélectionnez ou saisissez la méthode de paiement utilisée pour le règlement de la réservation.'}</p>
                         </div>
                     </div>
                     <div class="form-group" {if $order_total <= 0}style="display: none;"{/if}>
-                        <label class="control-label col-lg-3">{l s='Transaction ID'}</label>
+                        <label class="control-label col-lg-3">{l s='ID de transaction'}</label>
                         <div class="col-lg-9">
                             <input type="text" class="fixed-width-xxl" name="payment_transaction_id" id="payment_transaction_id" value="{if isset($smarty.post.payment_transaction_id)}{$smarty.post.payment_transaction_id}{/if}" />
                         </div>
@@ -2420,7 +2420,7 @@
                         <div class="col-lg-9 col-lg-offset-3">
                             <button type="submit" name="submitAddOrder" class="btn btn-default" />
                                 <i class="icon-check"></i>
-                                {l s='Create the order'}
+                                {l s='Créer la commande'}
                             </button>
                         </div>
                     </div>
@@ -2431,24 +2431,24 @@
 {strip}
 	{addJsDef max_child_age=$max_child_age}
 	{addJsDef max_child_in_room=$max_child_in_room}
-	{addJsDefL name='select_age_txt'}{l s='Select age' js=1}{/addJsDefL}
-	{addJsDefL name='under_1_age'}{l s='Under 1' js=1}{/addJsDefL}
-	{addJsDefL name='room_txt'}{l s='Room' js=1}{/addJsDefL}
-	{addJsDefL name='rooms_txt'}{l s='Rooms' js=1}{/addJsDefL}
-	{addJsDefL name='remove_txt'}{l s='Remove' js=1}{/addJsDefL}
-	{addJsDefL name='adult_txt'}{l s='Adult' js=1}{/addJsDefL}
-	{addJsDefL name='adults_txt'}{l s='Adults' js=1}{/addJsDefL}
-	{addJsDefL name='child_txt'}{l s='Child' js=1}{/addJsDefL}
-	{addJsDefL name='children_txt'}{l s='Children' js=1}{/addJsDefL}
-	{addJsDefL name='below_txt'}{l s='Below' js=1}{/addJsDefL}
-	{addJsDefL name='years_txt'}{l s='years' js=1}{/addJsDefL}
-	{addJsDefL name='all_children_txt'}{l s='All Children' js=1}{/addJsDefL}
-	{addJsDefL name='max_occupancy_reached_txt'}{l s='Maximum room occupancy reached' js=1}{/addJsDefL}
-	{addJsDefL name='max_adults_txt'}{l s='Maximum adult occupancy reached' js=1}{/addJsDefL}
-	{addJsDefL name='max_children_txt'}{l s='Maximum children occupancy reached' js=1}{/addJsDefL}
-	{addJsDefL name='no_children_allowed_txt'}{l s='Only adults can be accommodated' js=1}{/addJsDefL}
-	{addJsDefL name='invalid_occupancy_txt'}{l s='Invalid occupancy(adults/children) found.' js=1}{/addJsDefL}
-    {addJsDefL name='error_found_txt'}{l s='Errors found' js=1}{/addJsDefL}
+	{addJsDefL name='select_age_txt'}{l s='Sélectionner l&#039;âge' js=1}{/addJsDefL}
+	{addJsDefL name='under_1_age'}{l s='Moins de 1 an' js=1}{/addJsDefL}
+	{addJsDefL name='room_txt'}{l s='Chambre' js=1}{/addJsDefL}
+	{addJsDefL name='rooms_txt'}{l s='Chambres' js=1}{/addJsDefL}
+	{addJsDefL name='remove_txt'}{l s='Supprimer' js=1}{/addJsDefL}
+	{addJsDefL name='adult_txt'}{l s='Adulte' js=1}{/addJsDefL}
+	{addJsDefL name='adults_txt'}{l s='Adultes' js=1}{/addJsDefL}
+	{addJsDefL name='child_txt'}{l s='Enfant' js=1}{/addJsDefL}
+	{addJsDefL name='children_txt'}{l s='Enfants' js=1}{/addJsDefL}
+	{addJsDefL name='below_txt'}{l s='Moins de' js=1}{/addJsDefL}
+	{addJsDefL name='years_txt'}{l s='ans' js=1}{/addJsDefL}
+	{addJsDefL name='all_children_txt'}{l s='Tous les enfants' js=1}{/addJsDefL}
+	{addJsDefL name='max_occupancy_reached_txt'}{l s='Occupation maximale de la chambre atteinte' js=1}{/addJsDefL}
+	{addJsDefL name='max_adults_txt'}{l s='Occupation maximale d&#039;adultes atteinte' js=1}{/addJsDefL}
+	{addJsDefL name='max_children_txt'}{l s='Occupation maximale d&#039;enfants atteinte' js=1}{/addJsDefL}
+	{addJsDefL name='no_children_allowed_txt'}{l s='Seuls les adultes peuvent être hébergés' js=1}{/addJsDefL}
+	{addJsDefL name='invalid_occupancy_txt'}{l s='Occupation invalide (adultes/enfants) détectée.' js=1}{/addJsDefL}
+    {addJsDefL name='error_found_txt'}{l s='Erreurs trouvées' js=1}{/addJsDefL}
 {/strip}
 
 <div id="loader_container">

@@ -24,7 +24,7 @@
                                 </div>
                             {/if}
                             <div class="product-actions clearfix">
-                                <button type="button" data-id-product="{$product.id_product|intval}" data-id-hotel="{$id_hotel|intval}" class="btn btn-primary service_product_add_to_cart pull-right">{l s='Add To Cart' mod='hotelreservationsystem'}</button>
+                                <button type="button" data-id-product="{$product.id_product|intval}" data-id-hotel="{$id_hotel|intval}" class="btn btn-primary service_product_add_to_cart pull-right">{l s='Ajouter au panier' mod='hotelreservationsystem'}</button>
                             </div>
                         </div>
                     </div>
@@ -34,6 +34,6 @@
     </div>
 {else}
     <div class="col-sm-12">
-        <p class="alert alert-warning">	{l s="No service products found." mod='hotelreservationsystem'}</p>
+        <p class="alert alert-warning">	{l s="Aucun produit de service trouvé." mod='hotelreservationsystem'}</p>
     </div>
 {/if}

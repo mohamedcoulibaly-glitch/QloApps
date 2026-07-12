@@ -1,4 +1,4 @@
-{*
+﻿{*
 * 2007-2017 PrestaShop
 *
 * NOTICE OF LICENSE
@@ -29,7 +29,7 @@
 {if isset($updateOrderStatus_mode) && $updateOrderStatus_mode}
 	<div class="panel">
 		<div class="panel-heading">
-			{l s='Choose an order status'}
+			{l s='Choisir un statut de commande'}
 		</div>
 		<form action="{$REQUEST_URI}" method="post">
 			<div class="radio">
@@ -54,11 +54,11 @@
 			<div class="panel-footer">
 				<button type="submit" name="cancel" class="btn btn-default">
 					<i class="icon-remove"></i>
-					{l s='Cancel'}
+					{l s='Annuler'}
 				</button>
 				<button type="submit" class="btn btn-default" name="submitUpdateOrderStatus">
 					<i class="icon-check"></i>
-					{l s='Update Order Status'}
+					{l s='Mettre à jour le statut de la commande'}
 				</button>
 			</div>
 		</form>

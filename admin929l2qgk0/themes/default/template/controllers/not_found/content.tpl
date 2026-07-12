@@ -28,9 +28,9 @@
 {/if}
 <a class="btn btn-default" href="javascript:window.history.back();">
 	<i class="icon-arrow-left"></i>
-	{l s='Back to the previous page'}
+	{l s='Retour à la page précédente'}
 </a>
 <a class="btn btn-default" href="index.php">
 	<i class="icon-dashboard"></i>
-	{l s='Go to the dashboard'}
+	{l s='Aller au tableau de bord'}
 </a>

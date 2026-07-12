@@ -28,7 +28,7 @@
 
 {block name=pageTitle}
 <h2 class="page-title">
-	{l s='List of modules'}
+	{l s='Liste des modules'}
 </h2>
 {/block}
 
@@ -55,40 +55,40 @@
 				{/if}
 			{else}
 				<li>
-					<a id="desc-module-check-and-update-all" class="toolbar_btn" href="{$currentIndex|escape:'html':'UTF-8'}&amp;token={$token|escape:'html':'UTF-8'}&amp;check=1" title="{l s='Check for update'}">
+					<a id="desc-module-check-and-update-all" class="toolbar_btn" href="{$currentIndex|escape:'html':'UTF-8'}&amp;token={$token|escape:'html':'UTF-8'}&amp;check=1" title="{l s='Vérifier les mises à jour'}">
 						<i class="process-icon-refresh"></i>
-						<span>{l s='Check for update'}</span>
+						<span>{l s='Vérifier les mises à jour'}</span>
 					</a>
 				</li>
 			{/if}
 			<li>
-				<a id="desc-module-catalog" class="toolbar_btn anchor" href="{$link->getAdminLink('AdminModulesCatalog')}" title="{l s='Recommended Modules and Services'}">
+				<a id="desc-module-catalog" class="toolbar_btn anchor" href="{$link->getAdminLink('AdminModulesCatalog')}" title="{l s='Modules et services recommandés'}">
 					<i class="process-icon-modules-list"></i>
-					<span>{l s='Recommendations'}</span>
+					<span>{l s='Recommandations'}</span>
 				</a>
 			</li>
 			{if $add_permission eq '1'}
 				{if $context_mode != Context::MODE_HOST}
 					<li>
-						<a id="desc-module-new" class="toolbar_btn anchor" href="#" onclick="$('#module_install').slideToggle();" title="{l s='Add a new module'}">
+						<a id="desc-module-new" class="toolbar_btn anchor" href="#" onclick="$('#module_install').slideToggle();" title="{l s='Ajouter un nouveau module'}">
 							<i class="process-icon-new"></i>
-							<span>{l s='Add a new module'}</span>
+							<span>{l s='Ajouter un nouveau module'}</span>
 						</a>
 					</li>
 				{else}
 					<li>
-						<a id="desc-module-new" class="toolbar_btn" href="{$link->getAdminLink('AdminModules')}&addnewmodule" title="{l s='Add a new module'}">
+						<a id="desc-module-new" class="toolbar_btn" href="{$link->getAdminLink('AdminModules')}&addnewmodule" title="{l s='Ajouter un nouveau module'}">
 							<i class="process-icon-new"></i>
-							<span>{l s='Add a new module'}</span>
+							<span>{l s='Ajouter un nouveau module'}</span>
 						</a>
 					</li>
 				{/if}
 			{/if}
 			{if isset($help_link)}
 			{* <li>
-				<a class="toolbar_btn  btn-help" href="{$help_link|escape}" title="{l s='Help'}">
+				<a class="toolbar_btn  btn-help" href="{$help_link|escape}" title="{l s='Aide'}">
 					<i class="process-icon-help"></i>
-					<div>{l s='Help'}</div>
+					<div>{l s='Aide'}</div>
 				</a>
 			</li> *}
 			{/if}

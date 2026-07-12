@@ -29,11 +29,11 @@
     <h2 class="order_page_title page-title">
         {if is_array($title)}{$title|end|strip_tags}{else}{$title|strip_tags}{/if}
         {if $currentState->id == Configuration::get('PS_OS_REFUND')}
-            <span class="toolbar_order_status_badge badge badge-danger">{l s='Refunded'}</span>
+            <span class="toolbar_order_status_badge badge badge-danger">{l s='Remboursé'}</span>
         {elseif $currentState->id == Configuration::get('PS_OS_CANCELED')}
-            <span class="toolbar_order_status_badge badge badge-danger">{l s='Cancelled'}</span>
+            <span class="toolbar_order_status_badge badge badge-danger">{l s='Annulé'}</span>
         {else}
-            <span class="toolbar_order_status_badge badge badge-success">{l s='Booked'}</span>
+            <span class="toolbar_order_status_badge badge badge-success">{l s='Réservé'}</span>
         {/if}
     </h2>
 {/block}
@@ -54,12 +54,12 @@
 	var priceDisplayPrecision = {$smarty.const._PS_PRICE_DISPLAY_PRECISION_|intval};
 	var use_taxes = {if $order->getTaxCalculationMethod() == $smarty.const.PS_TAX_INC}true{else}false{/if};
 	var stock_management = {$stock_management|intval};
-	var txt_add_product_stock_issue = "{l s='Are you sure you want to add this quantity?' js=1}";
-	var txt_add_product_new_invoice = "{l s='Are you sure you want to create a new invoice?' js=1}";
-	var txt_add_product_no_product = "{l s='Error: No product has been selected' js=1}";
-	var txt_add_product_no_product_quantity = "{l s='Error: Quantity of products must be set' js=1}";
-	var txt_add_product_no_product_price = "{l s='Error: Product price must be set' js=1}";
-	var txt_confirm = "{l s='Are you sure?' js=1}";
+	var txt_add_product_stock_issue = "{l s='Êtes-vous sûr de vouloir ajouter cette quantité ?' js=1}";
+	var txt_add_product_new_invoice = "{l s='Êtes-vous sûr de vouloir créer une nouvelle facture ?' js=1}";
+	var txt_add_product_no_product = "{l s='Erreur : Aucun produit sélectionné' js=1}";
+	var txt_add_product_no_product_quantity = "{l s='Erreur : La quantité du produit doit être définie' js=1}";
+	var txt_add_product_no_product_price = "{l s='Erreur : Le prix du produit doit être défini' js=1}";
+	var txt_confirm = "{l s='Êtes-vous sûr ?' js=1}";
 	var statesShipped = new Array();
 	var has_voucher = {if count($discounts)}1{else}0{/if};
     var allowBackdateOrder = {if $allowBackdateOrder}{$allowBackdateOrder}{else}false{/if};
@@ -74,7 +74,7 @@
 									{$order->total_discounts_tax_incl}
 								{/if};
 
-	var errorRefund = "{l s='Error. You cannot refund a negative amount.'}";
+	var errorRefund = "{l s='Erreur. Vous ne pouvez pas rembourser un montant négatif.'}";
 	</script>
 
 	{assign var="hook_invoice" value={hook h="displayInvoice" id_order=$order->id}}
@@ -82,7 +82,7 @@
 	<div>{$hook_invoice}</div>
 	{/if}
 
-    <div id="order_detail_view">
+    <div id="order_detail_view"{if isset($is_reception_profile) && $is_reception_profile} class="reception-order-view"{/if}>
         {* Overbookings information of the order *}
         {include file='controllers/orders/_overbookings.tpl'}
 
@@ -91,7 +91,7 @@
                 {if isset($htl_booking_order_data) && $htl_booking_order_data}
                     <div class="panel">
                         <div class="panel-heading order_status_heading">
-                            <i class="icon-bed"></i> &nbsp;{l s='Rooms Status'}
+                            <i class="icon-bed"></i> &nbsp;{l s='Statut de la chambre'}
                         </div>
                         <div class="panel-content">
                             <div class="row">
@@ -99,11 +99,11 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th>{l s='Room'}</th>
-                                                <th>{l s='Duration'}</th>
-                                                <th>{l s='Check-In'}</th>
-                                                <th>{l s='Check-Out'}</th>
-                                                <th>{l s='Allotment'}</th>
+                                                <th>{l s='Chambre'}</th>
+                                                <th>{l s='Séjour'}</th>
+                                                <th>{l s='Arrivée'}</th>
+                                                <th>{l s='Départ'}</th>
+                                                <th>{l s='Attribution'}</th>
                                                 <th>{l s='Action'}</th>
                                             </tr>
                                         </thead>
@@ -121,35 +121,35 @@
                                                         </td>
                                                         <td>
                                                             {if ($data['id_status'] == $hotel_order_status['STATUS_CHECKED_IN']['id_status']) || ($data['id_status'] == $hotel_order_status['STATUS_CHECKED_OUT']['id_status'])}
-                                                                <span class="text-danger room_status">{l s='Checked in on'}<br>{dateFormat date=$data['check_in'] full=1}</span>
+                                                                <span class="text-danger room_status">{l s='Arrivée enregistrée le'}<br>{dateFormat date=$data['check_in'] full=1}</span>
                                                             {else}
                                                                 --
                                                             {/if}
                                                         </td>
                                                         <td>
                                                             {if $data['id_status'] == $hotel_order_status['STATUS_CHECKED_OUT']['id_status']}
-                                                                <span class="text-success room_status">{l s='Checked out on'}<br>{dateFormat date=$data['check_out'] full=1}</span>
+                                                                <span class="text-success room_status">{l s='Départ validé le'}<br>{dateFormat date=$data['check_out'] full=1}</span>
                                                             {else}
                                                                 --
                                                             {/if}
                                                         </td>
                                                         <td>
                                                             {if $data['booking_type'] == $ALLOTMENT_MANUAL}
-                                                                {l s='Manual'} &nbsp;{if $data['comment'] != ''}<a class="manual_allotment_comment" href="#" data-id_hotel_booking_detail="{$data['id']}"><i class="icon-info-circle"></i></a>{/if}
+                                                                {l s='Manuelle'} &nbsp;{if $data['comment'] != ''}<a class="manual_allotment_comment" href="#" data-id_hotel_booking_detail="{$data['id']}"><i class="icon-info-circle"></i></a>{/if}
                                                             {else}
                                                                 {l s='Auto'}
                                                             {/if}
                                                         </td>
                                                         <td>
-                                                            <a title="{l s='Upload/Check guest documents'}" class="btn btn-default" href="#" onclick="BookingDocumentsModal.init({$data.id|intval}, this); return false;">
+                                                            <a title="{l s='Voir les documents client'}" class="btn btn-default" href="#" onclick="BookingDocumentsModal.init({$data.id|intval}, this); return false;">
                                                                 <span class="badge badge-info">{if $data.num_checkin_documents > 0}{$data.num_checkin_documents}{else}0{/if}</span> <i class="icon-file-text"></i>
                                                             </a>
 
                                                             {if isset($refundReqBookings) && $refundReqBookings && $data.id|in_array:$refundReqBookings && $data.is_refunded}
-                                                                <span class="badge badge-danger">{if $data.is_cancelled}{l s='Cancelled'}{else}{l s='Refunded'}{/if}</span>
+                                                                <span class="badge badge-danger">{if $data.is_cancelled}{l s='Annulé'}{else}{l s='Remboursé'}{/if}</span>
                                                             {elseif $can_edit}
                                                                 <a class="open_room_status_form btn btn-default" href="#" data-id_hotel_booking_detail="{$data['id']}" data-id_order="{$data['id_order']}" data-id_status="{$data['id_status']}" data-id_room="{$data['id_room']}" data-date_from="{$data['date_from']|date_format:"%Y-%m-%d"}" data-date_to="{$data['date_to']|date_format:"%Y-%m-%d"}" data-check_in_time="{$data['check_in_time']}" data-check_out_time="{$data['check_out_time']}">
-                                                                    <i class="icon-pencil"></i> {l s='Edit'}
+                                                                    <i class="icon-pencil"></i> {l s='Corriger'}
                                                                 </a>
                                                             {/if}
                                                         </td>
@@ -160,7 +160,7 @@
                                                     <td class="list-empty hidden-print" colspan="6">
                                                         <div class="list-empty-msg">
                                                             <i class="icon-warning-sign list-empty-icon"></i>
-                                                            {l s='No rooms found'}
+                                                            {l s='Aucune chambre trouvée'}
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -174,7 +174,7 @@
                 {/if}
                 <div class="panel">
                     <div class="panel-heading">
-                        <i class="icon-file"></i> &nbsp;{l s='Order'}
+                        <i class="icon-file"></i> &nbsp;{l s='Séjour'}
                         <span class="badge">{$order->reference}</span>
                         <span class="badge">{l s="#"}{$order->id}</span>
                         <div class="panel-heading-action">
@@ -194,7 +194,7 @@
                         <li class="active">
                             <a  href="#status">
                                 <i class="icon-time"></i>
-                                {l s='Status'} <span class="badge">{$history|@count}</span>
+{l s='Statut'} <span class="badge">{$history|@count}</span>
                             </a>
                         </li>
                         <li>
@@ -209,7 +209,7 @@
                         {$HOOK_CONTENT_ORDER}
                         <!-- Tab status -->
                         <div class="tab-pane active" id="status">
-                            <h4 class="visible-print">{l s='Status'} <span class="badge">({$history|@count})</span></h4>
+                            <h4 class="visible-print">{l s='Statut'} <span class="badge">({$history|@count})</span></h4>
                             <!-- History of status -->
                             <div class="table-responsive">
                                 <table class="table history-status row-margin-bottom">
@@ -225,9 +225,9 @@
                                                     {if $can_edit}
                                                         <td style="background-color:{$row['color']};color:{$row['text-color']}" class="text-right">
                                                             {if $row['send_email']|intval}
-                                                                <a class="btn btn-default" href="{$link->getAdminLink('AdminOrders')|escape:'html':'UTF-8'}&amp;vieworder&amp;id_order={$order->id|intval}&amp;sendStateEmail={$row['id_order_state']|intval}&amp;id_order_history={$row['id_order_history']|intval}" title="{l s='Resend this email to the customer'}">
+                                                                <a class="btn btn-default" href="{$link->getAdminLink('AdminOrders')|escape:'html':'UTF-8'}&amp;vieworder&amp;id_order={$order->id|intval}&amp;sendStateEmail={$row['id_order_state']|intval}&amp;id_order_history={$row['id_order_history']|intval}" title="{l s='Renvoyer cet email au client'}">
                                                                     <i class="icon-mail-reply"></i>
-                                                                    {l s='Resend email'}
+                                                                    {l s="Renvoyer l'email"}
                                                                 </a>
                                                             {/if}
                                                         </td>
@@ -242,9 +242,9 @@
                                                     {if $can_edit}
                                                         <td class="text-right">
                                                             {if $row['send_email']|intval}
-                                                                <a  href="{$link->getAdminLink('AdminOrders')|escape:'html':'UTF-8'}&amp;vieworder&amp;id_order={$order->id|intval}&amp;sendStateEmail={$row['id_order_state']|intval}&amp;id_order_history={$row['id_order_history']|intval}" title="{l s='Resend this email to the customer'}">
+                                                                <a  href="{$link->getAdminLink('AdminOrders')|escape:'html':'UTF-8'}&amp;vieworder&amp;id_order={$order->id|intval}&amp;sendStateEmail={$row['id_order_state']|intval}&amp;id_order_history={$row['id_order_history']|intval}" title="{l s='Renvoyer cet email au client'}">
                                                                     <i class="icon-mail-reply"></i>
-                                                                    {l s='Resend email'}
+                                                                    {l s="Renvoyer l'email"}
                                                                 </a>
                                                             {/if}
                                                         </td>
@@ -270,7 +270,7 @@
                                         </div>
                                         <div class="col-lg-3">
                                             <button type="submit" name="submitState" class="btn btn-primary">
-                                                {l s='Update status'}
+                                                {l s='Mettre à jour le statut'}
                                             </button>
                                         </div>
                                     </div>
@@ -298,13 +298,13 @@
                         <li class="active">
                             <a href="#shipping">
                                 <i class="icon-truck "></i>
-                                {l s='Shipping'} <span class="badge">{$order->getShipping()|@count}</span>
+                                {l s='Livraison'} <span class="badge">{$order->getShipping()|@count}</span>
                             </a>
                         </li>
                         <li>
                             <a href="#returns">
                                 <i class="icon-undo"></i>
-                                {l s='Merchandise Returns'} <span class="badge">{$order->getReturn()|@count}</span>
+                                {l s='Retours de marchandises'} <span class="badge">{$order->getReturn()|@count}</span>
                             </a>
                         </li>
                     </ul>
@@ -313,7 +313,7 @@
                     {$HOOK_CONTENT_SHIP}
                         <!-- Tab shipping -->
                         <div class="tab-pane active" id="shipping">
-                            <h4 class="visible-print">{l s='Shipping'} <span class="badge">({$order->getShipping()|@count})</span></h4>
+                            <h4 class="visible-print">{l s='Livraison'} <span class="badge">({$order->getShipping()|@count})</span></h4>
                             <!-- Shipping block -->
                             {if !$order->isVirtual()}
                             <div class="form-horizontal">
@@ -331,22 +331,22 @@
                                 {/if}
                                 <hr />
                                 {if $order->recyclable}
-                                    <span class="label label-success"><i class="icon-check"></i> {l s='Recycled packaging'}</span>
+                                    <span class="label label-success"><i class="icon-check"></i> {l s='Emballage recyclé'}</span>
                                 {else}
-                                    <span class="label label-inactive"><i class="icon-remove"></i> {l s='Recycled packaging'}</span>
+                                    <span class="label label-inactive"><i class="icon-remove"></i> {l s='Emballage recyclé'}</span>
                                 {/if}
 
                                 {if $order->gift}
-                                    <span class="label label-success"><i class="icon-check"></i> {l s='Gift wrapping'}</span>
+                                    <span class="label label-success"><i class="icon-check"></i> {l s='Emballage cadeau'}</span>
                                 {else}
-                                    <span class="label label-inactive"><i class="icon-remove"></i> {l s='Gift wrapping'}</span>
+                                    <span class="label label-inactive"><i class="icon-remove"></i> {l s='Emballage cadeau'}</span>
                                 {/if}
                             </div>
                             {/if}
                         </div>
                         <!-- Tab returns -->
                         <div class="tab-pane" id="returns">
-                            <h4 class="visible-print">{l s='Merchandise Returns'} <span class="badge">({$order->getReturn()|@count})</span></h4>
+                            <h4 class="visible-print">{l s='Retours de marchandises'} <span class="badge">({$order->getReturn()|@count})</span></h4>
                             {if !$order->isVirtual()}
                             <!-- Return block -->
                                 {if $order->getReturn()|count > 0}
@@ -356,8 +356,8 @@
                                             <tr>
                                                 <th><span class="title_box ">{l s='Date'}</span></th>
                                                 <th><span class="title_box ">{l s='Type'}</span></th>
-                                                <th><span class="title_box ">{l s='Carrier'}</span></th>
-                                                <th><span class="title_box ">{l s='Tracking number'}</span></th>
+                                                <th><span class="title_box ">{l s='Transporteur'}</span></th>
+                                                <th><span class="title_box ">{l s='Numéro de suivi'}</span></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -375,16 +375,16 @@
                                                                 {$line.tracking_number|htmlentities}
                                                             </button>
                                                             <button type="submit" class="btn btn-default" name="submitShippingNumber">
-                                                                {l s='Update'}
+                                                                {l s='Mettre à jour'}
                                                             </button>
                                                         </span>
                                                         <button href="#" class="edit_shipping_number_link">
                                                             <i class="icon-pencil"></i>
-                                                            {l s='Edit'}
+                                                            {l s='Modifier'}
                                                         </button>
                                                         <button href="#" class="cancel_shipping_number_link" style="display: none;">
                                                             <i class="icon-remove"></i>
-                                                            {l s='Cancel'}
+                                                            {l s='Annuler'}
                                                         </button>
                                                     </form>
                                                     {/if}
@@ -398,7 +398,7 @@
                                 <div class="list-empty hidden-print">
                                     <div class="list-empty-msg">
                                         <i class="icon-warning-sign list-empty-icon"></i>
-                                        {l s='No merchandise returned yet'}
+                                        {l s='Aucune marchandise retournée'}
                                     </div>
                                 </div>
                                 {/if}
@@ -416,22 +416,22 @@
                     </script>
                 </div>
                 <!-- Payments block -->
-                <div id="form_add_payment_panel" class="panel">
+                <div id="form_add_payment_panel" class="panel reception-admin-only">
                     <div class="panel-heading">
                         <i class="icon-credit-card"></i> &nbsp;{l s="Payment"} <span class="badge">{$order->getOrderPayments()|@count}</span>
                     </div>
                     {if count($order->getOrderPayments()) > 0}
                         <p class="alert alert-danger"{if round($order->total_paid_tax_incl, 2) == round($total_paid, 2) || (isset($currentState) && $currentState->id == 6)} style="display: none;"{/if}>
-                            {l s='Warning'}
+                            {l s='Avertissement'}
                             <strong>{displayPrice price=$total_paid currency=$currency->id}</strong>
                             {l s='paid instead of'}
                             <strong class="total_paid">{displayPrice price=$order->total_paid_tax_incl currency=$currency->id}</strong>
                             {* {foreach $order->getBrother() as $brother_order}
                                 {if $brother_order@first}
                                     {if count($order->getBrother()) == 1}
-                                        <br />{l s='This warning also concerns order '}
+                                        <br />{l s='Cet avertissement concerne également la commande '}
                                     {else}
-                                        <br />{l s='This warning also concerns the next orders:'}
+                                        <br />{l s='Cet avertissement concerne également les commandes suivantes :'}
                                     {/if}
                                 {/if}
                                 <a href="{$current_index}&amp;vieworder&amp;id_order={$brother_order->id}&amp;token={$smarty.get.token|escape:'html':'UTF-8'}">
@@ -446,11 +446,11 @@
                                 <thead>
                                     <tr>
                                         <th><span class="title_box ">{l s='Date'}</span></th>
-                                        <th><span class="title_box ">{l s='Payment method'}</span></th>
-                                        <th><span class="title_box ">{l s='Payment source'}</span></th>
-                                        <th><span class="title_box ">{l s='Transaction ID'}</span></th>
-                                        <th><span class="title_box ">{l s='Amount'}</span></th>
-                                        <th><span class="title_box ">{l s='Invoice'}</span></th>
+                                        <th><span class="title_box ">{l s='Méthode de paiement'}</span></th>
+                                        <th><span class="title_box ">{l s='Source du paiement'}</span></th>
+                                        <th><span class="title_box ">{l s='ID de transaction'}</span></th>
+                                        <th><span class="title_box ">{l s='Montant'}</span></th>
+                                        <th><span class="title_box ">{l s='Facture'}</span></th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -464,7 +464,7 @@
                                             <td>{displayPrice price=$payment['real_paid_amount'] currency=$payment['id_currency']}</td>
                                             <td>{if isset($payment['invoice_number'])}{$payment['invoice_number']}{else}--{/if}</td>
                                             <td class="actions">
-                                                <a class="open_payment_information btn btn-default" href="#" data-card_number="{if $payment['card_number']}{$payment['card_number']}{else}{l s='Not defined'}{/if}"  data-card_brand="{if $payment['card_brand']}{$payment['card_brand']}{else}{l s='Not defined'}{/if}"  data-card_expiration="{if $payment['card_expiration']}{$payment['card_expiration']}{else}{l s='Not defined'}{/if}"  data-card_holder="{if $payment['card_holder']}{$payment['card_holder']}{else}{l s='Not defined'}{/if}" data-payment_date="{if $payment['date_add']}{$payment['date_add']}{else}{l s='Not defined'}{/if}" data-payment_method="{if $payment['payment_method']}{$payment['payment_method']}{else}{l s='Not defined'}{/if}" data-payment_source="{if $payment_types[$payment['payment_type']]['name']}{$payment_types[$payment['payment_type']]['name']}{else}{l s='Not defined'}{/if}" data-transaction_id="{if $payment['transaction_id']}{$payment['transaction_id']}{else}{l s='Not defined'}{/if}" data-amount="{if $payment['amount']}{displayPrice currency={$payment['id_currency']} price={$payment['amount']}}{else}{l s='Not defined'}{/if}" data-invoice_number="{if isset($payment['invoice_number']) && $payment['invoice_number']}{$payment['invoice_number']}{else}{l s='Not defined'}{/if}"><i class="icon-search"></i> {l s='Details'}</a>
+                                                <a class="open_payment_information btn btn-default" href="#" data-card_number="{if $payment['card_number']}{$payment['card_number']}{else}{l s='Non défini'}{/if}"  data-card_brand="{if $payment['card_brand']}{$payment['card_brand']}{else}{l s='Non défini'}{/if}"  data-card_expiration="{if $payment['card_expiration']}{$payment['card_expiration']}{else}{l s='Non défini'}{/if}"  data-card_holder="{if $payment['card_holder']}{$payment['card_holder']}{else}{l s='Non défini'}{/if}" data-payment_date="{if $payment['date_add']}{$payment['date_add']}{else}{l s='Non défini'}{/if}" data-payment_method="{if $payment['payment_method']}{$payment['payment_method']}{else}{l s='Non défini'}{/if}" data-payment_source="{if $payment_types[$payment['payment_type']]['name']}{$payment_types[$payment['payment_type']]['name']}{else}{l s='Non défini'}{/if}" data-transaction_id="{if $payment['transaction_id']}{$payment['transaction_id']}{else}{l s='Non défini'}{/if}" data-amount="{if $payment['amount']}{displayPrice currency={$payment['id_currency']} price={$payment['amount']}}{else}{l s='Non défini'}{/if}" data-invoice_number="{if isset($payment['invoice_number']) && $payment['invoice_number']}{$payment['invoice_number']}{else}{l s='Non défini'}{/if}"><i class="icon-search"></i> {l s='Détails'}</a>
                                             </td>
                                         </tr>
                                     {foreachelse}
@@ -472,7 +472,7 @@
                                             <td class="list-empty hidden-print" colspan="6">
                                                 <div class="list-empty-msg">
                                                     <i class="icon-warning-sign list-empty-icon"></i>
-                                                    {l s='No payment records'}
+                                                    {l s='Aucun enregistrement de paiement'}
                                                 </div>
                                             </td>
                                         </tr>
@@ -484,14 +484,14 @@
                     {if $can_edit}
                         <div class="form-group">
                             <button class="btn btn-primary add_new_payment" id="add_new_payment">
-                                <i class="icon-plus-sign"></i> {l s='Add new payment'}
+                                <i class="icon-plus-sign"></i> {l s='Ajouter un nouveau paiement'}
                             </button>
                         </div>
                     {/if}
                     {if $can_edit && (!$order->valid && sizeof($currencies) > 1)}
                         <form class="form-horizontal well" method="post" action="{$currentIndex|escape:'html':'UTF-8'}&amp;vieworder&amp;id_order={$order->id}&amp;token={$smarty.get.token|escape:'html':'UTF-8'}">
                             <div class="form-group">
-                                <label class="control-label col-lg-2 col-md-3 text-left">{l s='Change currency'}</label>
+                                <label class="control-label col-lg-2 col-md-3 text-left">{l s='Changer la devise'}</label>
                                 <div class="col-lg-4 col-md-5">
                                     <select name="new_currency">
                                     {foreach from=$currencies item=currency_change}
@@ -502,10 +502,10 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-6 col-md-4">
-                                    <button type="submit" class="btn btn-primary" name="submitChangeCurrency"><i class="icon-refresh"></i> {l s='Change Currencly'}</button>
+                                    <button type="submit" class="btn btn-primary" name="submitChangeCurrency"><i class="icon-refresh"></i> {l s='Changer la devise'}</button>
                                 </div>
                             </div>
-                            <p class="help-block">{l s='Do not forget to update your exchange rate before making this change.'}</p>
+                            <p class="help-block">{l s='N&#039;oubliez pas de mettre à jour votre taux de change avant d&#039;effectuer ce changement.'}</p>
                         </form>
                     {/if}
                 </div>
@@ -516,29 +516,29 @@
                 {if $customerGuestDetail}
                     <div class="panel">
                         <div class="panel-heading">
-                            <i class="icon icon-user"></i> &nbsp;{l s='Traveller detail'}
+                            <i class="icon icon-user"></i> &nbsp;{l s='Détails du voyageur'}
                              {if $can_edit}
                                 <button id="edit_guest_details" class="btn btn-primary pull-right" type="button" >
-                                    <i class="icon-pencil"></i> {l s='Edit'}
+                                    <i class="icon-pencil"></i> {l s='Modifier'}
                                 </button>
                             {/if}
                         </div>
                         <div class="row">
                             <div class="col-xs-12" id="customer-guest-details">
                                 <dl class="list-detail col-sm-6">
-                                    <label class="label-title">{l s='Title'}</label>
+                                    <label class="label-title">{l s='Titre'}</label>
                                     <dd class="gender_name">{$customerGuestDetail->gender->name}</dd>
                                 </dl>
                                 <dl class="list-detail col-sm-6">
-                                    <label class="label-title">{l s='Name'}</label>
+                                    <label class="label-title">{l s='Nom'}</label>
                                     <dd class="guest_name">{$customerGuestDetail->firstname} {$customerGuestDetail->lastname}</dd>
                                 </dl>
                                 <dl class="list-detail col-sm-6">
-                                    <label class="label-title">{l s='Email'}</label>
+                                    <label class="label-title">{l s='E-mail'}</label>
                                     <dd class="guest_email"><a  href="mailto:{$customerGuestDetail->email}"><i class="icon-envelope-o"></i> {$customerGuestDetail->email}</a></dd>
                                 </dl>
                                 <dl class="list-detail col-sm-6">
-                                    <label class="label-title">{l s='Phone'}</label>
+                                    <label class="label-title">{l s='Téléphone'}</label>
                                     <dd class="guest_phone"><a  href="tel:{$customerGuestDetail->phone}"><i class="icon-phone"></i> {$customerGuestDetail->phone}</a></dd>
                                 </dl>
                             </div>
@@ -550,16 +550,16 @@
                 <div class="panel panel-customer">
                     {if $customer->id}
                         <div class="panel-heading">
-                            <i class="icon-user"></i> &nbsp;{l s='Customer'} <span class="badge">{l s='#'}{$customer->id}</span>
-                            <a href="?tab=AdminCustomers&amp;id_customer={$customer->id}&amp;viewcustomer&amp;token={getAdminToken tab='AdminCustomers'}" class="pull-right">{l s='View customer details'}</a>
+                            <i class="icon-user"></i> &nbsp;{l s='Client'} <span class="badge">{l s='#'}{$customer->id}</span>
+                            <a href="?tab=AdminCustomers&amp;id_customer={$customer->id}&amp;viewcustomer&amp;token={getAdminToken tab='AdminCustomers'}" class="pull-right">{l s='Voir la fiche client'}</a>
                         </div>
                         <div class="row">
                             <div class="col-xs-12 customer_info">
                                 {if ($customer->isGuest())}
-                                    <p class="alert alert-warning">{l s='This booking has been created by a guest.'}</p>
+                                    <p class="alert alert-warning">{l s='Cette réservation a été créée par un invité.'}</p>
                                     {if (!Customer::customerExists($customer->email))}
                                         <dl class="list-detail col-sm-12">
-                                            <label class="label-title">{l s='Guest info'}</label>
+                                            <label class="label-title">{l s='Informations invité'}</label>
 
                                             <dd><i class="icon-user"></i> &nbsp;<b><a  href="?tab=AdminCustomers&amp;id_customer={$customer->id}&amp;viewcustomer&amp;token={getAdminToken tab='AdminCustomers'}">{$customer->firstname} {$customer->lastname}</a></b></dd>
                                             <dd><i class="icon-envelope"></i>  &nbsp;<b><a  href="mailto:{$customer->email}">{$customer->email}</a></b></dd>
@@ -571,18 +571,18 @@
                                             <input type="hidden" name="id_lang" value="{$order->id_lang}" />
 
                                             {if $can_edit}
-                                                <button class="btn btn-primary" type="submit" name="submitGuestToCustomer"><i class='icon-refresh'></i> {l s='Transform this guest into a customer'}</button>
-                                                <p class="help-block">{l s='This feature will generate a random password and send an email to the customer.'}</p>
+                                                <button class="btn btn-primary" type="submit" name="submitGuestToCustomer"><i class='icon-refresh'></i> {l s='Transformer cet invité en client'}</button>
+                                                <p class="help-block">{l s='Cette fonctionnalité génère un mot de passe aléatoire et envoie un email au client.'}</p>
                                             {/if}
                                         </form>
                                     {else}
                                         <div class="alert alert-warning">
-                                            {l s='A registered customer account has already claimed this email address'}
+                                            {l s='Un compte client existant est déjà associé à cette adresse email'}
                                         </div>
                                     {/if}
                                 {else}
                                     <dl class="list-detail col-sm-6">
-                                        <label class="label-title">{l s='Customer'}</label>
+                                        <label class="label-title">{l s='Client'}</label>
 
                                         <dd><i class="icon-user"></i> &nbsp;<b><a  href="?tab=AdminCustomers&amp;id_customer={$customer->id}&amp;viewcustomer&amp;token={getAdminToken tab='AdminCustomers'}">{$customer->firstname} {$customer->lastname}</a></b></dd>
                                         <dd><i class="icon-envelope"></i>  &nbsp;<b><a  href="mailto:{$customer->email}">{$customer->email}</a></b></dd>
@@ -591,11 +591,11 @@
                                         {/if}
                                     </dl>
                                     <dl class="list-detail col-sm-6">
-                                        <label class="label-title">{l s='Customer Info'}</label>
+                                        <label class="label-title">{l s='Informations client'}</label>
 
-                                        <dd><b><i class="icon-calendar"></i> &nbsp; {$customer->date_add|date_format:"%d %b, %Y"}</b> ({l s='Member since'})</dd>
-                                        <dd><b><i class="icon-list"></i> &nbsp; {$customerStats['nb_orders']|intval}</b> ({l s='Total valid order placed'})</dd>
-                                        <dd><b><i class="icon-credit-card"></i> &nbsp; {displayPrice price=Tools::ps_round(Tools::convertPrice($customerStats['total_spent']|floatval, $currency), _PS_PRICE_DISPLAY_PRECISION_) currency=$currency->id}</b> ({l s='Total spent since registration'})</dd>
+                                        <dd><b><i class="icon-calendar"></i> &nbsp; {$customer->date_add|date_format:"%d %b, %Y"}</b> ({l s='Membre depuis'})</dd>
+                                        <dd><b><i class="icon-list"></i> &nbsp; {$customerStats['nb_orders']|intval}</b> ({l s='Total des commandes valides'})</dd>
+                                        <dd><b><i class="icon-credit-card"></i> &nbsp; {displayPrice price=Tools::ps_round(Tools::convertPrice($customerStats['total_spent']|floatval, $currency), _PS_PRICE_DISPLAY_PRECISION_) currency=$currency->id}</b> ({l s='Total dépensé depuis l&#039;inscription'})</dd>
                                         {if Configuration::get('PS_B2B_ENABLE')}
                                             <dd><b>{$customer->siret}</b> ({l s='Siret'})</dd>
                                             <dd><b>{$customer->ape|date_format:"%d %b, %Y"}</b> ({l s='APE'})</dd>
@@ -605,9 +605,9 @@
                             </div>
 
                             <div class="col-xs-12">
-                                <div class="panel panel-sm">
+                                <div class="panel panel-sm reception-admin-only">
                                     <div class="panel-heading">
-                                        <i class="icon-eye-slash"></i> &nbsp;{l s='Private note'}
+                                        <i class="icon-eye-slash"></i> &nbsp;{l s='Note privée'}
                                     </div>
                                     <form id="customer_note" class="form-horizontal" action="ajax.php" method="post" onsubmit="saveCustomerNote({$customer->id});return false;" >
                                         <div class="form-group">
@@ -619,7 +619,7 @@
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <button type="submit" id="submitCustomerNote" class="btn btn-primary pull-right" disabled="disabled">
-                                                        <i class="icon-save"></i> {l s='Add Note'}
+                                                        <i class="icon-save"></i> {l s='Ajouter une note'}
                                                     </button>
                                                 </div>
                                             </div>
@@ -632,15 +632,15 @@
                             <div class="col-xs-12">
                                 {capture "TaxMethod"}
                                     {if ($order->getTaxCalculationMethod() == $smarty.const.PS_TAX_EXC)}
-                                        {l s='Tax excluded'}
+                                        {l s='HT'}
                                     {else}
-                                        {l s='Tax included'}
+                                        {l s='TTC'}
                                     {/if}
                                 {/capture}
                                 <div class="alert alert-warning">
-                                    {l s='For this customer group, prices are displayed as: [1]%s[/1]' sprintf=[$smarty.capture.TaxMethod] tags=['<strong>']}
+                                    {l s='Pour ce groupe de client, les prix sont affichés comme : [1]%s[/1]' sprintf=[$smarty.capture.TaxMethod] tags=['<strong>']}
                                     {if !$refund_allowed}
-                                        <br/><strong>{l s='Refunds are disabled'}</strong>
+                                        <br/><strong>{l s='Les remboursements sont désactivés'}</strong>
                                     {/if}
                                 </div>
                             </div>
@@ -649,13 +649,13 @@
                     {/if}
                 </div>
 
-                <div class="panel panel-guest_address">
+                <div class="panel panel-guest_address reception-admin-only">
                     <div class="panel-heading">
-                        <span class="panel-title"><i class="icon icon-envelope"></i> &nbsp;{l s='Customer Address'}</span>
+                        <span class="panel-title"><i class="icon icon-envelope"></i> &nbsp;{l s='Adresse du client'}</span>
                         {if $can_edit}
                             {if $idOrderAddressInvoice}
                                 <button id="edit_guest_address" class="btn btn-primary pull-right fancybox" href="{$link->getAdminLink('AdminAddresses')}&amp;id_address={$idOrderAddressInvoice}&amp;updateaddress&amp;id_order={$order->id|intval}&amp;address_type=2&amp;realedit=1&amp;liteDisplaying=1&amp;submitFormAjax=1#">
-                                    <i class="icon-pencil"></i> {l s='Edit'}
+                                    <i class="icon-pencil"></i> {l s='Modifier'}
                                 </button>
                                 {if (!$idCurrentAddress || ($idCurrentAddress != $idOrderAddressInvoice)) || $ordersWithDiffInvAddr}
                                     <div class="guest_address_actions dropdown">
@@ -664,17 +664,17 @@
                                         </a>
                                         <ul class="dropdown-menu">
                                             {if $ordersWithDiffInvAddr}
-                                                <li><a href="{$current_index}&amp;vieworder&amp;token={$smarty.get.token|escape:'html':'UTF-8'}&amp;id_order={$order->id|intval}&amp;action=set_old_orders_address">{l s='Set for all orders'}</a></li>
+                                                <li><a href="{$current_index}&amp;vieworder&amp;token={$smarty.get.token|escape:'html':'UTF-8'}&amp;id_order={$order->id|intval}&amp;action=set_old_orders_address">{l s='Appliquer à toutes les commandes'}</a></li>
                                             {/if}
                                             {if !$idCurrentAddress || ($idCurrentAddress != $idOrderAddressInvoice)}
-                                                <li><a href="{$current_index}&amp;vieworder&amp;token={$smarty.get.token|escape:'html':'UTF-8'}&amp;id_order={$order->id|intval}&amp;action=set_address_current_address">{l s='Set as current address'}</a></li>
+                                                <li><a href="{$current_index}&amp;vieworder&amp;token={$smarty.get.token|escape:'html':'UTF-8'}&amp;id_order={$order->id|intval}&amp;action=set_address_current_address">{l s='Définir comme adresse actuelle'}</a></li>
                                             {/if}
                                         </ul>
                                     </div>
                                 {/if}
                             {else}
                                 <button id="add_guest_address" class="btn btn-primary pull-right fancybox" href="{$link->getAdminLink('AdminAddresses')}&amp;addaddress&amp;id_order={$order->id|intval}&amp;address_type=2&amp;id_customer={$order->id_customer}&amp;liteDisplaying=1&amp;submitFormAjax=1#">
-                                    <i class="icon-plus-circle"></i> {l s='Add Address'}
+                                    <i class="icon-plus-circle"></i> {l s='Ajouter une adresse'}
                                 </button>
                                 {if $idCurrentAddress}
                                     <div class="guest_address_actions dropdown">
@@ -682,7 +682,7 @@
                                             <i class="icon-ellipsis-vertical"></i>
                                         </a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="{$current_index}&amp;vieworder&amp;token={$smarty.get.token|escape:'html':'UTF-8'}&amp;id_order={$order->id|intval}&amp;action=set_order_active_address">{l s='Set current address for this order'}</a></li>
+                                            <li><a href="{$current_index}&amp;vieworder&amp;token={$smarty.get.token|escape:'html':'UTF-8'}&amp;id_order={$order->id|intval}&amp;action=set_order_active_address">{l s='Définir l&#039;adresse actuelle pour cette commande'}</a></li>
                                         </ul>
                                     </div>
                                 {/if}
@@ -696,7 +696,7 @@
                             <div class="list-empty">
                                 <div class="list-empty-msg">
                                     <i class="icon-warning-sign list-empty-icon"></i>
-                                    {l s='Guest address not found.'}
+                                    {l s='Adresse de l&#039;invité non trouvée.'}
                                 </div>
                             </div>
                         {/if}
@@ -707,7 +707,7 @@
                 {if isset($messages) && $messages}
                     <div class="panel order-notes">
                         <div class="panel-heading">
-                            <i class="icon-undo"></i> &nbsp;{l s='Order Private Notes'}
+                            <i class="icon-undo"></i> &nbsp;{l s='Notes privées de la commande'}
                         </div>
                         <div class="panel-content">
                             {foreach from=$messages item=message name=customerMessage}
@@ -723,13 +723,13 @@
                                             {dateFormat date=$message['date_add']}
                                         </span>
                                         {if ($message['private'] == 1)}
-                                            <span class="badge badge-info">{l s='Private'}</span>
+                                            <span class="badge badge-info">{l s='Privé'}</span>
                                         {/if}
                                     </p>
                                 </div>
                                 {if !$smarty.foreach.customerMessage.last}<hr/>{/if}
                                 {* {if ($message['is_new_for_me'])}
-                                    <a class="new_message" title="{l s='Mark this message as \'viewed\''}" href="{$smarty.server.REQUEST_URI}&amp;token={$smarty.get.token}&amp;messageReaded={$message['id_message']}">
+                                    <a class="new_message" title="{l s='Marquer ce message comme &#039;lu&#039;'}" href="{$smarty.server.REQUEST_URI}&amp;token={$smarty.get.token}&amp;messageReaded={$message['id_message']}">
                                         <i class="icon-ok"></i>
                                     </a>
                                 {/if} *}
@@ -738,9 +738,9 @@
                     </div>
                 {/if}
 
-                <div class="panel panel-refund-request">
+                <div class="panel panel-refund-request reception-admin-only">
                     <div class="panel-heading">
-                        <i class="icon-undo"></i> &nbsp;{l s='Refund Requests'}
+                        <i class="icon-undo"></i> &nbsp;{l s='Demandes de remboursement'}
                     </div>
                     <div class="panel-content">
                         {if is_array($returns) && count($returns)}
@@ -748,15 +748,15 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>{l s='Request ID'}</th>
+                                            <th>{l s='ID de la demande'}</th>
                                             {if isset($refundReqBookings) && $refundReqBookings}
-                                                <th>{l s='Total Rooms'}</th>
+                                                <th>{l s='Total des chambres'}</th>
                                             {/if}
                                             {if isset($refundReqProducts) && $refundReqProducts}
-                                                <th>{l s='Total Products'}</th>
+                                                <th>{l s='Total des produits'}</th>
                                             {/if}
-                                            <th>{l s='Requested Date'}</th>
-                                            <th>{l s='Status'}</th>
+                                            <th>{l s='Date de la demande'}</th>
+                                            <th>{l s='Statut'}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -789,7 +789,7 @@
                             <div class="list-empty">
                                 <div class="list-empty-msg">
                                     <i class="icon-warning-sign list-empty-icon"></i>
-                                    {l s='No refund requests created.'}
+                                    {l s='Aucune demande de remboursement créée.'}
                                 </div>
                             </div>
                         {/if}
@@ -798,7 +798,7 @@
                 {if is_array($applicable_refund_policies) && count($applicable_refund_policies)}
                     <div class="panel">
                         <div class="panel-heading">
-                            <i class="icon-remove-sign"></i> &nbsp;{l s='Cancellation Policies'}
+                            <i class="icon-remove-sign"></i> &nbsp;{l s='Politiques d&#039;annulation'}
                         </div>
                         <div class="panel-content">
                             {if is_array($applicable_refund_policies) && count($applicable_refund_policies)}
@@ -815,7 +815,7 @@
                                 <div class="list-empty">
                                     <div class="list-empty-msg">
                                         <i class="icon-warning-sign list-empty-icon"></i>
-                                        {l s='No cancellation policies applicable.'}
+                                        {l s='Aucune politique d&#039;annulation applicable.'}
                                     </div>
                                 </div>
                             {/if}
@@ -826,9 +826,9 @@
             </div>
         </div>
         {hook h="displayAdminOrder" id_order=$order->id}
-        <div class="row" id="start_products">
+        <div class="row reception-admin-only" id="start_products">
             <div class="col-lg-12">
-                <form class="container-command-top-spacing" action="{$current_index}&amp;vieworder&amp;token={$smarty.get.token|escape:'html':'UTF-8'}&amp;id_order={$order->id|intval}" method="post" onsubmit="return orderDeleteProduct('{l s='This product cannot be returned.'}', '{l s='Quantity to cancel is greater than quantity available.'}');">
+                <form class="container-command-top-spacing" action="{$current_index}&amp;vieworder&amp;token={$smarty.get.token|escape:'html':'UTF-8'}&amp;id_order={$order->id|intval}" method="post" onsubmit="return orderDeleteProduct('{l s='Ce produit ne peut pas être retourné.'}', '{l s='La quantité à annuler est supérieure à la quantité disponible.'}');">
                     <input type="hidden" name="id_order" value="{$order->id}" />
                     <div style="display: none">
                         <input type="hidden" value="{$order->getWarehouseList()|implode}" id="warehouse_list" />
@@ -836,10 +836,10 @@
                     {if $hotel_booking}
                         <div class="panel">
                             <div class="panel-heading">
-                                <i class="icon-bed"></i> &nbsp;{l s='Rooms Booking Detail'} <span class="badge">{$order_detail_data|@count}</span>
+                                <i class="icon-bed"></i> &nbsp;{l s='Détail de la réservation des chambres'} <span class="badge">{$order_detail_data|@count}</span>
                                 {if $can_edit && (!$order->hasBeenDelivered() && $currentState->id != Configuration::get('PS_OS_REFUND') && $currentState->id != Configuration::get('PS_OS_CANCELED'))}
                                     <button type="button" id="add_room" class="btn btn-primary pull-right">
-                                        <i class="icon-plus-sign"></i> {l s='Add Rooms'}
+                                        <i class="icon-plus-sign"></i> {l s='Ajouter des chambres'}
                                     </button>
                                 {/if}
                             </div>
@@ -856,10 +856,10 @@
                         {if $hotel_service_products || $hotelStandaloneProducts || $standaloneProducts}
                             <div class="panel">
                                 <div class="panel-heading">
-                                    <i class="icon-bed"></i> &nbsp;{l s='Products Detail'} <span class="badge">{$hotel_service_products|count}</span>
+                                    <i class="icon-bed"></i> &nbsp;{l s='Détail des produits'} <span class="badge">{$hotel_service_products|count}</span>
                                     {if $can_edit && (!$order->hasBeenDelivered() && $currentState->id != Configuration::get('PS_OS_REFUND') && $currentState->id != Configuration::get('PS_OS_CANCELED'))}
                                         <button type="button" id="add_product" class="btn btn-primary pull-right">
-                                            <i class="icon-plus-sign"></i> {l s='Add Product'}
+                                            <i class="icon-plus-sign"></i> {l s='Ajouter un produit'}
                                         </button>
                                     {/if}
                                 </div>
@@ -876,10 +876,10 @@
                         {if $standalone_service_products || $standaloneProducts}
                             <div class="panel">
                                 <div class="panel-heading">
-                                    <i class="icon-bed"></i> &nbsp;{l s='Products Detail'} <span class="badge">{$standalone_service_products|count}</span>
+                                    <i class="icon-bed"></i> &nbsp;{l s='Détail des produits'} <span class="badge">{$standalone_service_products|count}</span>
                                     {if $can_edit && (!$order->hasBeenDelivered() && $currentState->id != Configuration::get('PS_OS_REFUND') && $currentState->id != Configuration::get('PS_OS_CANCELED'))}
                                         <button type="button" id="add_product" class="btn btn-primary pull-right">
-                                            <i class="icon-plus-sign"></i> {l s='Add Product'}
+                                            <i class="icon-plus-sign"></i> {l s='Ajouter un produit'}
                                         </button>
                                     {/if}
                                 </div>
@@ -940,7 +940,7 @@
 
                             {if $total_rooms_price_tax_excl}
                                 <tr id="total_products">
-                                    <td class="text-right">{l s='Total Rooms Cost (Tax excl.)'}</td>
+                                    <td class="text-right">{l s='Coût total des chambres (HT)'}</td>
                                     <td class="amount text-right nowrap">
                                         {displayPrice price=$total_rooms_price_tax_excl currency=$currency->id}
                                     </td>
@@ -949,7 +949,7 @@
                             {/if}
                             {if $total_products_price_tax_excl > 0}
                                 <tr id="total_products">
-                                    <td class="text-right">{l s='Total products (Tax excl.)'}</td>
+                                    <td class="text-right">{l s='Total des produits (HT)'}</td>
                                     <td class="amount text-right nowrap">
                                         {displayPrice price=$total_products_price_tax_excl currency=$currency->id}
                                     </td>
@@ -958,7 +958,7 @@
                             {/if}
                             {if isset($total_room_services_and_demands_tax_excl) && $total_room_services_and_demands_tax_excl > 0}
                                 <tr id="total_products">
-                                    <td class="text-right">{l s='Total Extra services (Tax excl.)'}</td>
+                                    <td class="text-right">{l s='Total des services supplémentaires (HT)'}</td>
                                     <td class="amount text-right nowrap">
                                         {displayPrice price=($total_room_services_and_demands_tax_excl - $total_convenience_fee_tax_excl) currency=$currency->id}
                                     </td>
@@ -968,7 +968,7 @@
                             {if isset($total_convenience_fee_tax_excl) && $total_convenience_fee_tax_excl > 0}
                                 <tr id="total_products">
                                     <td class="text-right">
-                                        {l s='Convenience Fee (Tax excl.)'}
+                                        {l s='Frais de commodité (HT)'}
                                         {if isset($order_convenience_fee_services) && count($order_convenience_fee_services)}
                                             <span role="button" id="view_convenience_services" class="pull-left"><i class="icon-angle-down icon-bold"></i><i class="icon-angle-up icon-bold" style="display:none;"></i></span>
                                         {/if}
@@ -998,7 +998,7 @@
                             {* {if ($order->getTaxCalculationMethod() == $smarty.const.PS_TAX_EXC)} *}
                             <tr id="total_taxes">
                                 <td class="text-right">
-                                    <strong>{l s='Total Taxes'} </strong>
+                                    <strong>{l s='Total des taxes'} </strong>
                                     {if ($order_total_price_tax_incl - $order_total_price_tax_excl) > 0}
                                         <span role="button" id="view_order_tax_details" class="pull-left"><i class="icon-angle-down icon-bold"></i><i class="icon-angle-up icon-bold" style="display:none;"></i></span>
                                     {/if}
@@ -1014,7 +1014,7 @@
                                             <tbody>
                                                 {if $total_rooms_price_tax_excl}
                                                     <tr>
-                                                        <td class="text-left">{l s='Total Rooms Tax'}</td>
+                                                        <td class="text-left">{l s='Taxe des chambres'}</td>
                                                         <td class="text-right">
                                                             {displayPrice price=($total_rooms_price_tax_incl - $total_rooms_price_tax_excl) currency=$currency->id}
                                                         </td>
@@ -1022,7 +1022,7 @@
                                                 {/if}
                                                 {if isset($total_room_services_and_demands_tax_incl) && (($total_room_services_and_demands_tax_incl - $total_room_services_and_demands_tax_excl) - ($total_convenience_fee_tax_incl - $total_convenience_fee_tax_excl)) > 0}
                                                     <tr>
-                                                        <td class="text-left">{l s='Extra services Tax'}</td>
+                                                        <td class="text-left">{l s='Taxe des services supplémentaires'}</td>
                                                         <td class="text-right nowrap">
                                                             {displayPrice price=(($total_room_services_and_demands_tax_incl - $total_room_services_and_demands_tax_excl) - ($total_convenience_fee_tax_incl - $total_convenience_fee_tax_excl)) currency=$currency->id}
                                                         </td>
@@ -1031,7 +1031,7 @@
                                                 {/if}
                                                 {if ($total_products_price_tax_incl - $total_products_price_tax_excl) > 0}
                                                     <tr id="total_products">
-                                                        <td class="text-left">{l s='Products Tax'}</td>
+                                                        <td class="text-left">{l s='Taxe des produits'}</td>
                                                         <td class="amount text-right nowrap">
                                                             {displayPrice price=($total_products_price_tax_incl - $total_products_price_tax_excl) currency=$currency->id}
                                                         </td>
@@ -1040,7 +1040,7 @@
                                                 {/if}
                                                 {if isset($total_convenience_fee_tax_excl) && $total_convenience_fee_tax_excl > 0}
                                                     <tr id="total_products">
-                                                        <td class="text-left">{l s='Convenience Fee Tax'}</td>
+                                                        <td class="text-left">{l s='Taxe des frais de commodité'}</td>
                                                         <td class="amount text-right nowrap">
                                                             {displayPrice price=($total_convenience_fee_tax_incl - $total_convenience_fee_tax_excl) currency=$currency->id}
                                                         </td>
@@ -1054,28 +1054,28 @@
                             {/if}
                             {* {/if} *}
                             <tr id="total_discounts" {if $order->total_discounts_tax_incl == 0}style="display: none;"{/if}>
-                                <td class="text-right"><strong>{l s='Total Booking Amount'}</strong></td>
+                                <td class="text-right"><strong>{l s='Montant total de la réservation'}</strong></td>
                                 <td class="amount text-right nowrap">
                                     <strong>{displayPrice price=($order_total_price_tax_incl) currency=$currency->id}</strong>
                                 </td>
                                 <td class="partial_refund_fields current-edit" style="display:none;"></td>
                             </tr>
                             <tr id="total_discounts" {if $order->total_discounts_tax_incl == 0}style="display: none;"{/if}>
-                                <td class="text-right"><strong>{l s='Discounts'}</strong></td>
+                                <td class="text-right"><strong>{l s='Remises'}</strong></td>
                                 <td class="amount text-right nowrap">
                                     <strong>-{displayPrice price=$order->total_discounts_tax_incl currency=$currency->id}</strong>
                                 </td>
                                 <td class="partial_refund_fields current-edit" style="display:none;"></td>
                             </tr>
                             <tr id="total_wrapping" {if $order->total_wrapping_tax_incl == 0}style="display: none;"{/if}>
-                                <td class="text-right">{l s='Wrapping'}</td>
+                                <td class="text-right">{l s='Emballage'}</td>
                                 <td class="amount text-right nowrap">
                                     {displayPrice price=$order_wrapping_price currency=$currency->id}
                                 </td>
                                 <td class="partial_refund_fields current-edit" style="display:none;"></td>
                             </tr>
                             <tr id="total_order">
-                                <td class="text-right"><strong>{l s='Final Booking Total'}</strong></td>
+                                <td class="text-right"><strong>{l s='Total final de la réservation'}</strong></td>
                                 <td class="amount text-right nowrap">
                                     <strong>{displayPrice price=$order->total_paid_tax_incl currency=$currency->id}</strong>
                                 </td>
@@ -1084,7 +1084,7 @@
 
                             {if (isset($refundReqBookings) && $refundReqBookings) || (isset($refundReqProducts) && $refundReqProducts)}
                                 <tr id="total_order">
-                                    <td class="text-right"><strong>* {l s='Refunded Amount'}</strong></td>
+                                    <td class="text-right"><strong>* {l s='Montant remboursé'}</strong></td>
                                     <td class="amount text-right nowrap">
                                         <strong>{displayPrice price=$refundedAmount currency=$currency->id}</strong>
                                     </td>
@@ -1093,7 +1093,7 @@
                             {/if}
 
                             <tr>
-                                <td class="text-right"><strong>{l s='Due Amount'}</strong></td>
+                                <td class="text-right"><strong>{l s='Montant dû'}</strong></td>
                                 <td class="amount text-right nowrap">
                                     <strong>
                                         {displayPrice currency=$order->id_currency price=($order->total_paid_tax_incl - $order->total_paid_real)}
@@ -1107,12 +1107,12 @@
 
             {* Discount block *}
             <div class="col-lg-4 col-sm-6 col-xs-12 pull-right">
-                <div class="panel panel-vouchers">
+                <div class="panel panel-vouchers reception-admin-only">
                     <div class="panel-heading">
-                        <span><i class="icon-tag"></i> &nbsp;{l s='Voucher'}</span>
+                        <span><i class="icon-tag"></i> &nbsp;{l s='Bon de réduction'}</span>
                         {if $can_edit && $order->total_paid > 0}
                             <button id="add_voucher" class="btn btn-primary pull-right" type="button" >
-                                <i class="icon-ticket"></i> {l s='Add new voucher'}
+                                <i class="icon-ticket"></i> {l s='Ajouter un nouveau bon de réduction'}
                             </button>
                         {/if}
                     </div>
@@ -1123,14 +1123,14 @@
                                     <thead>
                                         <tr>
                                             <th>
-                                                <span class="title_box ">{l s='Voucher name'}</span>
+                                                <span class="title_box ">{l s='Nom du bon de réduction'}</span>
                                             </th>
                                             <th>
-                                                <span class="title_box ">{l s='Value'}</span>
+                                                <span class="title_box ">{l s='Valeur'}</span>
                                             </th>
                                             {if $can_edit}
                                                 <th class="text-center">
-                                                    <span class="title_box ">{l s='Delete'}</span>
+                                                    <span class="title_box ">{l s='Supprimer'}</span>
                                                 </th>
                                             {/if}
                                         </tr>
@@ -1159,7 +1159,7 @@
                             <div class="list-empty">
                                 <div class="list-empty-msg">
                                     <i class="icon-warning-sign list-empty-icon"></i>
-                                    {l s='No vouchers created.'}
+                                    {l s='Aucun bon de réduction créé.'}
                                 </div>
                             </div>
                         {/if}
@@ -1172,7 +1172,7 @@
                 <div class="col-lg-4 col-sm-6 col-xs-12 pull-right">
                     <div class="panel">
                         <div class="panel-heading">
-                            <i class="icon-link"></i> &nbsp;{l s='Linked orders'}
+                            <i class="icon-link"></i> &nbsp;{l s='Commandes liées'}
                         </div>
                         <div class="panel-content">
                             <div class="table-responsive">
@@ -1180,13 +1180,13 @@
                                     <thead>
                                         <tr>
                                             <th>
-                                                {l s='Order no. '}
+                                                {l s='Commande n° '}
                                             </th>
                                             <th>
-                                                {l s='Status'}
+                                                {l s='Statut'}
                                             </th>
                                             <th>
-                                                {l s='Amount'}
+                                                {l s='Montant'}
                                             </th>
                                             <th></th>
                                         </tr>
@@ -1206,7 +1206,7 @@
                                             <td>
                                                 <a  href="{$current_index}&amp;vieworder&amp;id_order={$brother_order->id}&amp;token={$smarty.get.token|escape:'html':'UTF-8'}">
                                                     <i class="icon-eye-open"></i>
-                                                    {l s='See the order'}
+                                                    {l s='Voir la commande'}
                                                 </a>
                                             </td>
                                         </tr>
@@ -1219,24 +1219,24 @@
                 </div>
             {/if}
 
-            <div class="col-lg-4 col-sm-6 col-xs-12 hidden-print">
+            <div class="col-lg-4 col-sm-6 col-xs-12 hidden-print reception-admin-only">
                 <div class="panel">
                     <div class="panel-heading">
                         <i class="icon-envelope"></i> &nbsp;{l s='Messages'} <span class="badge">{sizeof($customer_thread_message)}</span>
                         {if $id_customer_thread}
-                            <a href="{$link->getAdminLink('AdminCustomerThreads')|escape:'html':'UTF-8'}&amp;viewcustomer_thread&id_customer_thread={$id_customer_thread|intval}" class="pull-right ">{l s='Show all messages'}</a>
+                            <a href="{$link->getAdminLink('AdminCustomerThreads')|escape:'html':'UTF-8'}&amp;viewcustomer_thread&id_customer_thread={$id_customer_thread|intval}" class="pull-right ">{l s='Afficher tous les messages'}</a>
                         {else}
-                            <a href="{$link->getAdminLink('AdminCustomerThreads')|escape:'html':'UTF-8'}" class="pull-right">{l s='Show all messages'}</a>
+                            <a href="{$link->getAdminLink('AdminCustomerThreads')|escape:'html':'UTF-8'}" class="pull-right">{l s='Afficher tous les messages'}</a>
                         {/if}
                     </div>
                     <div id="messages">
                         {if $can_edit}
-                            <form action="{$smarty.server.REQUEST_URI|escape:'html':'UTF-8'}&amp;token={$smarty.get.token|escape:'html':'UTF-8'}" method="post" onsubmit="if (getE('visibility').checked == true) return confirm('{l s='Do you want to send this message to the customer?'}');">
+                            <form action="{$smarty.server.REQUEST_URI|escape:'html':'UTF-8'}&amp;token={$smarty.get.token|escape:'html':'UTF-8'}" method="post" onsubmit="if (getE('visibility').checked == true) return confirm('{l s='Voulez-vous envoyer ce message au client ?'}');">
                                 <div id="message" class="form-horizontal">
                                     <div class="form-group">
-                                        <label class="control-label">{l s='Choose a standard message'}</label>
+                                        <label class="control-label">{l s='Choisir un message standard'}</label>
                                         <p>
-                                            <select class="chosen form-control" name="order_message" id="order_message" onchange="orderOverwriteMessage(this, '{l s='Do you want to overwrite your existing message?'}')">
+                                            <select class="chosen form-control" name="order_message" id="order_message" onchange="orderOverwriteMessage(this, '{l s='Voulez-vous remplacer votre message existant ?'}')">
                                                 <option value="0" selected="selected">-</option>
                                                 {foreach from=$orderMessages item=orderMessage}
                                                 <option value="{$orderMessage['message']|escape:'html':'UTF-8'}">{$orderMessage['name']}</option>
@@ -1245,7 +1245,7 @@
                                         </p>
                                         <div>
                                             <a  href="{$link->getAdminLink('AdminOrderMessage')|escape:'html':'UTF-8'}">
-                                                {l s='Configure predefined messages'}
+                                                {l s='Configurer les messages prédéfinis'}
                                                 <i class="icon-external-link"></i>
                                             </a>
                                         </div>
@@ -1260,7 +1260,7 @@
                                         <p class="checkbox">
                                             <label class="control-label" for="visibility">
                                                 <input type="checkbox" name="visibility" id="visibility" value="1" />
-                                                {l s='Display Message to Customer?'}
+                                                {l s='Afficher le message au client ?'}
                                             </label>
                                         </p>
                                     </div>
@@ -1269,13 +1269,13 @@
 
                                     <div class="row">
                                         <button type="submit" id="submitMessage" class="btn btn-primary pull-right" name="submitMessage">
-                                            <i class="icon-paper-plane"></i> {l s='Send Message'}
+                                            <i class="icon-paper-plane"></i> {l s='Envoyer le message'}
                                         </button>
                                     </div>
                                 </div>
                             </form>
                         {else}
-                            <div class="alert alert-warning">{l s='You do not have permission to edit this order.'}</div>
+                            <div class="alert alert-warning">{l s='Vous n&#039;avez pas la permission de modifier cette commande.'}</div>
                         {/if}
                     </div>
                 </div>
@@ -1291,8 +1291,8 @@
                         <ul {if sizeof($sources) > 3}style="height: 200px; overflow-y: scroll;"{/if}>
                         {foreach from=$sources item=source}
                             <li class="form-group">
-                                {l s='From'} {if $source['http_referer'] != ''}<a  href="{$source['http_referer']}">{parse_url($source['http_referer'], $smarty.const.PHP_URL_HOST)|regex_replace:'/^www./':''}</a>{else}-{/if} {l s='To'} <a  href="http://{$source['request_uri']}">{$source['request_uri']|truncate:100:'...'}</a> <br />
-                                {if $source['keywords']}<b>{l s='Keywords'}</b>: {$source['keywords']}<br />{/if}
+                                {l s='De'} {if $source['http_referer'] != ''}<a  href="{$source['http_referer']}">{parse_url($source['http_referer'], $smarty.const.PHP_URL_HOST)|regex_replace:'/^www./':''}</a>{else}-{/if} {l s='Au'} <a  href="http://{$source['request_uri']}">{$source['request_uri']|truncate:100:'...'}</a> <br />
+                                {if $source['keywords']}<b>{l s='Mots-clés'}</b>: {$source['keywords']}<br />{/if}
                                 {dateFormat date=$source['date_add'] full=true}<br />
                             </li>
                         {/foreach}
@@ -1304,36 +1304,36 @@
     </div>
 
     {strip}
-        {addJsDefL name=no_rm_avail_txt}{l s='No room available.' js=1}{/addJsDefL}
-        {addJsDefL name=no_realloc_rm_avail_txt}{l s='No room available for reallocation.' js=1}{/addJsDefL}
-        {addJsDefL name=no_realloc_rm_type_avail_txt}{l s='No room type available for reallocation.' js=1}{/addJsDefL}
-        {addJsDefL name=no_swap_rm_avail_txt}{l s='No room available for swap.' js=1}{/addJsDefL}
-        {addJsDefL name=slct_rm_type_err}{l s='Please select a room type first.' js=1}{/addJsDefL}
-        {addJsDefL name=slct_rm_err}{l s='Please select a room first.' js=1}{/addJsDefL}
-        {addJsDefL name=txtExtraDemandSucc}{l s='Updated Successfully' js=1}{/addJsDefL}
-        {addJsDefL name=atleastSelectTxt}{l s='Select at least one facility to update.' js=1}{/addJsDefL}
+        {addJsDefL name=no_rm_avail_txt}{l s='Aucune chambre disponible.' js=1}{/addJsDefL}
+        {addJsDefL name=no_realloc_rm_avail_txt}{l s='Aucune chambre disponible pour la réallocation.' js=1}{/addJsDefL}
+        {addJsDefL name=no_realloc_rm_type_avail_txt}{l s='Aucun type de chambre disponible pour la réallocation.' js=1}{/addJsDefL}
+        {addJsDefL name=no_swap_rm_avail_txt}{l s='Aucune chambre disponible pour l&#039;échange.' js=1}{/addJsDefL}
+        {addJsDefL name=slct_rm_type_err}{l s='Veuillez d&#039;abord sélectionner un type de chambre.' js=1}{/addJsDefL}
+        {addJsDefL name=slct_rm_err}{l s='Veuillez d&#039;abord sélectionner une chambre.' js=1}{/addJsDefL}
+        {addJsDefL name=txtExtraDemandSucc}{l s='Mise à jour réussie' js=1}{/addJsDefL}
+        {addJsDefL name=atleastSelectTxt}{l s='Sélectionnez au moins un équipement à mettre à jour.' js=1}{/addJsDefL}
 
-        {addJsDefL name=txtSomeErr}{l s='Some error occurred. Please try again.' js=1}{/addJsDefL}
-        {addJsDefL name=txtDeleteSucc}{l s='Deleted successfully' js=1}{/addJsDefL}
-        {addJsDefL name=txtInvalidDemandVal}{l s='Invalid demand value found' js=1}{/addJsDefL}
-        {addJsDefL name='select_age_txt'}{l s='Select age' js=1}{/addJsDefL}
-        {addJsDefL name='under_1_age'}{l s='Under 1' js=1}{/addJsDefL}
-        {addJsDefL name='room_txt'}{l s='Room' js=1}{/addJsDefL}
-        {addJsDefL name='rooms_txt'}{l s='Rooms' js=1}{/addJsDefL}
-        {addJsDefL name='remove_txt'}{l s='Remove' js=1}{/addJsDefL}
-        {addJsDefL name='adult_txt'}{l s='Adult' js=1}{/addJsDefL}
-        {addJsDefL name='adults_txt'}{l s='Adults' js=1}{/addJsDefL}
-        {addJsDefL name='child_txt'}{l s='Child' js=1}{/addJsDefL}
-        {addJsDefL name='children_txt'}{l s='Children' js=1}{/addJsDefL}
-        {addJsDefL name='below_txt'}{l s='Below' js=1}{/addJsDefL}
-        {addJsDefL name='years_txt'}{l s='years' js=1}{/addJsDefL}
-        {addJsDefL name='all_children_txt'}{l s='All Children' js=1}{/addJsDefL}
-        {addJsDefL name='max_occupancy_reached_txt'}{l s='Maximum room occupancy reached' js=1}{/addJsDefL}
-        {addJsDefL name='max_adults_txt'}{l s='Maximum adult occupancy reached' js=1}{/addJsDefL}
-        {addJsDefL name='max_children_txt'}{l s='Maximum children occupancy reached' js=1}{/addJsDefL}
-        {addJsDefL name='no_children_allowed_txt'}{l s='Only adults can be accommodated' js=1}{/addJsDefL}
-        {addJsDefL name='invalid_occupancy_txt'}{l s='Invalid occupancy(adults/children) found.' js=1}{/addJsDefL}
-        {addJsDefL name='select_room_txt'}{l s='Select room' js=1}{/addJsDefL}
+        {addJsDefL name=txtSomeErr}{l s='Une erreur s&#039;est produite. Veuillez réessayer.' js=1}{/addJsDefL}
+        {addJsDefL name=txtDeleteSucc}{l s='Supprimé avec succès' js=1}{/addJsDefL}
+        {addJsDefL name=txtInvalidDemandVal}{l s='Valeur de demande invalide trouvée' js=1}{/addJsDefL}
+        {addJsDefL name='select_age_txt'}{l s='Sélectionner l&#039;âge' js=1}{/addJsDefL}
+        {addJsDefL name='under_1_age'}{l s='Moins de 1 an' js=1}{/addJsDefL}
+        {addJsDefL name='room_txt'}{l s='Chambre' js=1}{/addJsDefL}
+        {addJsDefL name='rooms_txt'}{l s='Chambres' js=1}{/addJsDefL}
+        {addJsDefL name='remove_txt'}{l s='Supprimer' js=1}{/addJsDefL}
+        {addJsDefL name='adult_txt'}{l s='Adulte' js=1}{/addJsDefL}
+        {addJsDefL name='adults_txt'}{l s='Adultes' js=1}{/addJsDefL}
+        {addJsDefL name='child_txt'}{l s='Enfant' js=1}{/addJsDefL}
+        {addJsDefL name='children_txt'}{l s='Enfants' js=1}{/addJsDefL}
+        {addJsDefL name='below_txt'}{l s='Moins de' js=1}{/addJsDefL}
+        {addJsDefL name='years_txt'}{l s='ans' js=1}{/addJsDefL}
+        {addJsDefL name='all_children_txt'}{l s='Tous les enfants' js=1}{/addJsDefL}
+        {addJsDefL name='max_occupancy_reached_txt'}{l s='Occupation maximale de la chambre atteinte' js=1}{/addJsDefL}
+        {addJsDefL name='max_adults_txt'}{l s='Occupation maximale d&#039;adultes atteinte' js=1}{/addJsDefL}
+        {addJsDefL name='max_children_txt'}{l s='Occupation maximale d&#039;enfants atteinte' js=1}{/addJsDefL}
+        {addJsDefL name='no_children_allowed_txt'}{l s='Seuls les adultes peuvent être hébergés' js=1}{/addJsDefL}
+        {addJsDefL name='invalid_occupancy_txt'}{l s='Occupation invalide (adultes/enfants) détectée.' js=1}{/addJsDefL}
+        {addJsDefL name='select_room_txt'}{l s='Sélectionner une chambre' js=1}{/addJsDefL}
         {addJsDef max_child_age=$max_child_age|escape:'quotes':'UTF-8'}
         {addJsDef max_child_in_room=$max_child_in_room|escape:'quotes':'UTF-8'}
         {addJsDef ROOM_STATUS_CHECKED_IN=$ROOM_STATUS_CHECKED_IN|escape:'quotes':'UTF-8'}
@@ -1341,9 +1341,9 @@
         {addJsDef ALLOTMENT_MANUAL=$ALLOTMENT_MANUAL|escape:'quotes':'UTF-8'}
         {addJsDef PS_OS_CANCELED=Configuration::get('PS_OS_CANCELED')|escape:'quotes':'UTF-8'}
         {addJsDef PS_OS_REFUND=Configuration::get('PS_OS_REFUND')|escape:'quotes':'UTF-8'}
-        {addJsDefL name=txt_booking_document_upload_success}{l s='Document uploaded successfully.' js=1}{/addJsDefL}
-        {addJsDefL name=txt_booking_document_delete_confirm}{l s='Are you sure?' js=1}{/addJsDefL}
-        {addJsDefL name=txt_booking_document_delete_success}{l s='Document deleted successfully.' js=1}{/addJsDefL}
-        {addJsDefL name='error_found_txt'}{l s='Errors found' js=1}{/addJsDefL}
+        {addJsDefL name=txt_booking_document_upload_success}{l s='Document téléchargé avec succès.' js=1}{/addJsDefL}
+        {addJsDefL name=txt_booking_document_delete_confirm}{l s='Êtes-vous sûr ?' js=1}{/addJsDefL}
+        {addJsDefL name=txt_booking_document_delete_success}{l s='Document supprimé avec succès.' js=1}{/addJsDefL}
+        {addJsDefL name='error_found_txt'}{l s='Erreurs trouvées' js=1}{/addJsDefL}
     {/strip}
 {/block}

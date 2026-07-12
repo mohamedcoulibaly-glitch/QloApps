@@ -27,7 +27,7 @@
 {block name="other_input"}
 {if $key eq 'selects'}
 <div class="row">
-	<label class="control-label col-lg-3">{l s='Products:'}</label>
+	<label class="control-label col-lg-3">{l s='Produits :'}</label>
 
 	<div class="col-lg-9">
 		<div class="row">
@@ -38,7 +38,7 @@
 					{/foreach}
 				</select>
 				<a href="#" id="move_to_right" class="btn btn-default btn-block multiple_select_add">
-					{l s='Add'} <i class="icon-arrow-right"></i>
+					{l s='Ajouter'} <i class="icon-arrow-right"></i>
 				</a>
 			</div>
 			<div class="col-lg-6">
@@ -48,7 +48,7 @@
 					{/foreach}
 				</select>
 				<a href="#" id="move_to_left" class="btn btn-default btn-block multiple_select_remove">
-					<i class="icon-arrow-left"></i> {l s='Remove'}
+					<i class="icon-arrow-left"></i> {l s='Retirer'}
 				</a>
 			</div>
 		</div>

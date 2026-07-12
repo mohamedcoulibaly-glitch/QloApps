@@ -1,4 +1,4 @@
-{*
+﻿{*
 * 2007-2017 PrestaShop
 *
 * NOTICE OF LICENSE
@@ -27,10 +27,10 @@
 	<td>
         <p>{$data.room_num}</p>
         {if $data.is_back_order}
-            <span class="overbooked_room">{l s='overbooked'}</span>
+            <span class="overbooked_room">{l s='surbooké'}</span>
         {/if}
     </td>
-	<td><img src="{$data.image_link}" title="{l s='Room image'}"></td>
+	<td><img src="{$data.image_link}" title="{l s='Image de la chambre'}"></td>
 	<td>
         <p><a href="{$link->getAdminLink('AdminProducts')|escape:'html':'UTF-8'}&amp;id_product={$data.id_product}&amp;updateproduct" target="_blank"><span>{$data.room_type}</span></a></p>
     </td>
@@ -42,17 +42,17 @@
 		{if $data['children']}
 			<div class="dropdown">
 				<a  data-toggle="dropdown">
-					<span>{if $data['adults']}{$data['adults']}{/if} {if $data['adults'] > 1}{l s='Adults'}{else}{l s='Adult'}{/if}{if {$data['children']}}, {$data['children']} {if $data['children'] > 1}{l s='Children'}{else}{l s='Child'}{/if}{/if}</span>
+					<span>{if $data['adults']}{$data['adults']}{/if} {if $data['adults'] > 1}{l s='Adultes'}{else}{l s='Adulte'}{/if}{if {$data['children']}}, {$data['children']} {if $data['children'] > 1}{l s='Enfants'}{else}{l s='Enfant'}{/if}{/if}</span>
 				</a>
 				<div class="dropdown-menu well well-sm">
-					<label>{l s='Children Ages'}</label>
+					<label>{l s='Âges des enfants'}</label>
 					{if isset($data['child_ages']) && $data['child_ages']}
 						{foreach $data['child_ages'] as $childAge}
 							<p class="">
 								{if $childAge == 0}
                                     {l s='Child %s : Under 1'  sprintf=[$childAge@iteration]}
                                 {else}
-                                    {l s='Child %s : %s' sprintf=[$childAge@iteration, $childAge]} {if $childAge > 1}{l s='years'}{else}{l s='year'}{/if}
+                                    {l s='Child %s : %s' sprintf=[$childAge@iteration, $childAge]} {if $childAge > 1}{l s='ans'}{else}{l s='an'}{/if}
                                 {/if}
 							</p>
 						{/foreach}
@@ -60,7 +60,7 @@
 				</div>
 			</div>
 		{else}
-			{if $data['adults']}{$data['adults']}{/if} {if $data['adults'] > 1}{l s='Adults'}{else}{l s='Adult'}{/if}{if {$data['children']}}, {$data['children']} {if $data['children'] > 1}{l s='Children'}{else}{l s='Child'}{/if}{/if}
+			{if $data['adults']}{$data['adults']}{/if} {if $data['adults'] > 1}{l s='Adultes'}{else}{l s='Adulte'}{/if}{if {$data['children']}}, {$data['children']} {if $data['children'] > 1}{l s='Enfants'}{else}{l s='Enfant'}{/if}{/if}
 		{/if}
 	</td>
 	<td>
@@ -69,7 +69,7 @@
 				{convertPriceWithCurrency price=$data['total_price_tax_excl'] currency=$currency->id}
 			</span>
 		</p>
-		<p class="help-block">{l s='Per day price:'} {convertPriceWithCurrency price=$data['paid_unit_price_tax_excl'] currency=$currency->id}</p>
+		<p class="help-block">{l s='Prix par jour :'} {convertPriceWithCurrency price=$data['paid_unit_price_tax_excl'] currency=$currency->id}</p>
 	</td>
 	<td>
 		{convertPriceWithCurrency price=($data['extra_demands_price_te'] + $data['additional_services_price_te'] + $data['convenience_fee_te'] + $data['additional_services_price_auto_add_te']) currency=$currency->id}
@@ -89,7 +89,7 @@
 		<td>
             {if $data.id|in_array:$refundReqBookings}
 			    {if $data.is_cancelled}
-				    <span class="badge badge-danger">{l s='Cancelled'}</span>
+				    <span class="badge badge-danger">{l s='Annulé'}</span>
 			    {elseif isset($data.refund_info) && (!$data.refund_info.refunded || $data.refund_info.id_customization)}
 				    <span class="badge" style="background-color:{$data.refund_info.color|escape:'html':'UTF-8'}">{$data.refund_info.name|escape:'html':'UTF-8'}</span>
                 {else}
@@ -113,27 +113,27 @@
                 {if isset($refundReqBookings) && $refundReqBookings && $data.id|in_array:$refundReqBookings && $data.is_cancelled}
                     <button href="#" class="btn btn-default delete_room_line">
                         <i class="icon-trash"></i>
-                        {l s='Delete'}
+                        {l s='Supprimer'}
                     </button>
                 {else}
                     <button href="#" class="btn btn-default edit_room_change_link" data-product_line_data="{$data|json_encode|escape}">
                         <i class="icon-pencil"></i>
-                        {l s='Edit'}
+                        {l s='Modifier'}
                     </button>
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
                         <li>
-                            <a href="#" class="room_reallocate_swap" id="reallocate_room_{$data['id']}" data-room_type_name="{$data['room_type_name']}" data-toggle="modal" data-target="#mySwappigModal" data-id_htl_booking="{$data['id']}" data-id_order="{$data['id_order']}" data-room_num='{$data.room_num}' data-id_room_type='{$data.id_product}' data-cust_name='{$data.alloted_cust_name}' data-cust_email='{$data.alloted_cust_email}' data-avail_rm_swap='{$data.avail_rooms_to_swap|@json_encode}' data-avail_realloc_room_types='{$data.avail_room_types_to_realloc|@json_encode}' data-allotment_type='{$data.booking_type}' data-allotment_type_label='{if $data.booking_type == $ALLOTMENT_MANUAL}{l s='Manual'}{else}{l s='Auto'}{/if}' data-comment='{$data.comment}'>
+                            <a href="#" class="room_reallocate_swap" id="reallocate_room_{$data['id']}" data-room_type_name="{$data['room_type_name']}" data-toggle="modal" data-target="#mySwappigModal" data-id_htl_booking="{$data['id']}" data-id_order="{$data['id_order']}" data-room_num='{$data.room_num}' data-id_room_type='{$data.id_product}' data-cust_name='{$data.alloted_cust_name}' data-cust_email='{$data.alloted_cust_email}' data-avail_rm_swap='{$data.avail_rooms_to_swap|@json_encode}' data-avail_realloc_room_types='{$data.avail_room_types_to_realloc|@json_encode}' data-allotment_type='{$data.booking_type}' data-allotment_type_label='{if $data.booking_type == $ALLOTMENT_MANUAL}{l s='Manuelle'}{else}{l s='Auto'}{/if}' data-comment='{$data.comment}'>
                                 <i class="icon-refresh"></i>
-                                {l s='Reallocate/Swap Room'}
+                                {l s='Réallocation/Échange de chambre'}
                             </a>
                         </li>
                         <li>
                             <a href="#" class="delete_room_line">
                                 <i class="icon-trash"></i>
-                                {l s='Delete'}
+                                {l s='Supprimer'}
                             </a>
                         </li>
                     </ul>

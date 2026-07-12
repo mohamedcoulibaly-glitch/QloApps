@@ -104,7 +104,7 @@
 	{hook h=$hookName}
 {/if}
 
-<div class="alert alert-warning" id="{$list_id}-empty-filters-alert" style="display:none;">{l s='Please fill at least one field to perform a search in this list.'}</div>
+<div class="alert alert-warning" id="{$list_id}-empty-filters-alert" style="display:none;">{l s='Veuillez remplir au moins un champ pour effectuer une recherche dans cette liste.'}</div>
 {if isset($sql) && $sql}
 	<form id="sql_form_{$list_id|escape:'html':'UTF-8'}" action="{$link->getAdminLink('AdminRequestSql')|escape}&amp;addrequest_sql" method="post" class="hide">
 		<input type="hidden" id="sql_query_{$list_id|escape:'html':'UTF-8'}" name="sql" value="{$sql|escape}"/>
@@ -202,7 +202,7 @@
 								<div class="col-xs-4 col-sm-3 col-md-2">
 									<div class="list_availibility_container">
 										<button type="button" class="btn btn-default btn-left btn-block dropdown-toggle" data-toggle="dropdown">
-											<span>{l s='Available Fields'}
+											<span>{l s='Champs disponibles'}
 											<i class="icon-caret-down pull-right"></i>
 										</button>
 										<ul id="optional-list-toggle" class="dropdown-menu">
@@ -223,7 +223,7 @@
 									<div class="list_filter_container">
 										<button type="button" class="btn btn-default btn-block" data-toggle="collapse" data-target="#list_filters_panel">
 											<i class="icon-sliders"></i>
-											<span>{l s='Filters'}
+											<span>{l s='Filtres'}
 										</button>
 									</div>
 								</div>
@@ -234,7 +234,7 @@
 						<div class="col-sm-12">
 							{if $filters_has_value}
 								<div id="selected_filter_container">
-									{l s='Filters: '}
+									{l s='Filtres : '}
 									<span class="selected_filters">
 										{foreach $fields_display AS $key => $params}
 											{if (!isset($params.search) || $params.search) && $params.value != ''}
@@ -274,7 +274,7 @@
 													{/if}
 												{elseif $params.type == 'bool'}
 													<span data-filter_key="{if isset($params.filter_key)}{$params.filter_key}{else}{$key}{/if}" data-filter_type="{$params.type}">
-														{$params['title']|escape:'html':'UTF-8'}: <span class="filter_value">{if $params['value'] == 1}{l s='Yes'}{else}{l s='No'}{/if}</span>
+														{$params['title']|escape:'html':'UTF-8'}: <span class="filter_value">{if $params['value'] == 1}{l s='Oui'}{else}{l s='Non'}{/if}</span>
 														<i class="icon-times"></i>
 													</span>
 												{else}
@@ -300,27 +300,27 @@
 															{if $params.type == 'range'}
 																{$field_name="`$list_id`Filter_{if isset($params.filter_key)}`$params.filter_key`{else}`$key`{/if}"}
 																<div class="input_range">
-																	<input type="text" class="filter form-control" name="{$field_name}[0]" placeholder="{l s='From'}" value="{if isset($smarty.post[$field_name][0]) && $smarty.post[$field_name][0]}{$smarty.post[$field_name][0]}{elseif isset($params.value.0)}{$params.value.0}{/if}">
-																	<input type="text" class="filter form-control" name="{$field_name}[1]" placeholder="{l s='To'}" value="{if isset($smarty.post[$field_name][1]) && $smarty.post[$field_name][1]}{$smarty.post[$field_name][1]}{elseif isset($params.value.1)}{$params.value.1}{/if}">
+																	<input type="text" class="filter form-control" name="{$field_name}[0]" placeholder="{l s='De'}" value="{if isset($smarty.post[$field_name][0]) && $smarty.post[$field_name][0]}{$smarty.post[$field_name][0]}{elseif isset($params.value.0)}{$params.value.0}{/if}">
+																	<input type="text" class="filter form-control" name="{$field_name}[1]" placeholder="{l s='À'}" value="{if isset($smarty.post[$field_name][1]) && $smarty.post[$field_name][1]}{$smarty.post[$field_name][1]}{elseif isset($params.value.1)}{$params.value.1}{/if}">
 																</div>
 															{elseif $params.type == 'bool'}
 																{$field_name="`$list_id`Filter_{if isset($params.filter_key)}`$params.filter_key`{else}`$key`{/if}"}
 																<select id="filter_input_{$key}" class="filter center" name="{$field_name}">
 																	<option value="">-</option>
-																	<option value="1" {if isset($smarty.post.$field_name) && $smarty.post.$field_name == 1} selected="selected"{elseif $params.value == 1} selected="selected" {/if}>{l s='Yes'}</option>
-																	<option value="0" {if isset($smarty.post.$field_name) && $smarty.post.$field_name != '' && $smarty.post.$field_name == 0} selected="selected"{elseif $params.value == 0 && $params.value != ''} selected="selected" {/if}>{l s='No'}</option>
+																	<option value="1" {if isset($smarty.post.$field_name) && $smarty.post.$field_name == 1} selected="selected"{elseif $params.value == 1} selected="selected" {/if}>{l s='Oui'}</option>
+																	<option value="0" {if isset($smarty.post.$field_name) && $smarty.post.$field_name != '' && $smarty.post.$field_name == 0} selected="selected"{elseif $params.value == 0 && $params.value != ''} selected="selected" {/if}>{l s='Non'}</option>
 																</select>
 															{elseif $params.type == 'date' || $params.type == 'datetime'}
 																<div class="date_range">
 																	<div class="input-group center">
-																		<input type="text" class="filter datepicker date-input form-control" id="local_{$params.id_date}_0" name="local_{$params.name_date}[0]"  placeholder="{l s='From'}" autocomplete="off"/>
+																		<input type="text" class="filter datepicker date-input form-control" id="local_{$params.id_date}_0" name="local_{$params.name_date}[0]"  placeholder="{l s='De'}" autocomplete="off"/>
 																		<input type="hidden" id="{$params.id_date}_0" name="{$params.name_date}[0]" value="{if isset($smarty.post[$params.name_date][0]) && $smarty.post[$params.name_date][0]}{$smarty.post[$params.name_date][0]}{elseif isset($params.value.0)}{$params.value.0}{/if}">
 																		<span class="input-group-addon">
 																			<i class="icon-calendar"></i>
 																		</span>
 																	</div>
 																	<div class="input-group center">
-																		<input type="text" class="filter datepicker date-input form-control" id="local_{$params.id_date}_1" name="local_{$params.name_date}[1]"  placeholder="{l s='To'}"  autocomplete="off"/>
+																		<input type="text" class="filter datepicker date-input form-control" id="local_{$params.id_date}_1" name="local_{$params.name_date}[1]"  placeholder="{l s='À'}"  autocomplete="off"/>
 																		<input type="hidden" id="{$params.id_date}_1" name="{$params.name_date}[1]" value="{if isset($smarty.post[$params.name_date][1]) && $smarty.post[$params.name_date][1]}{$smarty.post[$params.name_date][1]}{elseif isset($params.value.1)}{$params.value.1}{/if}">
 																		<span class="input-group-addon">
 																			<i class="icon-calendar"></i>
@@ -410,11 +410,11 @@
 													{if $show_filters}
 													<span class="pull-right">
 														<button type="submit" id="submitFilterButton{$list_id}" name="submitFilter" class="btn btn-default" data-list-id="{$list_id}">
-															<i class="icon-search"></i> {l s='Search'}
+															<i class="icon-search"></i> {l s='Rechercher'}
 														</button>
 														{if $filters_has_value}
 															<button type="submit" name="submitReset{$list_id}" class="btn btn-warning">
-																<i class="icon-eraser"></i> {l s='Reset'}
+																<i class="icon-eraser"></i> {l s='Réinitialiser'}
 															</button>
 														{/if}
 													</span>
@@ -450,7 +450,7 @@
 						{/foreach}
 							{if $fields_optional|count && !$new_list_header_design}
 								<a class="list-toolbar-btn dropdown-toggle" data-toggle="dropdown" data-target="#dropdown-option-toggle">
-									<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Toggle list'}" data-html="true" data-placement="top">
+									<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Basculer la liste'}" data-html="true" data-placement="top">
 									<i class="process-icon-cogs"></i>
 								</a>
 								<ul id="optional-list-toggle" class="dropdown-menu">
@@ -465,7 +465,7 @@
 								</ul>
 							{/if}
 							<a class="list-toolbar-btn" href="javascript:location.reload();">
-								<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Refresh list'}" data-html="true" data-placement="top">
+								<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Actualiser la liste'}" data-html="true" data-placement="top">
 									<i class="process-icon-refresh"></i>
 								</span>
 							</a>
@@ -474,12 +474,12 @@
 
 							{if $sql_manager.view == 1}
 								<a class="list-toolbar-btn" href="javascript:void(0);" onclick="$('.leadin').first().append('<div class=\'alert alert-info\'>' + $('#sql_query_{$list_id|escape:'html':'UTF-8'}').val() + '</div>'); $(this).attr('onclick', '');">
-									<span class="label-tooltip" data-toggle="tooltip" data-original-title="{l s='Show SQL query'}" data-html="true" data-placement="top" >
+									<span class="label-tooltip" data-toggle="tooltip" data-original-title="{l s='Afficher la requête SQL'}" data-html="true" data-placement="top" >
 										<i class="process-icon-terminal"></i>
 									</span>
 								</a>
 								<a class="list-toolbar-btn" href="javascript:void(0);" onclick="$('#sql_name_{$list_id|escape:'html':'UTF-8'}').val(createSqlQueryName()); $('#sql_query_{$list_id|escape:'html':'UTF-8'}').val($('#sql_query_{$list_id|escape:'html':'UTF-8'}').val().replace(/\s+limit\s+[0-9,\s]+$/ig, '').trim()); $('#sql_form_{$list_id|escape:'html':'UTF-8'}').submit();">
-									<span class="label-tooltip" data-toggle="tooltip" data-original-title="{l s='Export to SQL Manager'}" data-html="true" data-placement="top" >
+									<span class="label-tooltip" data-toggle="tooltip" data-original-title="{l s='Exporter vers le gestionnaire SQL'}" data-html="true" data-placement="top" >
 										<i class="process-icon-database"></i>
 									</span>
 								</a>
@@ -513,7 +513,7 @@
 							lbl_save_and_stay = $('#desc-{$table}-save-and-stay div');
 							//override save and stay link label with submit button value
 							if (btn_submit.val().length > 0 && lbl_save_and_stay && !lbl_save_and_stay.hasClass('locked')) {
-								lbl_save_and_stay.html(btn_submit.val() + " {l s='and stay'} ");
+								lbl_save_and_stay.html(btn_submit.val() + " {l s='et rester'} ");
 							}
 						}
 						//hide standard submit button
@@ -622,9 +622,9 @@
 						<th>
 							<span class="title_box">
 							{if $shop_link_type == 'shop'}
-								{l s='Shop'}
+								{l s='Boutique'}
 							{else}
-								{l s='Shop group'}
+								{l s='Groupe de boutiques'}
 							{/if}
 							</span>
 						</th>
@@ -651,26 +651,26 @@
 								{else}
 									{if $params.type == 'range'}
 										<div class="input_range">
-											<input type="text" class="filter form-control" name="{$list_id}Filter_{if isset($params.filter_key)}{$params.filter_key}{else}{$key}{/if}[0]" placeholder="{l s='From'}" value="{if isset($params.value.0)}{$params.value.0}{/if}">
-											<input type="text" class="filter form-control" name="{$list_id}Filter_{if isset($params.filter_key)}{$params.filter_key}{else}{$key}{/if}[1]" placeholder="{l s='To'}" value="{if isset($params.value.1)}{$params.value.1}{/if}">
+											<input type="text" class="filter form-control" name="{$list_id}Filter_{if isset($params.filter_key)}{$params.filter_key}{else}{$key}{/if}[0]" placeholder="{l s='De'}" value="{if isset($params.value.0)}{$params.value.0}{/if}">
+											<input type="text" class="filter form-control" name="{$list_id}Filter_{if isset($params.filter_key)}{$params.filter_key}{else}{$key}{/if}[1]" placeholder="{l s='À'}" value="{if isset($params.value.1)}{$params.value.1}{/if}">
 										</div>
 									{else if $params.type == 'bool'}
 										<select class="filter fixed-width-sm center" name="{$list_id}Filter_{if isset($params.filter_key)}{$params.filter_key}{else}{$key}{/if}">
 											<option value="">-</option>
-											<option value="1" {if $params.value == 1} selected="selected" {/if}>{l s='Yes'}</option>
-											<option value="0" {if $params.value == 0 && $params.value != ''} selected="selected" {/if}>{l s='No'}</option>
+											<option value="1" {if $params.value == 1} selected="selected" {/if}>{l s='Oui'}</option>
+											<option value="0" {if $params.value == 0 && $params.value != ''} selected="selected" {/if}>{l s='Non'}</option>
 										</select>
 									{elseif $params.type == 'date' || $params.type == 'datetime'}
 										<div class="date_range row">
 											<div class="input-group fixed-width-md center">
-												<input type="text" class="filter datepicker date-input form-control" id="local_{$params.id_date}_0" name="local_{$params.name_date}[0]"  placeholder="{l s='From'}" />
+												<input type="text" class="filter datepicker date-input form-control" id="local_{$params.id_date}_0" name="local_{$params.name_date}[0]"  placeholder="{l s='De'}" />
 												<input type="hidden" id="{$params.id_date}_0" name="{$params.name_date}[0]" value="{if isset($params.value.0)}{$params.value.0}{/if}">
 												<span class="input-group-addon">
 													<i class="icon-calendar"></i>
 												</span>
 											</div>
 											<div class="input-group fixed-width-md center">
-												<input type="text" class="filter datepicker date-input form-control" id="local_{$params.id_date}_1" name="local_{$params.name_date}[1]"  placeholder="{l s='To'}" />
+												<input type="text" class="filter datepicker date-input form-control" id="local_{$params.id_date}_1" name="local_{$params.name_date}[1]"  placeholder="{l s='À'}" />
 												<input type="hidden" id="{$params.id_date}_1" name="{$params.name_date}[1]" value="{if isset($params.value.1)}{$params.value.1}{/if}">
 												<span class="input-group-addon">
 													<i class="icon-calendar"></i>
@@ -751,11 +751,11 @@
 								<span class="pull-right">
 									{*Search must be before reset for default form submit*}
 									<button type="submit" id="submitFilterButton{$list_id}" name="submitFilter" class="btn btn-default" data-list-id="{$list_id}">
-										<i class="icon-search"></i> {l s='Search'}
+										<i class="icon-search"></i> {l s='Rechercher'}
 									</button>
 									{if $filters_has_value}
 										<button type="submit" name="submitReset{$list_id}" class="btn btn-warning">
-											<i class="icon-eraser"></i> {l s='Reset'}
+											<i class="icon-eraser"></i> {l s='Réinitialiser'}
 										</button>
 									{/if}
 								</span>

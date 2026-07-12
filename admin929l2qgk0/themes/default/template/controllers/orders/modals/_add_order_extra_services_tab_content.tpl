@@ -23,8 +23,8 @@
 <div id="room_type_service_product_desc" class="tab-pane{if !isset($selectedRoomDemands) || !$selectedRoomDemands} active{/if}">
     {if $customServiceAllowed}
         <div class="row">
-            <button id="btn_new_room_service" class="btn btn-success pull-right"><i class="icon-plus-circle"></i> {l s='Add a new service'}</button>
-            <button id="back_to_service_btn" class="btn btn-default"><i class="icon-arrow-left"></i> {l s='Back'}</button>
+            <button id="btn_new_room_service" class="btn btn-success pull-right"><i class="icon-plus-circle"></i> {l s='Ajouter un nouveau service'}</button>
+            <button id="back_to_service_btn" class="btn btn-default"><i class="icon-arrow-left"></i> {l s='Retour'}</button>
         </div>
         <hr>
     {/if}
@@ -39,10 +39,10 @@
                                 <thead>
                                     <tr>
                                         <th></th>
-                                        <th>{l s='Name'}</th>
+                                        <th>{l s='Nom'}</th>
                                         <th class="fixed-width-sm"></th>
-                                        <th class="fixed-width-sm">{l s='Quantity'}</th>
-                                        <th>{l s='Unit Price (tax excl.)'}</th>
+                                        <th class="fixed-width-sm">{l s='Quantité'}</th>
+                                        <th>{l s='Prix unitaire (HT)'}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -65,10 +65,10 @@
                                             </td>
                                             <td>
                                                 {if $product['auto_add_to_cart'] && $product['price_addition_type'] == Product::PRICE_ADDITION_TYPE_INDEPENDENT}
-                                                    <span class="badge badge-info label">{l s='Convenience fee'}</span>
+                                                    <span class="badge badge-info label">{l s='Frais de commodité'}</span>
                                                 {/if}
                                                 {if $product['auto_add_to_cart'] && $product['price_addition_type'] == Product::PRICE_ADDITION_TYPE_WITH_ROOM}
-                                                    <span class="badge badge-info label">{l s='Auto added'}</span>
+                                                    <span class="badge badge-info label">{l s='Ajouté automatiquement'}</span>
                                                 {/if}
                                             </td>
                                             <td>
@@ -77,7 +77,7 @@
                                                         <input type="number" class="form-control room_type_service_product_qty qty" id="qty_{$product.id_product}" name="service_qty[{$product.id_product}]" data-id-product="{$product.id_product}" min="1" data-max-quantity="{$product.max_quantity}" value="{if $serviceSelected}{$selectedRoomServiceProduct['selected_service'][$product['id_product']]['quantity']}{else}1{/if}" name="service_qty[{$product['id_product']|escape:'html':'UTF-8'}]">
 
                                                         <p style="display:{if $serviceSelected && $selectedRoomServiceProduct['selected_service'][$product['id_product']]['quantity'] > $product.max_quantity}block{else}none{/if}; margin-top: 4px;">
-                                                            <span class="label label-warning">{l s='Maximum allowed quantity: %s' sprintf=$product.max_quantity}</span>
+                                                            <span class="label label-warning">{l s='Quantité maximale autorisée : %s' sprintf=$product.max_quantity}</span>
                                                         </p>
                                                     </div>
                                                 {else}
@@ -92,7 +92,7 @@
                                                         </span>
                                                         <input class="service_cart_price_input" id="service_cart_price_{$selectedRoomServiceProduct['id']}_{$product['id_product']}" type="text" value="{$product.price_tax_exc}" name="service_price[{$product['id_product']|escape:'html':'UTF-8'}]"/>
                                                         {if Product::PRICE_CALCULATION_METHOD_PER_DAY == $product['price_calculation_method']}
-                                                            <span class="input-group-addon">{l s='/ night'}</span>
+                                                            <span class="input-group-addon">{l s='/ nuit'}</span>
                                                         {/if}
                                                     </div>
                                                 {/if}
@@ -117,11 +117,11 @@
             <form id="add_new_room_services_form" class="col-sm-12 room_services_container">
                 <div class="row form-group">
                     <div class="col-sm-6">
-                        <label class="control-label required">{l s='Name'}</label>
+                        <label class="control-label required">{l s='Nom'}</label>
                         <input type="text" class="form-control" name="new_service_name"/>
                     </div>
                     <div class="col-sm-6">
-                        <label class="control-label required">{l s='Price(tax excl.)'}</label>
+                        <label class="control-label required">{l s='Prix (HT)'}</label>
                         <div class="input-group">
                             <span class="input-group-addon">{$cartCurrency->sign}</span>
                             <input type="text" class="form-control" name="new_service_price"/>
@@ -130,23 +130,23 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-sm-6">
-                        <label class="control-label">{l s='Price calculation method'}</label>
+                        <label class="control-label">{l s='Méthode de calcul du prix'}</label>
                         <select class="form-control" name="new_service_price_calc_method">
-                            <option value="{Product::PRICE_CALCULATION_METHOD_PER_BOOKING}">{l s='Add price once for the booking range'}</option>
-                            <option value="{Product::PRICE_CALCULATION_METHOD_PER_DAY}">{l s='Add price for each day of booking'}</option>
+                            <option value="{Product::PRICE_CALCULATION_METHOD_PER_BOOKING}">{l s='Ajouter le prix une fois pour la période de réservation'}</option>
+                            <option value="{Product::PRICE_CALCULATION_METHOD_PER_DAY}">{l s='Ajouter le prix pour chaque jour de réservation'}</option>
                         </select>
                     </div>
                     <div class="col-sm-6">
-                        <label class="control-label">{l s='Auto added service'}</label>
+                        <label class="control-label">{l s='Service ajouté automatiquement'}</label>
                         <div>
                             <span class="switch prestashop-switch fixed-width-lg">
                                 <input type="radio" name="new_service_auto_added" id="new_service_auto_added_on" value="1"/>
                                 <label for="new_service_auto_added_on" class="radioCheck">
-                                    {l s='Yes'}
+                                    {l s='Oui'}
                                 </label>
                                 <input type="radio" name="new_service_auto_added" id="new_service_auto_added_off" value="0" checked="checked"/>
                                 <label for="new_service_auto_added_off" class="radioCheck">
-                                    {l s='No'}
+                                    {l s='Non'}
                                 </label>
                                 <a class="slide-button btn"></a>
                             </span>
@@ -155,30 +155,30 @@
                 </div>
                 <div class="row form-group">
                     <div id="new_service_price_tax_rule_container" class="col-sm-6">
-                        <label class="control-label">{l s='Tax rule'}</label>
+                        <label class="control-label">{l s='Règle de taxe'}</label>
                         <select name="new_service_price_tax_rule_group">
-                            <option value="0">{l s='No Tax'}</option>
+                            <option value="0">{l s='Pas de taxe'}</option>
                             {foreach from=$taxRulesGroups item=taxRuleGroup}
                                 <option value="{$taxRuleGroup.id_tax_rules_group}">{$taxRuleGroup.name}</option>
                             {/foreach}
                         </select>
                     </div>
                     <div id="new_service_price_addition_type_container" class="col-sm-6" style="display:none;">
-                        <label class="control-label">{l s='Price display preference'}</label>
+                        <label class="control-label">{l s='Préférence d&#039;affichage du prix'}</label>
                         <select name="new_service_price_addition_type" id="new_service_price_addition_type">
-                            <option value="{Product::PRICE_ADDITION_TYPE_WITH_ROOM}">{l s='Add price in room price'}</option>
-                            <option value="{Product::PRICE_ADDITION_TYPE_INDEPENDENT}">{l s='Add price as convenience Fee'}</option>
+                            <option value="{Product::PRICE_ADDITION_TYPE_WITH_ROOM}">{l s='Ajouter le prix au prix de la chambre'}</option>
+                            <option value="{Product::PRICE_ADDITION_TYPE_INDEPENDENT}">{l s='Ajouter le prix comme frais de commodité'}</option>
                         </select>
                     </div>
                     <div id="new_service_qty_container" class="col-sm-6">
-                        <label class="control-label required">{l s='Quantity'}</label>
+                        <label class="control-label required">{l s='Quantité'}</label>
                         <input type="number" class="form-control qty" min="1" name="new_service_qty" value="1">
                     </div>
                 </div>
                 <input type="hidden" name="id_hotel_cart_booking" value="{$id_hotel_cart_booking}">
                 <div class="row form-group">
                     <div class="col-sm-12 help-block">
-                        {l s='Note: If auto added service is enabled, then tax of the booking\'s room type will be applicable.'}
+                        {l s='Note: If auto added service is enabled, then tax of the booking&#039;s room type will be applicable.'}
                     </div>
                 </div>
                 <div class="modal-footer">

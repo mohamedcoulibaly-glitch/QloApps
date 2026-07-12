@@ -23,9 +23,9 @@
 <div class="panel">
 	<div class="panel-heading">
 		{if isset($edit)}
-			<i class='icon-pencil'></i>&nbsp{l s='Edit Advanced Price Rule' mod='hotelreservationsystem'}
+			<i class='icon-pencil'></i>&nbsp{l s='Modifier la règle de prix avancée' mod='hotelreservationsystem'}
 		{else}
-			<i class='icon-plus'></i>&nbsp{l s='Add New Advanced Price Rule' mod='hotelreservationsystem'}
+			<i class='icon-plus'></i>&nbsp{l s='Ajouter une nouvelle règle de prix avancée' mod='hotelreservationsystem'}
 		{/if}
 	</div>
 	<form id="{$table}_form" class="defaultForm form-horizontal" action="{$current}&{if !empty($submit_action)}{$submit_action}{/if}&token={$token}" method="post" enctype="multipart/form-data" {if isset($style)}style="{$style}"{/if}>
@@ -35,12 +35,12 @@
 
 		<div class="form-group">
 			<label class="col-sm-3 control-label required" for="feature_price_name" >
-				{l s='Advanced Price Rule Name ' mod='hotelreservationsystem'}
+				{l s='Nom de la règle de prix avancée ' mod='hotelreservationsystem'}
 			</label>
 			<div class="col-lg-3">
 				{foreach from=$languages item=language}
 					{assign var="feature_price_name" value="feature_price_name_`$language.id_lang`"}
-					<input type="text" id="{$feature_price_name}" name="{$feature_price_name}" value="{if isset($objFeaturePrice->feature_price_name[$language.id_lang]) && $objFeaturePrice->feature_price_name[$language.id_lang]}{$objFeaturePrice->feature_price_name[$language.id_lang]}{else if isset($smarty.post.$feature_price_name)}{$smarty.post.$feature_price_name}{/if}" data-lang-name="{$language.name}" placeholder="{l s='Enter advanced price rule name' mod='hotelreservationsystem'}" class="form-control feature_price_name_all" {if $currentLang.id_lang != $language.id_lang}style="display:none;"{/if}/>
+					<input type="text" id="{$feature_price_name}" name="{$feature_price_name}" value="{if isset($objFeaturePrice->feature_price_name[$language.id_lang]) && $objFeaturePrice->feature_price_name[$language.id_lang]}{$objFeaturePrice->feature_price_name[$language.id_lang]}{else if isset($smarty.post.$feature_price_name)}{$smarty.post.$feature_price_name}{/if}" data-lang-name="{$language.name}" placeholder="{l s='Saisissez le nom de la règle de prix avancée' mod='hotelreservationsystem'}" class="form-control feature_price_name_all" {if $currentLang.id_lang != $language.id_lang}style="display:none;"{/if}/>
 				{/foreach}
 			</div>
 			{if $languages|@count > 1}
@@ -60,7 +60,7 @@
 			{/if}
 			<div class="col-lg-9 col-lg-offset-3">
 				<div class="help-block">
-					{l s='Use {room_type_name} to generate dynamic feature price names.' mod='hotelreservationsystem'}
+					{l s='Utilisez {room_type_name} pour générer des noms de règles de prix dynamiques.' mod='hotelreservationsystem'}
 				</div>
 			</div>
 		</div>
@@ -68,16 +68,16 @@
 		{if !isset($objFeaturePrice) || !$objFeaturePrice->id}
 			<div class="form-group">
 				<label class="control-label col-lg-3">
-					<span class="label-tooltip" data-toggle="tooltip" data-html="true" title="" data-original-title="{l s='Enable this option to create advance price rules for multiple room types.' mod='hotelreservationsystem'}">
-						{l s='Create for multiple room types' mod='hotelreservationsystem'}
+					<span class="label-tooltip" data-toggle="tooltip" data-html="true" title="" data-original-title="{l s='Activer cette option pour créer des règles de prix avancées pour plusieurs types de chambres.' mod='hotelreservationsystem'}">
+						{l s='Créer pour plusieurs types de chambres' mod='hotelreservationsystem'}
 					</span>
 				</label>
 				<div class="col-lg-9 ">
 					<span class="switch prestashop-switch fixed-width-lg">
 						<input type="radio" {if isset($smarty.post.create_multiple) && $smarty.post.create_multiple == 1}checked="checked" {/if} value="1" id="create_multiple_on" name="create_multiple">
-						<label for="create_multiple_on">{l s='Yes' mod='hotelreservationsystem'}</label>
+						<label for="create_multiple_on">{l s='Oui' mod='hotelreservationsystem'}</label>
 						<input {if !isset($smarty.post.create_multiple) || isset($smarty.post.create_multiple) && $smarty.post.create_multiple == 0} checked="checked" {/if} type="radio" value="0" id="create_multiple_off" name="create_multiple">
-						<label for="create_multiple_off">{l s='No' mod='hotelreservationsystem'}</label>
+						<label for="create_multiple_off">{l s='Non' mod='hotelreservationsystem'}</label>
 						<a class="slide-button btn"></a>
 					</span>
 				</div>
@@ -85,8 +85,8 @@
 			{if isset($hotel_tree)}
 				<div class="form-group room-type-name-tree" style="display:none;">
 					<label class="col-sm-3 control-label required" for="room_types">
-						<span class="label-tooltip" data-toggle="tooltip" data-html="true" title="" data-original-title="{l s='Select the room types for which you are going to create this advanced price rule.' mod='hotelreservationsystem'}">
-							{l s='Room Types' mod='hotelreservationsystem'}
+						<span class="label-tooltip" data-toggle="tooltip" data-html="true" title="" data-original-title="{l s='Sélectionnez les types de chambres pour lesquels vous allez créer cette règle de prix avancée.' mod='hotelreservationsystem'}">
+							{l s='Types de chambres' mod='hotelreservationsystem'}
 						</span>
 					</label>
 					<div class="col-sm-7">
@@ -98,19 +98,19 @@
 
 		<div class="form-group room-type-name">
 			<label class="col-sm-3 control-label required" for="room_type_name" >
-				{l s='Room Type' mod='hotelreservationsystem'}
+				{l s='Type de chambre' mod='hotelreservationsystem'}
 			</label>
 			<div class="col-sm-3">
-				<input autocomplete="off" type="text" id="room_type_name" name="room_type_name" class="form-control" placeholder= "{l s='Enter room type name' mod='hotelreservationsystem'}" value="{if isset($smarty.post.room_type_name)}{$smarty.post.room_type_name}{elseif isset($productName)}{$productName}{/if}"/>
+				<input autocomplete="off" type="text" id="room_type_name" name="room_type_name" class="form-control" placeholder= "{l s='Saisissez le nom du type de chambre' mod='hotelreservationsystem'}" value="{if isset($smarty.post.room_type_name)}{$smarty.post.room_type_name}{elseif isset($productName)}{$productName}{/if}"/>
 				<input type="hidden" id="room_type_id" name="room_type_id" class="form-control" value="{if isset($smarty.post.room_type_id)}{$smarty.post.room_type_id}{elseif isset($objFeaturePrice->id_product)}{$objFeaturePrice->id_product}{else}0{/if}"/>
 				<div class="dropdown">
 					<ul class="room_type_search_results_ul"></ul>
 				</div>
-				<p class="error-block" style="display:none; color: #CD5D5D;">{l s='No match found for this search. Please try with an existing name.' mod='hotelreservationsystem'}</p>
+				<p class="error-block" style="display:none; color: #CD5D5D;">{l s='Aucune correspondance trouvée pour cette recherche. Veuillez essayer avec un nom existant.' mod='hotelreservationsystem'}</p>
 			</div>
 			<div class="col-lg-9 col-lg-offset-3">
 				<div class="help-block">
-					{l s='Enter room type name and select the room for which you are going to create this advanced price rule.' mod='hotelreservationsystem'}
+					{l s='Saisissez le nom du type de chambre et sélectionnez la chambre pour laquelle vous allez créer cette règle de prix avancée.' mod='hotelreservationsystem'}
 				</div>
 			</div>
 		</div>
@@ -134,7 +134,7 @@
 						{/if}
 					</div>
 					<a id="add_more_dates_button" class="btn btn-default">
-						<i class="icon icon-plus"></i> {l s='Add More Restrictions' mod='hotelreservationsystem'}
+						<i class="icon icon-plus"></i> {l s='Ajouter plus de restrictions' mod='hotelreservationsystem'}
 					</a>
 				</div>
 			</div>
@@ -142,18 +142,18 @@
 
 		<div class="form-group">
             <label for="Price Impact Way" class="control-label col-lg-3">
-              {l s='Impact Way' mod='hotelreservationsystem'}
+              {l s='Mode d\'impact' mod='hotelreservationsystem'}
             </label>
             <div class="col-lg-3">
 				<select class="form-control" name="price_impact_way" id="price_impact_way">
 					<option value="{HotelRoomTypeFeaturePricing::IMPACT_WAY_DECREASE}" {if (isset($smarty.post.price_impact_way) && $smarty.post.price_impact_way == HotelRoomTypeFeaturePricing::IMPACT_WAY_DECREASE) || (isset($objFeaturePrice->impact_way) && $objFeaturePrice->impact_way == HotelRoomTypeFeaturePricing::IMPACT_WAY_DECREASE && !isset($smarty.post.price_impact_way))}selected = "selected"{/if}>
-					  {l s='Decrease Price' mod='hotelreservationsystem'}
+					  {l s='Diminuer le prix' mod='hotelreservationsystem'}
 					</option>
 					<option value="{HotelRoomTypeFeaturePricing::IMPACT_WAY_INCREASE}" {if (isset($smarty.post.price_impact_way) && $smarty.post.price_impact_way == HotelRoomTypeFeaturePricing::IMPACT_WAY_INCREASE) || (isset($objFeaturePrice->impact_way) && $objFeaturePrice->impact_way == HotelRoomTypeFeaturePricing::IMPACT_WAY_INCREASE && !isset($smarty.post.price_impact_way))}selected = "selected"{/if}>
-					  {l s='Increase Price' mod='hotelreservationsystem'}
+					  {l s='Augmenter le prix' mod='hotelreservationsystem'}
 					</option>
 					<option value="{HotelRoomTypeFeaturePricing::IMPACT_WAY_FIX_PRICE}" {if (isset($smarty.post.price_impact_way) && $smarty.post.price_impact_way == HotelRoomTypeFeaturePricing::IMPACT_WAY_FIX_PRICE) || (isset($objFeaturePrice->impact_way) && $objFeaturePrice->impact_way == HotelRoomTypeFeaturePricing::IMPACT_WAY_FIX_PRICE && !isset($smarty.post.price_impact_way))}selected = "selected"{/if}>
-						{l s='Fixed Price' mod='hotelreservationsystem'}
+						{l s='Prix fixe' mod='hotelreservationsystem'}
 					</option>
 				</select>
 			</div>
@@ -161,15 +161,15 @@
 
 		<div class="form-group">
             <label for="Price Impact Type" class="control-label col-lg-3">
-              {l s='Impact Type' mod='hotelreservationsystem'}
+              {l s='Type d\'impact' mod='hotelreservationsystem'}
             </label>
             <div class="col-lg-3">
 				<select class="form-control" name="price_impact_type" id="price_impact_type" {if (isset($smarty.post.price_impact_way) && $smarty.post.price_impact_way == HotelRoomTypeFeaturePricing::IMPACT_WAY_FIX_PRICE) || (isset($objFeaturePrice->impact_way) && $objFeaturePrice->impact_way == HotelRoomTypeFeaturePricing::IMPACT_WAY_FIX_PRICE && !isset($smarty.post.price_impact_way))}disabled="disabled"{/if}>
 					<option value="{HotelRoomTypeFeaturePricing::IMPACT_TYPE_PERCENTAGE}" {if (isset($smarty.post.price_impact_type) && $smarty.post.price_impact_type == HotelRoomTypeFeaturePricing::IMPACT_TYPE_PERCENTAGE) || (isset($objFeaturePrice->impact_type) && $objFeaturePrice->impact_type == HotelRoomTypeFeaturePricing::IMPACT_TYPE_PERCENTAGE && !isset($smarty.post.price_impact_type))}selected = "selected"{/if}>
-					  {l s='Percentage' mod='hotelreservationsystem'}
+					  {l s='Pourcentage' mod='hotelreservationsystem'}
 					</option>
 					<option value="{HotelRoomTypeFeaturePricing::IMPACT_TYPE_FIXED_PRICE}" {if (isset($smarty.post.price_impact_way) && $smarty.post.price_impact_way == HotelRoomTypeFeaturePricing::IMPACT_WAY_FIX_PRICE) || (isset($objFeaturePrice->impact_way) && $objFeaturePrice->impact_way == HotelRoomTypeFeaturePricing::IMPACT_WAY_FIX_PRICE && !isset($smarty.post.price_impact_way)) || (isset($smarty.post.price_impact_type) && $smarty.post.price_impact_type == HotelRoomTypeFeaturePricing::IMPACT_TYPE_FIXED_PRICE) || (isset($objFeaturePrice->impact_type) && $objFeaturePrice->impact_type == HotelRoomTypeFeaturePricing::IMPACT_TYPE_FIXED_PRICE && !isset($smarty.post.price_impact_type))}selected = "selected"{/if}>
-					  {l s='Amount' mod='hotelreservationsystem'}
+					  {l s='Montant' mod='hotelreservationsystem'}
 					</option>
 				</select>
 			</div>
@@ -177,7 +177,7 @@
 
 		<div class="form-group">
 			<label class="col-sm-3 control-label required" for="impact_value" >
-				{l s='Impact Value' mod='hotelreservationsystem'}({l s='tax excl.' mod='hotelreservationsystem'})
+				{l s='Valeur d\'impact' mod='hotelreservationsystem'}({l s='ht.' mod='hotelreservationsystem'})
 			</label>
 			<div class="col-lg-3">
 				<div class="input-group">
@@ -190,15 +190,15 @@
 		<div class="form-group">
 			<label class="control-label col-lg-3">
 				<span>
-					{l s='Enable Advanced Price Rule' mod='hotelreservationsystem'}
+					{l s='Activer la règle de prix avancée' mod='hotelreservationsystem'}
 				</span>
 			</label>
 			<div class="col-lg-9 ">
 				<span class="switch prestashop-switch fixed-width-lg">
 					<input type="radio" {if isset($smarty.post.enable_feature_price)} {if $smarty.post.enable_feature_price} checked="checked" {/if}{elseif isset($edit) && $objFeaturePrice->active==1} checked="checked" {else}checked="checked"{/if} value="1" id="enable_feature_price_on" name="enable_feature_price">
-					<label for="enable_feature_price_on">{l s='Yes' mod='hotelreservationsystem'}</label>
+					<label for="enable_feature_price_on">{l s='Oui' mod='hotelreservationsystem'}</label>
 					<input  {if isset($smarty.post.enable_feature_price)} {if !$smarty.post.enable_feature_price} checked="checked"{/if} {elseif isset($edit) && $objFeaturePrice->active==0} checked="checked" {/if} type="radio" value="0" id="enable_feature_price_off" name="enable_feature_price">
-					<label for="enable_feature_price_off">{l s='No' mod='hotelreservationsystem'}</label>
+					<label for="enable_feature_price_off">{l s='Non' mod='hotelreservationsystem'}</label>
 					<a class="slide-button btn"></a>
 				</span>
 			</div>
@@ -207,7 +207,7 @@
 		{* select group accesses *}
 		<div class="form-group">
 			<label class="control-label required col-lg-3">
-				<span class="label-tooltip required" data-toggle="tooltip" data-html="true" data-original-title="{l s='Select all the groups that you would like to apply to this advanced price rule.' mod='hotelreservationsystem'}">{l s='Group access' mod='hotelreservationsystem'}</span>
+				<span class="label-tooltip required" data-toggle="tooltip" data-html="true" data-original-title="{l s='Sélectionnez tous les groupes que vous souhaitez appliquer à cette règle de prix avancée.' mod='hotelreservationsystem'}">{l s='Accès aux groupes' mod='hotelreservationsystem'}</span>
 			</label>
 			<div class="col-lg-6">
 				<div class="table-responsive">
@@ -215,7 +215,7 @@
 						<thead>
 							<tr>
 								<th class="text-center"></th>
-								<th class="text-center">{l s='Group' mod='hotelreservationsystem'}</th>
+								<th class="text-center">{l s='Groupe' mod='hotelreservationsystem'}</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -239,7 +239,7 @@
 									<td class="list-empty" colspan="2">
 										<div class="list-empty-msg">
 											<i class="icon-warning-sign list-empty-icon"></i>
-											{l s='No Groups Available' mod='hotelreservationsystem'}
+											{l s='Aucun groupe disponible' mod='hotelreservationsystem'}
 										</div>
 									</td>
 								</tr>
@@ -252,13 +252,13 @@
 
 		<div class="panel-footer">
 			<a href="{$link->getAdminLink('AdminHotelFeaturePricesSettings')|escape:'html':'UTF-8'}" class="btn btn-default">
-				<i class="process-icon-cancel"></i>{l s='Cancel' mod='hotelreservationsystem'}
+				<i class="process-icon-cancel"></i>{l s='Annuler' mod='hotelreservationsystem'}
 			</a>
 			<button type="submit" name="submitAdd{$table|escape:'html':'UTF-8'}" class="btn btn-default pull-right">
-				<i class="process-icon-save"></i> {l s='Save' mod='hotelreservationsystem'}
+				<i class="process-icon-save"></i> {l s='Enregistrer' mod='hotelreservationsystem'}
 			</button>
 			<button type="submit" name="submitAdd{$table|escape:'html':'UTF-8'}AndStay" class="btn btn-default pull-right">
-				<i class="process-icon-save"></i> {l s='Save and stay' mod='hotelreservationsystem'}
+				<i class="process-icon-save"></i> {l s='Enregistrer et rester' mod='hotelreservationsystem'}
 			</button>
 		</div>
 	</form>

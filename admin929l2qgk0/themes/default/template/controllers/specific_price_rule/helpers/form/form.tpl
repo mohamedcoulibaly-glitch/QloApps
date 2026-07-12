@@ -30,13 +30,13 @@
 </div>
 
 <a class="btn btn-default" href="#" id="add_condition_group">
-	<i class="icon-plus-sign"></i> {l s='Add a new condition group'}
+	<i class="icon-plus-sign"></i> {l s='Ajouter un nouveau groupe de conditions'}
 </a>
 <div class="clearfix">&nbsp;</div>
 <div class="panel" id="conditions-panel" style="display:none;">
 	<h3><i class="icon-tasks"></i> {l s='Conditions'}</h3>
 	<div class="form-group">
-		<label for="id_category" class="control-label col-lg-3">{l s='Category'}</label>
+		<label for="id_category" class="control-label col-lg-3">{l s='Catégorie'}</label>
 		<div class="col-lg-9">
 			<div class="col-lg-8">
 				<select id="id_category" name="id_category">
@@ -47,13 +47,13 @@
 			</div>
 			<div class="col-lg-1">
 				<a class="btn btn-default" href="#" id="add_condition_category">
-					<i class="icon-plus-sign"></i> {l s='Add condition'}
+					<i class="icon-plus-sign"></i> {l s='Ajouter une condition'}
 				</a>
 			</div>
 		</div>
 	</div>
 	{* <div class="form-group">
-		<label for="id_manufacturer" class="control-label col-lg-3">{l s='Manufacturer'}</label>
+		<label for="id_manufacturer" class="control-label col-lg-3">{l s='Fabricant'}</label>
 		<div class="col-lg-9">
 			<div class="col-lg-8">
 				<select id="id_manufacturer" name="id_manufacturer">
@@ -64,13 +64,13 @@
 			</div>
 			<div class="col-lg-1">
 				<a class="btn btn-default" href="#" id="add_condition_manufacturer">
-					<i class="icon-plus-sign"></i> {l s='Add condition'}
+					<i class="icon-plus-sign"></i> {l s='Ajouter une condition'}
 				</a>
 			</div>
 		</div>
 	</div> *}
 	{* <div class="form-group">
-		<label for="id_supplier" class="control-label col-lg-3">{l s='Supplier'}</label>
+		<label for="id_supplier" class="control-label col-lg-3">{l s='Fournisseur'}</label>
 		<div class="col-lg-9">
 			<div class="col-lg-8">
 				<select id="id_supplier" name="id_supplier">
@@ -81,13 +81,13 @@
 			</div>
 			<div class="col-lg-1">
 				<a class="btn btn-default" href="#" id="add_condition_supplier">
-					<i class="icon-plus-sign"></i> {l s='Add condition'}
+					<i class="icon-plus-sign"></i> {l s='Ajouter une condition'}
 				</a>
 			</div>
 		</div>
 	</div> *}
 	{* <div class="form-group">
-		<label for="id_attribute_group" class="control-label col-lg-3">{l s='Attributes'}</label>
+		<label for="id_attribute_group" class="control-label col-lg-3">{l s='Attributs'}</label>
 		<div class="col-lg-9">
 			<div class="col-lg-4">
 				<select id="id_attribute_group">
@@ -107,13 +107,13 @@
 			</div>
 			<div class="col-lg-1">
 				<a class="btn btn-default" href="#" id="add_condition_attribute">
-					<i class="icon-plus-sign"></i> {l s='Add condition'}
+					<i class="icon-plus-sign"></i> {l s='Ajouter une condition'}
 				</a>
 			</div>
 		</div>
 	</div> *}
 	<div class="form-group">
-		<label for="id_feature" class="control-label col-lg-3">{l s='Features'}</label>
+		<label for="id_feature" class="control-label col-lg-3">{l s='Caractéristiques'}</label>
 		<div class="col-lg-9">
 			<div class="col-lg-4">
 				<select id="id_feature">
@@ -133,7 +133,7 @@
 			</div>
 			<div class="col-lg-1">
 				<a class="btn btn-default" href="#" id="add_condition_feature">
-					<i class="icon-plus-sign"></i> {l s='Add condition'}
+					<i class="icon-plus-sign"></i> {l s='Ajouter une condition'}
 				</a>
 			</div>
 		</div>
@@ -194,8 +194,8 @@ function new_condition_group()
 		html += '<div class="row condition_separator text-center">{l s='OR'}</div><div class="clearfix">&nbsp;</div>';
 
 	last_condition_group++;
-	html += '<div id="condition_group_'+last_condition_group+'" class="panel condition_group alert-info"><h3><i class="icon-tasks"></i> {l s='Condition group'} '+last_condition_group+'</h3>';
-		html += '<table class="table alert-info"><thead><tr><th class="fixed-width-md"><span class="title_box">{l s='Type'}</span></th><th><span class="title_box">{l s='Value'}</span></th><th></th></tr></thead><tbody></tbody></table>';
+	html += '<div id="condition_group_'+last_condition_group+'" class="panel condition_group alert-info"><h3><i class="icon-tasks"></i> {l s='Groupe de conditions'} '+last_condition_group+'</h3>';
+		html += '<table class="table alert-info"><thead><tr><th class="fixed-width-md"><span class="title_box">{l s='Type'}</span></th><th><span class="title_box">{l s='Valeur'}</span></th><th></th></tr></thead><tbody></tbody></table>';
 		html += '</div>';
 	$('#condition_group_list').append(html);
 	toggle_condition_group(last_condition_group);
@@ -238,7 +238,7 @@ $(document).ready(function() {
 		if (!id_condition)
 			return false;
 
-		var html = '<tr id="'+id_condition+'"><td>{l s='Category'}</td><td>'+$('#id_category option:selected').html()+'</td><td><a href="#" onclick="delete_condition(\''+id_condition+'\');" class="btn btn-default"><i class="icon-remove"></i> {l s='Delete'}</a></td></tr>';
+		var html = '<tr id="'+id_condition+'"><td>{l s='Catégorie'}</td><td>'+$('#id_category option:selected').html()+'</td><td><a href="#" onclick="delete_condition(&#039;'+id_condition+'&#039;);" class="btn btn-default"><i class="icon-remove"></i> {l s='Supprimer'}</a></td></tr>';
 		appendConditionToGroup(html);
 
 		return false;
@@ -249,7 +249,7 @@ $(document).ready(function() {
 		if (!id_condition)
 			return false;
 
-		var html = '<tr id="'+id_condition+'"><td>{l s='Manufacturer'}</td><td>'+$('#id_manufacturer option:selected').html()+'</td><td><a href="#" onclick="delete_condition(\''+id_condition+'\');" class="btn btn-default"><i class="icon-remove"></i> {l s='Delete'}</a></td></tr>';
+		var html = '<tr id="'+id_condition+'"><td>{l s='Fabricant'}</td><td>'+$('#id_manufacturer option:selected').html()+'</td><td><a href="#" onclick="delete_condition(&#039;'+id_condition+'&#039;);" class="btn btn-default"><i class="icon-remove"></i> {l s='Supprimer'}</a></td></tr>';
 		appendConditionToGroup(html);
 
 		return false;
@@ -260,7 +260,7 @@ $(document).ready(function() {
 		if (!id_condition)
 			return false;
 
-		var html = '<tr id="'+id_condition+'"><td>{l s='Supplier'}</td><td>'+$('#id_supplier option:selected').html()+'</td><td><a href="#" onclick="delete_condition(\''+id_condition+'\');" class="btn btn-default"><i class="icon-remove"></i> {l s='Delete'}</a></td></tr>';
+		var html = '<tr id="'+id_condition+'"><td>{l s='Fournisseur'}</td><td>'+$('#id_supplier option:selected').html()+'</td><td><a href="#" onclick="delete_condition(&#039;'+id_condition+'&#039;);" class="btn btn-default"><i class="icon-remove"></i> {l s='Supprimer'}</a></td></tr>';
 		appendConditionToGroup(html);
 
 		return false;
@@ -271,7 +271,7 @@ $(document).ready(function() {
 		if (!id_condition)
 			return false;
 
-		var html = '<tr id="'+id_condition+'"><td>{l s='Attribute'}</td><td>'+$('#id_attribute_group option:selected').html()+': '+$('#id_attribute_'+$('#id_attribute_group option:selected').val()+' option:selected').html()+'</td><td><a href="#" onclick="delete_condition(\''+id_condition+'\');" class="btn btn-default"><i class="icon-remove"></i> {l s='Delete'}</a></td></tr>';
+		var html = '<tr id="'+id_condition+'"><td>{l s='Attribut'}</td><td>'+$('#id_attribute_group option:selected').html()+': '+$('#id_attribute_'+$('#id_attribute_group option:selected').val()+' option:selected').html()+'</td><td><a href="#" onclick="delete_condition(&#039;'+id_condition+'&#039;);" class="btn btn-default"><i class="icon-remove"></i> {l s='Supprimer'}</a></td></tr>';
 		appendConditionToGroup(html);
 
 		return false;
@@ -282,7 +282,7 @@ $(document).ready(function() {
 		if (!id_condition)
 			return false;
 
-		var html = '<tr id="'+id_condition+'"><td>{l s='Feature'}</td><td>'+$('#id_feature option:selected').html()+': '+$('#id_feature_'+$('#id_feature option:selected').val()+' option:selected').html()+'</td><td><a href="#" onclick="delete_condition(\''+id_condition+'\');" class="btn btn-default"><i class="icon-remove"></i> {l s='Delete'}</a></td></tr>';
+		var html = '<tr id="'+id_condition+'"><td>{l s='Caractéristique'}</td><td>'+$('#id_feature option:selected').html()+': '+$('#id_feature_'+$('#id_feature option:selected').val()+' option:selected').html()+'</td><td><a href="#" onclick="delete_condition(&#039;'+id_condition+'&#039;);" class="btn btn-default"><i class="icon-remove"></i> {l s='Supprimer'}</a></td></tr>';
 		appendConditionToGroup(html);
 
 		return false;

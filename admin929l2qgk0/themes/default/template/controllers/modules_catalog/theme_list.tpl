@@ -36,10 +36,10 @@
                     </p>
                     <div class="panel-action clearfix">
                         {if isset($element->type) && $element->type == 'addonsMustHave'}
-                            <span class="theme-price">{if isset($element->price)}{if $element->price|floatval == 0}{l s='Free'}{elseif isset($element->id_currency)}{displayPrice price=$element->price currency=$element->id_currency}{/if}{/if}</span>
+                            <span class="theme-price">{if isset($element->price)}{if $element->price|floatval == 0}{l s='Gratuit'}{elseif isset($element->id_currency)}{displayPrice price=$element->price currency=$element->id_currency}{/if}{/if}</span>
                             <a class="btn button-action pull-right btn-primary _blank" href="{$element->addons_buy_url|replace:' ':'+'|escape:'html':'UTF-8'}">{l s='Explore'}</a>
                         {else}
-                            <a class="btn button-action pull-right btn-primary" href="{$element->options.install_url|escape:'html':'UTF-8'}" title="{l s='Install'}">{l s='Install'}</a>
+                            <a class="btn button-action pull-right btn-primary" href="{$element->options.install_url|escape:'html':'UTF-8'}" title="{l s='Installer'}">{l s='Installer'}</a>
                         {/if}
                     </div>
                 </div>

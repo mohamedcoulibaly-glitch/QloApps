@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
 	<name>statscheckup</name>
-	<displayName><![CDATA[Catalog evaluation]]></displayName>
+	<displayName><![CDATA[Évaluation du catalogue]]></displayName>
 	<version><![CDATA[1.5.4]]></version>
-	<description><![CDATA[Adds a quick evaluation of your catalog quality to the Stats dashboard.]]></description>
+	<description><![CDATA[Ajoute une évaluation rapide de la qualité de votre catalogue au tableau de bord des statistiques.]]></description>
 	<author><![CDATA[PrestaShop]]></author>
 	<tab><![CDATA[analytics_stats]]></tab>
 	<confirmUninstall><![CDATA[]]></confirmUninstall>

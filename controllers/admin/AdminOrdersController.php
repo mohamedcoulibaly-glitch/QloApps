@@ -320,6 +320,41 @@ class AdminOrdersControllerCore extends AdminController
             )
         ));
 
+        if ($this->isReceptionProfile()) {
+            $this->allow_export = false;
+            foreach (array(
+                'id_order',
+                'customer',
+                'hotel_name',
+                'date_from',
+                'date_to',
+                'total_guests',
+                'num_rooms',
+                'amount_due',
+                'osname',
+            ) as $fieldName) {
+                if (isset($this->fields_list[$fieldName])) {
+                    $this->fields_list[$fieldName]['displayed'] = true;
+                    $this->fields_list[$fieldName]['visible_default'] = true;
+                }
+            }
+
+            $this->fields_list = array_intersect_key(
+                $this->fields_list,
+                array_flip(array(
+                    'id_order',
+                    'customer',
+                    'hotel_name',
+                    'date_from',
+                    'date_to',
+                    'total_guests',
+                    'num_rooms',
+                    'amount_due',
+                    'osname',
+                ))
+            );
+        }
+
         $this->shopLinkType = 'shop';
         $this->shopShareDatas = Shop::SHARE_ORDER;
 
@@ -333,6 +368,10 @@ class AdminOrdersControllerCore extends AdminController
         $this->bulk_actions = array(
             'updateOrderStatus' => array('text' => $this->l('Change Order Status'), 'icon' => 'icon-refresh')
         );
+
+        if ($this->isReceptionProfile()) {
+            $this->bulk_actions = array();
+        }
 
         // START send access query information to the admin controller
         $this->access_select = ' SELECT a.`id_order` FROM '._DB_PREFIX_.'orders a';
@@ -361,7 +400,7 @@ class AdminOrdersControllerCore extends AdminController
 
     public function initPageHeaderToolbar()
     {
-        if (empty($this->display)) {
+        if (empty($this->display) && !$this->isReceptionProfile()) {
             $this->page_header_toolbar_btn['new_order'] = array(
                 'href' => self::$currentIndex.'&addorder&token='.$this->token,
                 'desc' => $this->l('Add new order', null, null, false),
@@ -370,6 +409,27 @@ class AdminOrdersControllerCore extends AdminController
         }
 
         parent::initPageHeaderToolbar();
+    }
+
+    protected function isReceptionProfile()
+    {
+        if (!$this->context->employee || !$this->context->employee->id_profile) {
+            return false;
+        }
+
+        $profileName = Db::getInstance()->getValue('
+            SELECT `name`
+            FROM `'._DB_PREFIX_.'profile_lang`
+            WHERE `id_profile` = '.(int)$this->context->employee->id_profile.'
+                AND `id_lang` = '.(int)$this->context->language->id
+        );
+
+        if (!$profileName) {
+            return false;
+        }
+
+        $normalized = Tools::strtolower(Tools::replaceAccentedChars($profileName));
+        return in_array($normalized, array('reception', 'rception'));
     }
 
     public function renderForm()
@@ -1279,6 +1339,10 @@ class AdminOrdersControllerCore extends AdminController
     public function setMedia()
     {
         parent::setMedia();
+
+        if ($this->isReceptionProfile()) {
+            $this->addCSS(__PS_BASE_URI__.$this->admin_webpath.'/themes/'.$this->bo_theme.'/css/reception-modern.css');
+        }
 
         $this->addJqueryUI('ui.datepicker');
         $this->addJS(_PS_JS_DIR_.'vendor/d3.v3.min.js');
@@ -2833,6 +2897,11 @@ class AdminOrdersControllerCore extends AdminController
     // KPIs on view page
     public function renderKpis()
     {
+        if ($this->isReceptionProfile() && !Tools::getIsset('id_order')) {
+            $this->kpis = array();
+            return '';
+        }
+
         $kpis = array();
         $objOrder = new Order(Tools::getValue('id_order'));
         if (Validate::isLoadedObject($objOrder)) {
@@ -3630,6 +3699,7 @@ class AdminOrdersControllerCore extends AdminController
             'hotel_service_products' => $orderHotelServiceProducts,
             'standalone_service_products' => $orderStandaloneServiceProducts,
             'hotel_booking' => $hotelBooking,
+            'is_reception_profile' => $this->isReceptionProfile(),
             /*END*/
             'order' => $order,
             'cart' => new Cart($order->id_cart),

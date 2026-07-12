@@ -23,16 +23,16 @@
 <div class="panel">
 	<div class="panel-heading">
 		{if isset($edit) && $edit}
-			<i class="icon-edit"></i>&nbsp {l s='Edit Features' mod='hotelreservationsystem'}
+			<i class="icon-edit"></i>&nbsp {l s='Modifier les caractéristiques' mod='hotelreservationsystem'}
 		{else}
-			<i class="icon-plus"></i>&nbsp {l s='Add New Features' mod='hotelreservationsystem'}
+			<i class="icon-plus"></i>&nbsp {l s='Ajouter de nouvelles caractéristiques' mod='hotelreservationsystem'}
 		{/if}
 	</div>
 	<div class="panel-content">
 		<form id="{$table|escape:'htmlall':'UTF-8'}_form" class="defaultForm {$name_controller|escape:'htmlall':'UTF-8'} form-horizontal" action="{$current|escape:'htmlall':'UTF-8'}&{if !empty($submit_action)}{$submit_action|escape:'htmlall':'UTF-8'}{/if}&token={$token|escape:'htmlall':'UTF-8'}" method="post" enctype="multipart/form-data">
 			{if count($languages) > 1}
 				<div class="col-sm-12">
-					<label class="control-label">{l s='Choose Language' mod='hotelreservationsystem'}</label>
+					<label class="control-label">{l s='Choisir la langue' mod='hotelreservationsystem'}</label>
 					<input type="hidden" name="choosedLangId" id="choosedLangId" value="{$currentLang.id_lang}">
 					<button type="button" id="multi_lang_btn" class="btn btn-default dropdown-toggle wk_language_toggle" data-toggle="dropdown">
 						{$currentLang.name}
@@ -47,13 +47,13 @@
 							</li>
 						{/foreach}
 					</ul>
-					<p class="help-block">{l s='Change language for updating information in multiple language.' mod='hotelreservationsystem'}</p>
+					<p class="help-block">{l s='Changez la langue pour mettre à jour les informations dans plusieurs langues.' mod='hotelreservationsystem'}</p>
 					<hr>
 				</div>
 			{/if}
 				<div class="form-group row">
 					<label class="col-sm-3 control-label" >
-						{l s='Parent Feature Name' mod='hotelreservationsystem'}
+						{l s='Nom de la caractéristique parente' mod='hotelreservationsystem'}
 						{include file="../../../_partials/htl-form-fields-flag.tpl"}
 					</label>
 					<div class="col-sm-4">
@@ -75,21 +75,21 @@
 				<div class="form-group row">
 					<label class="col-sm-3 control-label">{l s='Position' mod='hotelreservationsystem'}</label>
 					<div class="col-sm-4">
-						<input type="text" name="position" class="position" placeholder="{l s='Feature position' mod='hotelreservationsystem'}" class="form-control" value="{if isset($smarty.post.position)}{$smarty.post.position|escape:'htmlall':'UTF-8'}{elseif isset($edit)}{$featureInfo.position|escape:'htmlall':'UTF-8'}{/if}"/>
+						<input type="text" name="position" class="form-control" placeholder="{l s='Position de la caractéristique' mod='hotelreservationsystem'}" value="{if isset($smarty.post.position)}{$smarty.post.position|escape:'htmlall':'UTF-8'}{elseif isset($edit)}{$featureInfo.position|escape:'htmlall':'UTF-8'}{/if}"/>
 						<p class="error_text" id="pos_err_p"></p>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-sm-3 control-label">
-						{l s='Child Features' mod='hotelreservationsystem'}
+						{l s='Sous-caractéristiques' mod='hotelreservationsystem'}
 						{include file="../../../_partials/htl-form-fields-flag.tpl"}
 					</label>
 					<div class="col-sm-4">
-						<input type="text" placeholder="Enter child feature name" class="child_ftr_name" name="child_ftr_name">
+						<input type="text" placeholder="{l s='Saisir le nom de la sous-caractéristique'}" class="child_ftr_name" name="child_ftr_name">
 						<p class="error_text" id="chld_ftr_err_p"></p>
 					</div>
 					<div class="col-sm-4">
-						<button type="button" class='col-sm-2 btn btn-primary add_feature_to_list'>{l s='Add' mod='hotelreservationsystem'}</button>
+						<button type="button" class='col-sm-2 btn btn-primary add_feature_to_list'>{l s='Ajouter' mod='hotelreservationsystem'}</button>
 					</div>
 				</div>
 				<div class="added_child_features_container">
@@ -121,13 +121,13 @@
 			</div>
 			<div class="panel-footer">
 				<a href="{$link->getAdminLink('AdminHotelFeatures')|escape:'html':'UTF-8'}" class="btn btn-default">
-					<i class="process-icon-cancel"></i>{l s='Cancel' mod='hotelreservationsystem'}
+					<i class="process-icon-cancel"></i>{l s='Annuler' mod='hotelreservationsystem'}
 				</a>
 				<button type="submit" name="submitHtlFeatures" class="btn btn-default pull-right submit_feature">
-					<i class="process-icon-save"></i> {l s='Save' mod='hotelreservationsystem'}
+					<i class="process-icon-save"></i> {l s='Enregistrer' mod='hotelreservationsystem'}
 				</button>
 				<button type="submit" name="submitHtlFeaturesAndStay" class="btn btn-default pull-right submit_feature">
-					<i class="process-icon-save"></i> {l s='Save and stay' mod='hotelreservationsystem'}
+					<i class="process-icon-save"></i> {l s='Enregistrer et rester' mod='hotelreservationsystem'}
 				</button>
 			</div>
 		</form>
@@ -135,10 +135,10 @@
 </div>
 
 {strip}
-	{addJsDefL name=prnt_ftr_err}{l s='Enter Parent feature name first.' js=1 mod='hotelreservationsystem'}{/addJsDefL}
-	{addJsDefL name=chld_ftr_err}{l s='Enter at least one child feature.' js=1 mod='hotelreservationsystem'}{/addJsDefL}
-	{addJsDefL name=chld_ftr_text_err}{l s='Enter child feature name.' js=1 mod='hotelreservationsystem'}{/addJsDefL}
-	{addJsDefL name=pos_numeric_err}{l s='Position should be numeric.' js=1 mod='hotelreservationsystem'}{/addJsDefL}
+	{addJsDefL name=prnt_ftr_err}{l s='Saisissez d\'abord le nom de la caractéristique parente.' js=1 mod='hotelreservationsystem'}{/addJsDefL}
+	{addJsDefL name=chld_ftr_err}{l s='Saisissez au moins une sous-caractéristique.' js=1 mod='hotelreservationsystem'}{/addJsDefL}
+	{addJsDefL name=chld_ftr_text_err}{l s='Saisissez le nom de la sous-caractéristique.' js=1 mod='hotelreservationsystem'}{/addJsDefL}
+	{addJsDefL name=pos_numeric_err}{l s='La position doit être numérique.' js=1 mod='hotelreservationsystem'}{/addJsDefL}
 {/strip}
 
 {block name=script}

@@ -24,35 +24,35 @@
 *}
 
 <script type="text/javascript">
-	var summary_translation_undefined = '{l s='[undefined]' js=1}';
-	var summary_translation_meta_informations = '{l s='This carrier is @s1 and the delivery announced is: @s2.' js=1}';
-	var summary_translation_free = '{l s='free' js=1}';
-	var summary_translation_paid = '{l s='not free' js=1}';
-	var summary_translation_range = '<span class="is_free">{l s='This carrier can deliver orders from @s1 to @s2.' js=1}</span>';
-	var summary_translation_range_limit =  '{l s='If the order is out of range, the behavior is to @s3.' js=1}';
-	var summary_translation_shipping_cost = '{l s='The shipping cost is calculated @s1 and the tax rule @s2 will be applied.' js=1}';
-	var summary_translation_price = '{l s='according to the price' js=1}';
-	var summary_translation_weight = '{l s='according to the weight' js=1}';
+	var summary_translation_undefined = '{l s='[non défini]' js=1}';
+	var summary_translation_meta_informations = '{l s='Ce transporteur est @s1 et la livraison annoncée est : @s2.' js=1}';
+	var summary_translation_free = '{l s='gratuit' js=1}';
+	var summary_translation_paid = '{l s='payant' js=1}';
+	var summary_translation_range = '<span class="is_free">{l s='Ce transporteur peut livrer les commandes de @s1 à @s2.' js=1}</span>';
+	var summary_translation_range_limit =  '{l s='Si la commande est hors de portée, le comportement est de @s3.' js=1}';
+	var summary_translation_shipping_cost = '{l s='Les frais de livraison sont calculés @s1 et la règle de taxe @s2 sera appliquée.' js=1}';
+	var summary_translation_price = '{l s='selon le prix' js=1}';
+	var summary_translation_weight = '{l s='selon le poids' js=1}';
 </script>
 
 <div class="defaultForm">
 	<div class="panel">
-		<div class="panel-heading">{l s='Carrier name:'} <strong id="summary_name"></strong></div>
+		<div class="panel-heading">{l s='Nom du transporteur :'} <strong id="summary_name"></strong></div>
 		<div class="panel-body">
 			<p id="summary_meta_informations"></p>
 			<p id="summary_shipping_cost"></p>
 			<p id="summary_range"></p>
 			<div>
-			{l s='This carrier will be proposed for those delivery zones:'}
+			{l s='Ce transporteur sera proposé pour les zones de livraison suivantes :'}
 				<ul id="summary_zones"></ul>
 			</div>
 			<div>
-				{l s='And it will be proposed for those client groups:'}
+				{l s='Et il sera proposé pour les groupes de clients suivants :'}
 				<ul id="summary_groups"></ul>
 			</div>
 			{if $is_multishop}
 			<div>
-				{l s='Finally, this carrier will be proposed in those shops:'}
+				{l s='Enfin, ce transporteur sera proposé dans les boutiques suivantes :'}
 				<ul id="summary_shops"></ul>
 			</div>
 			{/if}

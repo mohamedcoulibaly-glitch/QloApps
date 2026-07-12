@@ -29,17 +29,17 @@
 		{if $bulk_actions}
 		<div class="btn-group bulk-actions">
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-				{l s='Bulk actions'} <span class="caret"></span>
+				{l s='Actions groupées'} <span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu">
 				<li>
 					<a href="#" onclick="javascript:checkDelBoxes($(this).closest('form').get(0), '{$table}Box[]', true);return false;">
-						<i class="icon-check-sign"></i>&nbsp;{l s='Select all'}
+						<i class="icon-check-sign"></i>&nbsp;{l s='Tout sélectionner'}
 					</a>
 				</li>
 				<li>
 					<a href="#" onclick="javascript:checkDelBoxes($(this).closest('form').get(0), '{$table}Box[]', false);return false;">
-						<i class="icon-check-empty"></i>&nbsp;{l s='Unselect all'}
+						<i class="icon-check-empty"></i>&nbsp;{l s='Tout désélectionner'}
 					</a>
 				</li>
 				<li class="divider"></li>
@@ -60,7 +60,7 @@
 	<div class="col-lg-4">
 		{* Choose number of results per page *}
 		<div class="pagination">
-			{l s='Display'}
+			{l s='Afficher'}
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 				{$selected_pagination}
 				<i class="icon-caret-down"></i>

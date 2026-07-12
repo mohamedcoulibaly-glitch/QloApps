@@ -25,7 +25,7 @@
 		<h3>{l s='Associations'}</h3>
 		{include file="controllers/products/multishop/check_fields.tpl" product_tab="Associations"}
 		<div id="no_default_category" class="alert alert-info">
-			{l s='Please select a default category.'}
+			{l s='Veuillez sélectionner une catégorie par défaut.'}
 		</div>
 		<div class="alert alert-info">
             {l s='To create new categories '} <a target="_blank" href="{$link->getAdminLink('AdminCategories')}">{l s='click here.'}</a>
@@ -33,14 +33,14 @@
 		<div class="form-group">
 			<div class="col-lg-1"><span class="pull-right">{include file="controllers/products/multishop/checkbox.tpl" field="category_box" type="category_box"}</span></div>
 			<label class="control-label col-lg-2" for="category_block">
-				{l s='Associated categories'}
+				{l s='Catégories associées'}
 			</label>
 			<div class="col-lg-9">
 				<div id="category_block">
 					{$category_tree}
 				</div>
 				{* <a class="btn btn-link bt-icon confirm_leave" href="{$link->getAdminLink('AdminCategories')|escape:'html':'UTF-8'}&amp;addcategory">
-					<i class="icon-plus-sign"></i> {l s='Create new category'} <i class="icon-external-link-sign"></i>
+					<i class="icon-plus-sign"></i> {l s='Créer une nouvelle catégorie'} <i class="icon-external-link-sign"></i>
 				</a> *}
 			</div>
 		</div>
@@ -53,7 +53,7 @@
 			<div class="col-lg-1"><span class="pull-right">{include file="controllers/products/multishop/checkbox.tpl" field="id_category_default" type="default"}</span></div>
 			<label class="control-label col-lg-2" for="id_category_default">
 				<span class="label-tooltip" data-toggle="tooltip" title="{l s='The default category is the main category for your room type, and is displayed by default.'}">
-					{l s='Default category'}
+					{l s='Catégorie par défaut'}
 				</span>
 			</label>
 			<div class="col-lg-5">
@@ -68,8 +68,8 @@
 		<!-- <div class="form-group">
 			<label class="control-label col-lg-3" for="product_autocomplete_input">
 				<span class="label-tooltip" data-toggle="tooltip"
-				title="{l s='You can indicate existing products as accessories for this product.'}{l s='Start by typing the first letters of the product\'s name, then select the product from the drop-down list.'}{l s='Do not forget to save the product afterwards!'}">
-				{l s='Accessories'}
+				title="{l s='Vous pouvez indiquer des produits existants comme accessoires pour ce produit.'}{l s='Start by typing the first letters of the product&#039;s name, then select the product from the drop-down list.'}{l s='N&#039;oubliez pas d&#039;enregistrer le produit après !'}">
+				{l s='Accessoires'}
 				</span>
 			</label>
 			<div class="col-lg-5">
@@ -96,7 +96,7 @@
 		</div> -->
 		<!-- By webkul to hide unneccessary fields -->
 		<!-- <div class="form-group">
-			<label class="control-label col-lg-3" for="id_manufacturer">{l s='Manufacturer'}</label>
+			<label class="control-label col-lg-3" for="id_manufacturer">{l s='Fabricant'}</label>
 			<div class="col-lg-5">
 				<select name="id_manufacturer" id="id_manufacturer">
 					<option value="0">- {l s='Choose (optional)'} -</option>
@@ -108,14 +108,14 @@
 			</div>
 			<div class="col-lg-4">
 				<a class="btn btn-link bt-icon confirm_leave" style="margin-bottom:0" href="{$link->getAdminLink('AdminManufacturers')|escape:'html':'UTF-8'}&amp;addmanufacturer">
-					<i class="icon-plus-sign"></i> {l s='Create new manufacturer'} <i class="icon-external-link-sign"></i>
+					<i class="icon-plus-sign"></i> {l s='Créer un nouveau fabricant'} <i class="icon-external-link-sign"></i>
 				</a>
 			</div>
 		</div> -->
 		<div class="panel-footer">
-			<a href="{$link->getAdminLink('AdminNormalProducts')|escape:'html':'UTF-8'}{if isset($smarty.request.page) && $smarty.request.page > 1}&amp;submitFilterproduct={$smarty.request.page|intval}{/if}" class="btn btn-default"><i class="process-icon-cancel"></i> {l s='Cancel'}</a>
-			<button type="submit" name="submitAddproduct" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Save'}</button>
-			<button type="submit" name="submitAddproductAndStay" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Save and stay'}</button>
+			<a href="{$link->getAdminLink('AdminNormalProducts')|escape:'html':'UTF-8'}{if isset($smarty.request.page) && $smarty.request.page > 1}&amp;submitFilterproduct={$smarty.request.page|intval}{/if}" class="btn btn-default"><i class="process-icon-cancel"></i> {l s='Annuler'}</a>
+			<button type="submit" name="submitAddproduct" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Enregistrer'}</button>
+			<button type="submit" name="submitAddproductAndStay" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Enregistrer et rester'}</button>
 		</div>
 	</div>
 {/if}

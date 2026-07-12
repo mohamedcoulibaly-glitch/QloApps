@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
 	<name>dashguestcycle</name>
-	<displayName><![CDATA[Cycle d&#039;invit&eacute; du tableau de bord]]></displayName>
+	<displayName><![CDATA[Cycle client du tableau de bord]]></displayName>
 	<version><![CDATA[1.0.3]]></version>
-	<description><![CDATA[Ajoute un bloc avec une repr&eacute;sentation graphique des statistiques du cycle client.]]></description>
+	<description><![CDATA[Ajoute un bloc avec une représentation graphique du cycle client.]]></description>
 	<author><![CDATA[Webkul]]></author>
 	<tab><![CDATA[dashboard]]></tab>
 	<confirmUninstall><![CDATA[Êtes-vous sur de vouloir désinstaller?]]></confirmUninstall>

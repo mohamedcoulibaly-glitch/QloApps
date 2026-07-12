@@ -21,7 +21,7 @@
 *}
 
 <div class="modal-body">
-    <div><b>{l s='Allotment remark'}</b>: {$comment}</div>
+    <div><b>{l s='Remarque d&#039;attribution'}</b>: {$comment}</div>
 
     {if isset($loaderImg) && $loaderImg}
         <div class="loading_overlay">

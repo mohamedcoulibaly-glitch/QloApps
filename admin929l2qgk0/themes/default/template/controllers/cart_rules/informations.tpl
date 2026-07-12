@@ -1,8 +1,8 @@
 <div class="form-group">
 	<label class="control-label col-lg-3 required">
 		<span class="label-tooltip" data-toggle="tooltip"
-		title="{l s='This will be displayed in the cart summary, as well as on the invoice.'}">
-			{l s='Name'}
+		title="{l s='Ceci sera affiché dans le récapitulatif du panier, ainsi que sur la facture.'}">
+			{l s='Nom'}
 		</span>
 	</label>
 	<div class="col-lg-8">
@@ -36,7 +36,7 @@
 <div class="form-group">
 	<label class="control-label col-lg-3">
 		<span class="label-tooltip" data-toggle="tooltip"
-		title="{l s='For your eyes only. This will never be displayed to the customer.'}">
+		title="{l s='Réservé à vos yeux. Cela ne sera jamais affiché au client.'}">
 			{l s='Description'}
 		</span>
 	</label>
@@ -48,7 +48,7 @@
 <div class="form-group">
 	<label class="control-label col-lg-3">
 		<span class="label-tooltip" data-toggle="tooltip"
-		title="{l s='This is the code users should enter to apply the voucher to a cart. Either create your own code or generate one by clicking on "Generate".'}">
+		title="{l s='C&#039;est le code que les utilisateurs doivent saisir pour appliquer le bon de réduction au panier.'}">
 			{l s='Code'}
 		</span>
 	</label>
@@ -56,26 +56,26 @@
 		<div class="input-group col-lg-4">
 			<input type="text" id="code" name="code" value="{$currentTab->getFieldValue($currentObject, 'code')|escape}" />
 			<span class="input-group-btn">
-				<a href="javascript:gencode(8);" class="btn btn-default"><i class="icon-random"></i> {l s='Generate'}</a>
+				<a href="javascript:gencode(8);" class="btn btn-default"><i class="icon-random"></i> {l s='Générer'}</a>
 			</span>
 		</div>
-	<span class="help-block">{l s='Caution! If you leave this field blank, the rule will automatically be applied to benefiting customers.'}</span>
+	<span class="help-block">{l s='Attention ! Si vous laissez ce champ vide, la règle sera automatiquement appliquée aux clients bénéficiaires.'}</span>
 	</div>
 </div>
 
 <div class="form-group">
 	<label class="control-label col-lg-3">
 		<span class="label-tooltip" data-toggle="tooltip"
-		title="{l s='If the voucher is not yet in the cart, it will be displayed in the cart summary.'}">
-			{l s='Highlight'}
+		title="{l s='Si le bon de réduction n&#039;est pas encore dans le panier, il sera affiché dans le récapitulatif du panier.'}">
+			{l s='Mettre en avant'}
 		</span>
 	</label>
 	<div class="col-lg-9">
 		<span class="switch prestashop-switch fixed-width-lg">
 			<input type="radio" name="highlight" id="highlight_on" value="1" {if $currentTab->getFieldValue($currentObject, 'highlight')|intval}checked="checked"{/if}/>
-			<label for="highlight_on">{l s='Yes'}</label>
+			<label for="highlight_on">{l s='Oui'}</label>
 			<input type="radio" name="highlight" id="highlight_off" value="0"  {if !$currentTab->getFieldValue($currentObject, 'highlight')|intval}checked="checked"{/if} />
-			<label for="highlight_off">{l s='No'}</label>
+			<label for="highlight_off">{l s='Non'}</label>
 			<a class="slide-button btn"></a>
 		</span>
 	</div>
@@ -84,17 +84,17 @@
 <div class="form-group">
 	<label class="control-label col-lg-3">
 		<span class="label-tooltip" data-toggle="tooltip"
-		title="{l s='Only applicable if the voucher value is greater than the cart total.'}
-		{l s='If you do not allow partial use, the voucher value will be lowered to the total order amount. If you allow partial use, however, a new voucher will be created with the remainder.'}">
-			{l s='Partial use'}
+		title="{l s='Applicable uniquement si la valeur du bon de réduction est supérieure au total du panier.'}
+		{l s='Si vous n&#039;autorisez pas l&#039;utilisation partielle, la valeur du bon de réduction sera réduite au montant total de la commande. Si vous autorisez l&#039;utilisation partielle, un nouveau bon de réduction sera créé avec le reste.'}">
+			{l s='Utilisation partielle'}
 		</span>
 	</label>
 	<div class="col-lg-9">
 		<span class="switch prestashop-switch fixed-width-lg">
 			<input type="radio" name="partial_use" id="partial_use_on" value="1" {if $currentTab->getFieldValue($currentObject, 'partial_use')|intval}checked="checked"{/if} />
-			<label class="t" for="partial_use_on">{l s='Yes'}</label>
+			<label class="t" for="partial_use_on">{l s='Oui'}</label>
 			<input type="radio" name="partial_use" id="partial_use_off" value="0"  {if !$currentTab->getFieldValue($currentObject, 'partial_use')|intval}checked="checked"{/if} />
-			<label class="t" for="partial_use_off">{l s='No'}</label>
+			<label class="t" for="partial_use_off">{l s='Non'}</label>
 			<a class="slide-button btn"></a>
 		</span>
 	</div>
@@ -103,8 +103,8 @@
 <div class="form-group">
 	<label class="control-label col-lg-3">
 		<span class="label-tooltip" data-toggle="tooltip"
-		title="{l s='Cart rules are applied by priority. A cart rule with a priority of "1" will be processed before a cart rule with a priority of "2".'}">
-			{l s='Priority'}
+		title="{l s='Les règles de panier sont appliquées par priorité. Une règle de panier avec une priorité de "1" sera traitée avant une règle de panier avec une priorité de "2".'}">
+			{l s='Priorité'}
 		</span>
 	</label>
 	<div class="col-lg-1">
@@ -113,13 +113,13 @@
 </div>
 
 <div class="form-group">
-	<label class="control-label col-lg-3">{l s='Status'}</label>
+	<label class="control-label col-lg-3">{l s='Statut'}</label>
 	<div class="col-lg-9">
 		<span class="switch prestashop-switch fixed-width-lg">
 			<input type="radio" name="active" id="active_on" value="1" {if $currentTab->getFieldValue($currentObject, 'active')|intval}checked="checked"{/if} />
-			<label class="t" for="active_on">{l s='Yes'}</label>
+			<label class="t" for="active_on">{l s='Oui'}</label>
 			<input type="radio" name="active" id="active_off" value="0"  {if !$currentTab->getFieldValue($currentObject, 'active')|intval}checked="checked"{/if} />
-			<label class="t" for="active_off">{l s='No'}</label>
+			<label class="t" for="active_off">{l s='Non'}</label>
 			<a class="slide-button btn"></a>
 		</span>
 	</div>

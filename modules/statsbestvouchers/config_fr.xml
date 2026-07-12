@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
 	<name>statsbestvouchers</name>
-	<displayName><![CDATA[Best vouchers]]></displayName>
+	<displayName><![CDATA[Meilleurs bons de réduction]]></displayName>
 	<version><![CDATA[1.5.3]]></version>
-	<description><![CDATA[Adds a list of the best vouchers to the Stats dashboard.]]></description>
+	<description><![CDATA[Ajoute la liste des meilleurs bons de réduction au tableau de bord des statistiques.]]></description>
 	<author><![CDATA[PrestaShop]]></author>
 	<tab><![CDATA[analytics_stats]]></tab>
 	<confirmUninstall><![CDATA[]]></confirmUninstall>

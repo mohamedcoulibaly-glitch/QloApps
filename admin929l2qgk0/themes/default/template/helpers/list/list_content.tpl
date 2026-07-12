@@ -76,9 +76,9 @@
 						{/if}
 					{elseif isset($params.activeVisu)}
 						{if $tr.$key}
-							<i class="icon-check-ok"></i> {l s='Enabled'}
+							<i class="icon-check-ok"></i> {l s='Activé'}
 						{else}
-							<i class="icon-remove"></i> {l s='Disabled'}
+							<i class="icon-remove"></i> {l s='Désactivé'}
 						{/if}
 					{elseif isset($params.position)}
 						{if !$filters_has_value && $order_by == 'position' && $order_way != 'DESC'}
@@ -198,8 +198,8 @@
 	<tr>
 		<td class="list-empty" colspan="{count($fields_display)+1}">
 			<div class="list-empty-msg">
-				<i class="icon-warning-sign list-empty-icon"></i>
-				{l s='No records found'}
+				<i class="icon-info-sign list-empty-icon"></i>
+				{l s='Aucun enregistrement trouvé'}
 			</div>
 		</td>
 	</tr>

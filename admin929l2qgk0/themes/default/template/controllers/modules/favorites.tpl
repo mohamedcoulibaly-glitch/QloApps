@@ -25,18 +25,18 @@
 <div class="panel">
 	<div class="panel-heading">
 		<i class="icon-list-ul"></i>
-		{l s='Modules list'}
+		{l s='Liste des modules'}
 	</div>
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="btn-group pull-right">
 				<a class="btn btn-default {if !isset($smarty.get.select)} active{/if}" href="index.php?controller={$smarty.get.controller|htmlentities}&amp;token={$smarty.get.token|htmlentities}">
 					<i class="icon-list"></i>
-					{l s='Normal view'} 
+					{l s='Vue normale'}
 				</a>
 				<a class="btn btn-default {if $smarty.get.select == 'favorites'} active{/if}" href="javascript:void(0);">
 					<i class="icon-star"></i>
-					{l s='Favorites view'}
+					{l s='Vue favoris'}
 				</a>
 			</div>
 		</div>
@@ -49,10 +49,10 @@
 						<tr class="nodrag nodrop">
 							<th colspan="2"></th>
 							<th>{l s='Module'}</th>
-							<th>{l s='Tab'}</th>
-							<th>{l s='Categories'}</th>
-							<th>{l s='Interest'}</th>
-							<th>{l s='Favorite'}</th>
+							<th>{l s='Onglet'}</th>
+							<th>{l s='Catégories'}</th>
+							<th>{l s='Intérêt'}</th>
+							<th>{l s='Favori'}</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -95,15 +95,15 @@
 								<td>
 									<select name="i_{$module->name}" class="moduleFavorite">
 										<option value="" selected="selected">-</option>
-										<option value="1" {if isset($module->preferences.interest) && $module->preferences.interest eq '1'}selected="selected"{/if}>{l s='Yes'}</option>
-										<option value="0" {if isset($module->preferences.interest) && $module->preferences.interest eq '0'}selected="selected"{/if}>{l s='No'}</option>
+										<option value="1" {if isset($module->preferences.interest) && $module->preferences.interest eq '1'}selected="selected"{/if}>{l s='Oui'}</option>
+										<option value="0" {if isset($module->preferences.interest) && $module->preferences.interest eq '0'}selected="selected"{/if}>{l s='Non'}</option>
 									</select>
 								</td>
 								<td>
 									<select name="f_{$module->name}" class="moduleFavorite">
 										<option value="" selected="selected">-</option>
-										<option value="1" {if isset($module->preferences.favorite) && $module->preferences.favorite eq '1'}selected="selected"{/if}>{l s='Yes'}</option>
-										<option value="0" {if isset($module->preferences.favorite) && $module->preferences.favorite eq '0'}selected="selected"{/if}>{l s='No'}</option>
+										<option value="1" {if isset($module->preferences.favorite) && $module->preferences.favorite eq '1'}selected="selected"{/if}>{l s='Oui'}</option>
+										<option value="0" {if isset($module->preferences.favorite) && $module->preferences.favorite eq '0'}selected="selected"{/if}>{l s='Non'}</option>
 									</select>
 								</td>
 							</tr>

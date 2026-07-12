@@ -96,7 +96,7 @@
 
 	<div class="panel">
 		<h3>
-			<i class="icon-bar-chart"></i> {l s='Statistics'}
+			<i class="icon-bar-chart"></i> {l s='Statistiques'}
 		</h3>
 		<h2>{$referrer->name}</h2>
 		<table class="table">
@@ -109,15 +109,15 @@
 		</table>
 		<form id="product_referrers" name="product_referrers" class="form-horizontal">
 			<div class="form-group">
-				<label class="control-label col-lg-3">{l s='Filter by product:'}</label>
+				<label class="control-label col-lg-3">{l s='Filtrer par produit :'}</label>
 				<div class="col-lg-9">
 					<select id="selectProduct" class="fixed-width-xl" name="selectProduct" onfocus="fillProducts();" onchange="updateConversionRate(this.value);">
-						<option value="0" selected="selected">- {l s='All'} -</option>
+						<option value="0" selected="selected">- {l s='Tout'} -</option>
 					</select>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-lg-3">{l s='Search'}</label>
+				<label class="control-label col-lg-3">{l s='Rechercher'}</label>
 				<div class="col-lg-9">
 					<input class="btn btn-default" type="text" size="34" id="filterProduct" name="filterProduct" onkeyup="fillProducts();" />
 				</div>

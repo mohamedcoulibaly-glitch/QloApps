@@ -26,17 +26,17 @@
 
 <script type="text/javascript">{$autocompleteList}</script>
 <script type="text/javascript">
-    var header_confirm_reset = '{l s='Confirm reset'}';
-    var body_confirm_reset = '{l s='Would you like to delete the content related to this module ?'}';
-    var left_button_confirm_reset = '{l s='No - reset only the parameters'}';
-    var right_button_confirm_reset = '{l s='Yes - reset everything'}';
+    var header_confirm_reset = '{l s='Confirmer la réinitialisation'}';
+    var body_confirm_reset = '{l s='Souhaitez-vous supprimer le contenu lié à ce module ?'}';
+    var left_button_confirm_reset = '{l s='Non - réinitialiser uniquement les paramètres'}';
+    var right_button_confirm_reset = '{l s='Oui - tout réinitialiser'}';
 	var currentIndex = '{$currentIndex|escape:'html':'UTF-8'}';
 	var currentIndexWithToken = '{$currentIndex|escape:'html':'UTF-8'}&token={$token|escape:'html':'UTF-8'}';
 	var dirNameCurrentIndex = '{$dirNameCurrentIndex}';
 	var ajaxCurrentIndex = '{$ajaxCurrentIndex}';
 	var installed_modules = {if isset($installed_modules) && is_array($installed_modules) && count($installed_modules)}{$installed_modules}{else}false{/if};
 	var by = '{l s='by'}';
-	var confirmPreferencesSaved = '{l s='Preferences saved'}';
+	var confirmPreferencesSaved = '{l s='Préférences enregistrées'}';
 	{if isset($smarty.get.anchor) && !isset($error_module)}var anchor = '{$smarty.get.anchor|htmlentities|replace:'(':''|replace:')':''|replace:'{':''|replace:'}':''|replace:'\'':''|replace:'/':''}';{else}var anchor = '';{/if}
 
 	{if isset($smarty.get.module_name) && !isset($error_module) && (!isset($dont_filter) || !$dont_filter)}var module_name = '{$smarty.get.module_name|htmlentities|replace:'(':''|replace:')':''|replace:'{':''|replace:'}':''|replace:'\'':''|replace:'/':''}';{else}var module_name = '';{/if}

@@ -1,4 +1,4 @@
-{*
+﻿{*
 * 2007-2017 PrestaShop
 *
 * NOTICE OF LICENSE
@@ -32,7 +32,7 @@
 				{/if}
 			{/foreach}
 		{else}
-			{l s='No module has been installed.'}
+            {l s="Aucun module n'a ete installe."}
 		{/if}
 		</nav>
 	</div>

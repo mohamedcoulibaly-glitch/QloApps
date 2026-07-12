@@ -26,13 +26,13 @@
 {block name=override_header}
 {if isset($warehouses) && count($warehouses) > 0 && isset($filter_status)}
 <div class="panel">
-	<h3><i class="icon-cogs"></i> {l s='Filters'}</h3>
+	<h3><i class="icon-cogs"></i> {l s='Filtres'}</h3>
 	<div class="filter-stock-extended">
 		<form id="supply_orders" method="get" class="form-horizontal">
 			<input type="hidden" name="controller" value="AdminSupplyOrders" />
 			<input type="hidden" name="token" value="{$token|escape:'html':'UTF-8'}" />
 			<div class="form-group">
-				<label for="id_warehouse" class="control-label col-lg-3">{l s='Filter by warehouse:'}</label>
+				<label for="id_warehouse" class="control-label col-lg-3">{l s='Filtrer par entrepôt :'}</label>
 				<div class="col-lg-9">
 					<select id="id_warehouse" name="id_warehouse" onchange="$('#supply_orders').submit();">
 					{foreach from=$warehouses key=k item=i}
@@ -44,7 +44,7 @@
 			<div class="form-group">
 				<div class="checkbox col-lg-9 col-lg-push-3">
 					<label for="filter_status">
-						<input id="filter_status" type="checkbox" name="filter_status" class="noborder" onchange="$('#supply_orders').submit();" {if $filter_status == 1}value="on" checked{/if} /> {l s='Choose not to display completed/canceled orders:'}
+						<input id="filter_status" type="checkbox" name="filter_status" class="noborder" onchange="$('#supply_orders').submit();" {if $filter_status == 1}value="on" checked{/if} /> {l s='Choisir de ne pas afficher les commandes terminées/annulées :'}
 					</label>
 				</div>
 			</div>

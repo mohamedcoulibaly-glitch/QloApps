@@ -27,18 +27,18 @@
 
 {block name="override_tpl"}
 <div class="panel">
-	<div class="panel-heading">{$supplier->name} - {l s='Number of products:'} {count($products)}</div>	
+	<div class="panel-heading">{$supplier->name} - {l s='Nombre de produits :'} {count($products)}</div>
 	<table class="table">
 		<thead>
 			<tr>
-				<th><span class="title_box">{l s='Product name'}</span></th>
-				<th><span class="title_box">{l s='Attribute name'}</span></th>
-				<th><span class="title_box">{l s='Supplier Reference'}</span></th>
-				<th><span class="title_box">{l s='Wholesale price'}</span></th>
-				<th><span class="title_box">{l s='Reference'}</span></th>
+				<th><span class="title_box">{l s='Nom du produit'}</span></th>
+				<th><span class="title_box">{l s='Nom de l&#039;attribut'}</span></th>
+				<th><span class="title_box">{l s='Référence fournisseur'}</span></th>
+				<th><span class="title_box">{l s='Prix de gros'}</span></th>
+				<th><span class="title_box">{l s='Référence'}</span></th>
 				<th><span class="title_box">{l s='EAN13'}</span></th>
 				<th><span class="title_box">{l s='UPC'}</span></th>
-				{if $stock_management && $shopContext != Shop::CONTEXT_ALL}<th class="right"><span class="title_box">{l s='Available Quantity'}</span></th>{/if}
+				{if $stock_management && $shopContext != Shop::CONTEXT_ALL}<th class="right"><span class="title_box">{l s='Quantité disponible'}</span></th>{/if}
 			</tr>
 		</thead>
 		<tbody>
@@ -73,4 +73,3 @@
 	</table>
 </div>
 {/block}
-

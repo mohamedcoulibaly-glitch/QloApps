@@ -24,8 +24,8 @@
     data-original-title="{$row['group_names']}" >
     {$row['group_access_count']}&nbsp;
     {if $row['group_access_count'] > 1}
-        {l s='Groups' mod='hotelreservationsystem'}
+        {l s='Groupes' mod='hotelreservationsystem'}
     {else}
-        {l s='Group' mod='hotelreservationsystem'}
+        {l s='Groupe' mod='hotelreservationsystem'}
     {/if}
 </span>

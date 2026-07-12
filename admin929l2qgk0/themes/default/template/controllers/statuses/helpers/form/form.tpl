@@ -74,7 +74,7 @@
 					</ul>
 					<button type="button" class="btn btn-default" onclick="viewTemplates('#{$input.name}_select_{$language.id_lang}', '{$language.iso_code}/', '.html');">
 						<i class="icon-eye-open"></i>
-						{l s='Preview'}
+						{l s='Aperçu'}
 					</button>
 				</div>
 			</div>

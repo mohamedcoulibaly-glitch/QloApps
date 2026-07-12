@@ -1,4 +1,4 @@
-{*
+﻿{*
 * NOTICE OF LICENSE
 *
 * This source file is subject to the Open Software License version 3.0
@@ -23,7 +23,7 @@
 <div class="modal-body">
     <form action="{$current_index}&amp;vieworder&amp;token={$smarty.get.token|escape:'html':'UTF-8'}&amp;id_order={$order->id|intval}" method="post" class="room_status_info_form">
         <div class="form-group">
-            <label class="control-label">{l s='Status'}</label>
+            <label class="control-label">{l s='Statut'}</label>
             <select name="booking_order_status" class="form-control booking_order_status margin-bottom-5">
                 {foreach from=$hotel_order_status item=state}
                     <option value="{$state['id_status']|intval}">{$state.name|escape}</option>

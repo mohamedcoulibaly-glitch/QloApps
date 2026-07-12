@@ -26,7 +26,7 @@
 	<div class="input-group">
 		<button type="button" class="btn btn-default dropdown-toggle" tabindex="-1" data-toggle="dropdown">
 			<i class="icon-flag"></i>
-			{l s='Manage translations'}
+			{l s='Gérer les traductions'}
 			<span class="caret"></span>
 		</button>
 		<ul class="dropdown-menu">

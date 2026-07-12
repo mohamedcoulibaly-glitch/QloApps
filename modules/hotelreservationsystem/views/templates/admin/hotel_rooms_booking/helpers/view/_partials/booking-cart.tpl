@@ -4,7 +4,7 @@
 				<button type="button" class="close margin-right-10" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title" id="myModalLabel"><i class="icon-shopping-cart"></i>&nbsp; {l s='Cart Options' mod='hotelreservationsystem'}</h4>
+				<h4 class="modal-title" id="myModalLabel"><i class="icon-shopping-cart"></i>&nbsp; {l s='Options du panier' mod='hotelreservationsystem'}</h4>
 			</div>
 			<div class="modal-body">
 				<div class="row margin-lr-0">
@@ -13,10 +13,10 @@
 							<table class="table table-responsive addtocart-table">
 								<thead class="cart-table-thead">
 									<tr>
-										<th class="text-center">{l s='Room No.' mod='hotelreservationsystem'}</th>
-										<th class="text-center">{l s='Room Type' mod='hotelreservationsystem'}</th>
-										<th class="text-center">{l s='Duration' mod='hotelreservationsystem'}</th>
-										<th class="text-center">{l s='Amount (Tax excl.)' mod='hotelreservationsystem'}</th>
+										<th class="text-center">{l s='N° chambre' mod='hotelreservationsystem'}</th>
+										<th class="text-center">{l s='Type de chambre' mod='hotelreservationsystem'}</th>
+										<th class="text-center">{l s='Durée' mod='hotelreservationsystem'}</th>
+										<th class="text-center">{l s='Montant (ht.)' mod='hotelreservationsystem'}</th>
 										<th></th>
 									</tr>
 								</thead>
@@ -40,11 +40,11 @@
                             <table class="table table-responsive addtocart-table">
                                 <thead class="cart-table-thead">
                                     <tr>
-                                        <th>{l s='Id' mod='hotelreservationsystem'}</th>
-                                        <th>{l s='Name' mod='hotelreservationsystem'}</th>
-                                        <th>{l s='Hotel' mod='hotelreservationsystem'}</th>
-                                        <th>{l s='Quantity' mod='hotelreservationsystem'}</th>
-                                        <th>{l s='Amount (Tax excl.)' mod='hotelreservationsystem'}</th>
+                                        <th>{l s='ID' mod='hotelreservationsystem'}</th>
+                                        <th>{l s='Nom' mod='hotelreservationsystem'}</th>
+                                        <th>{l s='Hôtel' mod='hotelreservationsystem'}</th>
+                                        <th>{l s='Quantité' mod='hotelreservationsystem'}</th>
+                                        <th>{l s='Montant (ht.)' mod='hotelreservationsystem'}</th>
                                         <th></th>
                                     </tr>
                                     <tbody class="cart_tbody">
@@ -70,19 +70,19 @@
 					<div class="row cart_amt_div">
 						<table class="table table-responsive">
 							<tr>
-								<td>{l s='Rooms Amount (Tax excl.):' mod='hotelreservationsystem'}</td>
+								<td>{l s='Montant des chambres (ht.) :' mod='hotelreservationsystem'}</td>
 								<td class="text-right" id="cart_rooms_amount">
 									{if isset($cart_rooms_amount)}{convertPrice price=$cart_rooms_amount}{else}{convertPrice price=0}{/if}
 								</td>
 							</tr>
 							<tr>
-								<td>{l s='Convenience Fee (Tax excl.):' mod='hotelreservationsystem'}</td>
+								<td>{l s='Frais de service (ht.) :' mod='hotelreservationsystem'}</td>
 								<td class="text-right" id="cart_convenience_fee">
 									{if isset($cart_amount_convenience_fee)}{convertPrice price=$cart_amount_convenience_fee}{else}{convertPrice price=0}{/if}
 								</td>
 							</tr>
 							<tr>
-								<th>{l s='Total Amount (Tax excl.):' mod='hotelreservationsystem'}</th>
+								<th>{l s='Montant total (ht.) :' mod='hotelreservationsystem'}</th>
 								<th class="text-right" id="cart_total_amt">
 									{if isset($cart_tamount)}{convertPrice price=$cart_tamount}{else}{convertPrice price=0}{/if}
 								</th>
@@ -93,9 +93,9 @@
 			</div>
 			<div class="modal-footer">
 				<a href="{$link->getAdminLink('AdminOrders')}&amp;addorder&amp;cart_id={$id_cart|escape:'htmlall':'UTF-8'|intval}" class="btn btn-primary cart_booking_btn" {if !$total_products_in_cart}disabled="disabled"{/if}>
-					{l s='Book Now' mod='hotelreservationsystem'}
+					{l s='Réserver maintenant' mod='hotelreservationsystem'}
 				</a>
-				<button type="button" class="btn btn-default" data-dismiss="modal">{l s='Close' mod='hotelreservationsystem'}</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">{l s='Fermer' mod='hotelreservationsystem'}</button>
 			</div>
 		</div>
 	</div>

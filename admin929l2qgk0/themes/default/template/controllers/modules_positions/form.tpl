@@ -32,7 +32,7 @@
 	<div class="panel">
 		<h3>
 			<i class="icon-paste"></i>
-			{l s='Transplant a module'}
+			{l s='Transplanter un module'}
 		</h3>
 		<div class="form-group">
 			<label class="control-label col-lg-3 required"> {l s='Module'}</label>
@@ -48,7 +48,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="control-label col-lg-3 required"> {l s='Transplant to'}</label>
+			<label class="control-label col-lg-3 required"> {l s='Transplanter vers'}</label>
 			<div class="col-lg-9">
 				<select name="id_hook"{if !$hooks|@count} disabled="disabled"{/if}>
 					{if !$hooks}
@@ -85,7 +85,7 @@
 				<input type="hidden" name="id_module" value="{$id_module}" />
 				<input type="hidden" name="id_hook" value="{$id_hook}" />
 			{/if}
-			<button type="submit" name="{if $edit_graft}submitEditGraft{else}submitAddToHook{/if}" id="{$table}_form_submit_btn" class="btn btn-default pull-right"><i class="process-icon-save"></i> {l s='Save'}</button>
+			<button type="submit" name="{if $edit_graft}submitEditGraft{else}submitAddToHook{/if}" id="{$table}_form_submit_btn" class="btn btn-default pull-right"><i class="process-icon-save"></i> {l s='Enregistrer'}</button>
 		</div>
 	</div>
 </form>

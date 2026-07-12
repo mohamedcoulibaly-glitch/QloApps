@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
 	<name>statsproduct</name>
-	<displayName><![CDATA[Room type details]]></displayName>
+	<displayName><![CDATA[Détails du type de chambre]]></displayName>
 	<version><![CDATA[1.5.4]]></version>
-	<description><![CDATA[Adds detailed statistics for each room type to the Stats dashboard.]]></description>
+	<description><![CDATA[Ajoute des statistiques détaillées pour chaque type de chambre au tableau de bord des statistiques.]]></description>
 	<author><![CDATA[PrestaShop]]></author>
 	<tab><![CDATA[analytics_stats]]></tab>
 	<confirmUninstall><![CDATA[]]></confirmUninstall>

@@ -58,11 +58,11 @@
 				    {$tr.$key}
 				{elseif isset($params.activeVisu)}
 					<img src="../img/admin/{if $tr.$key}enabled.gif{else}disabled.gif{/if}"
-					alt="{if $tr.$key}{l s='Enabled'}{else}{l s='Disabled'}{/if}" title="{if $tr.$key}{l s='Enabled'}{else}{l s='Disabled'}{/if}" />
+					alt="{if $tr.$key}{l s='Activé'}{else}{l s='Désactivé'}{/if}" title="{if $tr.$key}{l s='Activé'}{else}{l s='Désactivé'}{/if}" />
 				{elseif isset($params.position)}
 					{if $order_by == 'position' && $order_way != 'DESC'}
 						<a href="{$tr.$key.position_url_down}" {if !($tr.$key.position != $positions[count($positions) - 1])}style="display: none;"{/if}>
-							<img src="../img/admin/{if $order_way == 'ASC'}down{else}up{/if}.gif" alt="{l s='Down'}" title="{l s='Down'}" />
+							<img src="../img/admin/{if $order_way == 'ASC'}down{else}up{/if}.gif" alt="{l s='Bas'}" title="{l s='Bas'}" />
 						</a>
 
 						<a href="{$tr.$key.position_url_up}" {if !($tr.$key.position != $positions.0)}style="display: none;"{/if}>
@@ -88,11 +88,11 @@
 				{elseif isset($tr.$key)}
 					{if $key == 'behavior'}
 						{if $tr.$key == 0}
-							{l s='This tax only'}
+							{l s='Cette taxe uniquement'}
 						{elseif $tr.$key == 1}
-							{l s='Combine'}
+							{l s='Combiner'}
 						{elseif $tr.$key == 2}
-							{l s='One after another'}
+							{l s='L&#039;un après l&#039;autre'}
 						{/if}
 					{elseif $key == 'rate'}
 						{$tr.$key|string_format:"%.3f"}%

@@ -31,35 +31,35 @@
 		<div class="panel">
 			<h3>
 				<i class="icon-info"></i>
-				{if isset($is_template) && $is_template == 1} {l s='Template'} {/if}{l s='General information'}
+				{if isset($is_template) && $is_template == 1} {l s='Modèle'} {/if}{l s='Informations générales'}
 			</h3>
 			<table class="table">
 				<tr>
-					<td>{l s='Creation date:'}</td>
+					<td>{l s='Date de création :'}</td>
 					<td>{$supply_order_creation_date}</td>
 				</tr>
 				<tr>
-					<td>{l s='Supplier:'}</td>
+					<td>{l s='Fournisseur :'}</td>
 					<td>{$supply_order_supplier_name}</td>
 				</tr>
 				<tr>
-					<td>{l s='Last update:'}</td>
+					<td>{l s='Dernière mise à jour :'}</td>
 					<td>{$supply_order_last_update}</td>
 				</tr>
 				<tr>
-					<td>{l s='Delivery expected:'}</td>
+					<td>{l s='Livraison prévue :'}</td>
 					<td>{$supply_order_expected}</td>
 				</tr>
 				<tr>
-					<td>{l s='Warehouse:'}</td>
+					<td>{l s='Entrepôt :'}</td>
 					<td>{$supply_order_warehouse}</td>
 				</tr>
 				<tr>
-					<td>{l s='Currency:'}</td>
+					<td>{l s='Devise :'}</td>
 					<td>{$supply_order_currency->name}</td>
 				</tr>
 				<tr>
-					<td>{l s='Global discount rate:'}</td>
+					<td>{l s='Taux de remise global :'}</td>
 					<td>{$supply_order_discount_rate} %</td>
 				</tr>
 			</table>
@@ -69,38 +69,38 @@
 		<div class="panel">
 			<h3>
 				<i class="icon-th-list"></i>
-				{if isset($is_template) && $is_template == 1} {l s='Template'} {/if}{l s='Summary'}
+				{if isset($is_template) && $is_template == 1} {l s='Modèle'} {/if}{l s='Résumé'}
 			</h3>
 			<table class="table">
 				<thead>
 					<tr>
-						<th><span class="title_box">{l s='Designation'}</span></th>
-						<th><span class="title_box">{l s='Value'}</span></th>
+						<th><span class="title_box">{l s='Désignation'}</span></th>
+						<th><span class="title_box">{l s='Valeur'}</span></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td>{l s='Total (tax excl.)'}</td>
+						<td>{l s='Total (HT)'}</td>
 						<td>{$supply_order_total_te}</td>
 					</tr>
 					<tr>
-						<td>{l s='Discount'}</td>
+						<td>{l s='Remise'}</td>
 						<td>{$supply_order_discount_value_te}</td>
 					</tr>
 					<tr>
-						<td>{l s='Total with discount (tax excl.)'}</td>
+						<td>{l s='Total avec remise (HT)'}</td>
 						<td>{$supply_order_total_with_discount_te}</td>
 					</tr>
 					<tr>
-						<td>{l s='Total Tax'}</td>
+						<td>{l s='Taxe totale'}</td>
 						<td>{$supply_order_total_tax}</td>
 					</tr>
 					<tr>
-						<td>{l s='Total (tax incl.)'}</td>
+						<td>{l s='Total (TTC)'}</td>
 						<td>{$supply_order_total_ti}</td>
 					</tr>
 					<tr>
-						<td>{l s='Total to pay.'}</td>
+						<td>{l s='Total à payer.'}</td>
 						<td>{$supply_order_total_ti}</td>
 					</tr>
 				</tbody>

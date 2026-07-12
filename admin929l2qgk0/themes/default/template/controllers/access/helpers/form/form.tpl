@@ -96,11 +96,11 @@
 					{
 						try {
 							if (res == 'ok')
-								showSuccessMessage("{l s='Update successful'}");
+								showSuccessMessage("{l s='Mise à jour réussie'}");
 							else
-								showErrorMessage("{l s='Update error'}");
+								showErrorMessage("{l s='Erreur de mise à jour'}");
 						} catch(e) {
-							jAlert('Technical error');
+							jAlert('Erreur technique');
 						}
 					}
 				});
@@ -126,13 +126,13 @@
 					try
 					{
 						if (res == 'ok')
-							showSuccessMessage("{l s='Update successful'}");
+							showSuccessMessage("{l s='Mise à jour réussie'}");
 						else
-							showErrorMessage("{l s='Update error'}");
+							showErrorMessage("{l s='Erreur de mise à jour'}");
 					}
 					catch(e)
 					{
-						jAlert('Technical error');
+						jAlert('Erreur technique');
 					}
 				}
 			});
@@ -175,13 +175,13 @@
 					try
 					{
 						if (res == 'ok')
-							showSuccessMessage("{l s='Update successful'}");
+							showSuccessMessage("{l s='Mise à jour réussie'}");
 						else
-							showErrorMessage("{l s='Update error'}");
+							showErrorMessage("{l s='Erreur de mise à jour'}");
 					}
 					catch(e)
 					{
-						jAlert('Technical error');
+						jAlert('Erreur technique');
 					}
 				}
 			});
@@ -217,14 +217,14 @@
 				{
 					try {
 						if (res == 'ok') {
-							showSuccessMessage("{l s='Update successful'}");
+							showSuccessMessage("{l s='Mise à jour réussie'}");
 						} else {
-							showErrorMessage("{l s='Update error'}");
+							showErrorMessage("{l s='Erreur de mise à jour'}");
 						}
 					}
 					catch(e)
 					{
-						jAlert('Technical error');
+						jAlert('Erreur technique');
 					}
 				}
 			});
@@ -261,21 +261,21 @@
 				<div class="col-lg-6">
 					{if isset($hotels) && $hotels}
 						<div class="panel">
-							<h3>{l s='Hotel Permissions'}</h3>
+							<h3>{l s='Permissions hôtel'}</h3>
 							<table class="table" id="table_hotel_{$profile.id_profile}">
 								<thead>
 									<tr>
-										<th>{l s='Hotel'}</th>
+										<th>{l s='Hôtel'}</th>
 										<th>
 											<input type="checkbox"{if $access_edit == 1} class="changeHotelAccess" data-rel="-1||all||{$profile.id_profile}"{else} disabled="disabled"{/if}/>
-											{l s='All'}
+											{l s='Tout'}
 										</th>
 									</tr>
 								</thead>
 								<tbody>
 									{if !count($hotels)}
 										<tr>
-											<td colspan="6">{l s='No menu'}</td>
+											<td colspan="6">{l s='Aucun menu'}</td>
 										</tr>
 									{else}
 										{foreach $hotels as $hotelInfo}
@@ -300,30 +300,30 @@
 									<th></th>
 									<th>
 										<input type="checkbox" name="1" class="viewall ajaxPower"{if $access_edit == 1} data-rel="-1||{$profile.id_profile}||view||{$tabsize}||{count($tabs)}"{else} disabled="disabled"{/if}/>
-										{l s='View'}
+										{l s='Voir'}
 									</th>
 									<th>
 										<input type="checkbox" name="1" class="addall ajaxPower"{if $access_edit == 1} data-rel="-1||{$profile.id_profile}||add||{$tabsize}||{count($tabs)}"{else} disabled="disabled"{/if}/>
-										{l s='Add'}
+										{l s='Ajouter'}
 									</th>
 									<th>
 										<input type="checkbox" name="1" class="editall ajaxPower"{if $access_edit == 1} data-rel="-1||{$profile.id_profile}||edit||{$tabsize}||{count($tabs)}"{else} disabled="disabled"{/if}/>
-										{l s='Edit'}
+										{l s='Modifier'}
 									</th>
 									<th>
 										<input type="checkbox" name="1" class="deleteall ajaxPower"{if $access_edit == 1} data-rel="-1||{$profile.id_profile}||delete||{$tabsize}||{count($tabs)}"{else} disabled="disabled"{/if}/>
-										{l s='Delete'}
+										{l s='Supprimer'}
 									</th>
 									<th>
 										<input type="checkbox" name="1" class="allall ajaxPower"{if $access_edit == 1} data-rel="-1||{$profile.id_profile}||all||{$tabsize}||{count($tabs)}"{else} disabled="disabled"{/if}/>
-										{l s='All'}
+										{l s='Tout'}
 									</th>
 								</tr>
 							</thead>
 							<tbody>
 								{if !count($tabs)}
 									<tr>
-										<td colspan="6">{l s='No menu'}</td>
+										<td colspan="6">{l s='Aucun menu'}</td>
 									</tr>
 								{else}
 									{foreach $tabs AS $tab}
@@ -392,20 +392,20 @@
 								<tr>
 									<th></th>
 									<th>
-										<input type="checkbox"{if $access_edit == 1} class="changeModuleAccess" data-rel="-1||view||{$profile.id_profile}"{else} disabled="disabled"{/if}/> {l s='View'}
+										<input type="checkbox"{if $access_edit == 1} class="changeModuleAccess" data-rel="-1||view||{$profile.id_profile}"{else} disabled="disabled"{/if}/> {l s='Voir'}
 									</th>
 									<th>
-										<input type="checkbox"{if $access_edit == 1} class="changeModuleAccess" data-rel="-1||configure||{$profile.id_profile}"{else} disabled="disabled"{/if}/> {l s='Configure'}
+										<input type="checkbox"{if $access_edit == 1} class="changeModuleAccess" data-rel="-1||configure||{$profile.id_profile}"{else} disabled="disabled"{/if}/> {l s='Configurer'}
 									</th>
 									<th>
-										<input type="checkbox"{if $access_edit == 1} class="changeModuleAccess" data-rel="-1||uninstall||{$profile.id_profile}"{else} disabled="disabled"{/if}/> {l s='Uninstall'}
+										<input type="checkbox"{if $access_edit == 1} class="changeModuleAccess" data-rel="-1||uninstall||{$profile.id_profile}"{else} disabled="disabled"{/if}/> {l s='Désinstaller'}
 									</th>
 								</tr>
 							</thead>
 							<tbody>
 								{if !count($modules)}
 									<tr>
-										<td colspan="3">{l s='No modules are installed'}</td>
+										<td colspan="3">{l s='Aucun module installé'}</td>
 									</tr>
 								{else}
 									{foreach $modules[$profile.id_profile] AS $module}
@@ -430,7 +430,7 @@
 			{else}
 				<div class="col-lg-12">
 					<div class="panel">
-						{l s='Administrator permissions cannot be modified.'}
+						{l s='Les permissions de l&#039;administrateur ne peuvent pas être modifiées.'}
 					</div>
 				</div>
 			{/if}

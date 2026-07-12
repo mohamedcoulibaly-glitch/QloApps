@@ -32,7 +32,7 @@
         <div>
             {if isset($countries) && $countries}
                 <div id="conf_service_id_country" class="form-group">
-                    <label class="control-label required col-lg-3">{l s='Country'}</label>
+                    <label class="control-label required col-lg-3">{l s='Pays'}</label>
                     <div class="col-lg-9">
                         <select class="form-control fixed-width-xxl " name="service_id_country" id="service_id_country">
                             {foreach from=$countries item=country}
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div id="conf_service_id_state" class="form-group">
-                    <label class="control-label required col-lg-3">{l s='State'}</label>
+                    <label class="control-label required col-lg-3">{l s='État'}</label>
                     <div class="col-lg-9">
                         <select class="form-control fixed-width-xxl" name="service_id_state" id="service_id_state">
                         {if isset($custom_address_details['id_state'])}<option value="{$custom_address_details['id_state']}" selected></option>{/if}
@@ -51,7 +51,7 @@
                 </div>
             {/if}
             <div id="conf_service_city" class="form-group">
-                <label class="control-label required col-lg-3">{l s='City'}</label>
+                <label class="control-label required col-lg-3">{l s='Ville'}</label>
                 <div class="col-lg-9">
                     <input class="form-control fixed-width-xxl" type="text" name="service_city" id="service_city" {if isset($custom_address_details['city'])}value="{$custom_address_details['city']}"{/if}/>
                 </div>

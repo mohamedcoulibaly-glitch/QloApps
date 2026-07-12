@@ -31,7 +31,7 @@
 	<div class="panel">
 		<h3>
 			<i class="icon-download"></i>
-			{l s='Download'}
+			{l s='Télécharger'}
 		</h3>
 		<p>
 			<a class="btn btn-default" href="{$backup_url}">
@@ -45,7 +45,7 @@
 
 		<div class="alert alert-warning">
 			<button data-dismiss="alert" class="close" type="button">×</button>
-			<h4>{l s='Disclaimer before creating a new backup'}</h4>
+			<h4>{l s='Avertissement avant de créer une nouvelle sauvegarde'}</h4>
 			<ol>
 				<li>{l s='QloApps is not responsible for your database, its backups and/or recovery.'}</li>
 				<li>{l s='QloApps is open-source software. You are using it at your own risk under the license agreement.'}</li>
@@ -67,29 +67,29 @@
 
 		{if $host_mode}
 		<div class="alert alert-info">
-			<h4>{l s='How to restore a database backup'}</h4>
+			<h4>{l s='Comment restaurer une sauvegarde de base de données'}</h4>
 			{l s='If you need to restore a database backup, we invite you to subscribe to a [1][2]technical support plan[/2][/1].' tags=['<strong>', '<a class="_blank" href="http://addons.prestashop.com/support/16298-support-essentiel-plan.html">']}
 			<br />
 			{l s='Our team will take care of restoring your database safely.'}
 			<br />
 			<br />
-			{l s='Why can\'t I restore it by myself?'}
+			{l s='Why can&#039;t I restore it by myself?'}
 			<br />
 			{l s='Your shop is hosted by PrestaShop. Although you can create backup files here below, there are core settings you cannot access for security reasons, like the database management. Thus, only our team can proceed to a restoration.'}
 		</div>
 		{else}
 		<div class="alert alert-info">
-			<h4>{l s='How to restore a database backup in 10 easy steps'}</h4>
+			<h4>{l s='Comment restaurer une sauvegarde de base de données en 10 étapes simples'}</h4>
 			<ol>
 				<li>{l s='Set "Enable Shop" to "No" in the "Maintenance" page under the "Preferences" menu.'}</li>
 				<li>{l s='Download the backup from the list below or from your FTP server (in the folder "admin/backups").'}</li>
 				<li>{l s='Check the backup integrity: Look for errors, incomplete file, etc... Be sure to verify all of your data.'}</li>
 				<li>{l s='Please ask your hosting provider for "phpMyAdmin" access to your database.'}</li>
 				<li>{l s='Connect to "phpMyAdmin" and select your current database.'}</li>
-				<li>{l s='Unless you enabled the "Drop existing tables" option, you must delete all tables from your current database.'}</li>
+				<li>{l s='Sauf si vous avez activé l&#039;option "Supprimer les tables existantes", vous devez supprimer toutes les tables de votre base de données actuelle.'}</li>
 				<li>{l s='At the top of the screen, please select the "Import" tab'}</li>
 				<li>{l s='Click on the "Browse" button and select the backup file from your hard drive.'}</li>
-				<li>{l s='Check the maximum filesize allowed (e.g. Max: 16MB)'}<br />{l s='If your backup file exceeds this limit, contact your hosting provider for assistance. '}</li>
+				<li>{l s='Vérifiez la taille de fichier maximale autorisée (par ex. Max : 16Mo)'}<br />{l s='If your backup file exceeds this limit, contact your hosting provider for assistance. '}</li>
 				<li>{l s='Click on the "Go" button and please wait patiently for the import process to conclude. This may take several minutes.'}</li>
 			</ol>
 		</div>

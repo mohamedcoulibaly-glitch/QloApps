@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
 	<name>statsvisits</name>
-	<displayName><![CDATA[Visits and visitors]]></displayName>
+	<displayName><![CDATA[Visites et visiteurs]]></displayName>
 	<version><![CDATA[1.6.3]]></version>
-	<description><![CDATA[Adds statistics about your visits and visitors to the Stats dashboard.]]></description>
+	<description><![CDATA[Ajoute les statistiques des visites et visiteurs au tableau de bord des statistiques.]]></description>
 	<author><![CDATA[PrestaShop]]></author>
 	<tab><![CDATA[analytics_stats]]></tab>
 	<confirmUninstall><![CDATA[]]></confirmUninstall>

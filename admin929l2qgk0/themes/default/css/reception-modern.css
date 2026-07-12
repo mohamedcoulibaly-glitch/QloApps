@@ -1,0 +1,914 @@
+/*
+ * Reception-only back-office polish.
+ * Loaded only for the reception profile screens, so manager/accountant/admin keep their usual UI.
+ */
+
+:root {
+  --rx-font: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --rx-ink: #172033;
+  --rx-muted: #667085;
+  --rx-line: #d9e2ec;
+  --rx-soft: #f4f7fb;
+  --rx-panel: #ffffff;
+  --rx-primary: #155eef;
+  --rx-primary-dark: #0f49bd;
+  --rx-success: #087443;
+  --rx-warning: #b54708;
+  --rx-radius: 8px;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--rx-font);
+}
+
+body {
+  color: var(--rx-ink);
+  font-size: 15px;
+  line-height: 1.45;
+  background: #f6f8fb;
+}
+
+#main,
+#content {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+#main,
+#content {
+  font-size: 15px;
+}
+
+.page-head,
+.toolbarBox,
+.bootstrap .panel,
+.panel {
+  border-radius: var(--rx-radius);
+}
+
+.bootstrap .panel,
+.panel {
+  border-color: var(--rx-line);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, .06);
+}
+
+.bootstrap .panel-heading,
+.panel-heading {
+  min-height: 52px;
+  padding: 15px 16px;
+  color: var(--rx-ink);
+  font-size: 16px;
+  font-weight: 750;
+  letter-spacing: 0;
+  background: #fff;
+  border-bottom-color: #e7edf5;
+}
+
+.bootstrap .btn,
+.btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 7px;
+  min-width: 40px;
+  max-width: 100%;
+  min-height: 40px;
+  padding: 9px 14px;
+  border-radius: var(--rx-radius);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-align: center;
+  white-space: normal;
+  vertical-align: middle;
+  overflow-wrap: anywhere;
+}
+
+.bootstrap .btn i,
+.btn i {
+  flex: 0 0 auto;
+  line-height: 1;
+}
+
+.bootstrap .btn .badge,
+.btn .badge {
+  flex: 0 0 auto;
+}
+
+.bootstrap .btn-sm,
+.btn-sm {
+  min-height: 36px;
+  padding: 7px 11px;
+  font-size: 13px;
+}
+
+.bootstrap .btn-xs,
+.btn-xs,
+.bootstrap .btn-group > .btn,
+.btn-group > .btn {
+  min-height: 34px;
+}
+
+.bootstrap .btn-block,
+.btn-block {
+  display: flex !important;
+  width: 100%;
+}
+
+.bootstrap .pull-right.btn,
+.pull-right.btn,
+.bootstrap button.pull-right,
+button.pull-right {
+  float: none !important;
+}
+
+.bootstrap .panel-heading .pull-right,
+.panel-heading .pull-right {
+  margin-left: auto;
+}
+
+.bootstrap .panel-heading,
+.panel-heading,
+.bootstrap .panel-heading-action,
+.panel-heading-action {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.bootstrap .panel-heading-action {
+  margin-left: auto;
+}
+
+.toolbar_btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 42px;
+  padding: 8px 12px !important;
+  line-height: 1.2;
+  text-align: center;
+  white-space: normal;
+}
+
+.table .btn {
+  min-width: 40px;
+}
+
+.bootstrap .btn-group,
+.btn-group {
+  display: inline-flex;
+  align-items: stretch;
+}
+
+.bootstrap .btn-group > .btn,
+.btn-group > .btn {
+  flex: 0 0 auto;
+}
+
+.table td.actions,
+.table td:last-child {
+  white-space: normal;
+}
+
+.bootstrap .btn-primary,
+.btn-primary {
+  border-color: var(--rx-primary);
+  background: var(--rx-primary);
+}
+
+.bootstrap .btn-primary:hover,
+.bootstrap .btn-primary:focus,
+.btn-primary:hover,
+.btn-primary:focus {
+  border-color: var(--rx-primary-dark);
+  background: var(--rx-primary-dark);
+}
+
+.bootstrap .form-control,
+.form-control,
+.bootstrap select,
+.bootstrap input[type="text"],
+.bootstrap input[type="email"],
+.bootstrap input[type="password"] {
+  min-height: 40px;
+  border-color: #c7d3e0;
+  border-radius: var(--rx-radius);
+  font-size: 15px;
+}
+
+.bootstrap .table > thead > tr > th,
+.table > thead > tr > th {
+  color: #344054;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  background: #f8fafc;
+  border-bottom-color: #dfe7f0;
+}
+
+.bootstrap .table > tbody > tr > td,
+.table > tbody > tr > td {
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.bootstrap .badge,
+.badge {
+  border-radius: 999px;
+  padding: 5px 9px;
+  font-weight: 750;
+}
+
+.reception-dashboard {
+  --reception-ink: var(--rx-ink);
+  --reception-muted: var(--rx-muted);
+  --reception-line: var(--rx-line);
+  --reception-soft: var(--rx-soft);
+  --reception-panel: var(--rx-panel);
+  --reception-primary: var(--rx-primary);
+  --reception-primary-dark: var(--rx-primary-dark);
+  --reception-success: var(--rx-success);
+  --reception-warning: var(--rx-warning);
+  font-family: var(--rx-font);
+  font-size: 16px !important;
+}
+
+.reception-dashboard .reception-hero,
+.reception-dashboard .reception-command,
+.reception-dashboard .reception-summary-card,
+.reception-dashboard .reception-section {
+  border-radius: var(--rx-radius);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, .06);
+}
+
+.reception-dashboard .reception-title {
+  font-size: 31px !important;
+  line-height: 1.12;
+}
+
+.reception-dashboard .reception-subtitle,
+.reception-dashboard .reception-guest,
+.reception-dashboard .reception-section-title {
+  font-size: 16px !important;
+}
+
+.reception-dashboard .reception-search input {
+  min-height: 54px;
+  font-size: 17px !important;
+}
+
+.reception-dashboard .reception-search button,
+.reception-dashboard .reception-availability-link,
+.reception-dashboard .reception-actions .btn {
+  min-height: 46px;
+  font-size: 14px;
+}
+
+.reception-dashboard.is-searching .reception-work-grid {
+  display: none;
+}
+
+.reception-dashboard.is-searching .reception-search-results {
+  display: block;
+}
+
+.reception-dashboard .reception-search-results .reception-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.reception-dashboard .reception-actions {
+  align-items: stretch;
+}
+
+.reception-dashboard .reception-actions .btn {
+  flex: 1 1 112px;
+}
+
+.reception-order-view .kpi-container,
+.adminorders .kpi-container,
+.adminorders .kpis-wrap,
+.reception-order-view .reception-admin-only,
+.reception-order-view .panel-vouchers,
+.reception-order-view .panel-refund-request,
+.reception-order-view .panel-total,
+.reception-order-view .order-notes,
+.reception-order-view #messages,
+.reception-order-view #tabOrder,
+.reception-order-view #documents,
+.reception-order-view .order_invoice,
+.reception-order-view .open_payment_information,
+.reception-order-view .add_new_payment,
+.reception-order-view #add_voucher,
+.reception-order-view #add_product {
+  display: none !important;
+}
+
+.reception-order-view .row {
+  margin-left: -8px;
+  margin-right: -8px;
+}
+
+.reception-order-view [class*="col-lg-"] {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.reception-order-view .panel-heading {
+  text-transform: none;
+}
+
+.reception-order-view .panel-customer .panel-heading a,
+.reception-order-view .panel-customer .customer_info dl:nth-child(2),
+.reception-order-view .panel-customer .alert,
+.reception-order-view .note,
+.reception-order-view .help-block {
+  display: none !important;
+}
+
+.reception-order-view .table-responsive {
+  border: 0;
+}
+
+.reception-order-view table {
+  min-width: 0;
+}
+
+.reception-order-view .open_room_status_form,
+.reception-order-view .edit_room_change_link {
+  min-height: 44px;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+.reception-order-view form.well .row {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.reception-order-view form.well [class*="col-"] {
+  flex: 1 1 220px;
+  width: auto;
+  min-width: 0;
+}
+
+.reception-order-view form.well .btn {
+  width: 100%;
+  min-width: 0;
+  min-height: 42px;
+}
+
+.reception-order-view #room_status_info_wrapper th:nth-child(5),
+.reception-order-view #room_status_info_wrapper td:nth-child(5) {
+  display: none;
+}
+
+.reception-booking-screen {
+  font-family: var(--rx-font);
+  font-size: 15px;
+}
+
+.reception-booking-screen .panel,
+.reception-booking-screen .search-panel-header {
+  border-radius: var(--rx-radius);
+}
+
+.reception-booking-screen .panel-heading {
+  font-size: 16px;
+}
+
+.reception-booking-screen .btn,
+.reception-booking-screen input,
+.reception-booking-screen select {
+  min-height: 42px;
+  font-size: 15px;
+}
+
+.reception-booking-screen #room-search-form .btn,
+.reception-booking-screen #cart_btn,
+.reception-booking-screen .avai_add_cart,
+.reception-booking-screen .par_add_cart,
+.reception-booking-screen .service_product_add_to_cart,
+.reception-booking-screen .cart_booking_btn {
+  min-height: 44px;
+  padding: 10px 14px;
+  line-height: 1.2;
+}
+
+.reception-booking-screen .booking_guest_occupancy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  text-align: center;
+}
+
+.reception-booking-screen table .btn {
+  min-width: 116px;
+}
+
+.reception-booking-screen .ajax_cart_delete_data,
+.reception-booking-screen .service_product_delete,
+.reception-booking-screen .close {
+  min-width: 40px;
+  width: 40px;
+  min-height: 40px;
+  padding: 0;
+}
+
+.reception-booking-screen .nav-tabs > li > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 10px 12px;
+  text-align: center;
+  white-space: normal;
+}
+
+.reception-booking-screen .fc .fc-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 42px;
+  min-height: 38px;
+  padding: 8px 11px;
+  line-height: 1;
+  border-radius: var(--rx-radius);
+}
+
+.reception-booking-screen .fc .fc-button-group {
+  display: inline-flex;
+  align-items: stretch;
+}
+
+@media (min-width: 992px) {
+  .reception-order-view > .row > .col-lg-7 {
+    width: 62%;
+  }
+
+  .reception-order-view > .row > .col-lg-5 {
+    width: 38%;
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    font-size: 16px;
+  }
+
+  #nav-sidebar,
+  body.page-sidebar-closed #nav-sidebar {
+    width: 50px;
+  }
+
+  .reception-dashboard .reception-title {
+    font-size: 26px;
+  }
+
+  .reception-order-view .panel,
+  .reception-dashboard .reception-section {
+    box-shadow: none;
+  }
+
+  .reception-order-view #room_status_info_wrapper {
+    overflow: visible;
+  }
+
+  .reception-order-view #room_status_info_wrapper table,
+  .reception-order-view #room_status_info_wrapper thead,
+  .reception-order-view #room_status_info_wrapper tbody,
+  .reception-order-view #room_status_info_wrapper tr,
+  .reception-order-view #room_status_info_wrapper th,
+  .reception-order-view #room_status_info_wrapper td {
+    display: block;
+    width: 100% !important;
+  }
+
+  .reception-order-view #room_status_info_wrapper thead {
+    display: none;
+  }
+
+  .reception-order-view #room_status_info_wrapper tr {
+    padding: 12px;
+    border: 1px solid var(--rx-line);
+    border-radius: var(--rx-radius);
+    background: #fff;
+  }
+
+  .reception-order-view #room_status_info_wrapper td {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 0;
+    border: 0;
+    white-space: normal;
+  }
+
+  .reception-order-view #room_status_info_wrapper td:before {
+    flex: 0 0 92px;
+    color: var(--rx-muted);
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .reception-order-view #room_status_info_wrapper td:nth-child(1):before { content: "Chambre"; }
+  .reception-order-view #room_status_info_wrapper td:nth-child(2):before { content: "Séjour"; }
+  .reception-order-view #room_status_info_wrapper td:nth-child(3):before { content: "Arrivée"; }
+  .reception-order-view #room_status_info_wrapper td:nth-child(4):before { content: "Départ"; }
+  .reception-order-view #room_status_info_wrapper td:nth-child(6):before { content: "Action"; }
+}
+
+/* Global role UI refresh: reception, manager, accountant and admin.
+   Presentation only: no controller, route or business-rule changes. */
+:root {
+  --bo-font: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --bo-bg: #f3f7ff;
+  --bo-ink: #102033;
+  --bo-muted: #61708a;
+  --bo-panel: #ffffff;
+  --bo-line: #dbe6f6;
+  --bo-primary: #2563eb;
+  --bo-primary-2: #06b6d4;
+  --bo-accent: #f97316;
+  --bo-success: #16a34a;
+  --bo-danger: #ef4444;
+  --bo-radius: 8px;
+  --bo-shadow: 0 14px 34px rgba(15, 23, 42, .10);
+}
+
+html, body, .bootstrap, .bootstrap input, .bootstrap select, .bootstrap textarea, .bootstrap button {
+  font-family: var(--bo-font) !important;
+  letter-spacing: 0 !important;
+}
+
+body.ps_back-office {
+  background: linear-gradient(135deg, #eef7ff 0%, #f7fbff 42%, #fff7ed 100%) !important;
+  color: var(--bo-ink) !important;
+  font-size: 15.5px !important;
+}
+
+#main, #content {
+  background: transparent !important;
+}
+
+#header, #header_infos, #header_infos ul, #header_infos .navbar, .navbar-header {
+  background: linear-gradient(90deg, #0f172a 0%, #155eef 58%, #06b6d4 100%) !important;
+  border: 0 !important;
+}
+
+#header_infos a, #header_infos span, #header_infos i,
+#header .navbar-brand, #header .employee_avatar_small {
+  color: #fff !important;
+}
+
+.page-head, .bootstrap .panel, .panel, .toolbarBox, .list-group, .well {
+  border-radius: var(--bo-radius) !important;
+}
+
+.bootstrap .panel, .panel, .toolbarBox, .well {
+  border: 1px solid var(--bo-line) !important;
+  background: rgba(255,255,255,.96) !important;
+  box-shadow: var(--bo-shadow) !important;
+}
+
+.bootstrap .panel-heading, .panel-heading, .page-head .page-title h2, .toolbarBox .pageTitle h3 {
+  color: var(--bo-ink) !important;
+  font-size: 19px !important;
+  font-weight: 850 !important;
+  line-height: 1.25 !important;
+  letter-spacing: 0 !important;
+}
+
+.bootstrap h1, .bootstrap h2, .bootstrap h3,
+.page-title h2, .panel-title, .kpi-title {
+  font-family: var(--bo-font) !important;
+  letter-spacing: 0 !important;
+}
+
+.bootstrap .btn, .btn, .toolbar_btn, .list-toolbar-btn,
+.bootstrap .btn-group > .btn, .btn-group > .btn,
+.page-head-tabs a, .nav-tabs > li > a,
+.bootstrap .dropdown-menu > li > a, .dropdown-menu > li > a {
+  font-family: var(--bo-font) !important;
+  white-space: nowrap !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  text-overflow: ellipsis !important;
+  flex-wrap: nowrap !important;
+  min-height: 40px !important;
+  border-radius: var(--bo-radius) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0 !important;
+}
+
+.bootstrap .btn, .btn, .toolbar_btn, .list-toolbar-btn,
+.bootstrap .btn-group > .btn, .btn-group > .btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 7px !important;
+  max-width: none !important;
+  line-height: 1.15 !important;
+}
+
+.bootstrap .btn i, .btn i, .toolbar_btn i {
+  flex: 0 0 auto !important;
+}
+
+.bootstrap .btn-primary, .btn-primary,
+.bootstrap .btn-success, .btn-success {
+  border-color: transparent !important;
+  color: #fff !important;
+  background: linear-gradient(135deg, var(--bo-primary), var(--bo-primary-2)) !important;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, .25) !important;
+}
+
+.bootstrap .btn-default, .btn-default, .toolbar_btn, .list-toolbar-btn {
+  border-color: #c8d7ee !important;
+  color: #17324d !important;
+  background: linear-gradient(180deg, #fff, #f5f9ff) !important;
+}
+
+.bootstrap .btn-warning, .btn-warning {
+  border-color: transparent !important;
+  color: #fff !important;
+  background: linear-gradient(135deg, #f97316, #f59e0b) !important;
+}
+
+.bootstrap .btn-danger, .btn-danger {
+  border-color: transparent !important;
+  color: #fff !important;
+  background: linear-gradient(135deg, #ef4444, #f43f5e) !important;
+}
+
+.bootstrap .btn:hover, .btn:hover, .toolbar_btn:hover, .list-toolbar-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, .16) !important;
+}
+
+.btn-group, .bootstrap .btn-group, .panel-heading-action, .toolbarBox .btn-toolbar,
+.page-head .toolbarBox, .page-head-tabs, .nav-tabs,
+.filter_panel, .list-toolbar, .bulk-actions, .table-responsive .btn-group {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+.panel-heading-action, .toolbarBox .btn-toolbar, .list-toolbar {
+  justify-content: flex-end !important;
+}
+
+.bootstrap .table, .table {
+  font-size: 14.5px !important;
+  background: #fff !important;
+}
+
+.bootstrap table.table thead th, table.table thead th {
+  color: #0f172a !important;
+  background: #eaf3ff !important;
+  font-weight: 850 !important;
+  white-space: nowrap !important;
+}
+
+.bootstrap table.table td, table.table td {
+  vertical-align: middle !important;
+}
+
+.bootstrap input.form-control, .bootstrap select.form-control, .bootstrap textarea.form-control,
+input.form-control, select.form-control, textarea.form-control {
+  min-height: 42px !important;
+  border-color: #cbd8ec !important;
+  border-radius: var(--bo-radius) !important;
+  color: var(--bo-ink) !important;
+  font-size: 15px !important;
+  box-shadow: none !important;
+}
+
+.bootstrap input.form-control:focus, .bootstrap select.form-control:focus, .bootstrap textarea.form-control:focus,
+input.form-control:focus, select.form-control:focus, textarea.form-control:focus {
+  border-color: var(--bo-primary) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, .14) !important;
+}
+
+.kpi-container, .kpis-wrap, .dashtrends_toolbar, .dashboard_zone_two, .dashboard_zone_one {
+  gap: 14px !important;
+}
+
+.kpi-row, .box-stats, .data_list_large, .list-group-item {
+  border-radius: var(--bo-radius) !important;
+  border-color: var(--bo-line) !important;
+}
+
+.badge, .label {
+  border-radius: 999px !important;
+  font-weight: 850 !important;
+  letter-spacing: 0 !important;
+}
+
+/* Reception filters/views: never split letters onto a second line. */
+.reception-dashboard .btn,
+.reception-booking-screen .btn,
+.reception-order-view .btn,
+.adminorders .btn,
+.adminhotelroomsbooking .btn,
+.adminorders .btn-group > .btn,
+.adminhotelroomsbooking .btn-group > .btn,
+.adminorders .page-head-tabs a,
+.adminhotelroomsbooking .page-head-tabs a {
+  white-space: nowrap !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  min-width: max-content !important;
+}
+
+.reception-dashboard .reception-actions,
+.reception-booking-screen .nav-tabs,
+.adminorders .panel-heading-action,
+.adminhotelroomsbooking .panel-heading-action,
+.adminorders .btn-group,
+.adminhotelroomsbooking .btn-group {
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+}
+
+@media (max-width: 991px) {
+  body.ps_back-office {
+    font-size: 16px !important;
+  }
+
+  .bootstrap .panel-heading, .panel-heading, .page-head .page-title h2 {
+    font-size: 18px !important;
+  }
+
+  .page-head, .toolbarBox, .panel-heading-action, .btn-group, .nav-tabs {
+    overflow-x: auto !important;
+  }
+}
+#content,
+#main-div,
+.bootstrap {
+  z-index: auto !important;
+}
+/* Codex fix: leave native sidebar layout in control. */
+#nav-sidebar {
+  z-index: 1050 !important;
+}
+#content {
+  z-index: auto !important;
+}
+/* Hotel Prime palette harmonization */
+:root {
+  --hp-navy: #1B2430;
+  --hp-surface: #F7F5F2;
+  --hp-gold: #C9A24B;
+  --hp-text: #2B2B2B;
+  --hp-muted: #7A7A7A;
+  --hp-success: #5C8768;
+  --hp-danger: #8C3B3B;
+}
+body.ps_back-office { background: #F7F5F2 !important; color: var(--hp-text) !important; }
+#header, #header_infos, #header_infos ul, #header_infos .navbar, .navbar-header { background: var(--hp-navy) !important; border: 0 !important; }
+#header_infos a, #header_infos span, #header_infos i, #header .navbar-brand, #header .employee_avatar_small { color: #F7F5F2 !important; }
+#header_shopname { color: #F7F5F2 !important; font-weight: 800 !important; letter-spacing: .02em !important; }
+.hotel-brand-mark { background: var(--hp-gold) !important; color: var(--hp-navy) !important; border-radius: 4px !important; min-width: 42px !important; height: 34px !important; line-height: 34px !important; text-align: center !important; margin: 8px 12px 0 10px !important; font-weight: 900 !important; letter-spacing: .08em !important; box-shadow: 0 0 0 1px rgba(255,255,255,.18) inset !important; }
+.hotel-brand-mark #shop_version { color: var(--hp-navy) !important; }
+/* Sidebar visual-only: no position, overflow, width or scroll behavior changes. */
+#nav-sidebar { background-color: var(--hp-navy) !important; color: #F7F5F2 !important; box-shadow: 4px 0 18px rgba(27,36,48,.16) !important; }
+#nav-sidebar ul.menu li a, #nav-sidebar .menu li a { color: rgba(247,245,242,.86) !important; font-family: Inter, "Segoe UI", Arial, sans-serif !important; font-weight: 780 !important; letter-spacing: 0 !important; }
+#nav-sidebar ul.menu li.active > a, #nav-sidebar .menu li.active > a, #nav-sidebar ul.menu li a:hover, #nav-sidebar .menu li a:hover { color: #fff !important; background-color: rgba(201,162,75,.18) !important; border-left: 3px solid var(--hp-gold) !important; }
+#nav-sidebar ul.menu li a i, #nav-sidebar .menu li a i { color: var(--hp-gold) !important; }
+.bootstrap .btn-primary, .btn-primary { background: var(--hp-gold) !important; border-color: var(--hp-gold) !important; color: var(--hp-navy) !important; font-weight: 800 !important; }
+.bootstrap .btn-primary:hover, .btn-primary:hover { background: #b8913f !important; border-color: #b8913f !important; }
+.bootstrap .panel, .panel, .toolbarBox, .well, .list-group { background: #fff !important; border-color: rgba(27,36,48,.12) !important; }
+.bootstrap .panel-heading, .panel-heading, .page-head .page-title h2, .toolbarBox .pageTitle h3 { color: var(--hp-text) !important; }
+.badge-success, .label-success, .alert-success { background-color: var(--hp-success) !important; border-color: var(--hp-success) !important; }
+.badge-danger, .label-danger, .alert-danger, .alert-error { background-color: var(--hp-danger) !important; border-color: var(--hp-danger) !important; }
+.footer-brand { color: var(--hp-gold); font-weight: 800; margin-right: 10px; }
+.hotel-footer-contact, .hotel-footer-contact span { color: var(--hp-muted) !important; }
+.hotel-footer-mark i { color: var(--hp-gold) !important; font-size: 18px; }
+/* Catalogue harmonization: scoped to catalogue controllers only. */
+body.admincatalog #content,
+body.adminproducts #content,
+body.adminnormalproducts #content,
+body.admincategories #content,
+body.adminfeatures #content,
+body.adminhotelbedtypes #content,
+body.adminhotelfeatures #content,
+body.adminhotelroomsbooking #content,
+body.adminroomtypeglobaldemand #content,
+body.adminhotelconfigurationsetting #content,
+body.adminhotelgeneralsettings #content,
+body.adminhotelfeaturepricessettings #content {
+  background: #F7F5F2 !important;
+}
+body.admincatalog .bootstrap .panel,
+body.adminproducts .bootstrap .panel,
+body.adminnormalproducts .bootstrap .panel,
+body.admincategories .bootstrap .panel,
+body.adminfeatures .bootstrap .panel,
+body.adminhotelbedtypes .bootstrap .panel,
+body.adminhotelfeatures .bootstrap .panel,
+body.adminhotelroomsbooking .bootstrap .panel,
+body.adminroomtypeglobaldemand .bootstrap .panel,
+body.adminhotelconfigurationsetting .bootstrap .panel,
+body.adminhotelgeneralsettings .bootstrap .panel,
+body.adminhotelfeaturepricessettings .bootstrap .panel {
+  border: 1px solid rgba(27,36,48,.12) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 30px rgba(27,36,48,.08) !important;
+}
+body.admincatalog .bootstrap .panel-heading,
+body.adminproducts .bootstrap .panel-heading,
+body.adminnormalproducts .bootstrap .panel-heading,
+body.admincategories .bootstrap .panel-heading,
+body.adminfeatures .bootstrap .panel-heading,
+body.adminhotelbedtypes .bootstrap .panel-heading,
+body.adminhotelfeatures .bootstrap .panel-heading,
+body.adminhotelroomsbooking .bootstrap .panel-heading,
+body.adminroomtypeglobaldemand .bootstrap .panel-heading,
+body.adminhotelconfigurationsetting .bootstrap .panel-heading,
+body.adminhotelgeneralsettings .bootstrap .panel-heading,
+body.adminhotelfeaturepricessettings .bootstrap .panel-heading {
+  background: #1B2430 !important;
+  color: #F7F5F2 !important;
+  border-bottom: 2px solid #C9A24B !important;
+  font-weight: 800 !important;
+}
+body.admincatalog .bootstrap table.table thead th,
+body.adminproducts .bootstrap table.table thead th,
+body.adminnormalproducts .bootstrap table.table thead th,
+body.admincategories .bootstrap table.table thead th,
+body.adminfeatures .bootstrap table.table thead th,
+body.adminhotelbedtypes .bootstrap table.table thead th,
+body.adminhotelfeatures .bootstrap table.table thead th,
+body.adminhotelroomsbooking .bootstrap table.table thead th,
+body.adminroomtypeglobaldemand .bootstrap table.table thead th,
+body.adminhotelconfigurationsetting .bootstrap table.table thead th,
+body.adminhotelgeneralsettings .bootstrap table.table thead th,
+body.adminhotelfeaturepricessettings .bootstrap table.table thead th {
+  background: #1B2430 !important;
+  color: #F7F5F2 !important;
+  border-color: rgba(201,162,75,.35) !important;
+  font-weight: 800 !important;
+}
+body.admincatalog .bootstrap table.table tbody tr:hover,
+body.adminproducts .bootstrap table.table tbody tr:hover,
+body.adminnormalproducts .bootstrap table.table tbody tr:hover,
+body.admincategories .bootstrap table.table tbody tr:hover,
+body.adminfeatures .bootstrap table.table tbody tr:hover,
+body.adminhotelbedtypes .bootstrap table.table tbody tr:hover,
+body.adminhotelfeatures .bootstrap table.table tbody tr:hover,
+body.adminhotelroomsbooking .bootstrap table.table tbody tr:hover,
+body.adminroomtypeglobaldemand .bootstrap table.table tbody tr:hover,
+body.adminhotelconfigurationsetting .bootstrap table.table tbody tr:hover,
+body.adminhotelgeneralsettings .bootstrap table.table tbody tr:hover,
+body.adminhotelfeaturepricessettings .bootstrap table.table tbody tr:hover {
+  background: rgba(201,162,75,.10) !important;
+}
+body.admincatalog .bootstrap .btn-default,
+body.adminproducts .bootstrap .btn-default,
+body.adminnormalproducts .bootstrap .btn-default,
+body.admincategories .bootstrap .btn-default,
+body.adminfeatures .bootstrap .btn-default,
+body.adminhotelbedtypes .bootstrap .btn-default,
+body.adminhotelfeatures .bootstrap .btn-default,
+body.adminhotelroomsbooking .bootstrap .btn-default,
+body.adminroomtypeglobaldemand .bootstrap .btn-default,
+body.adminhotelconfigurationsetting .bootstrap .btn-default,
+body.adminhotelgeneralsettings .bootstrap .btn-default,
+body.adminhotelfeaturepricessettings .bootstrap .btn-default {
+  border-color: rgba(27,36,48,.22) !important;
+  color: #2B2B2B !important;
+  font-weight: 750 !important;
+}
+body.admincatalog .bootstrap .btn-default:hover,
+body.adminproducts .bootstrap .btn-default:hover,
+body.adminnormalproducts .bootstrap .btn-default:hover,
+body.admincategories .bootstrap .btn-default:hover,
+body.adminfeatures .bootstrap .btn-default:hover,
+body.adminhotelbedtypes .bootstrap .btn-default:hover,
+body.adminhotelfeatures .bootstrap .btn-default:hover,
+body.adminhotelroomsbooking .bootstrap .btn-default:hover,
+body.adminroomtypeglobaldemand .bootstrap .btn-default:hover,
+body.adminhotelconfigurationsetting .bootstrap .btn-default:hover,
+body.adminhotelgeneralsettings .bootstrap .btn-default:hover,
+body.adminhotelfeaturepricessettings .bootstrap .btn-default:hover {
+  border-color: #C9A24B !important;
+  color: #1B2430 !important;
+  background: #fff !important;
+}

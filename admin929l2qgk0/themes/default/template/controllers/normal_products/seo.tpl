@@ -27,8 +27,8 @@
 		<div class="col-lg-1"><span class="pull-right">{include file="controllers/products/multishop/checkbox.tpl" field="meta_title" type="default" multilang="true"}</span></div>
 		<label class="control-label col-lg-2" for="meta_title_{$id_lang}">
 			<span class="label-tooltip" data-toggle="tooltip"
-				title="{l s='Public title for the product\'s page, and for search engines. Leave blank to use the room type name.'} {l s='The number of remaining characters is displayed to the left of the field.'}">
-				{l s='Meta title'}
+				title="{l s='Public title for the product&#039;s page, and for search engines. Leave blank to use the room type name.'} {l s='Le nombre de caractères restants est affiché à gauche du champ.'}">
+				{l s='Titre meta'}
 			</span>
 		</label>
 		<div class="col-lg-8">
@@ -44,8 +44,8 @@
 		<div class="col-lg-1"><span class="pull-right">{include file="controllers/products/multishop/checkbox.tpl" field="meta_description" type="default" multilang="true"}</span></div>
 		<label class="control-label col-lg-2" for="meta_description_{$id_lang}">
 			<span class="label-tooltip" data-toggle="tooltip"
-				title="{l s='This description will appear in search engines. You need a single sentence, shorter than 160 characters (including spaces).'}">
-				{l s='Meta description'}
+				title="{l s='Cette description apparaîtra dans les moteurs de recherche. Vous avez besoin d&#039;une seule phrase, plus courte que 160 caractères (espaces inclus).'}">
+				{l s='Description meta'}
 			</span>
 		</label>
 		<div class="col-lg-8">
@@ -62,8 +62,8 @@
 		<div class="col-lg-1"><span class="pull-right">{include file="controllers/products/multishop/checkbox.tpl" field="meta_keywords" type="default" multilang="true"}</span></div>
 		<label class="control-label col-lg-2" for="meta_keywords_{$id_lang}">
 			<span class="label-tooltip" data-toggle="tooltip"
-				title="{l s='Keywords for search engines, separated by commas.'}">
-				{l s='Meta keywords'}
+				title="{l s='Mots-clés pour les moteurs de recherche, séparés par des virgules.'}">
+				{l s='Mots-clés meta'}
 			</span>
 		</label>
 		<div class="col-lg-8">
@@ -76,8 +76,8 @@
 		<div class="col-lg-1"><span class="pull-right">{include file="controllers/products/multishop/checkbox.tpl" field="link_rewrite" type="seo_friendly_url" multilang="true"}</span></div>
 		<label class="control-label col-lg-2" for="link_rewrite_{$id_lang}">
 			<span class="label-tooltip" data-toggle="tooltip"
-				title="{l s='This is the human-readable URL, as generated from the room type\'s name. You can change it if you want.'}">
-				{l s='Friendly URL:'}
+				title="{l s='This is the human-readable URL, as generated from the room type&#039;s name. You can change it if you want.'}">
+				{l s='URL lisible :'}
 			</span>
 
 		</label>
@@ -88,23 +88,23 @@
 					input_name='link_rewrite'}
 		</div>
 		<div class="col-lg-2">
-			<button type="button" class="btn btn-default" id="generate-friendly-url" onmousedown="updateFriendlyURLByName();"><i class="icon-random"></i> {l s='Generate'}</button>
+			<button type="button" class="btn btn-default" id="generate-friendly-url" onmousedown="updateFriendlyURLByName();"><i class="icon-random"></i> {l s='Générer'}</button>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-lg-9 col-lg-offset-3">
 			{foreach from=$languages item=language}
 			<div class="alert alert-warning translatable-field lang-{$language.id_lang}">
-				<i class="icon-link"></i> {l s='The product link will look like this:'}<br/>
+				<i class="icon-link"></i> {l s='Le lien du produit ressemblera à ceci :'}<br/>
 				<strong>{if isset($rewritten_links[$language.id_lang][0])}{$rewritten_links[$language.id_lang][0]|escape:'html':'UTF-8'}{/if}<span id="friendly-url_{$language.id_lang}">{if isset($product->id)}{$product->link_rewrite[$language.id_lang]|escape:'html':'UTF-8'}{/if}</span>{if isset($rewritten_links[$language.id_lang][1])}{$rewritten_links[$language.id_lang][1]|escape:'html':'UTF-8'}{/if}</strong>
 			</div>
 			{/foreach}
 		</div>
 	</div>
 	<div class="panel-footer">
-		<a href="{$link->getAdminLink('AdminNormalProducts')|escape:'html':'UTF-8'}{if isset($smarty.request.page) && $smarty.request.page > 1}&amp;submitFilterproduct={$smarty.request.page|intval}{/if}" class="btn btn-default"><i class="process-icon-cancel"></i> {l s='Cancel'}</a>
-		<button type="submit" name="submitAddproduct" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Save'}</button>
-		<button type="submit" name="submitAddproductAndStay" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Save and stay'}</button>
+		<a href="{$link->getAdminLink('AdminNormalProducts')|escape:'html':'UTF-8'}{if isset($smarty.request.page) && $smarty.request.page > 1}&amp;submitFilterproduct={$smarty.request.page|intval}{/if}" class="btn btn-default"><i class="process-icon-cancel"></i> {l s='Annuler'}</a>
+		<button type="submit" name="submitAddproduct" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Enregistrer'}</button>
+		<button type="submit" name="submitAddproductAndStay" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Enregistrer et rester'}</button>
 	</div>
 </div>
 <script type="text/javascript">

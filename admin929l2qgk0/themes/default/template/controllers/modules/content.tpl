@@ -40,7 +40,7 @@
 						</div>
 						<div class="col-lg-4 col-lg-offset-1 col-md-4 col-sm-7 col-xs-12 addons-style-search-bar">
 							<form id="addons-search-form" method="get" action="http://addons.prestashop.com/{$iso_code}/search" class="float">
-							<label>{l s='Search on PrestaShop Marketplace:'}</label>
+							<label>{l s='Rechercher sur le marketplace PrestaShop :'}</label>
 							<div class="input-group">
 								<input id="addons-search-box" class="form-control" type="text" autocomplete="off" name="query" value="" placeholder="Search on PrestaShop Marketplace">
 								<div id="addons-search-btn" class="btn btn-primary input-group-addon">
@@ -50,7 +50,7 @@
 							</form>
 						</div>
 						<div class="col-lg-3 col-md-4 col-sm-5 col-xs-12 addons-see-all-themes">
-							{l s='Or'}<a href="http://addons.prestashop.com/{$iso_code}/2-modules-prestashop" class="btn btn-primary" onclick="return !window.open(this.href)">{l s='See all modules'}</a>
+							{l s='Ou'}<a href="http://addons.prestashop.com/{$iso_code}/2-modules-prestashop" class="btn btn-primary" onclick="return !window.open(this.href)">{l s='Voir tous les modules'}</a>
 						</div>
 					</div>
 				</div>
@@ -59,21 +59,21 @@
 
 				<div class="panel" id="">
 					<div class="panel-heading">
-						<i class="icon-picture"></i> {l s='Add a new module'}
+						<i class="icon-picture"></i> {l s='Ajouter un nouveau module'}
 					</div>
 
 					<div class="form-wrapper">
 						<div class="form-group">
-							<p>{l s='To add a new module, simply connect to your QloApps Addons account and all your purchases will be automatically imported.'}</p>
+							<p>{l s='Pour ajouter un nouveau module, connectez-vous simplement à votre compte QloApps Addons et tous vos achats seront automatiquement importés.'}</p>
 						</div>
 					</div><!-- /.form-wrapper -->
 
 					<div class="panel-footer">
 						<a href="{$link->getAdminLink('AdminModules', true)|escape:'html':'UTF-8'}" class="btn btn-default">
-							<i class="process-icon-cancel"></i> {l s='Cancel'}
+							<i class="process-icon-cancel"></i> {l s='Annuler'}
 						</a>
 						<a href="#" data-toggle="modal" data-target="#modal_addons_connect" class="btn btn-default pull-right">
-							<i class="process-icon-next"></i> {l s='Next'}
+							<i class="process-icon-next"></i> {l s='Suivant'}
 						</a>
 					</div>
 				</div>
@@ -81,8 +81,8 @@
 			{/if}
 
 				<div class="alert alert-info">
-					<h4>{l s='Can I add my own modules?'}</h4>
-					<p>{l s='Please note that for security reasons, you can only add modules that are being distributed on QloApps Addons, the official marketplace.'}</p>
+					<h4>{l s='Puis-je ajouter mes propres modules ?'}</h4>
+					<p>{l s='Veuillez noter que pour des raisons de sécurité, vous ne pouvez ajouter que des modules distribués sur QloApps Addons, le marketplace officiel.'}</p>
 				</div>
 
 		</div>

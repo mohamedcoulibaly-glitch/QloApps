@@ -1,4 +1,4 @@
-{*
+﻿{*
 * NOTICE OF LICENSE
 *
 * This source file is subject to the Open Software License version 3.0
@@ -24,8 +24,8 @@
 	<input type="hidden" value="{$id_booking_detail}" id="id_htl_booking">
 	{if isset($orderEdit) && $orderEdit}
 		<p class="col-sm-12 facility_nav_btn">
-			<button id="btn_new_room_demand" class="btn btn-success"><i class="icon-plus"></i> {l s='Add new facility'}</button>
-			<button id="back_to_demands_btn" class="btn btn-default"><i class="icon-arrow-left"></i> {l s='Back'}</button>
+			<button id="btn_new_room_demand" class="btn btn-success"><i class="icon-plus"></i> {l s='Ajouter un nouvel équipement'}</button>
+			<button id="back_to_demands_btn" class="btn btn-default"><i class="icon-arrow-left"></i> {l s='Retour'}</button>
 		</p>
 
 		{* Already selected room demands *}
@@ -33,10 +33,10 @@
 			<table class="table">
 					<thead>
 						<tr>
-							<th>{l s='Name'}</th>
-							<th>{l s='Unit Price (tax excl.)'}</th>
+							<th>{l s='Nom'}</th>
+							<th>{l s='Prix unitaire (HT)'}</th>
 							<th>{l s='Total Price (tax excl.)'}</th>
-							<th>{l s='Total Price (tax incl.)'}</th>
+							<th>{l s='Prix total (TTC)'}</th>
 							<th class="text-right">{l s='Action'}</th>
 						</tr>
 					</thead>
@@ -51,7 +51,7 @@
 											<span class="input-group-addon">{$currencySign}</span>
 											<input type="text" class="form-control unit_price" value="{$demand['unit_price_tax_excl']}">
 											{if $demand['price_calc_method'] == HotelRoomTypeGlobalDemand::WK_PRICE_CALC_METHOD_EACH_DAY}
-												<span class="input-group-addon">{l s='/ night'}</span>
+												<span class="input-group-addon">{l s='/ nuit'}</span>
 											{/if}
 										</div>
 									</td>
@@ -64,7 +64,7 @@
 					{else}
 						<tr>
 							<td colspan="4">
-								<i class="icon-warning"></i> {l s='No facilities added yet.'}
+								<i class="icon-warning"></i> {l s='Aucun équipement ajouté.'}
 							</td>
 						</tr>
 					{/if}
@@ -80,9 +80,9 @@
 						<thead>
 							<tr>
 								<th></th>
-								<th>{l s='Name'}</th>
+								<th>{l s='Nom'}</th>
 								<th>{l s='Option'}</th>
-								<th>{l s='Unit Price (tax excl.)'}</th>
+								<th>{l s='Prix unitaire (HT)'}</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -122,7 +122,7 @@
 											{/if}
 											<input type="text" class="form-control unit_price" value="{$demand_price}" data-id-product="{$product['id_product']}">
 											{if $demand['price_calc_method'] == HotelRoomTypeGlobalDemand::WK_PRICE_CALC_METHOD_EACH_DAY}
-												<span class="input-group-addon">{l s='/ night'}</span>
+												<span class="input-group-addon">{l s='/ nuit'}</span>
 											{/if}
 										</div>
 									</td>
@@ -135,7 +135,7 @@
                         <button type="button" id="save_room_demands" class="btn btn-primary"><i class="icon icon-save"></i> &nbsp;{l s="Update Facilities"}</button>
                     </div>
 				{else}
-                    <i class="icon-warning"></i> {l s='No facilities available for this room.'}
+                    <i class="icon-warning"></i> {l s='Aucun équipement disponible pour cette chambre.'}
 				{/if}
 			</div>
 		</div>
@@ -144,10 +144,10 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>{l s='Name'}</th>
-                        <th>{l s='Unit Price (tax excl.)'}</th>
+                        <th>{l s='Nom'}</th>
+                        <th>{l s='Prix unitaire (HT)'}</th>
                         <th>{l s='Total Price (tax excl.)'}</th>
-                        <th>{l s='Total Price (tax incl.)'}</th>
+                        <th>{l s='Prix total (TTC)'}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -159,7 +159,7 @@
                                     <td>
                                         {displayPrice price=$demand['unit_price_tax_excl'] currency=$orderCurrency}
                                         {if $demand['price_calc_method'] == HotelRoomTypeGlobalDemand::WK_PRICE_CALC_METHOD_EACH_DAY}
-                                            {l s='/ night'}
+                                            {l s='/ nuit'}
                                         {/if}
                                     </td>
                                     <td>{displayPrice price=$demand['total_price_tax_excl'] currency=$orderCurrency}</td>
@@ -170,7 +170,7 @@
                     {else}
                         <tr>
                             <td colspan="3">
-                                <i class="icon-warning"></i> {l s='No facilities added yet.'}
+                                <i class="icon-warning"></i> {l s='Aucun équipement ajouté.'}
                             </td>
                         </tr>
                     {/if}

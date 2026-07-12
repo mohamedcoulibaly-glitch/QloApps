@@ -29,39 +29,39 @@
 <div class="row">
 	<div class="col-lg-6">
 		<div class="panel">
-			<h3><i class="icon-group"></i> {l s='Group information'}</h3>
+			<h3><i class="icon-group"></i> {l s='Informations du groupe'}</h3>
 			<h2><i class="icon-group"></i> {$group->name[$language->id]}</h2>
 			<div class="form-horizontal">
 				<div class="form-group">
-					<label class="col-lg-3 control-label">{l s='Discount:'}</label>
+					<label class="col-lg-3 control-label">{l s='Remise :'}</label>
 					<div class="col-lg-3"><p class="form-control-static">{l s='Discount: %.2f%%' sprintf=$group->reduction}</p></div>
 				</div>
 				<div class="form-group">
-					<label class="col-lg-3 control-label">{l s='Price display method:'}</label>
+					<label class="col-lg-3 control-label">{l s='Méthode d&#039;affichage du prix :'}</label>
 					<div class="col-lg-3"><p class="form-control-static">{if $group->price_display_method}
-					{l s='Tax excluded'}
+					{l s='HT'}
 				{else}
-					{l s='Tax included'}
+					{l s='TTC'}
 				{/if}</p></div>
 				</div>
 				<div class="form-group">
-					<label class="col-lg-3 control-label">{l s='Show prices:'}</label>
-					<div class="col-lg-3"><p class="form-control-static">{if $group->show_prices}{l s='Yes'}{else}{l s='No'}{/if}</p></div>
+					<label class="col-lg-3 control-label">{l s='Afficher les prix :'}</label>
+					<div class="col-lg-3"><p class="form-control-static">{if $group->show_prices}{l s='Oui'}{else}{l s='Non'}{/if}</p></div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="col-lg-6">
 		<div class="panel">
-			<h3><i class="icon-dollar"></i> {l s='Current category discount'}</h3>
+			<h3><i class="icon-dollar"></i> {l s='Remise de catégorie actuelle'}</h3>
 			{if !$categorieReductions}
-				<div class="alert alert-warning">{l s='None'}</div>
+				<div class="alert alert-warning">{l s='Aucun'}</div>
 			{else}
 				<table class="table">
 					<thead>
 						<tr>
-							<th><span class="title_box">{l s='Category'}</span></th>
-							<th><span class="title_box">{l s='Discount'}</span></th>
+							<th><span class="title_box">{l s='Catégorie'}</span></th>
+							<th><span class="title_box">{l s='Remise'}</span></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -79,8 +79,8 @@
 </div>
 <div class="row">
 	<div class="col-lg-12">
-		<h2>{l s='Members of this customer group'}</h2>
-		<p>{l s='Limited to the first 100 customers.'} {l s='Please use filters to narrow your search.'}</p>
+		<h2>{l s='Membres de ce groupe de clients'}</h2>
+		<p>{l s='Limité aux 100 premiers clients.'} {l s='Veuillez utiliser les filtres pour affiner votre recherche.'}</p>
 		{$customerList}
 	</div>
 </div>

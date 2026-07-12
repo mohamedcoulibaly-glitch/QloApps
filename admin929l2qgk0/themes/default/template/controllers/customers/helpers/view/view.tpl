@@ -43,50 +43,50 @@
 					<div class="panel-heading-action">
 						<a class="btn btn-default" href="{$current|escape:'html':'UTF-8'}&amp;updatecustomer&amp;id_customer={$customer->id|intval}&amp;token={$token|escape:'html':'UTF-8'}&amp;back={$smarty.server.REQUEST_URI|urlencode}">
 							<i class="icon-edit"></i>
-							{l s='Edit'}
+							{l s='Modifier'}
 						</a>
 					</div>
 				</div>
 				<div class="form-horizontal">
 					<div class="row">
-						<label class="control-label col-lg-3">{l s='Social Title'}</label>
+						<label class="control-label col-lg-3">{l s='Civilité'}</label>
 						<div class="col-lg-9">
-							<p class="form-control-static">{if $gender->name}{$gender->name}{else}{l s='Unknown'}{/if}</p>
+							<p class="form-control-static">{if $gender->name}{$gender->name}{else}{l s='Inconnu'}{/if}</p>
 						</div>
 					</div>
 					<div class="row">
-						<label class="control-label col-lg-3">{l s='Phone'}</label>
+						<label class="control-label col-lg-3">{l s='Téléphone'}</label>
 						<div class="col-lg-9">
 							<p class="form-control-static">{$customer->phone}</p>
 						</div>
 					</div>
 					<div class="row">
-						<label class="control-label col-lg-3">{l s='Age'}</label>
+						<label class="control-label col-lg-3">{l s='Âge'}</label>
 						<div class="col-lg-9">
 							<p class="form-control-static">
 								{if isset($customer->birthday) && $customer->birthday != '0000-00-00'}
-									{l s='%1$d years old (birth date: %2$s)' sprintf=[$customer_stats['age'], $customer_birthday]}
+									{l s='%1$d ans (date de naissance : %2$s)' sprintf=[$customer_stats['age'], $customer_birthday]}
 								{else}
-									{l s='Unknown'}
+									{l s='Inconnu'}
 								{/if}
 							</p>
 						</div>
 					</div>
 					<div class="row">
-						<label class="control-label col-lg-3">{l s='Registration Date'}</label>
+						<label class="control-label col-lg-3">{l s='Date d&#039;inscription'}</label>
 						<div class="col-lg-9">
 							<p class="form-control-static">{$registration_date}</p>
 						</div>
 					</div>
 					<div class="row">
-						<label class="control-label col-lg-3">{l s='Last Visit'}</label>
+						<label class="control-label col-lg-3">{l s='Dernière visite'}</label>
 						<div class="col-lg-9">
-							<p class="form-control-static">{if $customer_stats['last_visit']}{$last_visit}{else}{l s='Never'}{/if}</p>
+							<p class="form-control-static">{if $customer_stats['last_visit']}{$last_visit}{else}{l s='Jamais'}{/if}</p>
 						</div>
 					</div>
 					{if $count_better_customers != '-'}
 						<div class="row">
-							<label class="control-label col-lg-3">{l s='Best Customer Rank'}</label>
+							<label class="control-label col-lg-3">{l s='Classement meilleur client'}</label>
 							<div class="col-lg-9">
 								<p class="form-control-static">{$count_better_customers}</p>
 							</div>
@@ -94,26 +94,26 @@
 					{/if}
 					{if $shop_is_feature_active}
 						<div class="row">
-							<label class="control-label col-lg-3">{l s='Shop'}</label>
+							<label class="control-label col-lg-3">{l s='Boutique'}</label>
 							<div class="col-lg-9">
 								<p class="form-control-static">{$name_shop}</p>
 							</div>
 						</div>
 					{/if}
 					<div class="row">
-						<label class="control-label col-lg-3">{l s='Language'}</label>
+						<label class="control-label col-lg-3">{l s='Langue'}</label>
 						<div class="col-lg-9">
 							<p class="form-control-static">
 								{if isset($customerLanguage)}
 									{$customerLanguage->name}
 								{else}
-									{l s='Unknown'}
+									{l s='Inconnu'}
 								{/if}
 							</p>
 						</div>
 					</div>
 					<div class="row">
-						<label class="control-label col-lg-3">{l s='Registrations'}</label>
+						<label class="control-label col-lg-3">{l s='Inscriptions'}</label>
 						<div class="col-lg-9">
 							<p class="form-control-static">
 								{if $customer->newsletter}
@@ -131,48 +131,48 @@
 								{if $customer->optin}
 									<span class="label label-success">
 										<i class="icon-check"></i>
-										{l s='Opt in'}
+										{l s='Opt-in'}
 									</span>
 									{else}
 									<span class="label label-danger">
 										<i class="icon-remove"></i>
-										{l s='Opt in'}
+										{l s='Opt-in'}
 									</span>
 								{/if}
 							</p>
 						</div>
 					</div>
 					<div class="row">
-						<label class="control-label col-lg-3">{l s='Latest Update'}</label>
+						<label class="control-label col-lg-3">{l s='Dernière mise à jour'}</label>
 						<div class="col-lg-9">
 							<p class="form-control-static">{$last_update}</p>
 						</div>
 					</div>
 					<div class="row">
-						<label class="control-label col-lg-3">{l s='Status'}</label>
+						<label class="control-label col-lg-3">{l s='Statut'}</label>
 						<div class="col-lg-9">
 							<p class="form-control-static">
 								{if !$customer->deleted}
 									{if $customer->active}
 										<span class="label label-success">
 											<i class="icon-check"></i>
-											{l s='Active'}
+											{l s='Actif'}
 										</span>
 									{else}
 										<span class="label label-danger">
 											<i class="icon-remove"></i>
-											{l s='Inactive'}
+											{l s='Inactif'}
 										</span>
 									{/if}
 								{elseif $customer->deleted == Customer::STATUS_BANNED}
 									<span class="label label-warning">
 										<i class="icon-remove"></i>
-										{l s='Banned'}
+										{l s='Banni'}
 									</span>
 								{elseif $customer->deleted == Customer::STATUS_DELETED}
 									<span class="label label-danger">
 										<i class="icon-remove"></i>
-										{l s='Deleted'}
+										{l s='Supprimé'}
 									</span>
 								{/if}
 							</p>
@@ -180,25 +180,25 @@
 					</div>
 				</div>
 				{if $customer->isGuest()}
-					{l s='This customer is registered as a Guest.'}
+					{l s='Ce client est enregistré en tant qu&#039;invité.'}
 					{if !$customer_exists}
 					<form method="post" action="index.php?tab=AdminCustomers&amp;id_customer={$customer->id|intval}&amp;token={getAdminToken tab='AdminCustomers'}">
 						<input type="hidden" name="id_lang" value="{$id_lang}" />
 						<p class="text-center">
-							<input class="button" type="submit" name="submitGuestToCustomer" value="{l s='Transform to a customer account'}" />
+							<input class="button" type="submit" name="submitGuestToCustomer" value="{l s='Transformer en compte client'}" />
 						</p>
-						{l s='This feature generates a random password before sending an email to your customer.'}
+						{l s='Cette fonctionnalité génère un mot de passe aléatoire avant d&#039;envoyer un e-mail à votre client.'}
 					</form>
 					{else}
 					<p class="text-muted text-center">
-						{l s='A registered customer account using the defined email address already exists. '}
+						{l s='Un compte client enregistré utilisant l&#039;adresse e-mail définie existe déjà. '}
 					</p>
 					{/if}
 				{/if}
 			</div>
 			<div class="panel">
 				<div class="panel-heading">
-					<i class="icon-file"></i> {l s='Orders'} <span class="badge">{count($orders)}</span>
+					<i class="icon-file"></i> {l s='Commandes'} <span class="badge">{count($orders)}</span>
 				</div>
 				{if $orders AND count($orders)}
 					{assign var=count_ok value=count($orders_ok)}
@@ -209,14 +209,14 @@
 								<li {if $count_ok}class="active"{/if}>
 									<a data-toggle="tab" href="#valid_orders">
 										<i class="icon-ok-circle icon-big"></i>
-										{l s='Valid orders:'}
+										{l s='Commandes valides :'}
 										<span class="label label-success">{$count_ok}</span>
 									</a>
 								</li>
 								<li {if !$count_ok && $count_ko}class="active"{/if}>
 									<a data-toggle="tab" href="#invalid_orders">
 										<i class="icon-exclamation-sign icon-big"></i>
-										{l s='Invalid orders:'}
+										{l s='Commandes invalides :'}
 										<span class="label label-danger">{$count_ko}</span>
 									</a>
 								</li>
@@ -225,7 +225,7 @@
 								<div class="tab-pane {if $count_ok}active{/if}" id="valid_orders">
 									<div class="row">
 										<div class="col-lg-5">
-											{l s='Total amount received: %s' sprintf=$total_ok}
+											{l s='Montant total reçu : %s' sprintf=$total_ok}
 										</div>
 									</div>
 									<hr>
@@ -235,10 +235,10 @@
 												<tr>
 													<th class="center"><span class="title_box ">{l s='ID'}</span></th>
 													<th><span class="title_box">{l s='Date'}</span></th>
-													<th><span class="title_box">{l s='Payment'}</span></th>
-													<th><span class="title_box">{l s='Status'}</span></th>
-													<th><span class="title_box">{l s='Products'}</span></th>
-													<th><span class="title_box ">{l s='Total spent'}</span></th>
+													<th><span class="title_box">{l s='Paiement'}</span></th>
+													<th><span class="title_box">{l s='Statut'}</span></th>
+													<th><span class="title_box">{l s='Produits'}</span></th>
+													<th><span class="title_box ">{l s='Total dépensé'}</span></th>
 													<th></th>
 												</tr>
 											</thead>
@@ -253,7 +253,7 @@
 													<td>{$order['total_paid_real']}</td>
 													<td>
 														<a class="btn btn-default" href="?tab=AdminOrders&amp;id_order={$order['id_order']|intval}&amp;vieworder&amp;token={getAdminToken tab='AdminOrders'}">
-															<i class='icon-search'></i> {l s='View'}
+															<i class='icon-search'></i> {l s='Voir'}
 														</a>
 													</td>
 												</tr>
@@ -262,7 +262,7 @@
 										</table>
 									{else}
 										<p class="text-muted text-center">
-											{l s='No valid order found!!'}
+											{l s='Aucune commande valide trouvée !!'}
 										</p>
 									{/if}
 								</div>
@@ -270,7 +270,7 @@
 								<div class="tab-pane {if !$count_ok && $count_ko}active{/if}" id="invalid_orders">
 									<div class="row">
 										<div class="col-lg-5">
-											{l s='Order total: %s' sprintf=$total_ko}
+											{l s='Total de la commande : %s' sprintf=$total_ko}
 										</div>
 									</div>
 									<hr>
@@ -280,10 +280,10 @@
 												<tr>
 													<th><span class="title_box ">{l s='ID'}</span></th>
 													<th><span class="title_box ">{l s='Date'}</span></th>
-													<th><span class="title_box ">{l s='Payment'}</span></th>
-													<th><span class="title_box ">{l s='Status'}</span></th>
-													<th><span class="title_box ">{l s='Products'}</span></th>
-													<th><span class="title_box ">{l s='Total spent'}</span></th>
+													<th><span class="title_box ">{l s='Paiement'}</span></th>
+													<th><span class="title_box ">{l s='Statut'}</span></th>
+													<th><span class="title_box ">{l s='Produits'}</span></th>
+													<th><span class="title_box ">{l s='Total dépensé'}</span></th>
 													<th></th>
 												</tr>
 											</thead>
@@ -298,7 +298,7 @@
 													<td>{$order['total_paid_real']}</td>
 													<td>
 														<a class="btn btn-default" href="?tab=AdminOrders&amp;id_order={$order['id_order']|intval}&amp;vieworder&amp;token={getAdminToken tab='AdminOrders'}">
-															<i class='icon-search'></i> {l s='View'}
+															<i class='icon-search'></i> {l s='Voir'}
 														</a>
 													</td>
 												</tr>
@@ -307,7 +307,7 @@
 										</table>
 									{else}
 										<p class="text-muted text-center">
-											{l s='No invalid order found!!'}
+											{l s='Aucune commande invalide trouvée !!'}
 										</p>
 									{/if}
 								</div>
@@ -317,14 +317,14 @@
 
 				{else}
 					<p class="text-muted text-center">
-						{l s='%1$s %2$s has not placed any orders yet' sprintf=[$customer->firstname, $customer->lastname]}
+						{l s='%1$s %2$s n&#039;a pas encore passé de commande' sprintf=[$customer->firstname, $customer->lastname]}
 					</p>
 				{/if}
 			</div>
 
 			<div class="panel">
 				<div class="panel-heading">
-					<i class="icon-shopping-cart"></i> {l s='Carts'} <span class="badge">{count($carts)}</span>
+					<i class="icon-shopping-cart"></i> {l s='Paniers'} <span class="badge">{count($carts)}</span>
 				</div>
 				{if $carts AND count($carts)}
 					<table class="table">
@@ -351,14 +351,14 @@
 					</table>
 				{else}
 				<p class="text-muted text-center">
-					{l s='No cart is available'}
+					{l s='Aucun panier disponible'}
 				</p>
 				{/if}
 			</div>
 			{if $products AND count($products)}
 				<div class="panel">
 					<div class="panel-heading">
-						<i class="icon-archive"></i> {l s='Room types and services'} <span class="badge">{count($products)}</span>
+						<i class="icon-archive"></i> {l s='Types de chambres et services'} <span class="badge">{count($products)}</span>
 					</div>
 					<div class="nav nav-tabs">
 						<ul class="nav nav-tabs">
@@ -367,7 +367,7 @@
 							{if $count_room_types}
 								<li class="active">
 									<a data-toggle="tab" href="#purchased_room_types">
-										{l s='Room Types'}
+										{l s='Types de chambres'}
 										<span class="label label-success">{$count_room_types}</span>
 									</a>
 								</li>
@@ -375,7 +375,7 @@
 							{if $count_services}
 								<li {if !$count_room_types} class="active" {/if}>
 									<a data-toggle="tab" href="#purchased_services">
-										{l s='Services:'}
+										{l s='Services :'}
 										<span class="label label-success">{$count_services}</span>
 									</a>
 								</li>
@@ -387,10 +387,10 @@
 									<table class="table">
 										<thead>
 											<tr>
-												<th><span class="title_box">{l s='ID Order'}</span></th>
-												<th><span class="title_box">{l s='Name'}</span></th>
-												<th><span class="title_box">{l s='Nights booked'}</span></th>
-												<th><span class="title_box">{l s='Booking Date'}</span></th>
+												<th><span class="title_box">{l s='ID Commande'}</span></th>
+												<th><span class="title_box">{l s='Nom'}</span></th>
+												<th><span class="title_box">{l s='Nuits réservées'}</span></th>
+												<th><span class="title_box">{l s='Date de réservation'}</span></th>
 											</tr>
 										</thead>
 										<tbody>
@@ -417,10 +417,10 @@
 									<table class="table">
 										<thead>
 											<tr>
-												<th><span class="title_box">{l s='ID Order'}</span></th>
-												<th><span class="title_box">{l s='Name'}</span></th>
-												<th><span class="title_box">{l s='Quantity'}</span></th>
-												<th><span class="title_box">{l s='Booking Date'}</span></th>
+												<th><span class="title_box">{l s='ID Commande'}</span></th>
+												<th><span class="title_box">{l s='Nom'}</span></th>
+												<th><span class="title_box">{l s='Quantité'}</span></th>
+												<th><span class="title_box">{l s='Date de réservation'}</span></th>
 											</tr>
 										</thead>
 										<tbody>
@@ -449,13 +449,13 @@
 			{if count($interested)}
 			<div class="panel">
 				<div class="panel-heading">
-					<i class="icon-eye"></i> {l s='Viewed room types'} <span class="badge">{count($interested)}</span>
+					<i class="icon-eye"></i> {l s='Types de chambres consultés'} <span class="badge">{count($interested)}</span>
 				</div>
 				<table class="table">
 					<thead>
 						<tr>
 							<th><span class="title_box ">{l s='ID'}</span></th>
-							<th><span class="title_box ">{l s='Name'}</span></th>
+							<th><span class="title_box ">{l s='Nom'}</span></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -474,9 +474,9 @@
 		<div class="col-lg-6">
 			<div class="panel">
 				<div class="panel-heading">
-					<i class="icon-eye-close"></i> {l s='Add a private note'}
+					<i class="icon-eye-close"></i> {l s='Ajouter une note privée'}
 				</div>
-				<div class="alert alert-info">{l s='This note will be displayed to all employees but not to customers.'}</div>
+				<div class="alert alert-info">{l s='Cette note sera affichée à tous les employés mais pas aux clients.'}</div>
 				<form id="customer_note" class="form-horizontal" action="ajax.php" method="post" onsubmit="saveCustomerNote({$customer->id|intval});return false;" >
 					<div class="form-group">
 						<div class="col-lg-12">
@@ -487,7 +487,7 @@
 						<div class="col-lg-12">
 							<button type="submit" id="submitCustomerNote" class="btn btn-default pull-right" disabled="disabled">
 								<i class="icon-save"></i>
-								{l s='Save'}
+								{l s='Enregistrer'}
 							</button>
 						</div>
 					</div>
@@ -501,20 +501,20 @@
 				{if count($messages)}
 					<table class="table">
 						<thead>
-							<th class="fixed-width-sm"><span class="title_box">{l s='Status'}</span></th>
+							<th class="fixed-width-sm"><span class="title_box">{l s='Statut'}</span></th>
 							<th><span class="title_box">{l s='Message'}</span></th>
-							<th class="fixed-width-lg"><span class="title_box">{l s='Sent on'}</span></th>
+							<th class="fixed-width-lg"><span class="title_box">{l s='Envoyé le'}</span></th>
 						</thead>
 						{foreach $messages AS $message}
 							<tr>
 								<td>{if $message['status'] == CustomerThread::QLO_CUSTOMER_THREAD_STATUS_OPEN}
-										{l s='Open'}
+										{l s='Ouvert'}
 									{elseif $message['status'] == CustomerThread::QLO_CUSTOMER_THREAD_STATUS_CLOSED}
-										{l s='Closed'}
+										{l s='Fermé'}
 									{elseif $message['status'] == CustomerThread::QLO_CUSTOMER_THREAD_STATUS_PENDING1}
-										{l s='Pending 1'}
+										{l s='En attente 1'}
 									{elseif $message['status'] == CustomerThread::QLO_CUSTOMER_THREAD_STATUS_PENDING2}
-										{l s='Pending 2'}
+										{l s='En attente 2'}
 									{/if}
 								</td>
 								<td>
@@ -528,13 +528,13 @@
 					</table>
 				{else}
 				<p class="text-muted text-center">
-					{l s='%1$s %2$s has never contacted you' sprintf=[$customer->firstname, $customer->lastname]}
+					{l s='%1$s %2$s ne vous a jamais contacté' sprintf=[$customer->firstname, $customer->lastname]}
 				</p>
 				{/if}
 			</div>
 			<div class="panel">
 				<div class="panel-heading">
-					<i class="icon-ticket"></i> {l s='Vouchers'} <span class="badge">{count($discounts)}</span>
+					<i class="icon-ticket"></i> {l s='Bons de réduction'} <span class="badge">{count($discounts)}</span>
 				</div>
 				{if count($discounts)}
 					<table class="table">
@@ -542,9 +542,9 @@
 							<tr>
 								<th><span class="title_box">{l s='ID'}</span></th>
 								<th><span class="title_box">{l s='Code'}</span></th>
-								<th><span class="title_box">{l s='Name'}</span></th>
-								<th><span class="title_box">{l s='Status'}</span></th>
-								<th><span class="title_box">{l s='Qty available'}</span></th>
+								<th><span class="title_box">{l s='Nom'}</span></th>
+								<th><span class="title_box">{l s='Statut'}</span></th>
+								<th><span class="title_box">{l s='Quantité disponible'}</span></th>
 								<th><span class="title_box">{l s='Actions'}</span></th>
 							<tr/>
 						</thead>
@@ -566,7 +566,7 @@
 									<a href="?tab=AdminCartRules&amp;id_cart_rule={$discount['id_cart_rule']|intval}&amp;addcart_rule&amp;token={getAdminToken tab='AdminCartRules'}&amp;back={$smarty.server.REQUEST_URI|urlencode}">
 										<i class="icon-pencil"></i>
 									</a>
-									<a onclick="return confirm('{l s='Are you sure?'}')" href="?tab=AdminCartRules&amp;id_cart_rule={$discount['id_cart_rule']|intval}&amp;deletecart_rule&amp;token={getAdminToken tab='AdminCartRules'}&amp;back={$smarty.server.REQUEST_URI|urlencode}">
+									<a onclick="return confirm('{l s='Êtes-vous sûr ?'}')" href="?tab=AdminCartRules&amp;id_cart_rule={$discount['id_cart_rule']|intval}&amp;deletecart_rule&amp;token={getAdminToken tab='AdminCartRules'}&amp;back={$smarty.server.REQUEST_URI|urlencode}">
 										<i class="icon-remove"></i>
 									</a>
 								</td>
@@ -576,7 +576,7 @@
 					</table>
 				{else}
 				<p class="text-muted text-center">
-					{l s='%1$s %2$s has no discount vouchers' sprintf=[$customer->firstname, $customer->lastname]}
+					{l s='%1$s %2$s n&#039;a pas de bons de réduction' sprintf=[$customer->firstname, $customer->lastname]}
 				</p>
 				{/if}
 			</div>
@@ -584,15 +584,15 @@
 			{if count($emails)}
 			<div class="panel">
 				<div class="panel-heading">
-					<i class="icon-envelope"></i> {l s='Last emails'}
+					<i class="icon-envelope"></i> {l s='Derniers e-mails'}
 				</div>
 				<table class="table">
 					<thead>
 					<tr>
 						<th><span class="title_box">{l s='Date'}</span></th>
-						<th><span class="title_box">{l s='Language'}</span></th>
-						<th><span class="title_box">{l s='Subject'}</span></th>
-						<th><span class="title_box">{l s='Template'}</span></th>
+						<th><span class="title_box">{l s='Langue'}</span></th>
+						<th><span class="title_box">{l s='Objet'}</span></th>
+						<th><span class="title_box">{l s='Modèle'}</span></th>
 					</tr>
 					</thead>
 					<tbody>
@@ -612,17 +612,17 @@
 			{if count($connections)}
 			<div class="panel">
 				<div class="panel-heading">
-					<i class="icon-time"></i> {l s='Last connections'}
+					<i class="icon-time"></i> {l s='Dernières connexions'}
 				</div>
 				<table class="table">
 					<thead>
 					<tr>
 						<th><span class="title_box">{l s='ID'}</span></th>
 						<th><span class="title_box">{l s='Date'}</span></th>
-						<th><span class="title_box">{l s='Pages viewed'}</span></th>
-						<th><span class="title_box">{l s='Total time'}</span></th>
-						<th><span class="title_box">{l s='Origin'}</span></th>
-						<th><span class="title_box">{l s='IP Address'}</span></th>
+						<th><span class="title_box">{l s='Pages vues'}</span></th>
+						<th><span class="title_box">{l s='Durée totale'}</span></th>
+						<th><span class="title_box">{l s='Origine'}</span></th>
+						<th><span class="title_box">{l s='Adresse IP'}</span></th>
 					</tr>
 					</thead>
 					<tbody>
@@ -644,10 +644,10 @@
 			<div class="panel">
 				<div class="panel-heading">
 					<i class="icon-group"></i>
-					{l s='Groups'}
+					{l s='Groupes'}
 					<span class="badge">{count($groups)}</span>
 					<a class="btn btn-default pull-right" href="{$current|escape:'html':'UTF-8'}&amp;updatecustomer&amp;id_customer={$customer->id|intval}&amp;token={$token|escape:'html':'UTF-8'}">
-						<i class="icon-edit"></i> {l s='Edit'}
+						<i class="icon-edit"></i> {l s='Modifier'}
 					</a>
 				</div>
 				{if $groups AND count($groups)}
@@ -655,7 +655,7 @@
 					<thead>
 						<tr>
 							<th><span class="title_box ">{l s='ID'}</span></th>
-							<th><span class="title_box ">{l s='Name'}</span></th>
+							<th><span class="title_box ">{l s='Nom'}</span></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -677,16 +677,16 @@
 				<div class="panel">
 					<div class="panel-heading">
 						<i class="icon-user"></i>
-						{l s='Customer Guests'}
+						{l s='Clients invités'}
 						<span class="badge customer-guests-count">{count($customer_guests)}</span>
 					</div>
 					<table class="table customer-guests">
 						<thead>
 							<tr>
-								<th><span class="title_box ">{l s='Email'}</span></th>
-								<th><span class="title_box ">{l s='First name'}</span></th>
-								<th><span class="title_box ">{l s='Last name'}</span></th>
-								<th><span class="title_box ">{l s='phone'}</span></th>
+								<th><span class="title_box ">{l s='E-mail'}</span></th>
+								<th><span class="title_box ">{l s='Prénom'}</span></th>
+								<th><span class="title_box ">{l s='Nom de famille'}</span></th>
+								<th><span class="title_box ">{l s='téléphone'}</span></th>
 								<th colspan="2"><span class="title_box ">{l s='Actions'}</span></th>
 							</tr>
 						</thead>
@@ -716,14 +716,14 @@
 			{if count($referrers)}
 			<div class="panel">
 				<div class="panel-heading">
-					<i class="icon-share-alt"></i> {l s='Referrers'}
+					<i class="icon-share-alt"></i> {l s='Référents'}
 				</div>
 				<table class="table">
 					<thead>
 						<tr>
 							<th><span class="title_box ">{l s='Date'}</span></th>
-							<th><span class="title_box ">{l s='Name'}</span></th>
-							{if $shop_is_feature_active}<th>{l s='Shop'}</th>{/if}
+							<th><span class="title_box ">{l s='Nom'}</span></th>
+							{if $shop_is_feature_active}<th>{l s='Boutique'}</th>{/if}
 						</tr>
 					</thead>
 					<tbody>
@@ -747,17 +747,17 @@
 		<div class="col-lg-12">
 			<div class="panel">
 				<div class="panel-heading">
-					<i class="icon-map-marker"></i> {l s='Addresses'} <span class="badge">{count($addresses)}</span>
+					<i class="icon-map-marker"></i> {l s='Adresses'} <span class="badge">{count($addresses)}</span>
 				</div>
 				{if count($addresses)}
 					<table class="table">
 						<thead>
 							<tr>
-								<th><span class="title_box ">{l s='Company'}</span></th>
-								<th><span class="title_box ">{l s='Name'}</span></th>
-								<th><span class="title_box ">{l s='Address'}</span></th>
-								<th><span class="title_box ">{l s='Country'}</span></th>
-								<th><span class="title_box ">{l s='Phone number(s)'}</span></th>
+								<th><span class="title_box ">{l s='Entreprise'}</span></th>
+								<th><span class="title_box ">{l s='Nom'}</span></th>
+								<th><span class="title_box ">{l s='Adresse'}</span></th>
+								<th><span class="title_box ">{l s='Pays'}</span></th>
+								<th><span class="title_box ">{l s='Numéro(s) de téléphone'}</span></th>
 								<th></th>
 							</tr>
 						</thead>
@@ -779,7 +779,7 @@
 								<td class="text-right">
 									<div class="btn-group">
 										<a class="btn btn-default" href="?tab=AdminAddresses&amp;id_address={$address['id_address']}&amp;addaddress=1&amp;token={getAdminToken tab='AdminAddresses'}&amp;back={$smarty.server.REQUEST_URI|urlencode}">
-											<i class="icon-edit"></i> {l s='Edit'}
+											<i class="icon-edit"></i> {l s='Modifier'}
 										</a>
 										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 											<span class="caret"></span>
@@ -788,7 +788,7 @@
 											<li>
 												<a href="?tab=AdminAddresses&amp;id_address={$address['id_address']}&amp;deleteaddress&amp;token={getAdminToken tab='AdminAddresses'}&amp;back={$smarty.server.REQUEST_URI|urlencode}">
 													<i class="icon-trash"></i>
-													{l s='Delete'}
+													{l s='Supprimer'}
 												</a>
 											</li>
 										</ul>
@@ -800,7 +800,7 @@
 					</table>
 				{else}
 					<p class="text-muted text-center">
-						{l s='%1$s %2$s has not registered any addresses yet' sprintf=[$customer->firstname, $customer->lastname]}
+						{l s='%1$s %2$s n&#039;a pas encore enregistré d&#039;adresses' sprintf=[$customer->firstname, $customer->lastname]}
 					</p>
 				{/if}
 			</div>

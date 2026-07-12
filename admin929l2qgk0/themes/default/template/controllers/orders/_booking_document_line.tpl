@@ -1,4 +1,4 @@
-{**
+﻿{**
 * NOTICE OF LICENSE
 *
 * This source file is subject to the Open Software License version 3.0
@@ -51,7 +51,7 @@
         <td class="list-empty" colspan="4">
             <div class="list-empty-msg">
                 <i class="icon-warning-sign list-empty-icon"></i>
-                {l s='No documents uploaded yet.'}
+                {l s='Aucun document téléchargé.'}
             </div>
         </td>
     </tr>

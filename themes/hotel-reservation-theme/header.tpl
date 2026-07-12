@@ -37,7 +37,7 @@
 		{if isset($meta_keywords) AND $meta_keywords}
 			<meta name="keywords" content="{$meta_keywords|escape:'html':'UTF-8'}" />
 		{/if}
-		<meta name="generator" content="QloApps" />
+		<meta name="generator" content="Hotel Prime" />
 		<meta name="robots" content="{if isset($nobots)}no{/if}index,{if isset($nofollow) && $nofollow}no{/if}follow" />
 		<meta name="viewport" content="width=device-width, minimum-scale=0.25, maximum-scale=1.6, initial-scale=1.0" />
 		<meta name="mobile-web-app-capable" content="yes" />
@@ -76,6 +76,7 @@
 		<!-- <link href='https://fonts.googleapis.com/css?family=Parisienne' rel='stylesheet' type='text/css'> -->
 		<!-- <link href='https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'> -->
 		<link href='//fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="{$css_dir}hotel-prime-brand.css?v=2026071207" type="text/css" media="all" />
 	</head>
 	<body{if isset($page_name)} id="{$page_name|escape:'html':'UTF-8'}"{/if} class="{if isset($page_name)}{$page_name|escape:'html':'UTF-8'}{/if}{if isset($body_classes) && $body_classes|@count} {' '|implode:$body_classes}{/if}{if $hide_left_column} hide-left-column{else} show-left-column{/if}{if $hide_right_column} hide-right-column{else} hide-right-column{/if}{if isset($content_only) && $content_only} content_only{/if} lang_{$lang_iso}" style="{if $page_name == 'index'}height: 100%;{/if}">
 	{if !isset($content_only) || !$content_only}

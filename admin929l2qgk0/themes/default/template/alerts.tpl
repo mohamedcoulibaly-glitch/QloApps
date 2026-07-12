@@ -22,34 +22,34 @@
 
 {if isset($conf)}
 	<div class="bootstrap">
-		<div class="alert alert-success">
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<div class="alert alert-success" role="alert" aria-live="polite">
+			<button type="button" class="close" data-dismiss="alert" aria-label="{l s='Fermer'}">&times;</button>
 			{$conf}
 		</div>
 	</div>
 {/if}
 {if isset($errors) && count($errors) && current($errors) != '' && (!isset($disableDefaultErrorOutPut) || $disableDefaultErrorOutPut == false)}
 	<div class="bootstrap">
-		<div class="alert alert-danger">
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<div class="alert alert-danger" role="alert" aria-live="assertive">
+			<button type="button" class="close" data-dismiss="alert" aria-label="{l s='Fermer'}">&times;</button>
 		{if count($errors) == 1}
 			{reset($errors)}
-		{else }
-			{l s='%d errors' sprintf=$errors|count}
+		{else}
+			{l s='%d erreurs' sprintf=$errors|count}
 			<br/>
-			<ol>
+			<ul>
 				{foreach $errors as $error}
 					<li>{$error}</li>
 				{/foreach}
-			</ol>
+			</ul>
 		{/if}
 		</div>
 	</div>
 {/if}
 {if isset($informations) && count($informations) && $informations}
 	<div class="bootstrap">
-		<div class="alert alert-info">
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<div class="alert alert-info" role="alert" aria-live="polite">
+			<button type="button" class="close" data-dismiss="alert" aria-label="{l s='Fermer'}">&times;</button>
 			<ul id="infos_block" class="list-unstyled">
 				{foreach $informations as $info}
 					<li>{$info}</li>
@@ -60,7 +60,8 @@
 {/if}
 {if isset($confirmations) && count($confirmations) && $confirmations}
 	<div class="bootstrap">
-		<div class="alert alert-success" style="display:block;">
+		<div class="alert alert-success" role="alert" aria-live="polite">
+			<button type="button" class="close" data-dismiss="alert" aria-label="{l s='Fermer'}">&times;</button>
 			{foreach $confirmations as $conf}
 				{$conf}
 			{/foreach}
@@ -69,10 +70,10 @@
 {/if}
 {if isset($warnings) && count($warnings)}
 	<div class="bootstrap">
-		<div class="alert alert-warning">
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<div class="alert alert-warning" role="alert" aria-live="polite">
+			<button type="button" class="close" data-dismiss="alert" aria-label="{l s='Fermer'}">&times;</button>
 			{if count($warnings) > 1}
-				<h4>{l s='There are %d warnings:' sprintf=count($warnings)}</h4>
+				<h4>{l s='Il y a %d avertissements :' sprintf=count($warnings)}</h4>
 			{/if}
 			<ul class="list-unstyled">
 				{foreach $warnings as $warning}

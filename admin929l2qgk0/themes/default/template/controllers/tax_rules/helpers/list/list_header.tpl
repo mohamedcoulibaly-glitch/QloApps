@@ -65,15 +65,15 @@
 						{if $shop_link_type}
 							<th>
 								{if $shop_link_type == 'shop'}
-									{l s='Shop'}
+									{l s='Boutique'}
 								{else}
-									{l s='Shop group'}
+									{l s='Groupe de boutiques'}
 								{/if}
 							</th>
 						{/if}
 						{if $has_actions && $filters_has_value}
 							<th class="actions text-right"><button type="submit" name="submitReset{$list_id}" class="btn btn-warning">
-									<i class="icon-eraser"></i> {l s='Reset'}
+									<i class="icon-eraser"></i> {l s='Réinitialiser'}
 								</button>
 							</th>
 						{else}

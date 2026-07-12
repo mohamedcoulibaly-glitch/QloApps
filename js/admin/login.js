@@ -71,18 +71,6 @@ $(document).ready(function() {
 
 	$('#email').focus();
 
-	//Tab-index loop
-	$('form').each(function(){
-		var list  = $(this).find('*[tabindex]').sort(function(a,b){ return a.tabIndex < b.tabIndex ? -1 : 1; }),
-			first = list.first();
-		list.last().on('keydown', function(e){
-			if( e.keyCode === 9 ) {
-				first.focus();
-				return false;
-			}
-		});
-	});
-
 	//Preload images
 	$('<img/>')[0].src = img_dir+'qloapps-login@2x.png';
 	$('<img/>')[0].src = img_dir+'qloapps-login-wink@2x.png';
@@ -96,25 +84,24 @@ $(document).ready(function() {
 	});
 });
 
-//todo: ladda init
-var l = new Object();
+var loginLadda = null;
 function feedbackSubmit() {
-	l = Ladda.create( document.querySelector( 'button[type=submit]' ) );
+	loginLadda = Ladda.create( document.querySelector( 'button[type=submit]' ) );
 }
 
 function displayForgotPassword() {
 	$('#error').hide();
-	$("#login").find('.flip-container').toggleClass("flip");
-	setTimeout(function(){$('.front').hide()},200);
-	setTimeout(function(){$('.back').show()},200);
+	$("#login").find('.flip-container').addClass("flip");
+	$('.front').hide();
+	$('.back').show();
 	$('#email_forgot').select();
 }
 
 function displayLogin() {
 	$('#error').hide();
-	$("#login").find('.flip-container').toggleClass("flip");
-	setTimeout(function(){$('.back').hide()},200);
-	setTimeout(function(){$('.front').show()},200);
+	$("#login").find('.flip-container').removeClass("flip");
+	$('.back').hide();
+	$('.front').show();
 	$('#email').select();
 	return false;
 }
@@ -145,20 +132,20 @@ function doAjaxLogin(redirect) {
 			},
 			beforeSend: function() {
 				feedbackSubmit();
-				l.start();
+				loginLadda.start();
 			},
 			success: function(jsonData) {
 				if (jsonData.hasErrors) {
 					displayErrors(jsonData.errors);
-					l.stop();
+					loginLadda.stop();
 				} else {
 					window.location.assign(jsonData.redirect);
 				}
 			},
 			error: function(XMLHttpRequest, textStatus, errorThrown) {
-				l.stop();
-				$('#error').html('<h3>TECHNICAL ERROR:</h3><p>Details: Error thrown: ' + XMLHttpRequest + '</p><p>Text status: ' + textStatus + '</p>').removeClass('hide');
-				$('#login_form').fadeOut('slow');
+				loginLadda.stop();
+				$('#error').html('<h3>TECHNICAL ERROR:</h3><p>' + $('<span>').text(textStatus).html() + '</p>').removeClass('hide');
+				$('#login_form').show();
 			}
 		});
 	});
@@ -183,14 +170,15 @@ function doAjaxForgot() {
 				if (jsonData.hasErrors) {
 					displayErrors(jsonData.errors);
 				} else {
-					alert(jsonData.confirm);
-					$('#forgot_password_form').hide();
-					$('.show-forgot-password').hide();
-					displayLogin();
+				alert(jsonData.confirm);
+				$('#forgot_password_form').hide();
+				$('.show-forgot-password').hide();
+				displayLogin();
+				$('#error').html('<p class="text-success">' + $('<span>').text(jsonData.confirm).html() + '</p>').removeClass('hide').fadeIn('slow');
 				}
 			},
 			error: function(XMLHttpRequest, textStatus, errorThrown) {
-				$('#error').html(XMLHttpRequest.responseText).removeClass('hide').fadeIn('slow');
+				$('#error').html('<p>' + $('<span>').text(textStatus).html() + '</p>').removeClass('hide').fadeIn('slow');
 			}
 		});
 	});

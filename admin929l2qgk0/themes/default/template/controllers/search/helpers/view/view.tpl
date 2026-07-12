@@ -284,7 +284,7 @@ $(function() {
 		</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="2" class="text-center"><a href="http://addons.prestashop.com/search.php?search_query={$query|urlencode}&amp;utm_source=back-office&amp;utm_medium=search&amp;utm_campaign=back-office-{$lang_iso|upper}&amp;utm_content={if $host_mode}cloud{else}download{/if}" class="_blank"><strong>{l s='Show more results...'}</strong></a></td>
+					<td colspan="2" class="text-center"><a href="http://addons.prestashop.com/search.php?search_query={$query|urlencode}&amp;utm_source=back-office&amp;utm_medium=search&amp;utm_campaign=back-office-{$lang_iso|upper}&amp;utm_content={if $host_mode}cloud{else}download{/if}" class="_blank"><strong>{l s='Afficher plus de résultats...'}</strong></a></td>
 				</tr>
 			</tfoot>
 		</table>
@@ -296,19 +296,19 @@ $(function() {
 	<div class="col-lg-4">
 		<div class="panel">
 			<h3>{l s='Search qloapps.com/blog'}</h3>
-			<a href="https://qloapps.com/?s={$query}" class="btn btn-default _blank">{l s='Go to the documentation'}</a>
+			<a href="https://qloapps.com/?s={$query}" class="btn btn-default _blank">{l s='Aller à la documentation'}</a>
 		</div>
 	</div>
 	<div class="col-lg-4">
 		<div class="panel">
 			<h3>{l s='Search qloapps.com/addons'}</h3>
-			<a href="https://qloapps.com/addons/?add={$query}" class="btn btn-default _blank">{l s='Go to Addons'}</a>
+			<a href="https://qloapps.com/addons/?add={$query}" class="btn btn-default _blank">{l s='Aller aux Addons'}</a>
 		</div>
 	</div>
 	<div class="col-lg-4">
 		<div class="panel">
 			<h3>{l s='Search forums.qloapps.com'}</h3>
-			<a href="https://forums.qloapps.com/search?term={$query}" class="btn btn-default _blank">{l s='Go to the Forum'}</a>
+			<a href="https://forums.qloapps.com/search?term={$query}" class="btn btn-default _blank">{l s='Aller au Forum'}</a>
 		</div>
 	</div>
 </div>

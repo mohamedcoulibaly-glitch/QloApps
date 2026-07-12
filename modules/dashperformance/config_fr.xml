@@ -3,7 +3,7 @@
 	<name>dashperformance</name>
 	<displayName><![CDATA[Performances du tableau de bord]]></displayName>
 	<version><![CDATA[1.0.3]]></version>
-	<description><![CDATA[Ajoute un bloc avec une repr&eacute;sentation graphique des performances de votre site Web.]]></description>
+	<description><![CDATA[Ajoute un bloc avec une représentation graphique des performances de votre site.]]></description>
 	<author><![CDATA[Webkul]]></author>
 	<tab><![CDATA[dashboard]]></tab>
 	<confirmUninstall><![CDATA[Êtes-vous sur de vouloir désinstaller?]]></confirmUninstall>

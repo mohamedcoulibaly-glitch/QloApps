@@ -1,4 +1,4 @@
-{*
+﻿{*
 * NOTICE OF LICENSE
 *
 * This source file is subject to the Open Software License version 3.0
@@ -24,9 +24,9 @@
     <div id="new_product">
         <input type="hidden" id="add_product_product_id" name="add_product[product_id]" value="0" />
         <div class="form-group">
-            <label class="control-label">{l s='Product:'}</label>
+            <label class="control-label">{l s='Produit :'}</label>
             <div class="input-group">
-                <input type="text" id="add_product_product_name" class="form-control" value="" placeholder="{l s='Enter the name of the product'}" />
+                <input type="text" id="add_product_product_name" class="form-control" value="" placeholder="{l s='Entrez le nom du produit'}" />
                 <div class="input-group-addon">
                     <i class="icon-search"></i>
                 </div>
@@ -36,16 +36,16 @@
             {hook h='displayAdminOrderAddRoomFormFieldsBefore'}
             <div class="row">
                 <div class="productOptions form-group col-sm-6" style="display: none;">
-                    <label class="control-label">{l s='Variant'}</label>
+                    <label class="control-label">{l s='Variante'}</label>
                     <select name="add_product[product_option]" id="add_product_product_option">
                     </select>
                 </div>
                 <div class="productQuantity form-group col-sm-6">
-                    <label class="control-label">{l s='Quantity'}</label>
+                    <label class="control-label">{l s='Quantité'}</label>
                     <input type="number" class="form-control" name="add_product[product_quantity]" id="add_product_product_quantity" value="1" disabled="disabled" min="1"/>
                 </div>
                 <div class="col-sm-6 form-group">
-                    <label class="control-label">{l s='Price (tax excl.)'}</label>
+                    <label class="control-label">{l s='Prix (HT)'}</label>
                     <div class="input-group">
                         {if $currency->format % 2}<div class="input-group-addon">{$currency->sign}</div>{/if}
                         <input class="form-control" type="text" name="add_product[product_price_tax_excl]" id="add_product_product_price_tax_excl" value=""  disabled="disabled"/>
@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 <div class="col-sm-6 form-group">
-                    <label class="control-label">{l s='Price (tax incl.)'}</label>
+                    <label class="control-label">{l s='Prix (TTC)'}</label>
                     <div class="input-group">
                         {if $currency->format % 2}<div class="input-group-addon">{$currency->sign}</div>{/if}
                         <input class="form-control" type="text" name="add_product[product_price_tax_incl]" id="add_product_product_price_tax_incl" value=""  disabled="disabled"/>
@@ -62,15 +62,15 @@
                 </div>
                 {if sizeof($invoices_collection)}
                     <div class="col-sm-6 form-group" style="display: none;">
-                        <label class="control-label">{l s='Invoice'}</label>
+                        <label class="control-label">{l s='Facture'}</label>
                         <select class="form-control" name="add_product[invoice]" id="add_product_product_invoice" disabled="disabled">
-                            <optgroup class="existing" label="{l s='Existing'}">
+                            <optgroup class="existing" label="{l s='Existant'}">
                                 {foreach from=$invoices_collection item=invoice}
                                 <option value="{$invoice->id}">{$invoice->getInvoiceNumberFormatted($current_id_lang)}</option>
                                 {/foreach}
                             </optgroup>
-                            <optgroup label="{l s='New'}">
-                                <option value="0">{l s='Create a new invoice'}</option>
+                            <optgroup label="{l s='Nouveau'}">
+                                <option value="0">{l s='Créer une nouvelle facture'}</option>
                             </optgroup>
                         </select>
                     </div>

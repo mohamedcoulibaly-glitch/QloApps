@@ -72,7 +72,7 @@
 {block name="other_fieldsets"}
 	{if isset($form_import)}
 	<div class="panel">
-		<h3><i class="icon-cloud-download"></i> {l s='Import data from another shop'}</h3>
+		<h3><i class="icon-cloud-download"></i> {l s='Importer les données d&#039;une autre boutique'}</h3>
 		{foreach $form_import as $key => $field}
 		<div class="form-group">
 		{if $key == 'radio'}
@@ -81,11 +81,11 @@
 				<span class="switch prestashop-switch">
 					<input type="radio" name="{$field.name}" id="{$field.name}_on" value="1" {if $field.value } checked="checked" {/if} />
 					<label for="{$field.name}_on">
-						{l s='Yes'}
+						{l s='Oui'}
 					</label>
 					<input type="radio" name="{$field.name}" id="{$field.name}_off" value="0"  {if !$field.value } checked="checked" {/if} />
 					<label for="{$field.name}_off">
-						{l s='No'}
+						{l s='Non'}
 					</label>
 					<a class="slide-button btn"></a>
 				</span>
@@ -121,10 +121,10 @@
 		{/foreach}
 		<div class="panel-footer">
 			<button type="submit" value="1" id="shop_form_submit_btn" name="submitAddshop" class="btn btn-default pull-right">
-				<i class="process-icon-save"></i> {l s='Save'}
+				<i class="process-icon-save"></i> {l s='Enregistrer'}
 			</button>
 			<a href="{$currentIndex|escape:'html':'UTF-8'}&amp;id_shop_group=0&amp;token={$token|escape:'html':'UTF-8'}" class="btn btn-default" onclick="window.history.back();">
-				<i class="process-icon-cancel"></i> {l s='Cancel'}
+				<i class="process-icon-cancel"></i> {l s='Annuler'}
 			</a>
 		</div>
 	</div>

@@ -1,4 +1,4 @@
-{*
+﻿{*
 * NOTICE OF LICENSE
 *
 * This source file is subject to the Open Software License version 3.0
@@ -25,12 +25,12 @@
 		<div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><i class="icon-remove-sign"></i></button>
-                <h4 class="modal-title"><i class="icon icon-bed"></i> &nbsp;{l s='Room Services'}</h4>
+                <h4 class="modal-title"><i class="icon icon-bed"></i> &nbsp;{l s='Services de la chambre'}</h4>
             </div>
 			<div class="modal-body" id="rooms_extra_demands">
                 <ul class="nav nav-tabs" role="tablist">
 					{if isset($selectedRoomDemands) && $selectedRoomDemands}
-						<li role="presentation" class="active"><a href="#room_type_demands_desc" aria-controls="facilities" role="tab" data-toggle="tab">{l s='Facilities'}</a></li>
+						<li role="presentation" class="active"><a href="#room_type_demands_desc" aria-controls="facilities" role="tab" data-toggle="tab">{l s='Équipements'}</a></li>
 					{/if}
 					{if isset($serviceProducts) && $serviceProducts}
 						<li role="presentation" {if !isset($selectedRoomDemands) || !$selectedRoomDemands}class="active"{/if}><a href="#room_type_service_product_desc" aria-controls="services" role="tab" data-toggle="tab">{l s='Services'}</a></li>
@@ -50,9 +50,9 @@
                                                         <thead>
                                                             <tr>
                                                                 <th></th>
-                                                                <th>{l s='Name'}</th>
+                                                                <th>{l s='Nom'}</th>
                                                                 <th>{l s='Options'}</th>
-                                                                <th>{l s='Unit Price (tax excl.)'}</th>
+                                                                <th>{l s='Prix unitaire (HT)'}</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -85,7 +85,7 @@
                                                                             {if isset($selected_adv_option) && isset($demand['adv_option'][$selected_adv_option]['price_tax_excl'])}{convertPrice price = $demand['adv_option'][$selected_adv_option]['price_tax_excl']|escape:'html':'UTF-8'}{else if isset($demand['adv_option']) && $demand['adv_option']}{convertPrice price = $demand['adv_option'][$demand['adv_option']|@key]['price_tax_excl']}{else}{convertPrice price = $demand['price_tax_excl']|escape:'html':'UTF-8'}{/if}
                                                                         </span>
                                                                         {if $demand['price_calc_method'] == HotelRoomTypeGlobalDemand::WK_PRICE_CALC_METHOD_EACH_DAY}
-                                                                            {l s='/ night'}
+                                                                            {l s='/ nuit'}
                                                                         {/if}
                                                                     </td>
                                                                 </tr>

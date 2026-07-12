@@ -29,13 +29,13 @@
             <div class="table-responsive form-group">
                 <table class="table table-striped">
                     <tr>
-                        <th>{l s='Room No.'}</th>
-                        <th>{l s='Room type.'}</th>
-                        <th>{l s='Duration'}</th>
-                        <th>{l s='Occupancy'}</th>
-                        <th>{l s='Confirmed booking order'}</th>
-                        <th>{l s='Reallocate/Swap'}</th>
-                        <th>{l s='Resolve'}</th>
+                        <th>{l s='N° de chambre'}</th>
+                        <th>{l s='Type de chambre.'}</th>
+                        <th>{l s='Durée'}</th>
+                        <th>{l s='Occupation'}</th>
+                        <th>{l s='Commande de réservation confirmée'}</th>
+                        <th>{l s='Réallocation/Échange'}</th>
+                        <th>{l s='Résoudre'}</th>
                     </tr>
                     {foreach from=$orderOverBookings item=data}
                         {if !$data.is_refunded}
@@ -43,22 +43,22 @@
                                 <td>{$data['room_num']}</td>
                                 <td>{$data['room_type_name']}</td>
                                 {assign var="is_full_date" value=($show_full_date && ($data['date_from']|date_format:'%D' == $data['date_to']|date_format:'%D'))}
-                                <td>{dateFormat date=$data['date_from'] full=$is_full_date} {l s='To'} {dateFormat date=$data['date_to'] full=$is_full_date}</td>
+                                <td>{dateFormat date=$data['date_from'] full=$is_full_date} {l s='Au'} {dateFormat date=$data['date_to'] full=$is_full_date}</td>
                                 <td>
                                     {if $order->with_occupancy && $data['children']}
                                         <div class="dropdown">
                                             <a  data-toggle="dropdown">
-                                                <span>{if $data['adults']}{$data['adults']}{/if} {if $data['adults'] > 1}{l s='Adults'}{else}{l s='Adult'}{/if}{if {$data['children']}}, {$data['children']} {if $data['children'] > 1}{l s='Children'}{else}{l s='Child'}{/if}{/if}</span>
+                                                <span>{if $data['adults']}{$data['adults']}{/if} {if $data['adults'] > 1}{l s='Adultes'}{else}{l s='Adulte'}{/if}{if {$data['children']}}, {$data['children']} {if $data['children'] > 1}{l s='Enfants'}{else}{l s='Enfant'}{/if}{/if}</span>
                                             </a>
                                             <div class="dropdown-menu well well-sm">
-                                                <label>{l s='Children Ages'}</label>
+                                                <label>{l s='Âges des enfants'}</label>
                                                 {if isset($data['child_ages']) && $data['child_ages']}
                                                     {foreach $data['child_ages'] as $childAge}
                                                         <p class="">
                                                             {if $childAge == 0}
                                                                 {l s='Child %s : Under 1'  sprintf=[$childAge@iteration]}
                                                             {else}
-                                                                {l s='Child %s : %s' sprintf=[$childAge@iteration, $childAge]} {if $childAge > 1}{l s='years'}{else}{l s='year'}{/if}
+                                                                {l s='Child %s : %s' sprintf=[$childAge@iteration, $childAge]} {if $childAge > 1}{l s='ans'}{else}{l s='an'}{/if}
                                                             {/if}
                                                         </p>
                                                     {/foreach}
@@ -66,7 +66,7 @@
                                             </div>
                                         </div>
                                     {else}
-                                        <span>{if $data['adults']}{$data['adults']}{/if} {if $data['adults'] > 1}{l s='Adults'}{else}{l s='Adult'}{/if}{if {$data['children']}}, {$data['children']} {if $data['children'] > 1}{l s='Children'}{else}{l s='Child'}{/if}{/if}</span>
+                                        <span>{if $data['adults']}{$data['adults']}{/if} {if $data['adults'] > 1}{l s='Adultes'}{else}{l s='Adulte'}{/if}{if {$data['children']}}, {$data['children']} {if $data['children'] > 1}{l s='Enfants'}{else}{l s='Enfant'}{/if}{/if}</span>
                                     {/if}
                                 </td>
                                 <td>
@@ -77,13 +77,13 @@
                                     {/if}
                                 </td>
                                 <td>
-                                    <a href="#" class="btn btn-default reallocate_overbooking" id_htl_booking="{$data['id']}"><i class="icon-refresh"></i> {l s='Reallocate/Swap Room'}</a>
+                                    <a href="#" class="btn btn-default reallocate_overbooking" id_htl_booking="{$data['id']}"><i class="icon-refresh"></i> {l s='Réallocation/Échange de chambre'}</a>
                                 </td>
                                 <td>
                                     {if isset($data['booked_room_info']) && $data['booked_room_info']}
-                                        <span class="badge badge-information">{l s='Already booked'}</span>
+                                        <span class="badge badge-information">{l s='Déjà réservé'}</span>
                                     {else}
-                                        <a href="{$link->getAdminLink('AdminOrders')|escape:'html':'UTF-8'}&amp;vieworder&amp;id_order={$data['id_order']}&amp;resolve_overbooking={$data['id']}" class="btn btn-default resolve_overbooking" id_htl_booking="{$data['id']}"><i class="icon-refresh"></i> {l s='Resolve'}</a>
+                                        <a href="{$link->getAdminLink('AdminOrders')|escape:'html':'UTF-8'}&amp;vieworder&amp;id_order={$data['id_order']}&amp;resolve_overbooking={$data['id']}" class="btn btn-default resolve_overbooking" id_htl_booking="{$data['id']}"><i class="icon-refresh"></i> {l s='Résoudre'}</a>
                                     {/if}
                                 </td>
                             </tr>
@@ -93,8 +93,8 @@
             </div>
 
             <div class="help-block">
-                <p>- {l s='You can resolve room overbooking with \'Resolve\' column only when the overbooked room is now free for booked duration.'}</p>
-                <p>- {l s='You can also reallocate an overbooked room with an available room to resolve room\'s overbooking.'}</p>
+                <p>- {l s='You can resolve room overbooking with &#039;Resolve&#039; column only when the overbooked room is now free for booked duration.'}</p>
+                <p>- {l s='You can also reallocate an overbooked room with an available room to resolve room&#039;s overbooking.'}</p>
             </div>
         </div>
     </div>

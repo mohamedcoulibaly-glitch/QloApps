@@ -25,7 +25,7 @@
         #{$id_cart_rule}
     </a>
 {else}
-    <a href="{$link->getAdminLink('AdminSlip')|escape:'html':'UTF-8'}&generateVoucher=1&id_order_slip={$row['id_order_slip']}" class="btn btn-default" title="{l s='Generate voucher for credit slip'}">
-        <i class="icon-refresh"></i> {l s='Generate Voucher'}
+    <a href="{$link->getAdminLink('AdminSlip')|escape:'html':'UTF-8'}&generateVoucher=1&id_order_slip={$row['id_order_slip']}" class="btn btn-default" title="{l s='Générer un bon pour l&#039;avoir'}">
+        <i class="icon-refresh"></i> {l s='Générer le bon'}
     </a>
 {/if}

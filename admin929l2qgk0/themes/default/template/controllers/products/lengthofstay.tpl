@@ -22,37 +22,37 @@
 
 {if isset($product->id)}
 	<div id="product-lengthofstay" class="panel product-tab">
-		<h3 class="tab"><i class="icon-calendar"></i> {l s='Length Of Stay'}</h3>
+		<h3 class="tab"><i class="icon-calendar"></i> {l s='Durée du séjour'}</h3>
 		<input type="hidden" name="submitted_tabs[]" value="LengthOfStay" />
 
 		<div class="panel-content">
 			<div class="alert alert-info">
-				{l s='Please read below important points regarding length of stay management'}
+				{l s='Veuillez lire ci-dessous les points importants concernant la gestion de la durée du séjour'}
 				<ul>
-					<li>{l s='Set 1 day for setting no limit on Minimum length of stay'}</li>
-					<li>{l s='Set 0 day for setting no limit on Maximum length of stay'}</li>
-					<li>{l s='Enable "Length of stay for date ranges" for setting values of \"Minimum length of stay\" and \"Maximum length of stay\" according to different date ranges'}</li>
-					<li>{l s='Length of stays (minimum|maximum) of all the dates which does not fall under the date ranges of \"Length of stay for date ranges\", will be taken from the global values of length of stays of this room type.'}</li>
-					<li>{l s='\"Date to\" will not be included in the date range of \"Length of stay for date ranges\".'}</li>
+					<li>{l s='Mettez 1 jour pour ne pas limiter la durée minimale du séjour'}</li>
+					<li>{l s='Mettez 0 jour pour ne pas limiter la durée maximale du séjour'}</li>
+				<li>{l s='Activez « Durée du séjour pour les plages de dates » pour définir les valeurs de « Durée minimale du séjour » et « Durée maximale du séjour » selon différentes plages de dates'}</li>
+				<li>{l s='Les durées de séjour (minimale|maximale) de toutes les dates qui ne tombent pas dans les plages de dates de « Durée du séjour pour les plages de dates » seront prises aux valeurs globales de durée de séjour de ce type de chambre.'}</li>
+				<li>{l s='La « date de fin » ne sera pas incluse dans la plage de dates de « Durée du séjour pour les plages de dates ».'}</li>
 				</ul>
 			</div>
 
 			<div class="form-group">
 				<label class="control-label col-sm-3 required" for="min_los">
-					<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Enter minimum length of stay for the hotel. set 1 day for setting no limit on minimum length of stay.'}">{l s='Minimum length of stay'}</span>
+					<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Entrez la durée minimale du séjour pour l&#039;hôtel. Mettez 1 jour pour ne pas limiter la durée minimale.'}">{l s='Durée minimale du séjour'}</span>
 				</label>
                 <div class="col-sm-9">
                     <div class="row">
                         <div class="col-md-4 col-lg-3">
                             <div class="input-group">
                                 <input type="text" id="min_los" name="min_los" value="{if isset($smarty.post.min_los)}{$smarty.post.min_los|escape:'html':'UTF-8'}{elseif isset($roomTypeInfo['min_los']) && $roomTypeInfo['min_los']}{$roomTypeInfo['min_los']|escape:'html':'UTF-8'}{else}1{/if}">
-                                <span class="input-group-addon">{l s='Day(s)'}</span>
+                                <span class="input-group-addon">{l s='Jour(s)'}</span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <p class="help-block">{l s='Set 1 for no limit'}</p>
+                            <p class="help-block">{l s='Mettez 1 pour pas de limite'}</p>
                         </div>
                     </div>
                 </div>
@@ -60,20 +60,20 @@
 
 			<div class="form-group">
 				<label class="control-label col-sm-3 required" for="max_los">
-					<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Enter maximum length of stay for the hotel. set 0 day for setting no limit on maximum length of stay.'}">{l s='Maximum length of stay'}</span>
+					<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Entrez la durée maximale du séjour pour l&#039;hôtel. Mettez 0 jour pour ne pas limiter la durée maximale.'}">{l s='Durée maximale du séjour'}</span>
 				</label>
                 <div class="col-sm-9">
                     <div class="row">
                         <div class="col-md-4 col-lg-3">
                             <div class="input-group">
                                 <input type="text" id="max_los" name="max_los" value="{if isset($smarty.post.max_los)}{$smarty.post.max_los|escape:'html':'UTF-8'}{elseif isset($roomTypeInfo['max_los'])}{$roomTypeInfo['max_los']|escape:'html':'UTF-8'}{else}0{/if}">
-                                <span class="input-group-addon">{l s='Day(s)'}</span>
+                                <span class="input-group-addon">{l s='Jour(s)'}</span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <p class="help-block">{l s='Set 0 for no limit'}</p>
+                            <p class="help-block">{l s='Mettez 0 pour pas de limite'}</p>
                         </div>
                     </div>
                 </div>
@@ -82,15 +82,15 @@
 
 		<div class="form-group">
 			<label for="active_restriction_dates" class="control-label col-sm-3">
-				<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Enable, if you want set minimum|maximum length of stay according to different date ranges.'}">{l s='Length of stay for date ranges'}</span>
+				<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Activez si vous souhaitez définir la durée minimale|maximale du séjour selon différentes plages de dates.'}">{l s='Durée du séjour pour les plages de dates'}</span>
 			</label>
 			<div class="col-sm-9">
 				<span class="switch prestashop-switch fixed-width-lg">
 					<input type="radio" value="1" id="active_restriction_dates_on" name="active_restriction_dates" {if isset($smarty.post.active_restriction_dates) && $smarty.post.active_restriction_dates}checked="checked"{elseif isset($roomTypeInfo['restrictionDataRange']) && $roomTypeInfo['restrictionDataRange']}checked="checked"{/if}>
-					<label for="active_restriction_dates_on">{l s='Yes'}</label>
+					<label for="active_restriction_dates_on">{l s='Oui'}</label>
 
 					<input type="radio" value="0" id="active_restriction_dates_off" name="active_restriction_dates" {if isset($smarty.post.active_restriction_dates)}{if !$smarty.post.active_restriction_dates}checked="checked"{/if}{elseif isset($roomTypeInfo['restrictionDataRange'])}{if  !$roomTypeInfo['restrictionDataRange']}checked="checked"{/if}{else}checked="checked"{/if}>
-					<label for="active_restriction_dates_off">{l s='No'}</label>
+					<label for="active_restriction_dates_off">{l s='Non'}</label>
 
 					<a class="slide-button btn"></a>
 				</span>
@@ -100,16 +100,16 @@
 		<div id="restriction_dates_container" class="form-group table-responsive" {if isset($smarty.post.active_restriction_dates)}{if !$smarty.post.active_restriction_dates}style="display:none;"{/if}{elseif isset($roomTypeInfo['restrictionDataRange'])}{if !$roomTypeInfo['restrictionDataRange']}style="display:none;"{/if}{/if}>
 			<table id="restriction_dates_table" class="table table-striped">
 				<thead>
-					<th>{l s='Date From'}</th>
-					<th>{l s='Date To'}</th>
+					<th>{l s='Date de début'}</th>
+					<th>{l s='Date de fin'}</th>
                     <th>
                         <label class="control-label">
-                            <span class="label-tooltip" data-toggle="tooltip" data-original-title="{l s='Set 1 for no limit.'}">{l s='Minimum length of stay'}</span>
+                            <span class="label-tooltip" data-toggle="tooltip" data-original-title="{l s='Mettez 1 pour pas de limite.'}">{l s='Durée minimale du séjour'}</span>
                         </label>
                     </th>
                     <th>
                         <label class="control-label">
-                            <span class="label-tooltip" data-toggle="tooltip" data-original-title="{l s='Set 0 for no limit.'}">{l s='Maximum length of stay'}</span>
+                            <span class="label-tooltip" data-toggle="tooltip" data-original-title="{l s='Mettez 0 pour pas de limite.'}">{l s='Durée maximale du séjour'}</span>
                         </label>
                     </th>
 					<th></th>
@@ -149,13 +149,13 @@
 							<td>
 								<div class="input-group">
 									<input class="form-control" type="text" name="restriction_min_los[]" value="{$restrictionInfo['min_los']}">
-									<span class="input-group-addon">{l s='day(s)'}</span>
+									<span class="input-group-addon">{l s='jour(s)'}</span>
 								</div>
 							</td>
 							<td>
 								<div class="input-group">
 									<input class="form-control" type="text" name="restriction_max_los[]" value="{$restrictionInfo['max_los']}">
-									<span class="input-group-addon">{l s='day(s)'}</span>
+									<span class="input-group-addon">{l s='jour(s)'}</span>
 								</div>
 							</td>
 							<td>
@@ -170,7 +170,7 @@
 			</table>
 			<div class="row">
 				<div class="col-sm-12">
-					<a href="#" id="add_los_restriction" class="btn btn-default"><i class="icon icon-plus"></i> {l s='Add more length of stays'}</a>
+					<a href="#" id="add_los_restriction" class="btn btn-default"><i class="icon icon-plus"></i> {l s='Ajouter plus de durées de séjour'}</a>
 				</div>
 			</div>
 		</div>
@@ -178,15 +178,15 @@
 		<div class="panel-footer">
 			<a href="{$link->getAdminLink('AdminProducts')|escape:'html':'UTF-8'}{if isset($smarty.request.page) && $smarty.request.page > 1}&amp;submitFilterproduct={$smarty.request.page|intval}{/if}" class="btn btn-default">
 				<i class="process-icon-cancel"></i>
-				{l s='Cancel'}
+				{l s='Annuler'}
 			</a>
 			<button type="submit" name="submitAddproduct" class="btn btn-default pull-right" disabled="disabled">
 				<i class="process-icon-loading"></i>
-				{l s='Save'}
+				{l s='Enregistrer'}
 			</button>
 			<button type="submit" name="submitAddproductAndStay" class="btn btn-default pull-right"  disabled="disabled">
 				<i class="process-icon-loading"></i>
-					{l s='Save and stay'}
+					{l s='Enregistrer et rester'}
 			</button>
 		</div>
 	</div>
@@ -195,7 +195,7 @@
 <script>
 	var days_txt = "{l s='day(s)' js=1}";
 	var adminProductLink = "{$link->getAdminlink('AdminProducts')}";
-	var someErrorText = "{l s='Something went wrong. Please try again.' js=1}";
+	var someErrorText = "{l s='Une erreur s&#039;est produite. Veuillez réessayer.' js=1}";
 
 	// console.log($.datepicker.parseDate( "dd-mm-yy", "15-06-2022" ));
 

@@ -25,9 +25,9 @@
 <script>
     var dashboard_ajax_url = '{$link->getAdminLink('AdminDashboard')}';
     var adminstats_ajax_url = '{$link->getAdminLink('AdminStats')}';
-    var no_results_translation = '{l s='No result' js=1}';
+    var no_results_translation = '{l s='Aucun résultat' js=1}';
     var dashboard_use_push = '{$dashboard_use_push|intval}';
-    var read_more = '{l s='Read more' js=1}';
+    var read_more = '{l s='En savoir plus' js=1}';
 </script>
 
 <div id="dashboard">
@@ -46,22 +46,22 @@
                             <div class="btn-toolbar">
                                 <div class="btn-group input-group">
                                     <button type="button" name="submitDateDay" class="btn btn-default submitDateDay{if (!isset($preselect_date_range) || !$preselect_date_range) || (isset($preselect_date_range) && $preselect_date_range == 'day')} active{/if}">
-                                        {l s='Day'}
+                                        {l s='Jour'}
                                     </button>
                                     <button type="button" name="submitDateMonth" class="btn btn-default submitDateMonth {if isset($preselect_date_range) && $preselect_date_range == 'month'}active{/if}">
-                                        {l s='Month'}
+                                        {l s='Mois'}
                                     </button>
                                     <button type="button" name="submitDateYear" class="btn btn-default submitDateYear{if isset($preselect_date_range) && $preselect_date_range == 'year'} active{/if}">
-                                        {l s='Year'}
+                                        {l s='Année'}
                                     </button>
                                     <button type="button" name="submitDateDayPrev" class="btn btn-default submitDateDayPrev{if isset($preselect_date_range) && $preselect_date_range == 'prev-day'} active{/if}">
-                                        {l s='Day'}-1
+                                        {l s='Jour'}-1
                                     </button>
                                     <button type="button" name="submitDateMonthPrev" class="btn btn-default submitDateMonthPrev{if isset($preselect_date_range) && $preselect_date_range == 'prev-month'} active{/if}">
-                                        {l s='Month'}-1
+                                        {l s='Mois'}-1
                                     </button>
                                     <button type="button" name="submitDateYearPrev" class="btn btn-default submitDateYearPrev{if isset($preselect_date_range) && $preselect_date_range == 'prev-year'} active{/if}">
-                                        {l s='Year'}-1
+                                        {l s='Année'}-1
                                     </button>
                                 </div>
                                 <input type="hidden" name="datepickerFrom" id="datepickerFrom" value="{$date_from|escape}" class="form-control">
@@ -71,9 +71,9 @@
                                     <button id="datepickerExpand" class="btn btn-default" type="button">
                                         <i class="icon-calendar-empty"></i>
                                         <span class="hidden-xs">
-                                            {l s='From'}
+                                            {l s='Du'}
                                             <strong class="text-info" id="datepicker-from-info">{dateFormat date=$date_from}</strong>
-                                            {l s='To'}
+                                            {l s='Au'}
                                             <strong class="text-info" id="datepicker-to-info">{dateFormat date=$date_to}</strong>
                                             <strong class="text-info" id="datepicker-diff-info"></strong>
                                         </span>
@@ -102,7 +102,7 @@
             </div>
         </div>
     </div>
-	{include file='recomended-banner.tpl'}
+	{include file='recommended-banner.tpl'}
 	<div class="row" id="recommendation-wrapper" style="display:none">
 	</div>
     <div class="row">
@@ -126,22 +126,22 @@
 				{/if}
                 <div class="col-sm-12">
                     <section class="dash_links widget panel">
-                        <h3><i class="icon-link"></i> {l s="Help Center"}</h3>
+                        <h3><i class="icon-link"></i> {l s="Centre d'aide"}</h3>
                             <dl>
-                                <dt><a href="https://docs.qloapps.com/" class="_blank">{l s="Official Documentation"}</a></dt>
-                                <dd>{l s="QloApps User Guide"}</dd>
+                                <dt><a href="https://docs.qloapps.com/" class="_blank">{l s="Documentation officielle"}</a></dt>
+                                <dd>{l s="Guide utilisateur QloApps"}</dd>
                             </dl>
                             <dl>
-                                <dt><a href="https://forums.qloapps.com/" class="_blank">{l s="QloApps Forum"}</a></dt>
-                                <dd>{l s="Connect with the QloApps community"}</dd>
+                                <dt><a href="https://forums.qloapps.com/" class="_blank">{l s="Forum QloApps"}</a></dt>
+                                <dd>{l s="Connectez-vous avec la communauté QloApps"}</dd>
                             </dl>
                             <dl>
-                                <dt><a href="https://qloapps.com/addons/" class="_blank">{l s="QloApps Addons"}</a></dt>
-                                <dd>{l s="Enhance your store QloApps modules"}</dd>
+                                <dt><a href="https://qloapps.com/addons/" class="_blank">{l s="Modules QloApps"}</a></dt>
+                                <dd>{l s="Modules pour améliorer votre boutique QloApps"}</dd>
                             </dl>
                             <dl>
-                                <dt><a href="https://qloapps.com/contact/" class="_blank">{l s="Contact Us!"}</a></dt>
-                                <dd>{l s="Contact us for any help"}</dd>
+                                <dt><a href="https://qloapps.com/contact/" class="_blank">{l s="Contactez-nous !"}</a></dt>
+                                <dd>{l s="Contactez-nous pour toute assistance"}</dd>
                             </dl>
                     </section>
                 </div>

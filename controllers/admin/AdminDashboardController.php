@@ -45,6 +45,11 @@ class AdminDashboardControllerCore extends AdminController
     {
         parent::setMedia();
 
+        if ($this->isReceptionProfile()) {
+            $this->addCSS(__PS_BASE_URI__.$this->admin_webpath.'/themes/'.$this->bo_theme.'/css/reception-modern.css');
+            return;
+        }
+
         $this->addJqueryUI('ui.datepicker');
         $this->addJS(array(
             _PS_JS_DIR_.'vendor/d3.v3.min.js',
@@ -56,6 +61,13 @@ class AdminDashboardControllerCore extends AdminController
 
     public function initPageHeaderToolbar()
     {
+        if ($this->isReceptionProfile()) {
+            $this->page_header_toolbar_title = $this->l('Accueil réception');
+            parent::initPageHeaderToolbar();
+            array_pop($this->meta_title);
+            return;
+        }
+
         $this->page_header_toolbar_title = $this->l('Dashboard');
         $this->page_header_toolbar_btn['switch_demo'] = array(
             'desc' => $this->l('Demo mode', null, null, false),
@@ -164,6 +176,10 @@ class AdminDashboardControllerCore extends AdminController
 
     public function renderView()
     {
+        if ($this->isReceptionProfile()) {
+            return $this->renderReceptionView();
+        }
+
         if (Tools::isSubmit('profitability_conf')) {
             return parent::renderOptions();
         }
@@ -294,6 +310,11 @@ class AdminDashboardControllerCore extends AdminController
 
     public function postProcess()
     {
+        if ($this->isReceptionProfile()) {
+            parent::postProcess();
+            return;
+        }
+
         if (Tools::isSubmit('submitDateRange')) {
             if (!Validate::isDate(Tools::getValue('date_from')) && !Validate::isDate(Tools::getValue('date_to'))) {
                 $this->errors[] = Tools::displayError('The selected date range is not valid.');
@@ -346,6 +367,186 @@ class AdminDashboardControllerCore extends AdminController
         }
 
         parent::postProcess();
+    }
+
+    public function ajaxProcessReceptionSearch()
+    {
+        header('Content-Type: application/json');
+
+        if (!$this->isReceptionProfile()) {
+            $this->ajaxDie(Tools::jsonEncode(array(
+                'success' => false,
+                'message' => $this->l('Access denied.'),
+            )));
+        }
+
+        $query = trim((string)Tools::getValue('reception_search'));
+        $this->ajaxDie(Tools::jsonEncode(array(
+            'success' => true,
+            'query' => $query,
+            'results' => $query !== '' ? $this->searchReceptionBookings($query) : array(),
+            'status_map' => $this->getReceptionStatusMap(),
+            'status_alloted' => HotelBookingDetail::STATUS_ALLOTED,
+            'status_checked_in' => HotelBookingDetail::STATUS_CHECKED_IN,
+            'status_checked_out' => HotelBookingDetail::STATUS_CHECKED_OUT,
+        )));
+    }
+
+    protected function renderReceptionView()
+    {
+        $today = date('Y-m-d');
+        $query = trim((string)Tools::getValue('reception_search'));
+
+        $this->base_tpl_view = 'reception.tpl';
+        $this->tpl_view_vars = array(
+            'today' => $today,
+            'search_query' => $query,
+            'arrivals' => $this->getReceptionBookings('arrivals', $today),
+            'departures' => $this->getReceptionBookings('departures', $today),
+            'in_house' => $this->getReceptionBookings('in_house', $today),
+            'search_results' => $query !== '' ? $this->searchReceptionBookings($query) : array(),
+            'status_map' => $this->getReceptionStatusMap(),
+            'status_alloted' => HotelBookingDetail::STATUS_ALLOTED,
+            'status_checked_in' => HotelBookingDetail::STATUS_CHECKED_IN,
+            'status_checked_out' => HotelBookingDetail::STATUS_CHECKED_OUT,
+            'dashboard_link' => $this->context->link->getAdminLink('AdminDashboard'),
+            'reception_search_ajax_url' => $this->context->link->getAdminLink('AdminDashboard').'&ajax=1&action=receptionSearch',
+            'orders_link' => $this->context->link->getAdminLink('AdminOrders'),
+            'rooms_link' => $this->context->link->getAdminLink('AdminHotelRoomsBooking'),
+        );
+
+        return parent::renderView();
+    }
+
+    protected function isReceptionProfile()
+    {
+        if (!$this->context->employee || !$this->context->employee->id_profile) {
+            return false;
+        }
+
+        $profileName = Db::getInstance()->getValue('
+            SELECT `name`
+            FROM `'._DB_PREFIX_.'profile_lang`
+            WHERE `id_profile` = '.(int)$this->context->employee->id_profile.'
+                AND `id_lang` = '.(int)$this->context->language->id
+        );
+
+        if (!$profileName) {
+            return false;
+        }
+
+        $normalized = Tools::strtolower(Tools::replaceAccentedChars($profileName));
+        return in_array($normalized, array('reception', 'rception'));
+    }
+
+    protected function getReceptionStatusMap()
+    {
+        return array(
+            HotelBookingDetail::STATUS_ALLOTED => array(
+                'label' => $this->l('Attribué - à enregistrer'),
+                'hint' => $this->l('Chambre attribuée. Le client n\'est pas encore enregistré.'),
+                'class' => 'status-assigned',
+            ),
+            HotelBookingDetail::STATUS_CHECKED_IN => array(
+                'label' => $this->l('Enregistré - en séjour'),
+                'hint' => $this->l('Le client est actuellement en séjour.'),
+                'class' => 'status-in-house',
+            ),
+            HotelBookingDetail::STATUS_CHECKED_OUT => array(
+                'label' => $this->l('Vérifié - départ fait'),
+                'hint' => $this->l('Le séjour est clôturé pour cette réservation.'),
+                'class' => 'status-checked-out',
+            ),
+        );
+    }
+
+    protected function getReceptionBookings($type, $date)
+    {
+        if (!$this->hasTable('htl_booking_detail')) {
+            return array();
+        }
+
+        $where = 'hbd.`is_refunded` = 0 AND hbd.`is_cancelled` = 0';
+        if ($type == 'arrivals') {
+            $where .= ' AND DATE(hbd.`date_from`) = \''.pSQL($date).'\'
+                AND hbd.`id_status` = '.(int)HotelBookingDetail::STATUS_ALLOTED;
+        } elseif ($type == 'departures') {
+            $where .= ' AND DATE(hbd.`date_to`) = \''.pSQL($date).'\'
+                AND hbd.`id_status` IN ('.(int)HotelBookingDetail::STATUS_CHECKED_IN.', '.(int)HotelBookingDetail::STATUS_CHECKED_OUT.')';
+        } else {
+            $where .= ' AND DATE(hbd.`date_from`) <= \''.pSQL($date).'\'
+                AND DATE(hbd.`date_to`) > \''.pSQL($date).'\'
+                AND hbd.`id_status` = '.(int)HotelBookingDetail::STATUS_CHECKED_IN;
+        }
+
+        return $this->getReceptionBookingRows($where, 10);
+    }
+
+    protected function searchReceptionBookings($query)
+    {
+        if (!$this->hasTable('htl_booking_detail')) {
+            return array();
+        }
+
+        $like = pSQL('%'.$query.'%');
+        $where = 'hbd.`is_refunded` = 0 AND hbd.`is_cancelled` = 0 AND (
+            hbd.`id_order` = '.(int)$query.'
+            OR hbd.`room_num` LIKE \''.$like.'\'
+            OR hbd.`hotel_name` LIKE \''.$like.'\'
+            OR hbd.`room_type_name` LIKE \''.$like.'\'
+            OR hbd.`email` LIKE \''.$like.'\'
+            OR c.`firstname` LIKE \''.$like.'\'
+            OR c.`lastname` LIKE \''.$like.'\'
+            OR CONCAT(c.`firstname`, \' \', c.`lastname`) LIKE \''.$like.'\'
+        )';
+
+        return $this->getReceptionBookingRows($where, 12);
+    }
+
+    protected function getReceptionBookingRows($where, $limit)
+    {
+        $hotelAccessJoin = '';
+        $hotelAccessWhere = '';
+        if ($this->hasTable('htl_access')) {
+            $hotelAccessJoin = 'LEFT JOIN `'._DB_PREFIX_.'htl_access` ha
+                ON (ha.`id_hotel` = hbd.`id_hotel` AND ha.`id_profile` = '.(int)$this->context->employee->id_profile.')';
+            $hotelAccessWhere = ' AND (ha.`access` = 1 OR ha.`access` IS NULL)';
+        }
+
+        $rows = Db::getInstance()->executeS('
+            SELECT
+                hbd.`id`,
+                hbd.`id_order`,
+                hbd.`id_status`,
+                hbd.`date_from`,
+                hbd.`date_to`,
+                hbd.`check_in`,
+                hbd.`check_out`,
+                hbd.`hotel_name`,
+                hbd.`room_type_name`,
+                hbd.`room_num`,
+                hbd.`adults`,
+                hbd.`children`,
+                c.`firstname`,
+                c.`lastname`
+            FROM `'._DB_PREFIX_.'htl_booking_detail` hbd
+            LEFT JOIN `'._DB_PREFIX_.'customer` c ON (c.`id_customer` = hbd.`id_customer`)
+            '.$hotelAccessJoin.'
+            WHERE '.$where.$hotelAccessWhere.'
+            ORDER BY hbd.`date_from` ASC, hbd.`room_num` ASC
+            LIMIT '.(int)$limit
+        );
+
+        foreach ($rows as &$row) {
+            $row['order_url'] = $this->context->link->getAdminLink('AdminOrders').'&id_order='.(int)$row['id_order'].'&vieworder';
+        }
+
+        return $rows;
+    }
+
+    protected function hasTable($table)
+    {
+        return (bool)Db::getInstance()->executeS("SHOW TABLES LIKE '"._DB_PREFIX_.pSQL($table)."'");
     }
 
     protected function getWarningDomainName()

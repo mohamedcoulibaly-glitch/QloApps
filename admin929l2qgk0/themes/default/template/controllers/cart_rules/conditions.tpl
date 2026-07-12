@@ -1,8 +1,8 @@
 <div class="form-group">
 	<label class="control-label col-lg-3">
 		<span class="label-tooltip" data-toggle="tooltip"
-			title="{l s='Optional: The cart rule will be available to everyone if you leave this field blank.'}">
-			{l s='Limit to a single customer'}
+			title="{l s='Optionnel : La règle de panier sera disponible pour tout le monde si vous laissez ce champ vide.'}">
+			{l s='Limiter à un seul client'}
 		</span>
 	</label>
 	<div class="col-lg-9">
@@ -18,15 +18,15 @@
 <div class="form-group">
 	<label class="control-label col-lg-3">
 		<span class="label-tooltip" data-toggle="tooltip"
-			title="{l s='The default period is one month.'}">
-			{l s='Valid'}
+			title="{l s='La période par défaut est d&#039;un mois.'}">
+			{l s='Valide'}
 		</span>
 	</label>
 	<div class="col-lg-9">
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="input-group">
-					<span class="input-group-addon">{l s='From'}</span>
+					<span class="input-group-addon">{l s='De'}</span>
 					<input type="text" class="datepicker input-medium" name="date_from"
 					value="{if $currentTab->getFieldValue($currentObject, 'date_from')}{$currentTab->getFieldValue($currentObject, 'date_from')|escape}{else}{$defaultDateFrom}{/if}" />
 					<span class="input-group-addon"><i class="icon-calendar-empty"></i></span>
@@ -34,7 +34,7 @@
 			</div>
 			<div class="col-lg-6">
 				<div class="input-group">
-					<span class="input-group-addon">{l s='To'}</span>
+					<span class="input-group-addon">{l s='À'}</span>
 					<input type="text" class="datepicker input-medium" name="date_to"
 					value="{if $currentTab->getFieldValue($currentObject, 'date_to')}{$currentTab->getFieldValue($currentObject, 'date_to')|escape}{else}{$defaultDateTo}{/if}" />
 					<span class="input-group-addon"><i class="icon-calendar-empty"></i></span>
@@ -47,8 +47,8 @@
 <div class="form-group">
 	<label class="control-label col-lg-3">
 		<span class="label-tooltip" data-toggle="tooltip"
-			title="{l s='You can choose a minimum amount for the cart either with or without the taxes.'}">
-			{l s='Minimum amount'}
+			title="{l s='Vous pouvez choisir un montant minimum pour le panier avec ou sans les taxes.'}">
+			{l s='Montant minimum'}
 		</span>
 	</label>
 	<div class="col-lg-9">
@@ -72,15 +72,15 @@
 			</div>
 			<div class="col-lg-4">
 				<select name="minimum_amount_tax">
-					<option value="0" {if $currentTab->getFieldValue($currentObject, 'minimum_amount_tax') == 0}selected="selected"{/if}>{l s='Tax excluded'}</option>
-					<option value="1" {if $currentTab->getFieldValue($currentObject, 'minimum_amount_tax') == 1}selected="selected"{/if}>{l s='Tax included'}</option>
+					<option value="0" {if $currentTab->getFieldValue($currentObject, 'minimum_amount_tax') == 0}selected="selected"{/if}>{l s='HT'}</option>
+					<option value="1" {if $currentTab->getFieldValue($currentObject, 'minimum_amount_tax') == 1}selected="selected"{/if}>{l s='TTC'}</option>
 				</select>
 			</div>
 			<input type="hidden" name="minimum_amount_shipping" value="0">
 			{* <div class="col-lg-4">
 				<select name="minimum_amount_shipping">
-					<option value="0" {if $currentTab->getFieldValue($currentObject, 'minimum_amount_shipping') == 0}selected="selected"{/if}>{l s='Shipping excluded'}</option>
-					<option value="1" {if $currentTab->getFieldValue($currentObject, 'minimum_amount_shipping') == 1}selected="selected"{/if}>{l s='Shipping included'}</option>
+					<option value="0" {if $currentTab->getFieldValue($currentObject, 'minimum_amount_shipping') == 0}selected="selected"{/if}>{l s='Livraison excluse'}</option>
+					<option value="1" {if $currentTab->getFieldValue($currentObject, 'minimum_amount_shipping') == 1}selected="selected"{/if}>{l s='Livraison incluse'}</option>
 				</select>
 			</div> *}
 		</div>
@@ -90,8 +90,8 @@
 <div class="form-group">
 	<label class="control-label col-lg-3">
 		<span class="label-tooltip" data-toggle="tooltip"
-			title="{l s='The cart rule will be applied to the first "X" customers only.'}">
-			{l s='Total available'}
+			title="{l s='La règle de panier sera appliquée uniquement aux premiers « X » clients.'}">
+			{l s='Total disponible'}
 		</span>
 	</label>
 	<div class="col-lg-9">
@@ -102,8 +102,8 @@
 <div class="form-group">
 	<label class="control-label col-lg-3">
 		<span class="label-tooltip" data-toggle="tooltip"
-			title="{l s='A customer will only be able to use the cart rule "X" time(s).'}">
-			{l s='Total available for each user'}
+			title="{l s='Un client ne pourra utiliser la règle de panier que « X » fois.'}">
+			{l s='Total disponible par utilisateur'}
 		</span>
 	</label>
 	<div class="col-lg-9">
@@ -122,7 +122,7 @@
 			<p class="checkbox">
 				<label>
 					<input type="checkbox" id="country_restriction" name="country_restriction" value="1" {if $countries.unselected|@count}checked="checked"{/if} />
-					{l s='Country selection'}
+					{l s='Sélection du pays'}
 				</label>
 			</p>
 			<div id="country_restriction_div">
@@ -130,22 +130,22 @@
 				<table class="table">
 					<tr>
 						<td>
-							<p>{l s='Unselected countries'}</p>
+							<p>{l s='Pays non sélectionnés'}</p>
 							<select id="country_select_1" multiple>
 								{foreach from=$countries.unselected item='country'}
 									<option value="{$country.id_country|intval}">&nbsp;{$country.name|escape}</option>
 								{/foreach}
 							</select>
-							<a id="country_select_add" class="btn  btn-default btn-block clearfix">{l s='Add'} <i class="icon-arrow-right"></i></a>
+							<a id="country_select_add" class="btn  btn-default btn-block clearfix">{l s='Ajouter'} <i class="icon-arrow-right"></i></a>
 						</td>
 						<td>
-							<p>{l s='Selected countries'}</p>
+							<p>{l s='Pays sélectionnés'}</p>
 							<select name="country_select[]" id="country_select_2" class="input-large" multiple>
 								{foreach from=$countries.selected item='country'}
 									<option value="{$country.id_country|intval}">&nbsp;{$country.name|escape}</option>
 								{/foreach}
 							</select>
-							<a id="country_select_remove" class="btn btn-default btn-block clearfix"><i class="icon-arrow-left"></i> {l s='Remove'} </a>
+							<a id="country_select_remove" class="btn btn-default btn-block clearfix"><i class="icon-arrow-left"></i> {l s='Retirer'} </a>
 						</td>
 					</tr>
 				</table>
@@ -156,7 +156,7 @@
 			<p class="checkbox hidden">
 				<label>
 					<input type="checkbox" id="carrier_restriction" name="carrier_restriction" value="1" {if $carriers.unselected|@count}checked="checked"{/if} />
-					{l s='Carrier selection'}
+					{l s='Sélection du transporteur'}
 				</label>
 			</p>
 			<div id="carrier_restriction_div">
@@ -164,22 +164,22 @@
 				<table class="table">
 					<tr>
 						<td>
-							<p>{l s='Unselected carriers'}</p>
+							<p>{l s='Transporteurs non sélectionnés'}</p>
 							<select id="carrier_select_1" class="input-large" multiple>
 								{foreach from=$carriers.unselected item='carrier'}
 									<option value="{$carrier.id_reference|intval}">&nbsp;{$carrier.name|escape}</option>
 								{/foreach}
 							</select>
-							<a id="carrier_select_add" class="btn btn-default btn-block clearfix" >{l s='Add'} <i class="icon-arrow-right"></i></a>
+							<a id="carrier_select_add" class="btn btn-default btn-block clearfix" >{l s='Ajouter'} <i class="icon-arrow-right"></i></a>
 						</td>
 						<td>
-							<p>{l s='Selected carriers'}</p>
+							<p>{l s='Transporteurs sélectionnés'}</p>
 							<select name="carrier_select[]" id="carrier_select_2" class="input-large" multiple>
 								{foreach from=$carriers.selected item='carrier'}
 									<option value="{$carrier.id_reference|intval}">&nbsp;{$carrier.name|escape}</option>
 								{/foreach}
 							</select>
-							<a id="carrier_select_remove" class="btn btn-default btn-block clearfix"><i class="icon-arrow-left"></i> {l s='Remove'} </a>
+							<a id="carrier_select_remove" class="btn btn-default btn-block clearfix"><i class="icon-arrow-left"></i> {l s='Retirer'} </a>
 						</td>
 					</tr>
 				</table>
@@ -190,7 +190,7 @@
 			<p class="checkbox">
 				<label>
 					<input type="checkbox" id="group_restriction" name="group_restriction" value="1" {if $groups.unselected|@count}checked="checked"{/if} />
-					{l s='Customer group selection'}
+					{l s='Sélection du groupe de clients'}
 				</label>
 			</p>
 			<div id="group_restriction_div">
@@ -198,22 +198,22 @@
 				<table class="table">
 					<tr>
 						<td>
-							<p>{l s='Unselected groups'}</p>
+							<p>{l s='Groupes non sélectionnés'}</p>
 							<select id="group_select_1" class="input-large" multiple>
 								{foreach from=$groups.unselected item='group'}
 									<option value="{$group.id_group|intval}">&nbsp;{$group.name|escape}</option>
 								{/foreach}
 							</select>
-							<a id="group_select_add" class="btn btn-default btn-block clearfix" >{l s='Add'} <i class="icon-arrow-right"></i></a>
+							<a id="group_select_add" class="btn btn-default btn-block clearfix" >{l s='Ajouter'} <i class="icon-arrow-right"></i></a>
 						</td>
 						<td>
-							<p>{l s='Selected groups'}</p>
+							<p>{l s='Groupes sélectionnés'}</p>
 							<select name="group_select[]" class="input-large" id="group_select_2" multiple>
 								{foreach from=$groups.selected item='group'}
 									<option value="{$group.id_group|intval}">&nbsp;{$group.name|escape}</option>
 								{/foreach}
 							</select>
-							<a id="group_select_remove" class="btn btn-default btn-block clearfix" ><i class="icon-arrow-left"></i> {l s='Remove'}</a>
+							<a id="group_select_remove" class="btn btn-default btn-block clearfix" ><i class="icon-arrow-left"></i> {l s='Retirer'}</a>
 						</td>
 					</tr>
 				</table>
@@ -224,7 +224,7 @@
 			<p class="checkbox">
 				<label>
 					<input type="checkbox" id="cart_rule_restriction" name="cart_rule_restriction" value="1" {if $cart_rules.unselected|@count}checked="checked"{/if} />
-					{l s='Compatibility with other cart rules'}
+					{l s='Compatibilité avec les autres règles de panier'}
 				</label>
 			</p>
 			<div id="cart_rule_restriction_div">
@@ -232,20 +232,20 @@
 				<table  class="table">
 					<tr>
 						<td>
-							<p>{l s='Uncombinable cart rules'}</p>
-							<input id="cart_rule_select_1_filter" autocomplete="off" class="form-control uncombinable_search_filter" type="text" name="uncombinable_filter" placeholder="{l s='Search'}" value="">
+							<p>{l s='Règles de panier non combinables'}</p>
+							<input id="cart_rule_select_1_filter" autocomplete="off" class="form-control uncombinable_search_filter" type="text" name="uncombinable_filter" placeholder="{l s='Rechercher'}" value="">
 							<select id="cart_rule_select_1" class="jscroll" multiple="">
 							</select>
-							<a class="jscroll-next btn btn-default btn-block clearfix" href="">{l s='Next'}</a>
-							<a id="cart_rule_select_add" class="btn btn-default btn-block clearfix">{l s='Add'} <i class="icon-arrow-right"></i></a>
+							<a class="jscroll-next btn btn-default btn-block clearfix" href="">{l s='Suivant'}</a>
+							<a id="cart_rule_select_add" class="btn btn-default btn-block clearfix">{l s='Ajouter'} <i class="icon-arrow-right"></i></a>
 						</td>
 						<td>
-							<p>{l s='Combinable cart rules'}</p>
-							<input id="cart_rule_select_2_filter" autocomplete="off" class="form-control combinable_search_filter" type="text" name="combinable_filter" placeholder="{l s='Search'}" value="">
+							<p>{l s='Règles de panier combinables'}</p>
+							<input id="cart_rule_select_2_filter" autocomplete="off" class="form-control combinable_search_filter" type="text" name="combinable_filter" placeholder="{l s='Rechercher'}" value="">
 							<select name="cart_rule_select[]" class="jscroll" id="cart_rule_select_2" multiple>
 							</select>
-							<a class="jscroll-next btn btn-default btn-block clearfix" href="">{l s='Next'}</a>
-							<a id="cart_rule_select_remove" class="btn btn-default btn-block clearfix" ><i class="icon-arrow-left"></i> {l s='Remove'}</a>
+							<a class="jscroll-next btn btn-default btn-block clearfix" href="">{l s='Suivant'}</a>
+							<a id="cart_rule_select_remove" class="btn btn-default btn-block clearfix" ><i class="icon-arrow-left"></i> {l s='Retirer'}</a>
 						</td>
 					</tr>
 				</table>
@@ -255,7 +255,7 @@
 			<p class="checkbox">
 				<label>
 					<input type="checkbox" id="product_restriction" name="product_restriction" value="1" {if $product_rule_groups|@count}checked="checked"{/if} />
-					{l s='Room Type selection'}
+					{l s='Sélection du type de chambre'}
 				</label>
 			</p>
 			<div id="product_restriction_div">
@@ -266,7 +266,7 @@
 					{/foreach}
 				</table>
 				<a href="javascript:addProductRuleGroup();" class="btn btn-default ">
-					<i class="icon-plus-sign"></i> {l s='Room Type selection'}
+					<i class="icon-plus-sign"></i> {l s='Sélection du type de chambre'}
 				</a>
 			</div>
 
@@ -274,7 +274,7 @@
 			<p class="checkbox">
 				<label>
 					<input type="checkbox" id="shop_restriction" name="shop_restriction" value="1" {if $shops.unselected|@count}checked="checked"{/if} />
-					{l s='Shop selection'}
+					{l s='Sélection de la boutique'}
 				</label>
 			</p>
 			<div id="shop_restriction_div">
@@ -282,22 +282,22 @@
 				<table class="table">
 					<tr>
 						<td>
-							<p>{l s='Unselected shops'}</p>
+							<p>{l s='Boutiques non sélectionnées'}</p>
 							<select id="shop_select_1" multiple>
 								{foreach from=$shops.unselected item='shop'}
 									<option value="{$shop.id_shop|intval}">&nbsp;{$shop.name|escape}</option>
 								{/foreach}
 							</select>
-							<a id="shop_select_add" class="btn btn-default btn-block clearfix" >{l s='Add'} <i class="icon-arrow-right"></i></a>
+							<a id="shop_select_add" class="btn btn-default btn-block clearfix" >{l s='Ajouter'} <i class="icon-arrow-right"></i></a>
 						</td>
 						<td>
-							<p>{l s='Selected shops'}</p>
+							<p>{l s='Boutiques sélectionnées'}</p>
 							<select name="shop_select[]" id="shop_select_2" multiple>
 								{foreach from=$shops.selected item='shop'}
 									<option value="{$shop.id_shop|intval}">&nbsp;{$shop.name|escape}</option>
 								{/foreach}
 							</select>
-							<a id="shop_select_remove" class="btn btn-default btn-block clearfix" ><i class="icon-arrow-left"></i> {l s='Remove'}</a>
+							<a id="shop_select_remove" class="btn btn-default btn-block clearfix" ><i class="icon-arrow-left"></i> {l s='Retirer'}</a>
 						</td>
 					</tr>
 				</table>

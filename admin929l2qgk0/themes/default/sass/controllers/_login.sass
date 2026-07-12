@@ -85,4 +85,16 @@
 #login-footer
 	margin-top: 20px
 	a
-		color: #A0AAB5
+		color: #6c7a89
+		&:hover, &:focus
+			color: #4a5568
+			text-decoration: underline
+
+#login-panel
+	.form-control:focus
+		border-color: #66afe9
+		box-shadow: 0 0 4px rgba(102,175,233,.6)
+
+@media (prefers-reduced-motion: reduce)
+	.flip-container .flipper
+		transition-duration: 0.01s

@@ -23,7 +23,7 @@
 {if isset($product->id)}
 	<div id="product-configuration" class="panel product-tab">
 		<input type="hidden" name="submitted_tabs[]" value="Configuration" />
-		<h3 class="tab"> <i class="icon-AdminAdmin"></i> {l s='Rooms'}</h3>
+		<h3 class="tab"> <i class="icon-AdminAdmin"></i> {l s='Chambres'}</h3>
 
 		<input type="hidden" id="checkConfSubmit" value="0" name="checkConfSubmit">
 
@@ -34,36 +34,36 @@
                         <th class="center"></th>
 						<th class="col-sm-2 center">
 							<label class="control-label required">
-								<span class="label-tooltip" data-toggle="tooltip" data-original-title="{l s='Enter room number. For eg. A-101, A-102 etc. Invalid characters <>;=#{}'}">
-									{l s='Room No.'}
+								<span class="label-tooltip" data-toggle="tooltip" data-original-title="{l s='Entrez le numéro de chambre. Par ex. A-101, A-102, etc. Caractères interdits <>;=#{}'}">
+									{l s='N° de chambre'}
 								</span>
 							</label>
 						</th>
 						<th class="col-sm-2 center">
 							<label class="control-label">
-								<span class="label-tooltip" data-toggle="tooltip" data-original-title="{l s='Enter floor of the room. For eg. First, Second etc. Invalid characters <>;=#{}'}">
-									{l s='Floor'}
+								<span class="label-tooltip" data-toggle="tooltip" data-original-title="{l s='Entrez l&#039;étage de la chambre. Par ex. Premier, Deuxième, etc. Caractères interdits <>;=#{}'}">
+									{l s='Étage'}
 								</span>
 							</label>
 						</th>
 						<th class="col-sm-2 center">
 							<label class="control-label">
-								<span class="label-tooltip" data-toggle="tooltip" data-original-title="{l s='Select status of the room.'}">
-									{l s='Status'}
+								<span class="label-tooltip" data-toggle="tooltip" data-original-title="{l s='Sélectionnez le statut de la chambre.'}">
+									{l s='Statut'}
 								</span>
 							</label>
 						</th>
 						<th class="col-sm-3 center">
 							<label class="control-label">
-								<span class="label-tooltip" data-toggle="tooltip" data-original-title="{l s='Enter extra information about this room. Leave empty if not required.'}">
-									{l s='Extra Information'}
+								<span class="label-tooltip" data-toggle="tooltip" data-original-title="{l s='Entrez des informations supplémentaires sur cette chambre. Laissez vide si non requis.'}">
+									{l s='Informations supplémentaires'}
 								</span>
 							</label>
 						</th>
 						<th class="col-sm-2 center">
 							<label class="control-label">
-								<span class="label-tooltip" data-toggle="tooltip" data-original-title="{l s='Set date ranges when room is set to Temporarily Inactive.'}">
-									{l s='Disable Dates'}
+								<span class="label-tooltip" data-toggle="tooltip" data-original-title="{l s='Définissez les plages de dates lorsque la chambre est définie comme temporairement inactive.'}">
+									{l s='Désactiver les dates'}
 								</span>
 							</label>
 						</th>
@@ -103,7 +103,7 @@
 									<input type="text" class="form-control room_comment" value="{if isset($room_info['comment'])}{$room_info['comment']}{/if}" name="{$var_name_room_info|cat:'[comment]'}">
 								</td>
 								<td class="col-sm-2 center">
-									<a class="btn btn-default deactiveDatesModal {if $room_info['id_status'] != $rm_status['STATUS_TEMPORARY_INACTIVE']['id'] }disabled{/if}" data-toggle="modal" data-target="#deactiveDatesModal" data-id-room="{if isset($room_info['id'])}{$room_info['id']}{/if}">{if $room_info['id_status'] != $rm_status['STATUS_TEMPORARY_INACTIVE']['id'] }{l s='Add Dates'}{else}{l s='View Dates'}{/if}
+									<a class="btn btn-default deactiveDatesModal {if $room_info['id_status'] != $rm_status['STATUS_TEMPORARY_INACTIVE']['id'] }disabled{/if}" data-toggle="modal" data-target="#deactiveDatesModal" data-id-room="{if isset($room_info['id'])}{$room_info['id']}{/if}">{if $room_info['id_status'] != $rm_status['STATUS_TEMPORARY_INACTIVE']['id'] }{l s='Ajouter des dates'}{else}{l s='Voir les dates'}{/if}
 									</a>
 									<input type="hidden" class="form-control disable_dates_json" name="{$var_name_room_info|cat:'[disable_dates_json]'}" {if $room_info['id_status'] == $rm_status['STATUS_TEMPORARY_INACTIVE']['id']}value="{$room_info['disable_dates_json']|escape:'html':'UTF-8'}"{/if}>
 								</td>
@@ -152,7 +152,7 @@
                                 </td>
 								<td class="center col-sm-2">
 									<a class="btn btn-default deactiveDatesModal disabled" data-toggle="modal" data-target="#deactiveDatesModal">
-										{l s='Add Dates'}
+										{l s='Ajouter des dates'}
 									</a>
 									<input type="hidden" class="form-control disable_dates_json" name="{$var_name_room_info|cat:'[disable_dates_json]'}" value="">
 								</td>
@@ -173,42 +173,42 @@
 				<div class="col-sm-12">
                     <div class="btn-group rooms_bulk_actions dropup">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            {l s='Bulk actions'}
+                            {l s='Actions groupées'}
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="#" id="select-all-rooms">
-                                    <i class="icon-check-sign"></i>&nbsp;{l s='Select all'}
+                                    <i class="icon-check-sign"></i>&nbsp;{l s='Tout sélectionner'}
                                 </a>
                             </li>
                             <li>
                                 <a href="#" id="unselect-all-rooms">
-                                    <i class="icon-check-empty"></i>&nbsp;{l s='Unselect all'}
+                                    <i class="icon-check-empty"></i>&nbsp;{l s='Tout désélectionner'}
                                 </a>
                             </li>
                             <li class="divider"></li>
                             <li>
                                 <a href="#" id="bulk-update-rooms-button" class="bulkUpdateRoomModal" data-toggle="modal" data-target="#bulkUpdateRoomModal" type="button" data-size="s" data-style="expand-right" disabled>
-                                    <i class="icon-edit"></i>&nbsp;{l s='Update selection'}
+                                    <i class="icon-edit"></i>&nbsp;{l s='Mettre à jour la sélection'}
                                 </a>
                             </li>
                             <li>
                                 <a href="#" id="bulk-delete-rooms-button">
-                                    <i class="icon-trash"></i>&nbsp;{l s='Delete selection'}
+                                    <i class="icon-trash"></i>&nbsp;{l s='Supprimer la sélection'}
                                 </a>
                             </li>
                             <li class="divider"></li>
                             <li>
                                 <a id="bulk-create-rooms-button" class="bulkCreateRoomModal" data-toggle="modal" data-target="#bulkCreateRoomModal" type="button" data-size="s" data-style="expand-right">
-                                    <i class="icon-plus"></i>&nbsp;{l s='Create Rooms'}
+                                    <i class="icon-plus"></i>&nbsp;{l s='Créer des chambres'}
                                 </a>
                             </li>
                         </ul>
                     </div>
 					<button id="add-more-rooms-button" class="btn btn-default" type="button" data-size="s" data-style="expand-right">
 						<i class="icon icon-plus"></i>
-						{l s='Add More Rooms'}
+						{l s='Ajouter plus de chambres'}
 					</button>
 				</div>
 			</div>
@@ -216,15 +216,15 @@
 		<div class="panel-footer">
 			<a href="{$link->getAdminLink('AdminProducts')|escape:'html':'UTF-8'}{if isset($smarty.request.page) && $smarty.request.page > 1}&amp;submitFilterproduct={$smarty.request.page|intval}{/if}" class="btn btn-default">
 				<i class="process-icon-cancel"></i>
-				{l s='Cancel'}
+				{l s='Annuler'}
 			</a>
 			<button type="submit" name="submitAddproduct" class="btn btn-default pull-right checkConfigurationClick" disabled="disabled">
 				<i class="process-icon-loading"></i>
-				{l s='Save'}
+				{l s='Enregistrer'}
 			</button>
 			<button type="submit" name="submitAddproductAndStay" class="btn btn-default pull-right checkConfigurationClick"  disabled="disabled">
 				<i class="process-icon-loading"></i>
-					{l s='Save and stay'}
+					{l s='Enregistrer et rester'}
 			</button>
 		</div>
 	</div>
@@ -236,10 +236,10 @@
 			<div class="modal-header">
                 <div class="modal-title">
                     <div class="row">
-                        <div class="disable_dates_title"><i class="icon-calendar"></i>&nbsp; {l s='Disable Dates'} <span class="disable_dates_room_num"></span></div>
+                        <div class="disable_dates_title"><i class="icon-calendar"></i>&nbsp; {l s='Désactiver les dates'} <span class="disable_dates_room_num"></span></div>
                         <div class="pull-right">
-                            <button type="submit" class="btn btn-success add_disable_dates"><i class="icon-plus-circle"></i> {l s='Add Dates'}</button>
-                            <button type="submit" class="btn btn-danger remove_disable_dates"><i class="icon-trash"></i> {l s='Remove Dates'}</button>
+                            <button type="submit" class="btn btn-success add_disable_dates"><i class="icon-plus-circle"></i> {l s='Ajouter des dates'}</button>
+                            <button type="submit" class="btn btn-danger remove_disable_dates"><i class="icon-trash"></i> {l s='Supprimer les dates'}</button>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -253,7 +253,7 @@
                     <div class="alert alert-warning">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                         <ul class="list-unstyled">
-                            <li>{l s='Please save this room first to add dates.'}</li>
+                            <li>{l s='Veuillez d&#039;abord enregistrer cette chambre pour ajouter des dates.'}</li>
                         </ul>
                     </div>
                 </div>
@@ -261,15 +261,15 @@
                     <input type="hidden" class="id_disable_date">
                     <input type="hidden" class="id_calendar_event">
                     <div class="panel-heading col-xs-12">
-                        <div class="disable_dates_form_title disable_dates_form_title_add"><i class="icon-plus-circle"></i> {l s='Add Dates'}</div>
-                        <div class="disable_dates_form_title disable_dates_form_title_update"><i class="icon-pencil"></i> {l s='Update Dates'}</div>
-                        <div class="disable_dates_form_title disable_dates_form_title_delete"><i class="icon-trash"></i> {l s='Remove Dates'}</div>
+                        <div class="disable_dates_form_title disable_dates_form_title_add"><i class="icon-plus-circle"></i> {l s='Ajouter des dates'}</div>
+                        <div class="disable_dates_form_title disable_dates_form_title_update"><i class="icon-pencil"></i> {l s='Mettre à jour les dates'}</div>
+                        <div class="disable_dates_form_title disable_dates_form_title_delete"><i class="icon-trash"></i> {l s='Supprimer les dates'}</div>
                     </div>
                     <div class="panel-content">
                         <div class="row form-group">
                             <div class="col-sm-6 date_from_container">
                                 <label class="control-label" for="disable_date_from">
-                                    <span>{l s='Date From'}</span>
+                                    <span>{l s='Date de début'}</span>
                                 </label>
                                 <div>
                                     <div class="input-group">
@@ -280,7 +280,7 @@
                             </div>
                             <div class="col-sm-6 date_to_container">
                                 <label class="control-label" for="disable_date_to">
-                                    <span>{l s='Date To'}</span>
+                                    <span>{l s='Date de fin'}</span>
                                 </label>
                                 <div>
                                     <div class="input-group">
@@ -293,7 +293,7 @@
                         <div class="row form-group">
                             <div class="col-xs-12">
                                 <label class="control-label" for="room_disable_reason">
-                                    <span>{l s='Reason'}</span>
+                                    <span>{l s='Raison'}</span>
                                 </label>
                                 <div class="input-group col-xs-12">
                                     <textarea class="form-control room_disable_reason" name="room_disable_reason" value=""></textarea>
@@ -302,11 +302,11 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-6">
-                                <button type="button" class="btn btn-default pull-left close_disable_dates_form">{l s='Close'}</button>
+                                <button type="button" class="btn btn-default pull-left close_disable_dates_form">{l s='Fermer'}</button>
                             </div>
                             <div class="col-xs-6">
-                                <button type="button" class="btn btn-primary pull-right submit_add_disable_date">{l s='Submit'}</button>
-                                <button type="button" class="btn btn-primary pull-right submit_remove_disable_date">{l s='Remove'}</button>
+                                <button type="button" class="btn btn-primary pull-right submit_add_disable_date">{l s='Soumettre'}</button>
+                                <button type="button" class="btn btn-primary pull-right submit_remove_disable_date">{l s='Retirer'}</button>
                             </div>
                         </div>
                     </div>
@@ -325,13 +325,13 @@
 				<button type="button" class="close margin-right-10" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title"><i class="icon-calendar"></i>&nbsp; {l s='Bulk Update Rooms'}</h4>
+				<h4 class="modal-title"><i class="icon-calendar"></i>&nbsp; {l s='Mise à jour groupée des chambres'}</h4>
 			</div>
 			<div class="modal-body padding-top-20">
 				<div class="text-left errors-wrap" style="display: none;"></div>
                 <div class="form-group">
                     <label class="control-label col-lg-3">
-                        <span>{l s='Floor'}</span>
+                        <span>{l s='Étage'}</span>
                     </label>
                     <div class="col-lg-6">
                         <input type="text" name="bulk_update_room_floor"/>
@@ -339,7 +339,7 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label col-lg-3">
-                        <span>{l s='Status'}</span>
+                        <span>{l s='Statut'}</span>
                     </label>
                     <div class="col-lg-6">
                         <select class="form-control bulk_update_room_status" name="bulk_update_room_status">
@@ -351,25 +351,25 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label col-lg-3">
-                        <span>{l s='Extra Information'}</span>
+                        <span>{l s='Informations supplémentaires'}</span>
                     </label>
                     <div class="col-lg-6">
                         <input type="text" name="bulk_update_room_comment"/>
                     </div>
                 </div>
 				<div class="from-group table-responsive-row clearfix" style="display:none;">
-                    <div class="rooms-disable-dates-title">{l s='Disable Dates'}</div>
+                    <div class="rooms-disable-dates-title">{l s='Désactiver les dates'}</div>
                     <table class="table rooms-disable-dates">
                         <thead>
                             <tr class="nodrag nodrop">
                                 <th class="col-sm-1 center">
-                                    <div>{l s='Date From'}</span>
+                                    <div>{l s='Date de début'}</span>
                                 </th>
                                 <th class="col-sm-2 center">
-                                    <span>{l s='Date To'}</span>
+                                    <span>{l s='Date de fin'}</span>
                                 </th>
                                 <th class="col-sm-2 center">
-                                    <span>{l s='Reason'}</span>
+                                    <span>{l s='Raison'}</span>
                                 </th>
                                 <th class="col-sm-1 center"></th>
                             </tr>
@@ -380,13 +380,13 @@
                         <div class="col-sm-12">
                             <a href="#" class="add_bulk_room_update_disable_date btn btn-default">
                                 <i class="icon icon-plus"></i>
-                                <span>{l s="Add More"}</span>
+                                <span>{l s="Ajouter plus"}</span>
                             </a>
                         </div>
                     </div>
 			    </div>
 			    <div class="modal-footer">
-				    <button type="button" class="btn btn-default" name="submitBulkUpdateRooms">{l s='Submit'}</button>
+				    <button type="button" class="btn btn-default" name="submitBulkUpdateRooms">{l s='Soumettre'}</button>
 			    </div>
 		    </div>
 	    </div>
@@ -400,13 +400,13 @@
 				<button type="button" class="close margin-right-10" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title"><i class="icon-calendar"></i>&nbsp; {l s='Bulk Create Rooms'}</h4>
+				<h4 class="modal-title"><i class="icon-calendar"></i>&nbsp; {l s='Création groupée de chambres'}</h4>
 			</div>
 			<div class="modal-body padding-top-20">
 				<div class="text-left errors-wrap" style="display: none;"></div>
                 <div class="form-group">
                     <label class="control-label col-lg-3">
-                        <span>{l s='Room prefix'}</span>
+                        <span>{l s='Préfixe de chambre'}</span>
                     </label>
                     <div class="col-lg-6">
                         <input type="text" name="bulk_create_room_prefix"/>
@@ -414,7 +414,7 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label col-lg-3">
-                        <span>{l s='Starting Room No.'}</span>
+                        <span>{l s='N° de chambre de départ'}</span>
                     </label>
                     <div class="col-lg-6">
                         <input type="text" name="bulk_create_room_num"/>
@@ -422,7 +422,7 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label required col-lg-3">
-                        <span>{l s='Number of Rooms'}</span>
+                        <span>{l s='Nombre de chambres'}</span>
                     </label>
                     <div class="col-lg-6">
                         <input type="text" name="bulk_create_room_qty"/>
@@ -430,7 +430,7 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label col-lg-3">
-                        <span>{l s='Floor'}</span>
+                        <span>{l s='Étage'}</span>
                     </label>
                     <div class="col-lg-6">
                         <input type="text" name="bulk_create_room_floor"/>
@@ -439,7 +439,7 @@
                 <div class="form-group">
                     <label class="control-label col-lg-3">
                         <span>
-                            {l s='Status'}
+                            {l s='Statut'}
                         </span>
                     </label>
                     <div class="col-lg-6">
@@ -453,7 +453,7 @@
                 <div class="form-group">
                     <label class="control-label col-lg-3">
                         <span>
-                            {l s='Extra Information'}
+                            {l s='Informations supplémentaires'}
                         </span>
                     </label>
                     <div class="col-lg-6">
@@ -461,18 +461,18 @@
                     </div>
                 </div>
 				<div class="from-group table-responsive-row clearfix" style="display:none;">
-                    <div class="rooms-disable-dates-title">{l s='Disable Dates'}</div>
+                    <div class="rooms-disable-dates-title">{l s='Désactiver les dates'}</div>
                     <table class="table rooms-disable-dates">
                         <thead>
                             <tr class="nodrag nodrop">
                                 <th class="col-sm-1 center">
-                                    <div>{l s='Date From'}</span>
+                                    <div>{l s='Date de début'}</span>
                                 </th>
                                 <th class="col-sm-2 center">
-                                    <span>{l s='Date To'}</span>
+                                    <span>{l s='Date de fin'}</span>
                                 </th>
                                 <th class="col-sm-2 center">
-                                    <span>{l s='Reason'}</span>
+                                    <span>{l s='Raison'}</span>
                                 </th>
                                 <th class="col-sm-1 center"></th>
                             </tr>
@@ -483,13 +483,13 @@
                         <div class="col-sm-12">
                             <a href="#" class="add_bulk_room_create_disable_date btn btn-default">
                                 <i class="icon icon-plus"></i>
-                                <span>{l s="Add More"}</span>
+                                <span>{l s="Ajouter plus"}</span>
                             </a>
                         </div>
                     </div>
 			    </div>
 			    <div class="modal-footer">
-				    <button type="button" class="btn btn-default" name="submitBulkCreateRooms">{l s='Submit'}</button>
+				    <button type="button" class="btn btn-default" name="submitBulkCreateRooms">{l s='Soumettre'}</button>
 			    </div>
 		    </div>
 	    </div>
@@ -503,16 +503,16 @@
                 <button type="button" class="close margin-right-10" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title"><i class="icon-calendar"></i>&nbsp; {l s='Upcoming bookings'}</h4>
+                <h4 class="modal-title"><i class="icon-calendar"></i>&nbsp; {l s='Réservations à venir'}</h4>
             </div>
             <div class="room-booked-dates-table modal-body">
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th><span>{l s='Order'}</span></th>
-                                <th><span>{l s='Date From'}</span></th>
-                                <th><span>{l s='Date To'}</span></th>
+                                <th><span>{l s='Commande'}</span></th>
+                                <th><span>{l s='Date de début'}</span></th>
+                                <th><span>{l s='Date de fin'}</span></th>
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -520,7 +520,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">{l s='Done'}</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">{l s='Terminé'}</button>
             </div>
         </div>
     </div>
@@ -532,23 +532,23 @@
             <div class="tooltip_title"></div>
             <div class="tooltip_content">
                 <div class="row col-xs-6">
-                    <div class="tooltip_label">{l s='Duration'} </div>
+                    <div class="tooltip_label">{l s='Durée'} </div>
                     <div>
                         <span class="tooltip_date_from"></span> - <span class="tooltip_date_to"></span>
                     </div>
                 </div>
                 <div class="row col-xs-6">
-                    <div class="tooltip_label">{l s='Disabled on'} </div>
+                    <div class="tooltip_label">{l s='Désactivé le'} </div>
                     <div<span class="tooltip_date_add"></span>
                 </div>
-                <div class="row col-xs-12 id_event"><div class="tooltip_label">{l s='Event Id'} </div><span class="tooltip_id_event"></span></div>
-                <div><div class="tooltip_label tooltip_reason_container col-xs-12">{l s='Reason'}</div><span class="tooltip_reason col-xs-12"></span></div>
+                <div class="row col-xs-12 id_event"><div class="tooltip_label">{l s='ID de l&#039;événement'} </div><span class="tooltip_id_event"></span></div>
+                <div><div class="tooltip_label tooltip_reason_container col-xs-12">{l s='Raison'}</div><span class="tooltip_reason col-xs-12"></span></div>
             </div>
         </div>
     </div>
     <div id="tooltip_action_block">
         <div class="tooltip_container tooltip_action_block">
-            <div class="tooltip_title">{l s='Select Action'}
+            <div class="tooltip_title">{l s='Sélectionner l&#039;action'}
                 <button type="button" class="close margin-right-10" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -558,13 +558,13 @@
                     <li class="enable_selected_dates btn btn-default">
                         <span class="enable_selected_dates">
                             <i class="icon-check"></i>
-                            {l s='Make Room Available'}
+                            {l s='Rendre la chambre disponible'}
                         </span>
                     </li>
                     <li class="disabled_selected_dates btn btn-default">
                         <span class="disabled_selected_dates">
                             <i class="icon-ban"></i>
-                            {l s='Disable Room'}
+                            {l s='Désactiver la chambre'}
                         </span>
                     </li>
                 </ul>
@@ -583,8 +583,8 @@
 <script>
     var prod_link = "{$link->getAdminLink('AdminProducts')}";
     var rm_status = {$rm_status|@json_encode};
-    var confirmText = "{l s='Are you sure?' js=1}";
-    var removeDisableDateText = "{l s='Are you sure you want to remove the selected date range?' js=1}";
+    var confirmText = "{l s='Êtes-vous sûr ?' js=1}";
+    var removeDisableDateText = "{l s='Êtes-vous sûr de vouloir supprimer la plage de dates sélectionnée ?' js=1}";
     var currentRoomRow = 0;
     $(document).ready(function() {
         var tooltipCounter = 0;
@@ -609,7 +609,7 @@
                 }
             } else {
                 $('#room-dates-modal .room-booked-dates-table tbody').append(`<tr>
-                    <td colspan="3" class="center">{/literal}{l s='No Booking for this room'}{literal}</td>
+                    <td colspan="3" class="center">{/literal}{l s='Aucune réservation pour cette chambre'}{literal}</td>
                 </tr>`);
             }
         });
@@ -642,7 +642,7 @@
                 html += '</td>';
                 html += '<td class="center col-sm-2">';
                     html += '<a class="btn btn-default deactiveDatesModal disabled" data-toggle="modal" data-target="#deactiveDatesModal">';
-                        html += "{l s='Add Dates'}";
+                        html += "{l s='Ajouter des dates'}";
                     html += '</a>';
                     html += '<input type="hidden" class="form-control disable_dates_json" name="'+prefix+'[disable_dates_json]">';
                 html += '</td>';
@@ -671,7 +671,7 @@
                 },
                 success: function (response) {
                     if (response.success) {
-                        showSuccessMessage("{l s='Removed successfully'}");
+                        showSuccessMessage("{l s='Supprimé avec succès'}");
                         $current.closest(".room_data_values").remove();
                     } else {
                         if (response.errors)
@@ -679,7 +679,7 @@
                     }
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    showErrorMessage("{l s='Some error occurred'}");
+                    showErrorMessage("{l s='Une erreur s&#039;est produite'}");
                 }
             });
         });
@@ -1162,7 +1162,7 @@
                 });
             },
             submitBulkDelete: function() {
-                if (confirm("{l s='Delete selected rooms?'}")) {
+                if (confirm("{l s='Supprimer les chambres sélectionnées ?'}")) {
                     $('#product_form').append('<input type="hidden" name="submitBulkDeleteRooms" value="1"/>');
                     $('form#product_form').submit();
                 }
@@ -1524,7 +1524,7 @@
                 $('#deactiveDatesModal').attr('data-room-row-index', roomRowIndex);
                 $('#deactiveDatesModal').attr('data-id-room', idRoom);
                 if ($.trim(roomNum) != '') {
-                    roomNum = '( '+'{l s='Room No'}'+' '+roomNum+')';
+                    roomNum = '( '+'{l s='N° de chambre'}'+' '+roomNum+')';
                 }
 
                 $('#deactiveDatesModal .disable_dates_room_num').html(roomNum);

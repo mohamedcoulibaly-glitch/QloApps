@@ -29,17 +29,17 @@
 		{if $bulk_actions && $has_bulk_actions}
 		<div class="btn-group bulk-actions dropup">
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-				{l s='Bulk actions'} <span class="caret"></span>
+				{l s='Actions groupées'} <span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu">
 				<li>
 					<a href="#" onclick="javascript:checkDelBoxes($(this).closest('form').get(0), '{$list_id}Box[]', true);return false;">
-						<i class="icon-check-sign"></i>&nbsp;{l s='Select all'}
+						<i class="icon-check-sign"></i>&nbsp;{l s='Tout sélectionner'}
 					</a>
 				</li>
 				<li>
 					<a href="#" onclick="javascript:checkDelBoxes($(this).closest('form').get(0), '{$list_id}Box[]', false);return false;">
-						<i class="icon-check-empty"></i>&nbsp;{l s='Unselect all'}
+						<i class="icon-check-empty"></i>&nbsp;{l s='Tout désélectionner'}
 					</a>
 				</li>
 				<li class="divider"></li>
@@ -60,7 +60,7 @@
 	<div class="col-lg-6">
 		{* Choose number of results per page *}
 		<div class="pagination">
-			{l s='Display'}
+			{l s='Afficher'}
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 				{$selected_pagination}
 				<i class="icon-caret-down"></i>
@@ -68,11 +68,11 @@
 			<ul class="dropdown-menu">
 			{foreach $pagination AS $value}
 				<li>
-					<a href="javascript:void(0);" class="pagination-items-page" data-items="{$value|intval}" data-list-id="{$list_id}">{$value}</a>
+					<a href="#" onclick="return false;" class="pagination-items-page" data-items="{$value|intval}" data-list-id="{$list_id}">{$value}</a>
 				</li>
 			{/foreach}
 			</ul>
-			/ {$list_total} {l s='result(s)'}
+			/ {$list_total} {l s='résultat(s)'}
 			<input type="hidden" id="{$list_id}-pagination-items-page" name="{$list_id}_pagination" value="{$selected_pagination|intval}" />
 		</div>
 		<script type="text/javascript">
@@ -83,12 +83,12 @@
 		</script>
 		<ul class="pagination pull-right">
 			<li {if $page <= 1}class="disabled"{/if}>
-				<a href="javascript:void(0);" class="pagination-link" data-page="1" data-list-id="{$list_id}">
+				<a href="#" onclick="return false;" class="pagination-link" data-page="1" data-list-id="{$list_id}">
 					<i class="icon-double-angle-left"></i>
 				</a>
 			</li>
 			<li {if $page <= 1}class="disabled"{/if}>
-				<a href="javascript:void(0);" class="pagination-link" data-page="{$page - 1}" data-list-id="{$list_id}">
+				<a href="#" onclick="return false;" class="pagination-link" data-page="{$page - 1}" data-list-id="{$list_id}">
 					<i class="icon-angle-left"></i>
 				</a>
 			</li>
@@ -96,27 +96,27 @@
 			{while $p++ < $total_pages}
 				{if $p < $page-2}
 					<li class="disabled">
-						<a href="javascript:void(0);">&hellip;</a>
+						<a href="#" onclick="return false;">&hellip;</a>
 					</li>
 					{assign p $page-3}
 				{elseif $p > $page+2}
 					<li class="disabled">
-						<a href="javascript:void(0);">&hellip;</a>
+						<a href="#" onclick="return false;">&hellip;</a>
 					</li>
 					{assign p $total_pages}
 				{else}
 					<li {if $p == $page}class="active"{/if}>
-						<a href="javascript:void(0);" class="pagination-link" data-page="{$p}" data-list-id="{$list_id}">{$p}</a>
+						<a href="#" onclick="return false;" class="pagination-link" data-page="{$p}" data-list-id="{$list_id}">{$p}</a>
 					</li>
 				{/if}
 			{/while}
 			<li {if $page >= $total_pages}class="disabled"{/if}>
-				<a href="javascript:void(0);" class="pagination-link" data-page="{$page + 1}" data-list-id="{$list_id}">
+				<a href="#" onclick="return false;" class="pagination-link" data-page="{$page + 1}" data-list-id="{$list_id}">
 					<i class="icon-angle-right"></i>
 				</a>
 			</li>
 			<li {if $page >= $total_pages}class="disabled"{/if}>
-				<a href="javascript:void(0);" class="pagination-link" data-page="{$total_pages}" data-list-id="{$list_id}">
+				<a href="#" onclick="return false;" class="pagination-link" data-page="{$total_pages}" data-list-id="{$list_id}">
 					<i class="icon-double-angle-right"></i>
 				</a>
 			</li>

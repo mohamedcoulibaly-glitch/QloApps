@@ -27,9 +27,9 @@
 
 {block name="override_tpl"}
 <div class="panel">
-	<h3>{l s='Addresses'} <span class="badge">{count($addresses)}</span></h3>
+	<h3>{l s='Adresses'} <span class="badge">{count($addresses)}</span></h3>
 	{if !count($addresses)}
-		{l s='No address has been found for this manufacturer.'}
+		{l s='Aucune adresse n&#039;a été trouvée pour ce fabricant.'}
 	{else}
 		{foreach $addresses AS $addresse}
 		<div class="panel">
@@ -38,7 +38,7 @@
 				<div class="pull-right">
 					<a class="btn btn-default" href="{$link->getAdminLink('AdminManufacturers')|escape:'html':'UTF-8'}&amp;id_address={$addresse.id_address}&amp;editaddresses=1">
 						<i class="icon-edit"></i>
-						{l s='Edit'}</a>
+						{l s='Modifier'}</a>
 				</div>
 			</div>
 
@@ -65,7 +65,7 @@
 	{/if}
 </div>
 <div class="panel">
-	<h3>{l s='Products'} <span class="badge">{count($products)}</span></h3>
+	<h3>{l s='Produits'} <span class="badge">{count($products)}</span></h3>
 
 	{foreach $products AS $product}
 		{if !$product->hasAttributes()}
@@ -74,10 +74,10 @@
 					{$product->name}
 					<div class="pull-right">
 						<a href="?tab=AdminProducts&amp;id_product={$product->id|intval}&amp;updateproduct&amp;token={getAdminToken tab='AdminProducts'}" class="btn btn-default btn-sm">
-							<i class="icon-edit"></i> {l s='Edit'}
+							<i class="icon-edit"></i> {l s='Modifier'}
 						</a>
-						<a href="?tab=AdminProducts&amp;id_product={$product->id|intval}&amp;deleteproduct&amp;token={getAdminToken tab='AdminProducts'}" class="btn btn-default btn-sm" onclick="return confirm('{l s='Delete item #'}{$product->id} ?');">
-							<i class="icon-trash"></i> {l s='Delete'}
+						<a href="?tab=AdminProducts&amp;id_product={$product->id|intval}&amp;deleteproduct&amp;token={getAdminToken tab='AdminProducts'}" class="btn btn-default btn-sm" onclick="return confirm('{l s='Supprimer l&#039;élément #'}{$product->id} ?');">
+							<i class="icon-trash"></i> {l s='Supprimer'}
 						</a>
 					</div>
 				</div>
@@ -86,7 +86,7 @@
 					<thead>
 						<tr>
 							{if !empty($product->reference)}<th><span class="title_box">{l s='Ref:'}</span> {$product->reference}</th>{/if}
-							{if !empty($product->ean13)}<th><span class="title_box">{l s='EAN13:'}</span> {$product->ean13}</th>{/if}
+							{if !empty($product->ean13)}<th><span class="title_box">{l s='EAN13 :'}</span> {$product->ean13}</th>{/if}
 							{if !empty($product->upc)}<th><span class="title_box">{l s='UPC:'}</span> {$product->upc}</th>{/if}
 							{if $stock_management}<th><span class="title_box">{l s='Qty:'}</span> {$product->quantity}</th>{/if}
 						</tr>
@@ -103,11 +103,11 @@
 					<div class="pull-right">
 						<a href="?tab=AdminProducts&amp;id_product={$product->id|intval}&amp;updateproduct&amp;token={getAdminToken tab='AdminProducts'}" class="btn btn-default btn-sm">
 							<i class="icon-edit"></i>
-							{l s='Edit'}
+							{l s='Modifier'}
 						</a>
-						<a href="?tab=AdminProducts&amp;id_product={$product->id|intval}&amp;deleteproduct&amp;token={getAdminToken tab='AdminProducts'}" class="btn btn-default btn-sm" onclick="return confirm('{l s='Delete item #'}{$product->id} ?');">
+						<a href="?tab=AdminProducts&amp;id_product={$product->id|intval}&amp;deleteproduct&amp;token={getAdminToken tab='AdminProducts'}" class="btn btn-default btn-sm" onclick="return confirm('{l s='Supprimer l&#039;élément #'}{$product->id} ?');">
 							<i class="icon-trash"></i>
-							{l s='Delete'}
+							{l s='Supprimer'}
 						</a>
 					</div>
 
@@ -116,12 +116,12 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th><span class="title_box">{l s='Attribute name'}</span></th>
-							<th><span class="title_box">{l s='Reference'}</span></th>
+							<th><span class="title_box">{l s='Nom de l&#039;attribut'}</span></th>
+							<th><span class="title_box">{l s='Référence'}</span></th>
 							<th><span class="title_box">{l s='EAN13'}</span></th>
 							<th><span class="title_box">{l s='UPC'}</span></th>
 							{if $stock_management && $shopContext != Shop::CONTEXT_ALL}
-								<th><span class="title_box">{l s='Available Quantity'}</span></th>
+								<th><span class="title_box">{l s='Quantité disponible'}</span></th>
 							{/if}
 						</tr>
 					</thead>

@@ -44,7 +44,7 @@
 		{/block}
 
 		{block name=pageBreadcrumb}
-		<ul class="breadcrumb page-breadcrumb">
+		<ul class="breadcrumb page-breadcrumb" aria-label="{l s='Fil d&#039;ariane'}">
 			{* Container *}
 			{if $breadcrumbs2.container.name != ''}
 				<li class="breadcrumb-container">
@@ -98,9 +98,9 @@
 					{/if}
 					{* {if isset($help_link)}
 					<li>
-						<a class="toolbar_btn btn-help" href="{$help_link|escape}" title="{l s='Help'}">
+						<a class="toolbar_btn btn-help" href="{$help_link|escape}" title="{l s='Aide'}">
 							<i class="process-icon-help"></i>
-							<div>{l s='Help'}</div>
+							<div>{l s='Aide'}</div>
 						</a>
 					</li>
 					{/if} *}

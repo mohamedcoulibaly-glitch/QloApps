@@ -1,0 +1,16 @@
+:root { --hp-navy: #1B2430; --hp-surface: #F7F5F2; --hp-gold: #C9A24B; --hp-text: #2B2B2B; --hp-muted: #7A7A7A; --hp-success: #5C8768; --hp-danger: #8C3B3B; }
+body { background: var(--hp-surface); color: var(--hp-text); }
+a { color: var(--hp-navy); }
+a:hover, a:focus { color: var(--hp-gold); }
+.header-container, #header, .nav, .hotel-menu, .header-rm-container { background-color: var(--hp-navy) !important; }
+#header a, .header-container a, #header .nav a { color: #F7F5F2; }
+#header_logo img.logo { max-height: 74px; width: auto; }
+.btn-primary, button.button, .button.button-medium, .exclusive, .booking_search_submit, #SubmitCreate, #submitAccount { background: var(--hp-gold) !important; border-color: var(--hp-gold) !important; color: var(--hp-navy) !important; font-weight: 800; }
+.btn-primary:hover, button.button:hover, .button.button-medium:hover, .exclusive:hover { background: #b8913f !important; border-color: #b8913f !important; }
+.block, .box, .cart_block, .hotel-room-info-container, .room_cont, .panel { background: #fff; border-color: rgba(27,36,48,.12) !important; }
+.price, .our_price_display, .product-price { color: var(--hp-gold) !important; }
+.alert-success, .label-success { background-color: var(--hp-success) !important; border-color: var(--hp-success) !important; }
+.alert-danger, .label-danger, .error { background-color: var(--hp-danger) !important; border-color: var(--hp-danger) !important; }
+.footer-container, #footer { background: var(--hp-navy) !important; color: #F7F5F2; }
+.footer-container a, #footer a { color: #F7F5F2; }
+.footer-container a:hover, #footer a:hover { color: var(--hp-gold); }

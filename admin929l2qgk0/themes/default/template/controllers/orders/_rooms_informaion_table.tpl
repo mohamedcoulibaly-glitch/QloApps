@@ -1,4 +1,4 @@
-{*
+﻿{*
 * NOTICE OF LICENSE
 *
 * This source file is subject to the Open Software License version 3.0
@@ -27,21 +27,21 @@
                 <table class="table" id="customer_cart_details">
                     <thead>
                         <tr>
-                            <th><span class="title_box">{l s='Room No.'}</span></th>
-                            <th><span class="title_box">{l s='Image'}</th>
-                            <th><span class="title_box">{l s='Room Type'}</span></th>
-                            <th><span class="title_box">{l s='Duration'}</span></th>
-                            <th class="fixed-width-lg"><span class="title_box">{l s='Occupancy'}</span></th>
-                            <th><span class="title_box">{l s='Room Price (Tax excl.)'}</span></th>
-                            <th><span class="title_box">{l s='Extra Services/Fee (Tax excl.)'}</span></th>
-                            <th><span class="title_box">{l s='Total Tax'}</span></th>
-                            <th><span class="title_box">{l s='Total Price (Tax incl.)'}</span></th>
+                            <th><span class="title_box">{l s='N° de chambre'}</span></th>
+                            <th><span class="title_box">{l s='Image'}</span></th>
+                            <th><span class="title_box">{l s='Type de chambre'}</span></th>
+                            <th><span class="title_box">{l s='Durée'}</span></th>
+                            <th class="fixed-width-lg"><span class="title_box">{l s='Occupation'}</span></th>
+                            <th><span class="title_box">{l s='Prix de la chambre (HT)'}</span></th>
+                            <th><span class="title_box">{l s='Services/Frais supplémentaires (HT)'}</span></th>
+                            <th><span class="title_box">{l s='Taxe totale'}</span></th>
+                            <th><span class="title_box">{l s='Prix total (TTC)'}</span></th>
                             {if (isset($refundReqBookings) && $refundReqBookings)}
-                                <th><span class="title_box">{l s='Refund/Cancel Status'}</span></th>
-                                <th><span class="title_box">{l s='Refunded amount'}</span></th>
+                                <th><span class="title_box">{l s='Statut remboursement/annulation'}</span></th>
+                                <th><span class="title_box">{l s='Montant remboursé'}</span></th>
                             {/if}
                             {if ($can_edit && !$order->hasBeenDelivered())}
-                            <th class="fixed-width-md"><span class="title_box">{l s='Actions'}</th>
+                            <th class="fixed-width-md"><span class="title_box">{l s='Actions'}</span></th>
                             {/if}
                         </tr>
                     </thead>
@@ -59,7 +59,7 @@
     <div class="list-empty">
         <div class="list-empty-msg">
             <i class="icon-warning-sign list-empty-icon"></i>
-            {l s='Room information not available.'}
+            {l s='Informations sur la chambre non disponibles.'}
         </div>
     </div>
 {/if}

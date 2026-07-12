@@ -314,7 +314,7 @@ $(document).ready(function() {
 				}
 			},
 			error: function(XMLHttpRequest, textStatus, errorThrown) {
-				alert(textStatus);
+				showErrorMessage(textStatus);
 			}
 		});
 	});
@@ -347,7 +347,7 @@ $(document).ready(function() {
                 }
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
-                alert(textStatus);
+                showErrorMessage(textStatus);
             }
         });
     });
@@ -414,14 +414,14 @@ $(document).ready(function() {
                 dataType: 'json',
                 success: function(response) {
                     if (response.status) {
-                        alert(success_delete_msg);
+                        showSuccessMessage(success_delete_msg);
                         $('#grand_feature_div_' + ftr_id).remove();
                     } else {
-                        alert(response.msg);
+                        showErrorMessage(response.msg);
                     }
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    alert(textStatus);
+                    showErrorMessage(textStatus);
                 }
             });
         }

@@ -9,17 +9,17 @@
             {foreach from=$booking_data['rm_data'] key=book_k item=book_v}
                 <div id="room_type_{$book_k}" class="tab-pane {if $book_v@first}active{/if}">
                     {* room type occupancy Details *}
-                    <div>
+                    <div{if isset($is_reception_profile) && $is_reception_profile} class="reception-hidden"{/if}>
                         <div class="form-group">
-                            <b>{l s='Room Occupancy' mod='hotelreservationsystem'}:</b>&nbsp;&nbsp;&nbsp;
-                            <span>{l s='Maximum adults' mod='hotelreservationsystem'} : {$book_v['room_type_info']['max_adults']}</span>&nbsp;&nbsp;&nbsp;<span>{l s='Maximum children' mod='hotelreservationsystem'} : {$book_v['room_type_info']['max_children']}</span>&nbsp;&nbsp;&nbsp;<span>{l s='Maximum guests' mod='hotelreservationsystem'} : {$book_v['room_type_info']['max_guests']}</span>
+                            <b>{l s='Occupancy de la chambre' mod='hotelreservationsystem'}:</b>&nbsp;&nbsp;&nbsp;
+                            <span>{l s='Maximum d\'adultes' mod='hotelreservationsystem'} : {$book_v['room_type_info']['max_adults']}</span>&nbsp;&nbsp;&nbsp;<span>{l s='Maximum d\'enfants' mod='hotelreservationsystem'} : {$book_v['room_type_info']['max_children']}</span>&nbsp;&nbsp;&nbsp;<span>{l s='Maximum d\'invités' mod='hotelreservationsystem'} : {$book_v['room_type_info']['max_guests']}</span>
                         </div>
                     </div>
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#avail_room_data_{$book_k|escape:'htmlall':'UTF-8'}" data-toggle="tab">{l s='Available Rooms' mod='hotelreservationsystem'}</a></li>
-                        <li><a href="#part_room_data_{$book_k|escape:'htmlall':'UTF-8'}" data-toggle="tab">{l s='Partially Available' mod='hotelreservationsystem'}</a></li>
-                        <li><a href="#book_room_data_{$book_k|escape:'htmlall':'UTF-8'}" data-toggle="tab">{l s='Booked Rooms' mod='hotelreservationsystem'}</a></li>
-                        <li><a href="#unavail_room_data_{$book_k|escape:'htmlall':'UTF-8'}" data-toggle="tab">{l s='Unavailable Rooms' mod='hotelreservationsystem'}</a></li>
+                        <li class="active"><a href="#avail_room_data_{$book_k|escape:'htmlall':'UTF-8'}" data-toggle="tab">{l s='Chambres disponibles' mod='hotelreservationsystem'}</a></li>
+                        <li><a href="#part_room_data_{$book_k|escape:'htmlall':'UTF-8'}" data-toggle="tab">{l s='Partiellement disponibles' mod='hotelreservationsystem'}</a></li>
+                        <li><a href="#book_room_data_{$book_k|escape:'htmlall':'UTF-8'}" data-toggle="tab">{l s='Chambres réservées' mod='hotelreservationsystem'}</a></li>
+                        <li{if isset($is_reception_profile) && $is_reception_profile} class="reception-hidden"{/if}><a href="#unavail_room_data_{$book_k|escape:'htmlall':'UTF-8'}" data-toggle="tab">{l s='Chambres indisponibles' mod='hotelreservationsystem'}</a></li>
                     </ul>
                     <div class="tab-content panel">
                         <div id="avail_room_data_{$book_k|escape:'htmlall':'UTF-8'}" class="tab-pane active">
@@ -27,12 +27,12 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th><span class="title_box">{l s='Room No.' mod='hotelreservationsystem'}</span></th>
-                                            <th><span class="title_box">{l s='Duration' mod='hotelreservationsystem'}</span></th>
-                                            <th><span class="title_box">{l s='Message' mod='hotelreservationsystem'}</span></th>
-                                            <th><span class="title_box">{l s='Allotment Type' mod='hotelreservationsystem'}</span></th>
+                                            <th><span class="title_box">{l s='N° chambre' mod='hotelreservationsystem'}</span></th>
+                                            <th><span class="title_box">{l s='Durée' mod='hotelreservationsystem'}</span></th>
+                                            <th{if isset($is_reception_profile) && $is_reception_profile} class="reception-hidden"{/if}><span class="title_box">{l s='Message' mod='hotelreservationsystem'}</span></th>
+                                            <th{if isset($is_reception_profile) && $is_reception_profile} class="reception-hidden"{/if}><span class="title_box">{l s='Type d\'allotement' mod='hotelreservationsystem'}</span></th>
                                             {if $occupancy_required_for_booking}
-                                                <th class="fixed-width-xxl"><span class="title_box">{l s='Guests' mod='hotelreservationsystem'}</span></th>
+                                                <th class="fixed-width-xxl"><span class="title_box">{l s='Invités' mod='hotelreservationsystem'}</span></th>
                                             {/if}
                                             <th><span class="title_box">{l s='Action' mod='hotelreservationsystem'}</span></th>
                                         </tr>
@@ -43,21 +43,21 @@
                                                 <td>{$avai_v['room_num']|escape:'htmlall':'UTF-8'} {hook h='displayRoomNumAfter' data=$avai_v type='available'}</td>
                                                 {assign var="is_full_date" value=($show_full_date && ($date_from|date_format:'%D' == $date_to|date_format:'%D'))}
                                                 <td>{dateFormat date=$date_from full=$is_full_date} - {dateFormat date=$date_to full=$is_full_date}</td>
-                                                <td>{$avai_v['room_comment']|escape:'htmlall':'UTF-8'}</td>
-                                                <td>
+                                                <td{if isset($is_reception_profile) && $is_reception_profile} class="reception-hidden"{/if}>{$avai_v['room_comment']|escape:'htmlall':'UTF-8'}</td>
+                                                <td{if isset($is_reception_profile) && $is_reception_profile} class="reception-hidden"{/if}>
                                                     {foreach $allotment_types as $allotment_type}
                                                         <label class="control-label">
                                                             <input type="radio" value="{$allotment_type.id_allotment|intval}" name="bk_type_{$avai_v['id_room']|escape:'htmlall':'UTF-8'}" data-id-room="{$avai_v['id_room']|escape:'htmlall':'UTF-8'}" class="avai_bk_type" {if $allotment_type@first}checked="checked"{/if}>
                                                             <span>{$allotment_type.name|escape:'htmlall':'UTF-8'}</span>
                                                         </label>
                                                     {/foreach}
-                                                    <input type="text" id="comment_{$avai_v['id_room']|escape:'htmlall':'UTF-8'}" name="comment_{$avai_v['id_room']|escape:'htmlall':'UTF-8'}" class="form-control booking_type_comment" placeholder="{l s='Allotment message' mod='hotelreservationsystem'}">
+                                                    <input type="text" id="comment_{$avai_v['id_room']|escape:'htmlall':'UTF-8'}" name="comment_{$avai_v['id_room']|escape:'htmlall':'UTF-8'}" class="form-control booking_type_comment" placeholder="{l s='Message d\'allotement' mod='hotelreservationsystem'}">
                                                 </td>
                                                 {if $occupancy_required_for_booking}
                                                     <td class="booking_occupancy">
                                                         <div class="dropdown">
                                                             <button class="btn btn-default btn-left btn-block booking_guest_occupancy input-occupancy" type="button">
-                                                                <span>{l s='Select occupancy' mod='hotelreservationsystem'}</span>
+                                                                <span>{l s='Sélectionner l\'occupation' mod='hotelreservationsystem'}</span>
                                                             </button>
                                                             <div class="dropdown-menu booking_occupancy_wrapper well well-sm">
                                                                 <input type="hidden" class="max_adults" value="{if isset($book_v)}{$book_v['max_adults']|escape:'html':'UTF-8'}{/if}">
@@ -100,7 +100,7 @@
                                                     </td>
                                                 {/if}
                                                 <td>
-                                                    <button type="button" data-id-cart="" data-id-cart-book-data="" data-id-product="{$avai_v['id_product']|escape:'htmlall':'UTF-8'}" data-id-room="{$avai_v['id_room']|escape:'htmlall':'UTF-8'}" data-id-hotel="{$avai_v['id_hotel']}" data-date-from="{$date_from|escape:'htmlall':'UTF-8'}" data-date-to ="{$date_to|escape:'htmlall':'UTF-8'}" class="btn btn-primary avai_add_cart">{l s='Add To Cart' mod='hotelreservationsystem'}</button>
+                                                    <button type="button" data-id-cart="" data-id-cart-book-data="" data-id-product="{$avai_v['id_product']|escape:'htmlall':'UTF-8'}" data-id-room="{$avai_v['id_room']|escape:'htmlall':'UTF-8'}" data-id-hotel="{$avai_v['id_hotel']}" data-date-from="{$date_from|escape:'htmlall':'UTF-8'}" data-date-to ="{$date_to|escape:'htmlall':'UTF-8'}" class="btn btn-primary avai_add_cart">{l s='Ajouter au panier' mod='hotelreservationsystem'}</button>
                                                 </td>
                                             </tr>
                                         {/foreach}
@@ -113,11 +113,11 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th><span class="title_box">{l s='Duration' mod='hotelreservationsystem'}</span></th>
-                                            <th><span class="title_box">{l s='Room No.' mod='hotelreservationsystem'}</span></th>
-                                            <th><span class="title_box">{l s='Allotment Type' mod='hotelreservationsystem'}</span></th>
+                                            <th><span class="title_box">{l s='Durée' mod='hotelreservationsystem'}</span></th>
+                                            <th><span class="title_box">{l s='N° chambre' mod='hotelreservationsystem'}</span></th>
+                                            <th{if isset($is_reception_profile) && $is_reception_profile} class="reception-hidden"{/if}><span class="title_box">{l s='Type d\'allotement' mod='hotelreservationsystem'}</span></th>
                                             {if $occupancy_required_for_booking}
-                                                <th class="fixed-width-xxl"><span class="title_box">{l s='Guests' mod='hotelreservationsystem'}</span></th>
+                                                <th class="fixed-width-xxl"><span class="title_box">{l s='Invités' mod='hotelreservationsystem'}</span></th>
                                             {/if}
                                             <th><span class="title_box">{l s='Action' mod='hotelreservationsystem'}</span></th>
                                         </tr>
@@ -133,20 +133,20 @@
                                                         </td>
                                                     {/if}
                                                     <td >{$sub_part_v['room_num']|escape:'htmlall':'UTF-8'} {hook h='displayRoomNumAfter' data=$sub_part_v type='partially_available'}</td>
-                                                    <td>
+                                                    <td{if isset($is_reception_profile) && $is_reception_profile} class="reception-hidden"{/if}>
                                                         {foreach $allotment_types as $allotment_type}
                                                             <label class="control-label">
                                                                 <input type="radio" value="{$allotment_type.id_allotment|intval}" class="par_bk_type" name="bk_type_{$part_k|escape:'htmlall':'UTF-8'}_{$sub_part_k|escape:'htmlall':'UTF-8'}" data-id-room="{$sub_part_v['id_room']|escape:'htmlall':'UTF-8'}" data-sub-key="{$sub_part_k|escape:'htmlall':'UTF-8'}" {if $allotment_type@first}checked="checked"{/if}>
                                                                 <span>{$allotment_type.name|escape:'htmlall':'UTF-8'}</span>
                                                             </label>
                                                         {/foreach}
-                                                        <input type="text" id="comment_{$sub_part_v['id_room']|escape:'htmlall':'UTF-8'}_{$sub_part_k|escape:'htmlall':'UTF-8'}" name="comment_{$sub_part_v['id_room']|escape:'htmlall':'UTF-8'}_{$sub_part_k|escape:'htmlall':'UTF-8'}" class="form-control booking_type_comment" placeholder="{l s='Allotment message' mod='hotelreservationsystem'}">
+                                                        <input type="text" id="comment_{$sub_part_v['id_room']|escape:'htmlall':'UTF-8'}_{$sub_part_k|escape:'htmlall':'UTF-8'}" name="comment_{$sub_part_v['id_room']|escape:'htmlall':'UTF-8'}_{$sub_part_k|escape:'htmlall':'UTF-8'}" class="form-control booking_type_comment" placeholder="{l s='Message d\'allotement' mod='hotelreservationsystem'}">
                                                     </td>
                                                     {if $occupancy_required_for_booking}
                                                         <td class="booking_occupancy">
                                                             <div class="dropdown">
                                                                 <button class="btn btn-default btn-left btn-block booking_guest_occupancy input-occupancy" type="button">
-                                                                    <span>{l s='Select occupancy' mod='hotelreservationsystem'}</span>
+                                                                    <span>{l s='Sélectionner l\'occupation' mod='hotelreservationsystem'}</span>
                                                                 </button>
                                                                 <div class="dropdown-menu booking_occupancy_wrapper well well-sm">
                                                                     <input type="hidden" class="max_adults" value="{if isset($book_v)}{$book_v['max_adults']|escape:'html':'UTF-8'}{/if}">
@@ -189,7 +189,7 @@
                                                         </td>
                                                     {/if}
                                                     <td>
-                                                        <button type="button" data-id-cart="" data-id-cart-book-data="" data-id-product="{$sub_part_v['id_product']|escape:'htmlall':'UTF-8'}" data-id-room="{$sub_part_v['id_room']|escape:'htmlall':'UTF-8'}" data-id-hotel="{$sub_part_v['id_hotel']|escape:'htmlall':'UTF-8'}" data-date-from="{$part_v['date_from']|escape:'htmlall':'UTF-8'}" data-date-to ="{$part_v['date_to']|escape:'htmlall':'UTF-8'}" data-sub-key="{$sub_part_k|escape:'htmlall':'UTF-8'}" class="btn btn-primary par_add_cart">{l s='Add To Cart' mod='hotelreservationsystem'}</button>
+                                                        <button type="button" data-id-cart="" data-id-cart-book-data="" data-id-product="{$sub_part_v['id_product']|escape:'htmlall':'UTF-8'}" data-id-room="{$sub_part_v['id_room']|escape:'htmlall':'UTF-8'}" data-id-hotel="{$sub_part_v['id_hotel']|escape:'htmlall':'UTF-8'}" data-date-from="{$part_v['date_from']|escape:'htmlall':'UTF-8'}" data-date-to ="{$part_v['date_to']|escape:'htmlall':'UTF-8'}" data-sub-key="{$sub_part_k|escape:'htmlall':'UTF-8'}" class="btn btn-primary par_add_cart">{l s='Ajouter au panier' mod='hotelreservationsystem'}</button>
                                                     </td>
                                                 </tr>
                                             {/foreach}
@@ -203,12 +203,12 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th><span class="title_box">{l s='Room No.' mod='hotelreservationsystem'}</span></th>
-                                            <th><span class="title_box">{l s='Duration' mod='hotelreservationsystem'}</span></th>
-                                            <th><span class="title_box">{l s='Order' mod='hotelreservationsystem'}</span></th>
-                                            <th><span class="title_box">{l s='Message' mod='hotelreservationsystem'}</span></th>
-                                            <th><span class="title_box">{l s='Allotment Type' mod='hotelreservationsystem'}</span></th>
-                                            <th><span class="title_box">{l s='Reallocate' mod='hotelreservationsystem'}</span></th>
+                                            <th><span class="title_box">{l s='N° chambre' mod='hotelreservationsystem'}</span></th>
+                                            <th><span class="title_box">{l s='Durée' mod='hotelreservationsystem'}</span></th>
+                                            <th><span class="title_box">{l s='Ordre' mod='hotelreservationsystem'}</span></th>
+                                            <th{if isset($is_reception_profile) && $is_reception_profile} class="reception-hidden"{/if}><span class="title_box">{l s='Message' mod='hotelreservationsystem'}</span></th>
+                                            <th{if isset($is_reception_profile) && $is_reception_profile} class="reception-hidden"{/if}><span class="title_box">{l s='Type d\'allotement' mod='hotelreservationsystem'}</span></th>
+                                            <th{if isset($is_reception_profile) && $is_reception_profile} class="reception-hidden"{/if}><span class="title_box">{l s='Réallouer' mod='hotelreservationsystem'}</span></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -221,14 +221,14 @@
                                                     {/if}
                                                     <td>{dateFormat date=$rm_dtl_v['date_from'] full=$is_full_date} - {dateFormat date=$rm_dtl_v['date_to'] full=$is_full_date}</td>
                                                     <td><a href="{$link->getAdminLink('AdminOrders')}&id_order={$rm_dtl_v['id_order']|intval}&vieworder" target="_blank">#{$rm_dtl_v['id_order']}</a></td>
-                                                    <td>{$rm_dtl_v['comment']|escape:'htmlall':'UTF-8'}</td>
-                                                    <td>
-                                                        {if $rm_dtl_v['booking_type'] == HotelBookingDetail::ALLOTMENT_AUTO}{l s='Auto Allotment' mod='hotelreservationsystem'}{elseif $rm_dtl_v['booking_type'] == HotelBookingDetail::ALLOTMENT_MANUAL}{l s='Manual Allotment' mod='hotelreservationsystem'}{/if}
+                                                    <td{if isset($is_reception_profile) && $is_reception_profile} class="reception-hidden"{/if}>{$rm_dtl_v['comment']|escape:'htmlall':'UTF-8'}</td>
+                                                    <td{if isset($is_reception_profile) && $is_reception_profile} class="reception-hidden"{/if}>
+                                                        {if $rm_dtl_v['booking_type'] == HotelBookingDetail::ALLOTMENT_AUTO}{l s='Allotement automatique' mod='hotelreservationsystem'}{elseif $rm_dtl_v['booking_type'] == HotelBookingDetail::ALLOTMENT_MANUAL}{l s='Allotement manuel' mod='hotelreservationsystem'}{/if}
                                                     </td>
-                                                    <td>
+                                                    <td{if isset($is_reception_profile) && $is_reception_profile} class="reception-hidden"{/if}>
                                                         {if $rm_dtl_v['booking_type'] == HotelBookingDetail::ALLOTMENT_AUTO}
-                                                            <button type="button" class="btn btn-primary room_reallocate_swap" id="reallocate_room_{$rm_dtl_v.id_htl_booking}" data-room_type_name="{$rm_dtl_v.room_type_name}" data-id_htl_booking="{$rm_dtl_v.id_htl_booking}" data-id_order="{$rm_dtl_v.id_order}" data-room_num="{$booked_v.room_num}" data-currency_sign="{$rm_dtl_v.currency_sign}" data-id_room_type="{$booked_v.id_product}" data-cust_name="{$rm_dtl_v.alloted_cust_name}" data-cust_email="{$rm_dtl_v.alloted_cust_email}" data-avail_rm_swap='{$rm_dtl_v.avail_rooms_to_swap|@json_encode}' data-avail_realloc_room_types='{$rm_dtl_v.avail_room_types_to_realloc|@json_encode}' data-allotment_type_label="{if $rm_dtl_v.booking_type == $ALLOTMENT_MANUAL}{l s='Manual'}{else}{l s='Auto'}{/if}" data-comment="{$rm_dtl_v.comment}">
-                                                                {l s='Reallocate Room' mod='hotelreservationsystem'}
+                                                            <button type="button" class="btn btn-primary room_reallocate_swap" id="reallocate_room_{$rm_dtl_v.id_htl_booking}" data-room_type_name="{$rm_dtl_v.room_type_name}" data-id_htl_booking="{$rm_dtl_v.id_htl_booking}" data-id_order="{$rm_dtl_v.id_order}" data-room_num="{$booked_v.room_num}" data-currency_sign="{$rm_dtl_v.currency_sign}" data-id_room_type="{$booked_v.id_product}" data-cust_name="{$rm_dtl_v.alloted_cust_name}" data-cust_email="{$rm_dtl_v.alloted_cust_email}" data-avail_rm_swap='{$rm_dtl_v.avail_rooms_to_swap|@json_encode}' data-avail_realloc_room_types='{$rm_dtl_v.avail_room_types_to_realloc|@json_encode}' data-allotment_type_label="{if $rm_dtl_v.booking_type == $ALLOTMENT_MANUAL}{l s='Manuel'}{else}{l s='Auto'}{/if}" data-comment="{$rm_dtl_v.comment}">
+                                                                {l s='Réallouer la chambre' mod='hotelreservationsystem'}
                                                             </button>
                                                         {else}
                                                             --
@@ -241,14 +241,14 @@
                                 </table>
                             </div>
                         </div>
-                        <div id="unavail_room_data_{$book_k|escape:'htmlall':'UTF-8'}" class="tab-pane">
+                        <div id="unavail_room_data_{$book_k|escape:'htmlall':'UTF-8'}" class="tab-pane{if isset($is_reception_profile) && $is_reception_profile} reception-hidden{/if}">
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th><span class="title_box">{l s='Room No.' mod='hotelreservationsystem'}</span></th>
-                                            <th><span class="title_box">{l s='Status' mod='hotelreservationsystem'}</span></th>
-                                            <th><span class="title_box">{l s='Duration' mod='hotelreservationsystem'}</span></th>
+                                            <th><span class="title_box">{l s='N° chambre' mod='hotelreservationsystem'}</span></th>
+                                            <th><span class="title_box">{l s='Statut' mod='hotelreservationsystem'}</span></th>
+                                            <th><span class="title_box">{l s='Durée' mod='hotelreservationsystem'}</span></th>
                                             <th><span class="title_box">{l s='Message' mod='hotelreservationsystem'}</span></th>
                                         </tr>
                                     </thead>

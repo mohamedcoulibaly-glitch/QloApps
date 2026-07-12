@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
 	<name>dashtrends</name>
-	<displayName><![CDATA[Dashboard Trends]]></displayName>
+	<displayName><![CDATA[Tendances du tableau de bord]]></displayName>
 	<version><![CDATA[1.0.4]]></version>
-	<description><![CDATA[Adds a block with a graphical representation of the development of your store(s) based on selected key data.]]></description>
+	<description><![CDATA[Ajoute un bloc avec une représentation graphique de l'évolution de vos établissements selon les indicateurs sélectionnés.]]></description>
 	<author><![CDATA[PrestaShop]]></author>
 	<tab><![CDATA[dashboard]]></tab>
 	<confirmUninstall><![CDATA[]]></confirmUninstall>

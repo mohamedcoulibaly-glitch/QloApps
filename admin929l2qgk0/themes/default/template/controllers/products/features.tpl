@@ -26,20 +26,20 @@
 {if isset($product->id)}
 <div id="product-features" class="panel product-tab">
 	<input type="hidden" name="submitted_tabs[]" value="Features" />
-	<h3>{l s='Assign features to this room type'}</h3>
+	<h3>{l s='Attribuer des caractéristiques à ce type de chambre'}</h3>
 
 	<div class="alert alert-info">
-		{l s='You can specify a value for each relevant feature regarding this room type. Empty fields will not be displayed.'}<br/>
-		{l s='You can either create a specific value, or select among the existing pre-defined values you\'ve previously added.'}
+		{l s='Vous pouvez spécifier une valeur pour chaque caractéristique pertinente concernant ce type de chambre. Les champs vides ne seront pas affichés.'}<br/>
+		{l s='Vous pouvez soit créer une valeur spécifique, soit sélectionner parmi les valeurs prédéfinies existantes que vous avez précédemment ajoutées.'}
 	</div>
 
 	<table class="table">
 		<thead>
 			<tr>
 				<th></th>
-				<th><span class="title_box">{l s='Feature'}</span></th>
-				<th><span class="title_box">{l s='Feature Image'}</span></th>
-				<!-- <th><span class="title_box"><u>{l s='or'}</u> {l s='Customized value'}</span></th> --><!-- by webkul -->
+				<th><span class="title_box">{l s='Caractéristique'}</span></th>
+				<th><span class="title_box">{l s='Image de caractéristique'}</span></th>
+				<!-- <th><span class="title_box"><u>{l s='or'}</u> {l s='Valeur personnalisée'}</span></th> --><!-- by webkul -->
 			</tr>
 		</thead>
 
@@ -72,7 +72,7 @@
 					<input type="hidden" name="feature_{$available_feature.id_feature}_value" value="0" />
 					<span>{l s='N/A'} -
 						<a href="{$link->getAdminLink('AdminFeatures')|escape:'html':'UTF-8'}&amp;addfeature_value&amp;id_feature={$available_feature.id_feature}"
-					 	class="confirm_leave btn btn-link"><i class="icon-plus-sign"></i> {l s='Add pre-defined values first'} <i class="icon-external-link-sign"></i></a>
+						class="confirm_leave btn btn-link"><i class="icon-plus-sign"></i> {l s='Ajoutez d&#039;abord des valeurs prédéfinies'} <i class="icon-external-link-sign"></i></a>
 					</span>
 				{/if} *}<!-- By Webkul -->
 				</td>
@@ -137,19 +137,19 @@
 			</tr>
 			{foreachelse}
 			<tr>
-				<td colspan="3" style="text-align:center;"><i class="icon-warning-sign"></i> {l s='No features have been defined'}</td>
+				<td colspan="3" style="text-align:center;"><i class="icon-warning-sign"></i> {l s='Aucune caractéristique n&#039;a été définie'}</td>
 			</tr>
 			{/foreach}
 		</tbody>
 	</table>
 
 	<a href="{$link->getAdminLink('AdminFeatures')|escape:'html':'UTF-8'}&amp;addfeature" class="btn btn-link confirm_leave button">
-		<i class="icon-plus-sign"></i> {l s='Add a new feature'} <i class="icon-external-link-sign"></i>
+		<i class="icon-plus-sign"></i> {l s='Ajouter une nouvelle caractéristique'} <i class="icon-external-link-sign"></i>
 	</a>
 	<div class="panel-footer">
-		<a href="{$link->getAdminLink('AdminProducts')|escape:'html':'UTF-8'}{if isset($smarty.request.page) && $smarty.request.page > 1}&amp;submitFilterproduct={$smarty.request.page|intval}{/if}" class="btn btn-default"><i class="process-icon-cancel"></i> {l s='Cancel'}</a>
-		<button type="submit" name="submitAddproduct" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Save'}</button>
-		<button type="submit" name="submitAddproductAndStay" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Save and stay'}</button>
+		<a href="{$link->getAdminLink('AdminProducts')|escape:'html':'UTF-8'}{if isset($smarty.request.page) && $smarty.request.page > 1}&amp;submitFilterproduct={$smarty.request.page|intval}{/if}" class="btn btn-default"><i class="process-icon-cancel"></i> {l s='Annuler'}</a>
+		<button type="submit" name="submitAddproduct" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Enregistrer'}</button>
+		<button type="submit" name="submitAddproductAndStay" class="btn btn-default pull-right" disabled="disabled"><i class="process-icon-loading"></i> {l s='Enregistrer et rester'}</button>
 	</div>
 </div>
 <script type="text/javascript">

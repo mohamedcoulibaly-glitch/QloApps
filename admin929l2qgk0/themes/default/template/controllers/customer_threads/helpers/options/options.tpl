@@ -29,8 +29,8 @@
 			<legend>{l s='Sync'}</legend>
 			<label>{l s='Run sync:'}</label>
 			<div class="margin-form">
-				<button class="btn" id="run_sync" onclick="run_sync();">{l s='Run sync'}</button>
-				<p>{l s='Click to synchronize mail automatically'}</p>
+				<button class="btn" id="run_sync" onclick="run_sync();">{l s='Lancer la synchronisation'}</button>
+				<p>{l s='Cliquez pour synchroniser les e-mails automatiquement'}</p>
 				<div id="ajax_loader"></div>
 				<div class="error" style="display:none" id="ajax_error"></div>
 				<div class="alert" style="display:none" id="ajax_conf"></div>
@@ -72,7 +72,7 @@
 						}
 						else
 						{
-							jsonError = '<li>{l s='Sync success'}</li>';
+							jsonError = '<li>{l s='Synchronisation réussie'}</li>';
 							for (i=0;i < jsonData.errors.length;i++)
 								jsonError = jsonError+'<li>'+jsonData.errors[i]+'</li>';
 							$('#ajax_conf').html('<ul>'+jsonError+'</ul>');

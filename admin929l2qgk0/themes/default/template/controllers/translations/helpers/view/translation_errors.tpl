@@ -39,18 +39,18 @@
 
 			<b>{$limit_warning['post.max_vars']}</b> {l s='for suhosin.post.max_vars.'}<br/>
 			<b>{$limit_warning['request.max_vars']}</b> {l s='for suhosin.request.max_vars.'}<br/>
-			{l s='Please ask your hosting provider to increase the Suhosin limit to'}
+			{l s='Veuillez demander à votre hébergeur d&#039;augmenter la limite Suhosin à'}
 		{else}
 			{l s='Warning! Your PHP configuration limits the maximum number of fields allowed in a form:'}<br/>
 			<b>{$limit_warning['max_input_vars']}</b> {l s='for max_input_vars.'}<br/>
-			{l s='Please ask your hosting provider to increase this limit to'}
+			{l s='Veuillez demander à votre hébergeur d&#039;augmenter cette limite à'}
 		{/if}
 		{l s='%s at least, or you will have to edit the translation files manually.' sprintf=$limit_warning['needed_limit']}
 	</div>
 	{else}
 		<div class="panel">
-			<p>{l s='Expressions to translate:'} <span class="badge">{l s='%d' sprintf=$count}</span></p>
-			<p>{l s='Total missing expressions:'} <span class="badge">{l s='%d' sprintf=$missing_translations|array_sum}</p>
+			<p>{l s='Expressions à traduire :'} <span class="badge">{l s='%d' sprintf=$count}</span></p>
+			<p>{l s='Total des expressions manquantes :'} <span class="badge">{l s='%d' sprintf=$missing_translations|array_sum}</p>
 		</div>
 
 		<script type="text/javascript">
@@ -67,12 +67,12 @@
 				<p>
 					{l s='Some of these expressions use this special syntax: %s.' sprintf='%d'}
 					<br />
-					{l s='You MUST use this syntax in your translations. Here are a few examples:'}
+					{l s='Vous DEVEZ utiliser cette syntaxe dans vos traductions. Voici quelques exemples :'}
 				</p>
 				<ul>
 					<li>"{l s='There are [1]%d[/1] products' tags=['<strong>']}": {l s='"%s" will be replaced by a number.' sprintf='%d'}</li>
 					<li>"{l s='List of pages in [1]%s[/1]' tags=['<strong>']}": {l s='"%s" will be replaced by a string.' sprintf='%s'}</li>
-					<li>"{l s='Feature: [1]%1$s[/1] ([1]%2$d[/1] values)' tags=['<strong>']}": {l s='The numbers enable you to reorder the variables when necessary.'}</li>
+					<li>"{l s='Feature: [1]%1$s[/1] ([1]%2$d[/1] values)' tags=['<strong>']}": {l s='Les numéros vous permettent de réorganiser les variables si nécessaire.'}</li>
 				</ul>
 			</div>
 		</div>
@@ -92,7 +92,7 @@
 							</td>
 							<td width="18%">
 								{if isset($value.use_sprintf) && $value.use_sprintf}
-									<a class="useSpecialSyntax" title="{l s='This expression uses a special syntax:'} {$value.use_sprintf}" style="cursor:pointer">
+									<a class="useSpecialSyntax" title="{l s='Cette expression utilise une syntaxe spéciale :'} {$value.use_sprintf}" style="cursor:pointer">
 										<img src="{$smarty.const._PS_IMG_}admin/error.png" alt="{$value.use_sprintf}" />
 									</a>
 								{/if}
@@ -101,9 +101,9 @@
 					{/foreach}
 				</table>
 				<div class="panel-footer">
-					<a name="submitTranslations{$type|ucfirst}" href="{$cancel_url|escape:'html':'UTF-8'}" class="btn btn-default"><i class="process-icon-cancel"></i> {l s='Cancel'}</a>
-					<button type="submit" id="{$table}_form_submit_btn" name="submitTranslations{$type|ucfirst}" class="btn btn-default pull-right"><i class="process-icon-save"></i> {l s='Save'}</button>
-					<button type="submit" name="submitTranslations{$type|ucfirst}AndStay" class="btn btn-default pull-right"><i class="process-icon-save"></i> {l s='Save and stay'}</button>
+					<a name="submitTranslations{$type|ucfirst}" href="{$cancel_url|escape:'html':'UTF-8'}" class="btn btn-default"><i class="process-icon-cancel"></i> {l s='Annuler'}</a>
+					<button type="submit" id="{$table}_form_submit_btn" name="submitTranslations{$type|ucfirst}" class="btn btn-default pull-right"><i class="process-icon-save"></i> {l s='Enregistrer'}</button>
+					<button type="submit" name="submitTranslations{$type|ucfirst}AndStay" class="btn btn-default pull-right"><i class="process-icon-save"></i> {l s='Enregistrer et rester'}</button>
 				</div>
 			</div>
 		</form>

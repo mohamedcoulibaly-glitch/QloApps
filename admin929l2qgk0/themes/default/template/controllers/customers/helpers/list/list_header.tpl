@@ -37,20 +37,20 @@
 	{if isset($delete_customer) && $delete_customer}
 		<form action="{$REQUEST_URI|escape:'html':'UTF-8'}" method="post">
 			<div class="alert alert-warning">
-				<h4>{l s='How do you want to delete the selected customers?'}</h4>
-				<p>{l s='There are two ways of deleting a customer. Please choose your preferred method.'}</p>
+				<h4>{l s='Comment souhaitez-vous supprimer les clients sélectionnés ?'}</h4>
+				<p>{l s='Il existe deux façons de supprimer un client. Veuillez choisir votre méthode préférée.'}</p>
 				<br>
 				<ul class="listForm list-unstyled">
 					<li>
 						<label for="deleteMode_real" class="control-label">
 							<input type="radio" name="deleteMode" value="real" id="deleteMode_real" />
-							{l s='I want my customers to be able to register again with the same email address. All data will be removed from the database.'}
+							{l s='Je souhaite que mes clients puissent se réinscrire avec la même adresse e-mail. Toutes les données seront supprimées de la base de données.'}
 						</label>
 					</li>
 					<li>
 						<label for="deleteMode_deleted" class="control-label">
 							<input type="radio" name="deleteMode" value="deleted" id="deleteMode_deleted" />
-							{l s='I do not want my customer(s) to register again with the same email address. All selected customer(s) will be removed from this list but their corresponding data will be kept in the database.'}
+							{l s='Je ne souhaite pas que mon/mes client(s) puissent se réinscrire avec la même adresse e-mail. Tous les clients sélectionnés seront supprimés de cette liste mais leurs données correspondantes seront conservées dans la base de données.'}
 						</label>
 					</li>
 				</ul>
@@ -63,7 +63,7 @@
 						<input type="hidden" name="{$key|escape:'html':'UTF-8'}" value="{$value|escape:'html':'UTF-8'}" />
 					{/if}
 				{/foreach}
-				<input type="submit" class="btn btn-default" value="{l s='Delete'}" />
+				<input type="submit" class="btn btn-default" value="{l s='Supprimer'}" />
 			</div>
 		</form>
 		<script>

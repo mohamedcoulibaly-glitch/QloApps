@@ -1,6 +1,6 @@
 		<script>var zones_nbr = {$zones|count +3} ; /*corresponds to the third input text (max, min and all)*/</script>
 		<div id="zone_ranges" style="overflow:auto">
-			<h4>{l s='Ranges'}</h4>
+			<h4>{l s='Plages'}</h4>
 			<table id="zones_table" class="table" style="max-width:100%">
 				<tbody>
 					<tr class="range_inf">
@@ -47,7 +47,7 @@
 					</tr>
 					<tr class="fees_all">
 						<td class="border_top border_bottom border_bold">
-							<span class="fees_all" {if $ranges|count == 0}style="display:none" {/if}>All</span>
+							<span class="fees_all" {if $ranges|count == 0}style="display:none" {/if}>Tous</span>
 						</td>
 						<td style="">
 							<input type="checkbox" onclick="checkAllZones(this);" class="form-control">
@@ -97,7 +97,7 @@
 								<td>&nbsp;</td>
 							{else}
 								<td>
-									<button class="btn btn-default">{l s='Delete'}</button>
+									<button class="btn btn-default">{l s='Supprimer'}</button>
 								</td>
 							{/if}
 						{/foreach}

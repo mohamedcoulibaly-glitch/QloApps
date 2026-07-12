@@ -62,7 +62,7 @@
 						<h2>{$thread->email|escape:'html':'UTF-8'}</h2>
 					{/if}
 					{if isset($thread->phone) && trim($thread->phone) != ''}
-						<p>{l s='Phone:'} {$thread->phone|escape:'html':'UTF-8'}</p>
+						<p>{l s='Téléphone :'} {$thread->phone|escape:'html':'UTF-8'}</p>
 					{/if}
 					{if isset($contact) && trim($contact) != ''}
 						<span>{l s='To:'} </span><span class="badge">{$contact|escape:'html':'UTF-8'}</span>
@@ -117,9 +117,9 @@
 			{l s="Choose a template"}
 		</button>
 		-->
-		<button class="btn btn-default" name="submitReplyAndClose"><i class="process-icon-reply-all"></i> {l s='Reply And Close'}</button>
-		<button class="btn btn-default pull-right" name="submitReply"><i class="process-icon-mail-reply"></i> {l s='Reply And Open'}</button>
-		<button class="btn btn-default pull-right" name="submitReplyAsPrivate"><i class="process-icon-lock"></i> {l s='Add Private Message'}</button>
+		<button class="btn btn-default" name="submitReplyAndClose"><i class="process-icon-reply-all"></i> {l s='Répondre et fermer'}</button>
+		<button class="btn btn-default pull-right" name="submitReply"><i class="process-icon-mail-reply"></i> {l s='Répondre et ouvrir'}</button>
+		<button class="btn btn-default pull-right" name="submitReplyAsPrivate"><i class="process-icon-lock"></i> {l s='Ajouter un message privé'}</button>
 		<input type="hidden" name="id_customer_thread" value="{$thread->id|intval}" />
 		<input type="hidden" name="msg_email" value="{$thread->email}" />
 	</div>
@@ -155,7 +155,7 @@
 					$('#message_forward_email').hide(200);
 			});
 			$('textarea[name=message_forward]').click(function(){
-				if($(this).val() == '{l s='You can add a comment here.'}')
+				if($(this).val() == '{l s='Vous pouvez ajouter un commentaire ici.'}')
 				{
 					$(this).val('');
 				}

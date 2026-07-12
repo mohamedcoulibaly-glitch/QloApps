@@ -29,18 +29,18 @@
 	{if $input.type == 'text_customer'}
 		<span>{$customer->firstname} {$customer->lastname}</span>
 		<p>
-			<a class="text-muted" href="{$url_customer}">{l s='View details on the customer page'}</a>
+			<a class="text-muted" href="{$url_customer}">{l s='Voir les détails sur la page client'}</a>
 		</p>
 	{elseif $input.type == 'text_order'}
 		<span>{$text_order}</span>
 		<p>
-			<a class="text-muted" href="{$url_order}">{l s='View details on the order page'}</a>
+			<a class="text-muted" href="{$url_order}">{l s='Voir les détails sur la page de commande'}</a>
 		</p>
 	{elseif $input.type == 'pdf_order_return'}
 		<p>
 			{if $state_order_return == 2}
 				<a class="btn" href="{$link->getPageLink('pdf-order-return', true, NULL, "id_order_return={$id_order_return|intval}&adtoken={Tools::getAdminTokenLite('AdminReturn')}&id_employee={$employee->id|intval}")|escape:'html':'UTF-8'}">
-					<i class="icon-file-text"></i> {l s='Print out'}
+					<i class="icon-file-text"></i> {l s='Imprimer'}
 				</a>
 			{else}
 				--
@@ -50,9 +50,9 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>{l s='Reference'}</th>
-					<th>{l s='Product name'}</th>
-					<th class="text-center">{l s='Quantity'}</th>
+					<th>{l s='Référence'}</th>
+					<th>{l s='Nom du produit'}</th>
+					<th class="text-center">{l s='Quantité'}</th>
 					<th class="text-center">{l s='Action'}</th>
 				</tr>
 			</thead>
@@ -65,7 +65,7 @@
 						<td class="text-center">
 							<a class="btn btn-default" href="{$current|escape:'html':'UTF-8'}&amp;deleteorder_return_detail&amp;id_order_detail={$returnedCustomization['id_order_detail']}&amp;id_order_return={$id_order_return}&amp;id_customization={$returnedCustomization['id_customization']}&amp;token={$token|escape:'html':'UTF-8'}">
 								<i class="icon-remove"></i>
-								{l s='Delete'}
+								{l s='Supprimer'}
 							</a>
 						</td>
 					</tr>
@@ -80,7 +80,7 @@
 									{if $type == Product::CUSTOMIZE_FILE}
 										{foreach from=$datas item='data'}
 											<div class="form-group">
-												<span class="col-lg-3 control-label"><strong>{l s='Attachment'}</strong></span>
+												<span class="col-lg-3 control-label"><strong>{l s='Pièce jointe'}</strong></span>
 												<div class="col-lg-9">
 													<a href="displayImage.php?img={$data['value']}&amp;name={$returnedCustomization['id_order_detail']|intval}-file{$smarty.foreach.data.iteration.iteration}" class="_blank"><img class="img-thumbnail" src="{$picture_folder}{$data['value']}_small" alt="" /></a>
 												</div>
@@ -114,7 +114,7 @@
 							<td class="text-center">
 								<a class="btn btn-default"  href="{$current|escape:'html':'UTF-8'}&amp;deleteorder_return_detail&amp;id_order_detail={$product['id_order_detail']}&amp;id_order_return={$id_order_return}&amp;token={$token|escape:'html':'UTF-8'}">
 									<i class="icon-remove"></i>
-									{l s='Delete'}
+									{l s='Supprimer'}
 								</a>
 							</td>
 						</tr>

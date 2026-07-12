@@ -1,9 +1,35 @@
-<div class="row">
+<style>
+	.reception-booking-screen .reception-hidden {
+		display: none !important;
+	}
+	.reception-booking-screen .panel-heading {
+		min-height: 48px;
+	}
+	.reception-booking-screen #room-search-form .form-control,
+	.reception-booking-screen #room-search-form .btn,
+	.reception-booking-screen #cart_btn {
+		min-height: 40px;
+	}
+	.reception-booking-screen #search_hotel_list,
+	.reception-booking-screen #cart_btn,
+	.reception-booking-screen .avai_add_cart,
+	.reception-booking-screen .par_add_cart {
+		font-weight: 700;
+	}
+	@media (max-width: 991px) {
+		.reception-booking-screen .col-sm-4,
+		.reception-booking-screen .col-sm-8 {
+			width: 100%;
+		}
+	}
+</style>
+
+<div class="row{if isset($is_reception_profile) && $is_reception_profile} reception-booking-screen{/if}">
 	{if isset($hotel_list) && is_array($hotel_list) && count($hotel_list)}
 		<div class="col-sm-4">
 			<div class="panel">
 				<div class="panel-heading">
-					<i class="icon-info"></i> {l s='Booking Form' mod='hotelreservationsystem'}
+					<i class="icon-search"></i> {l s='Formulaire de réservation' mod='hotelreservationsystem'}
 				</div>
 				<div class="panel-body">
 					<form method="post" action="" id="room-search-form">
@@ -22,7 +48,7 @@
 							{hook h='displayAdminRoomsBookingSearchFormFieldsBefore'}
 							<div class="form-group col-sm-12">
 								<label for="date_from" class="control-label col-sm-4 required">
-									<span title="" data-toggle="tooltip" class="label-tooltip">{l s='Check-In' mod='hotelreservationsystem'}</span>
+									<span title="" data-toggle="tooltip" class="label-tooltip">{l s='Arrivée' mod='hotelreservationsystem'}</span>
 								</label>
 								<div class="col-sm-8">
 									<input type="text" name="from_date" class="form-control" id="from_date" {if isset($date_from)}value="{$date_from|escape:'htmlall':'UTF-8'|date_format:"%d-%m-%Y"}"{/if} readonly>
@@ -32,7 +58,7 @@
 							</div>
 							<div class="form-group col-sm-12">
 								<label for="to_date" class="control-label col-sm-4 required">
-									<span title="" data-toggle="tooltip" class="label-tooltip">{l s='Check-Out' mod='hotelreservationsystem'}</span>
+									<span title="" data-toggle="tooltip" class="label-tooltip">{l s='Départ' mod='hotelreservationsystem'}</span>
 								</label>
 								<div class="col-sm-8">
 									<input type="text" name="to_date" class="form-control" id="to_date" {if isset($date_to)}value="{$date_to|escape:'htmlall':'UTF-8'|date_format:"%d-%m-%Y"}"{/if} readonly>
@@ -42,7 +68,7 @@
 							</div>
 							<div class="form-group col-sm-12">
 								<label for="id_hotel" class="control-label col-sm-4 required">
-									<span title="" data-toggle="tooltip" class="label-tooltip">{l s='Hotel Name' mod='hotelreservationsystem'}</span>
+									<span title="" data-toggle="tooltip" class="label-tooltip">{l s='Nom de l\'hôtel' mod='hotelreservationsystem'}</span>
 								</label>
 								<div class="col-sm-8">
 									<select name="id_hotel" class="form-control" id="id_hotel">
@@ -51,7 +77,7 @@
 												<option value="{$name_val['id']|escape:'htmlall':'UTF-8'}" {if isset($id_hotel) && ($name_val['id'] == $id_hotel)}selected{/if}>{$name_val['hotel_name']|escape:'htmlall':'UTF-8'}</option>
 											{/foreach}
 										{else}
-											{l s='No hotels available' mod='hotelreservationsystem'}
+											{l s='Aucun hôtel disponible' mod='hotelreservationsystem'}
 										{/if}
 									</select>
 									<input type="hidden" name="search_id_hotel" id="search_id_hotel" {if isset($id_hotel)}value="{$id_hotel|escape:'htmlall':'UTF-8'}"{/if}>
@@ -65,7 +91,7 @@
 									<div class="col-sm-8">
 										<div class="dropdown">
 											<button class="booking_guest_occupancy btn btn-default btn-left btn-block input-occupancy" id="search_occupancy" type="button">
-												<span class="">{if (isset($occupancy_adults) && $occupancy_adults)}{$occupancy_adults} {if $occupancy_adults > 1}{l s='Adults' mod='hotelreservationsystem'}{else}{l s='Adult' mod='hotelreservationsystem'}{/if}, {if isset($occupancy_children) && $occupancy_children}{$occupancy_children} {if $occupancy_children > 1} {l s='Children' mod='hotelreservationsystem'}{else}{l s='Child' mod='hotelreservationsystem'}{/if}, {/if}{$occupancy|count} {if $occupancy|count > 1}{l s='Rooms' mod='hotelreservationsystem'}{else}{l s='Room' mod='hotelreservationsystem'}{/if}{else}{l s='1 Adult, 1 Room' mod='hotelreservationsystem'}{/if}</span>
+												<span class="">{if (isset($occupancy_adults) && $occupancy_adults)}{$occupancy_adults} {if $occupancy_adults > 1}{l s='Adultes' mod='hotelreservationsystem'}{else}{l s='Adulte' mod='hotelreservationsystem'}{/if}, {if isset($occupancy_children) && $occupancy_children}{$occupancy_children} {if $occupancy_children > 1} {l s='Enfants' mod='hotelreservationsystem'}{else}{l s='Enfant' mod='hotelreservationsystem'}{/if}, {/if}{$occupancy|count} {if $occupancy|count > 1}{l s='Chambres' mod='hotelreservationsystem'}{else}{l s='Chambre' mod='hotelreservationsystem'}{/if}{else}{l s='1 adulte, 1 chambre' mod='hotelreservationsystem'}{/if}</span>
 											</button>
 											<input type="hidden" class="max_avail_type_qty" value="{if isset($total_available_rooms)}	{$total_available_rooms|escape:'html':'UTF-8'}{/if}">
 											<div class="dropdown-menu booking_occupancy_wrapper well well-sm">
@@ -75,30 +101,30 @@
 														<hr class="occupancy-info-separator col-sm-12">
 														{foreach from=$occupancy key=key item=$room_occupancy name=occupancyInfo}
 															<div class="occupancy_info_block" occ_block_index="{$key|escape:'htmlall':'UTF-8'}">
-																<div class="occupancy_info_head col-sm-12"><label class="room_num_wrapper">{l s='Room' mod='hotelreservationsystem'} - {$countRoom|escape:'htmlall':'UTF-8'} </label>{if !$smarty.foreach.occupancyInfo.first}<a class="remove-room-link pull-right" href="#">{l s='Remove' mod='hotelreservationsystem'}</a>{/if}</div>
+																<div class="occupancy_info_head col-sm-12"><label class="room_num_wrapper">{l s='Chambre' mod='hotelreservationsystem'} - {$countRoom|escape:'htmlall':'UTF-8'} </label>{if !$smarty.foreach.occupancyInfo.first}<a class="remove-room-link pull-right" href="#">{l s='Supprimer' mod='hotelreservationsystem'}</a>{/if}</div>
 																<div class="col-sm-12">
 																	<div class="row">
 																		<div class="form-group col-xs-6 occupancy_count_block">
-																			<label>{l s='Adults' mod='hotelreservationsystem'}</label>
+																			<label>{l s='Adultes' mod='hotelreservationsystem'}</label>
 																			<input type="number" class="form-control num_occupancy num_adults" name="occupancy[{$key|escape:'htmlall':'UTF-8'}][adults]" value="{$room_occupancy['adults']|escape:'htmlall':'UTF-8'}" min="1">
 																		</div>
 																		<div class="form-group col-xs-6 occupancy_count_block">
-																			<label>{l s='Children' mod='hotelreservationsystem'} <span class="label-desc-txt"></span></label>
+																			<label>{l s='Enfants' mod='hotelreservationsystem'} <span class="label-desc-txt"></span></label>
 																			<input type="number" class="form-control num_occupancy num_children" name="occupancy[{$key|escape:'htmlall':'UTF-8'}][children]" value="{$room_occupancy['children']|escape:'htmlall':'UTF-8'}" min="0" {if $max_child_in_room}max="{$max_child_in_room}"{/if}>
-																			({l s='Below' mod='hotelreservationsystem'}  {$max_child_age|escape:'htmlall':'UTF-8'} {l s='years' mod='hotelreservationsystem'})
+																			({l s='En dessous de' mod='hotelreservationsystem'}  {$max_child_age|escape:'htmlall':'UTF-8'} {l s='ans' mod='hotelreservationsystem'})
 																		</div>
 																	</div>
 																	<div class="row children_age_info_block" {if !$room_occupancy['children']}style="display:none"{/if}>
 																		<div class="form-group col-sm-12">
-																			<label class="">{l s='All Children' mod='hotelreservationsystem'}</label>
+																			<label class="">{l s='Tous les enfants' mod='hotelreservationsystem'}</label>
 																			<div class="">
 																				<div class="row children_ages">
 																					{if isset($room_occupancy['child_ages']) && $room_occupancy['child_ages']}
 																						{foreach $room_occupancy['child_ages'] as $childAge}
 																							<div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
 																								<select class="guest_child_age room_occupancies" name="occupancy[{$key|escape:'htmlall':'UTF-8'}][child_ages][]">
-																									<option value="-1" {if $childAge == -1}selected{/if}>{l s='Select age' mod='hotelreservationsystem'}</option>
-																									<option value="0" {if $childAge == 0}selected{/if}>{l s='Under 1' mod='hotelreservationsystem'}</option>
+																									<option value="-1" {if $childAge == -1}selected{/if}>{l s='Sélectionner l\'âge' mod='hotelreservationsystem'}</option>
+																									<option value="0" {if $childAge == 0}selected{/if}>{l s='Moins de 1 an' mod='hotelreservationsystem'}</option>
 																									{for $age=1 to ($max_child_age-1)}
 																										<option value="{$age|escape:'htmlall':'UTF-8'}" {if $childAge == $age}selected{/if}>{$age|escape:'htmlall':'UTF-8'}</option>
 																									{/for}
@@ -121,18 +147,18 @@
 															<div class="col-sm-12">
 																<div class="row">
 																	<div class="form-group col-xs-6 occupancy_count_block">
-																		<label>{l s='Adults' mod='hotelreservationsystem'}</label>
+																		<label>{l s='Adultes' mod='hotelreservationsystem'}</label>
 																		<input type="number" class="form-control num_occupancy num_adults" name="occupancy[0][adults]" value="1" min="1">
 																	</div>
 																	<div class="form-group col-xs-6 occupancy_count_block">
-																		<label>{l s='Children' mod='hotelreservationsystem'} <span class="label-desc-txt"></span></label>
+																		<label>{l s='Enfants' mod='hotelreservationsystem'} <span class="label-desc-txt"></span></label>
 																		<input type="number" class="form-control num_occupancy num_children" name="occupancy[0][children]" value="0" min="0" {if $max_child_in_room}max="{$max_child_in_room}"{/if}>
-																		({l s='Below' mod='hotelreservationsystem'}  {$max_child_age|escape:'htmlall':'UTF-8'} {l s='years' mod='hotelreservationsystem'})
+																		({l s='En dessous de' mod='hotelreservationsystem'}  {$max_child_age|escape:'htmlall':'UTF-8'} {l s='ans' mod='hotelreservationsystem'})
 																	</div>
 																</div>
 																<div class="row children_age_info_block" style="display:none">
 																	<div class="form-group col-sm-12">
-																		<label class="">{l s='All Children' mod='hotelreservationsystem'}</label>
+																		<label class="">{l s='Tous les enfants' mod='hotelreservationsystem'}</label>
 																		<div class="">
 																			<div class="row children_ages">
 																			</div>
@@ -145,7 +171,7 @@
 													{/if}
 												</div>
 												<div class="add_occupancy_block col-sm-12">
-													<a class="add_new_occupancy_btn" href="#"><i class="icon-plus"></i> <span>{l s='Add Room' mod='hotelreservationsystem'}</span></a>
+													<a class="add_new_occupancy_btn" href="#"><i class="icon-plus"></i> <span>{l s='Ajouter une chambre' mod='hotelreservationsystem'}</span></a>
 												</div>
 											</div>
 										</div>
@@ -154,12 +180,12 @@
 							{/if}
 							<div class="form-group col-sm-12">
 								<label for="id_room_type" class="control-label col-sm-4">
-									<span title="" data-toggle="tooltip" class="label-tooltip">{l s='Room Type' mod='hotelreservationsystem'}</span>
+									<span title="" data-toggle="tooltip" class="label-tooltip">{l s='Type de chambre' mod='hotelreservationsystem'}</span>
 								</label>
 								<div class="col-sm-8">
 									<select class="form-control" name="id_room_type" id="id_room_type">
 										{if isset($id_room_type)}
-											<option value='0' {if ($id_room_type == 0)}selected{/if}>{l s='All Types' mod='hotelreservationsystem'}</option>
+											<option value='0' {if ($id_room_type == 0)}selected{/if}>{l s='Tous les types' mod='hotelreservationsystem'}</option>
 											{if (isset($all_room_type) && $all_room_type)}
 												{foreach $all_room_type as $val_type}
 													<option value="{$val_type['id_product']|escape:'htmlall':'UTF-8'}" {if ($val_type['id_product'] == $id_room_type)}selected{/if}>{$val_type['room_type']|escape:'htmlall':'UTF-8'}</option>
@@ -172,14 +198,14 @@
 							</div>
 							<div class="col-sm-12">
 								<button id="search_hotel_list" name="search_hotel_list" type="submit" class="btn btn-primary pull-right">
-									<i class="icon-search"></i>&nbsp;&nbsp;{l s='Search' mod='hotelreservationsystem'}
+									<i class="icon-search"></i>&nbsp;&nbsp;{l s='Rechercher' mod='hotelreservationsystem'}
 								</button>
 							</div>
 						</div>
 					</form>
 				</div>
 			</div>
-			{if !isset($booking_product) || (isset($booking_product) && $booking_product == 1)}
+			{if (!isset($is_reception_profile) || !$is_reception_profile) && (!isset($booking_product) || (isset($booking_product) && $booking_product == 1))}
 				<div class="panel">
 					{include file="./_partials/search-stats.tpl"}
 				</div>
@@ -188,8 +214,8 @@
 		<div class="col-sm-8">
 			<div class="panel">
 				<div class="panel-heading">
-					<i class="icon-info"></i> {if !isset($booking_product) || (isset($booking_product) && $booking_product == 1)}{l s='Booking Calender' mod='hotelreservationsystem'}{else}{l s='Service Products' mod='hotelreservationsystem'}{/if }
-					<button type="button" class="btn btn-primary {if $total_products_in_cart|intval == 0}disabled{/if}" id="cart_btn" data-toggle="modal" data-target="#cartModal"><i class="icon-shopping-cart"></i> {l s='Cart' mod='hotelreservationsystem'} <span class="badge" id="cart_record">{$total_products_in_cart}</span></button>
+					<i class="icon-calendar"></i> {if !isset($booking_product) || (isset($booking_product) && $booking_product == 1)}{l s='Calendrier de réservation' mod='hotelreservationsystem'}{else}{l s='Produits de service' mod='hotelreservationsystem'}{/if }
+					<button type="button" class="btn btn-primary {if $total_products_in_cart|intval == 0}disabled{/if}" id="cart_btn" data-toggle="modal" data-target="#cartModal"><i class="icon-shopping-cart"></i> {l s='Panier' mod='hotelreservationsystem'} <span class="badge" id="cart_record">{$total_products_in_cart}</span></button>
 				</div>
 				{if !isset($booking_product) || (isset($booking_product) && $booking_product == 1)}
 					<div id='fullcalendar'></div>
@@ -209,12 +235,12 @@
 	{else}
 		<div class="panel">
 			<div class="panel-heading">
-				<i class="icon-warning"></i> {l s='No Hotels' mod='hotelreservationsystem'}
+				<i class="icon-warning"></i> {l s='Aucun hôtel' mod='hotelreservationsystem'}
 			</div>
 
 			<div class="alert alert-warning">
-				<p>{l s='No active hotels available for booking.' mod='hotelreservationsystem'}</p>
-				<p>{l s='You can manage hotels from ' mod='hotelreservationsystem'} <a href="{$link->getAdminLink('AdminAddHotel')}">{l s='Hotel Reservation System > Manage Hotel' mod='hotelreservationsystem'}</a> {l s='page.' mod='hotelreservationsystem'}</p>
+				<p>{l s='Aucun hôtel actif disponible pour la réservation.' mod='hotelreservationsystem'}</p>
+				<p>{l s='Vous pouvez gérer les hôtels depuis ' mod='hotelreservationsystem'} <a href="{$link->getAdminLink('AdminAddHotel')}">{l s='Système de réservation d\'hôtel > Gérer les hôtels' mod='hotelreservationsystem'}</a> {l s='page.' mod='hotelreservationsystem'}</p>
 			</div>
 		</div>
 	{/if}
@@ -224,30 +250,30 @@
 	{include file="./_partials/booking-cart.tpl"}
 </div>
 
-<div id="date-stats-tooltop" style="display:none">
+<div id="date-stats-tooltip" style="display:none">
 	<div class="tooltip_cont">
 		<div class="tip_header">
 			<div class="tip_date"></div>
 		</div>
 		<div class="tip-body">
 			<div class="total_rooms">
-				<div class="tip_element_head">{l s='Total Rooms' mod='hotelreservationsystem'}</div>
+				<div class="tip_element_head">{l s='Total des chambres' mod='hotelreservationsystem'}</div>
 				<div class="tip_element_value"></div>
 			</div>
 			<div class="num_avail">
-				<div class="tip_element_head">{l s='Total Available' mod='hotelreservationsystem'}</div>
+				<div class="tip_element_head">{l s='Total disponible' mod='hotelreservationsystem'}</div>
 				<div class="tip_element_value"></div>
 			</div>
 			<div class="num_booked">
-				<div class="tip_element_head">{l s='Booked Rooms' mod='hotelreservationsystem'}</div>
+				<div class="tip_element_head">{l s='Chambres réservées' mod='hotelreservationsystem'}</div>
 				<div class="tip_element_value"></div>
 			</div>
 			<div class="num_unavail">
-				<div class="tip_element_head">{l s='Unavailable Rooms' mod='hotelreservationsystem'}</div>
+				<div class="tip_element_head">{l s='Chambres indisponibles' mod='hotelreservationsystem'}</div>
 				<div class="tip_element_value"></div>
 			</div>
             <div class="num_part_avai">
-				<div class="tip_element_head">{l s='Partially Available Rooms' mod='hotelreservationsystem'}</div>
+				<div class="tip_element_head">{l s='Chambres partiellement disponibles' mod='hotelreservationsystem'}</div>
 				<div class="tip_element_value"></div>
 			</div>
 		</div>

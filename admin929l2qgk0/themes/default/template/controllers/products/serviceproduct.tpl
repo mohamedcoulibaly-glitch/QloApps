@@ -23,7 +23,7 @@
 {if isset($product->id)}
     <div id="product-configuration" class="panel product-tab">
 		<input type="hidden" name="submitted_tabs[]" value="ServiceProduct" />
-		<h3 class="tab"> <i class="icon-AdminAdmin"></i> {l s='Service Products'}</h3>
+		<h3 class="tab"> <i class="icon-AdminAdmin"></i> {l s='Produits de service'}</h3>
 
         {if (isset($associated_service_products) && $associated_service_products) || (isset($unassociated_service_products) && $unassociated_service_products)}
             <div class="from-group table-responsive-row clearfix">
@@ -37,19 +37,19 @@
                                 <span>{l s='ID'}</span>
                             </th>
                             <th class="col-sm-2">
-                                <span>{l s='Name'}</span>
+                                <span>{l s='Nom'}</span>
                             </th>
                             <th class="text-center">
-                                <span>{l s='Auto Add to Cart'}</span>
+                                <span>{l s='Ajout automatique au panier'}</span>
                             </th>
                             <th>
                                 <span>{l s='Position'}</span>
                             </th>
                             <th>
-                                <span>{l s='Price'}</span>
+                                <span>{l s='Prix'}</span>
                             </th>
                             <th>
-                                <span>{l s='Tax rule'}</span>
+                                <span>{l s='Règle de taxe'}</span>
                             </th>
                         </tr>
                     </thead>
@@ -71,7 +71,7 @@
                                 <td>{$service_product.name}</td>
                                 <td class="text-center">
                                     <span {if $service_product.auto_add_to_cart}class="badge badge-success"{/if}>
-                                        {if $service_product.auto_add_to_cart}{l s='Yes'}{else}{l s='No'}{/if}
+                                        {if $service_product.auto_add_to_cart}{l s='Oui'}{else}{l s='Non'}{/if}
                                     </span>
                                 </td>
                                 <td class="pointer dragHandle center positionImage">
@@ -99,7 +99,7 @@
                                         </div>
                                     </div>
                                     <div class="help-block">
-                                        {l s='Default price: %s' sprintf={displayPrice price=$service_product.association_info.default_price currency=$currency->id}}
+                                        {l s='Prix par défaut : %s' sprintf={displayPrice price=$service_product.association_info.default_price currency=$currency->id}}
                                     </div>
                                 </td>
                                 <td>
@@ -108,7 +108,7 @@
                                     {else}
                                         <div class="fixed-width-xl">
                                             <select class="service_product_id_tax_rules_group" name="{$inputs_prefix}id_tax_rules_group">
-                                                <option value="0">{l s='No Tax'}</option>
+                                                <option value="0">{l s='Pas de taxe'}</option>
                                                 {foreach from=$tax_rules_groups item=tax_rules_group}
                                                     <option value="{$tax_rules_group.id_tax_rules_group}" {if $service_product.association_info.id_tax_rules_group == $tax_rules_group.id_tax_rules_group}selected="selected"{/if} >
                                                         {$tax_rules_group['name']|htmlentitiesUTF8}
@@ -116,7 +116,7 @@
                                                 {/foreach}
                                             </select>
                                         </div>
-                                        <div class="help-block">{l s='Default tax rule: %s' sprintf=$service_product.association_info.default_tax_rules_group_name}</div>
+                                        <div class="help-block">{l s='Règle de taxe par défaut : %s' sprintf=$service_product.association_info.default_tax_rules_group_name}</div>
                                     {/if}
                                 </td>
                             </tr>
@@ -132,7 +132,7 @@
                                 </td>
                                 <td class="col-sm-1">{$service_product.id_product|escape:'html':'UTF-8'} <a target="blank" href="{$link->getAdminLink('AdminNormalProducts')|escape:'html':'UTF-8'}&amp;id_product={$service_product.id_product|escape:'html':'UTF-8'}&amp;updateproduct"><i class="icon-external-link-sign"></i></a></td>
                                 <td>{$service_product.name}</td>
-                                <td class="text-center"><span {if $service_product.auto_add_to_cart}class="badge badge-success"{/if}>{if $service_product.auto_add_to_cart}{l s='Yes'}{else}{l s='No'}{/if}</span></td>
+                                <td class="text-center"><span {if $service_product.auto_add_to_cart}class="badge badge-success"{/if}>{if $service_product.auto_add_to_cart}{l s='Oui'}{else}{l s='Non'}{/if}</span></td>
                                 <td>{l s='--'}</td>
                                 <td>
                                     <div class="fixed-width-xl">
@@ -142,7 +142,7 @@
                                         </div>
                                     </div>
                                     <div class="help-block">
-                                        {l s='Default price: %s' sprintf={displayPrice price=$service_product.price currency=$currency->id}}
+                                        {l s='Prix par défaut : %s' sprintf={displayPrice price=$service_product.price currency=$currency->id}}
                                     </div>
                                 </td>
                                 <td>
@@ -151,7 +151,7 @@
                                     {else}
                                         <div class="fixed-width-xl">
                                             <select class="service_product_id_tax_rules_group" name="{$inputs_prefix}id_tax_rules_group">
-                                                <option value="0">{l s='No Tax'}</option>
+                                                <option value="0">{l s='Pas de taxe'}</option>
                                                 {foreach from=$tax_rules_groups item=tax_rules_group}
                                                     <option value="{$tax_rules_group.id_tax_rules_group}" {if isset($smarty.post["{$inputs_prefix}id_tax_rules_group"])}{if $tax_rules_group.id_tax_rules_group == $smarty.post["{$inputs_prefix}id_tax_rules_group"]}{/if}{elseif $tax_rules_group.id_tax_rules_group == $service_product.id_tax_rules_group}selected{/if}>
                                                         {$tax_rules_group['name']|htmlentitiesUTF8}
@@ -159,7 +159,7 @@
                                                 {/foreach}
                                             </select>
                                         </div>
-                                        <div class="help-block">{l s='Default tax rule: %s' sprintf=$service_product.tax_rules_group_name}</div>
+                                        <div class="help-block">{l s='Règle de taxe par défaut : %s' sprintf=$service_product.tax_rules_group_name}</div>
                                     {/if}
                                 </td>
                             </tr>
@@ -170,20 +170,20 @@
             <div class="panel-footer">
                 <a href="{$link->getAdminLink('AdminProducts')|escape:'html':'UTF-8'}{if isset($smarty.request.page) && $smarty.request.page > 1}&amp;submitFilterproduct={$smarty.request.page|intval}{/if}" class="btn btn-default">
                     <i class="process-icon-cancel"></i>
-                    {l s='Cancel'}
+                    {l s='Annuler'}
                 </a>
                 <button type="submit" name="submitAddproduct" class="btn btn-default pull-right" disabled="disabled">
                     <i class="process-icon-loading"></i>
-                    {l s='Save'}
+                    {l s='Enregistrer'}
                 </button>
                 <button type="submit" name="submitAddproductAndStay" class="btn btn-default pull-right"  disabled="disabled">
                     <i class="process-icon-loading"></i>
-                        {l s='Save and stay'}
+                        {l s='Enregistrer et rester'}
                 </button>
             </div>
         {else}
             <div class="alert alert-info">
-                {l s='No services are attached with this room type'}
+                {l s='Aucun service n&#039;est attaché à ce type de chambre'}
             </div>
         {/if}
     </div>

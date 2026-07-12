@@ -28,10 +28,10 @@
 				{if $module_instance && $module_instance->active}
 					{$hook}
 				{else}
-					{l s='Module not found'}
+					{l s='Module non trouvé'}
 				{/if}
 			{else}
-				<h3 class="space">{l s='Please select a module from the left column.'}</h3>
+				<h3 class="space">{l s='Veuillez sélectionner un module dans la colonne de gauche.'}</h3>
 			{/if}
 		</div>
 	</div>

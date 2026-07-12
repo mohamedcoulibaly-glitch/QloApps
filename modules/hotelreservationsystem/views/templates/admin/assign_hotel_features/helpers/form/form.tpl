@@ -26,14 +26,14 @@
 	{/if}
 	<div class="panel">
 		<div class="panel-heading">
-			<i class="icon-user"></i> {l s='Assign Features' mod='hotelreservationsystem'}
+			<i class="icon-list-alt"></i> {l s='Assigner les caractéristiques' mod='hotelreservationsystem'}
 		</div>
 		{if isset($hotels) && $hotels}
 			<div class="form-wrapper">
 				<div class="form-group">
 					{if isset($edit)}
 						<label class="control-label col-sm-5">
-							<span>{l s='Hotel Name' mod='hotelreservationsystem'} : </span>
+							<span>{l s='Nom de l\'hôtel' mod='hotelreservationsystem'} : </span>
 						</label>
 						<select class="fixed-width-xl" name="id_hotel">
 							{foreach $hotels as $hotel}
@@ -44,11 +44,11 @@
 						</select>
 					{else}
 						<label class="control-label col-sm-5">
-							<span>{l s='Select Hotel' mod='hotelreservationsystem'} : </span>
+							<span>{l s='Sélectionner l\'hôtel' mod='hotelreservationsystem'} : </span>
 						</label>
 						<div class="col-sm-4">
 							<select class="fixed-width-xl" name="id_hotel">
-							<option value='0'>{l s='Select Hotel' mod='hotelreservationsystem'}</option>>
+							<option value='0'>{l s='Sélectionner l\'hôtel' mod='hotelreservationsystem'}</option>
 								{foreach $hotels as $hotel}
 									<option value="{$hotel.id|escape:'html':'UTF-8'}" >{$hotel.hotel_name|escape:'html':'UTF-8'}</option>
 								{/foreach}
@@ -62,7 +62,7 @@
 				{foreach from=$features_list item=value}
 					<div class="accordion">
 						<div class="accordion-section">
-							<a class="accordion-section-title" href="#accordion{$i}"><span class="icon-plus"></span>&nbsp&nbsp{l s={$value.name} mod='hotelreservationsyatem'}</a>
+							<a class="accordion-section-title" href="#accordion{$i}"><span class="icon-plus"></span>&nbsp&nbsp{l s={$value.name} mod='hotelreservationsystem'}</a>
 							<div id="accordion{$i}" class="accordion-section-content">
 								<table id="" class="table" style="max-width:100%">
 									<tbody>
@@ -73,7 +73,7 @@
 														<span class=""> {l s={$val.name} mod='hotelreservationsyatem'} </span>
 													</td>
 													<td style="">
-														<input name="hotel_fac[]" type="checkbox" value="{$val.id}" class="form-control" {if isset($edit) && $val.selected}checked='true'{/if}>
+														<input name="hotel_fac[]" type="checkbox" value="{$val.id}" {if isset($edit) && $val.selected}checked='true'{/if}>
 													</td>
 												</tr>
 											{/foreach}
@@ -87,15 +87,15 @@
 				{/foreach}
 			{/if}
 			<div class="panel-footer">
-				<a href="{$link->getAdminLink('AdminHotelFeatures')|escape:'html':'UTF-8'}" class="btn btn-default"><i class="process-icon-cancel"></i> {l s='Cancel' mod='hotelreservationsystem'}</a>
-				<button type="submit" name="submitAddhtl_features" class="btn btn-default pull-right"><i class="process-icon-save"></i> {l s='Assign' mod='hotelreservationsystem'}</button>
+				<a href="{$link->getAdminLink('AdminHotelFeatures')|escape:'html':'UTF-8'}" class="btn btn-default"><i class="process-icon-cancel"></i> {l s='Annuler' mod='hotelreservationsystem'}</a>
+				<button type="submit" name="submitAddhtl_features" class="btn btn-default pull-right"><i class="process-icon-save"></i> {l s='Assigner' mod='hotelreservationsystem'}</button>
 				<!-- <button type="submit" name="submitAdd{$table|escape:'html':'UTF-8'}AndStay" class="btn btn-default pull-right">
 					<i class="process-icon-save"></i> {l s='Assign and stay' mod='hotelreservationsystem'}
 				</button> -->
 			</div>
 		{else}
 			<div class="alert alert-warning">
-				{l s='No hotel found to assign features.' mod='hotelreservationsystem'}
+				{l s='Aucun hôtel trouvé pour assigner les caractéristiques.' mod='hotelreservationsystem'}
 			</div>
 		{/if}
 	</div>

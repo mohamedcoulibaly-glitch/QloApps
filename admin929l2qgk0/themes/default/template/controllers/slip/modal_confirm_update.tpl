@@ -21,29 +21,29 @@
 *}
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal"><i class="icon-remove-sign"></i></button>
-    <h4 class="modal-title"><i class="icon icon-exclamation-triangle"></i>&nbsp;{l s='Confirm Update'}</h4>
-    <p>{l s='This action is irreversable, Are you sure you want to change the status?'}</p>
+    <h4 class="modal-title"><i class="icon icon-exclamation-triangle"></i>&nbsp;{l s='Confirmer la mise à jour'}</h4>
+    <p>{l s='Cette action est irréversible, êtes-vous sûr de vouloir changer le statut ?'}</p>
 </div>
 <div class="modal-body">
     <div class="row">
         <div class="col-sm-6">
-            <label>{l s='Credit Slip'}</label>
+            <label>{l s='Avoir'}</label>
             <p class="control-value">
                 <a href="{$link->getAdminLink('AdminCartRules')}&updatecart_rule&id_cart_rule={$orderSlip->id}" target="_blank">#{$orderSlip->id}</a>
             </p>
         </div>
         <div class="col-sm-6">
-            <label>{l s='Amount'}</label>
+            <label>{l s='Montant'}</label>
             <p class="control-value">{displayPrice price=$orderSlip->amount currency=$order->id_currency}</p>
         </div>
         <div class="col-sm-6">
-            <label>{l s='Customer'}</label>
+            <label>{l s='Client'}</label>
             <p class="control-value">
                 {$customer->firstname} {$customer->lastname} (<a href="{$link->getAdminLink('AdminCustomers')}&viewcustomer&id_customer={$customer->id}" target="_blank">#{$customer->id}</a>)
             </p>
         </div>
         <div class="col-sm-6">
-            <label>{l s='Order'}</label>
+            <label>{l s='Commande'}</label>
             <p class="control-value">
                 {$order->reference} (<a href="{$link->getAdminLink('AdminOrders')}&vieworder&id_order={$order->id}" target="_blank">#{$order->id}</a>)
             </p>

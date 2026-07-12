@@ -1,4 +1,4 @@
-{*
+﻿{*
 * NOTICE OF LICENSE
 *
 * This source file is subject to the Open Software License version 3.0
@@ -23,7 +23,7 @@
 <div class="modal-body">
     <form id="order_discount_form" action="{$current_index}&amp;vieworder&amp;token={$smarty.get.token|escape:'html':'UTF-8'}&amp;id_order={$order->id|intval}" method="post">
         <div class="form-group">
-            <label class="control-label">{l s='Name'}</label>
+            <label class="control-label">{l s='Nom'}</label>
             <input class="form-control" type="text" name="discount_name" value="" />
         </div>
 
@@ -31,12 +31,12 @@
             <div class="col-sm-6">
                 <label class="control-label">{l s='Type'}</label>
                 <select class="form-control" name="discount_type" id="discount_type">
-                    <option value="1">{l s='Percent'}</option>
-                    <option value="2">{l s='Amount'}</option>
+                    <option value="1">{l s='Pourcentage'}</option>
+                    <option value="2">{l s='Montant'}</option>
                 </select>
             </div>
             <div class="col-sm-6" id="discount_value_field">
-                <label class="control-label">{l s='Value'}</label>
+                <label class="control-label">{l s='Valeur'}</label>
                 <div>
                     <div class="input-group">
                         <div class="input-group-addon">
@@ -46,7 +46,7 @@
                         <input class="form-control" type="text" name="discount_value"/>
                     </div>
                     <p class="text-muted" id="discount_value_help" style="display: none;">
-                        {l s='This value must include taxes.'}
+                        {l s='Cette valeur doit inclure les taxes.'}
                     </p>
                 </div>
             </div>
@@ -54,7 +54,7 @@
         {if $order->hasInvoice()}
             <div class="row"  style="display: none;">
                 <div class="col-sm-12">
-                    <label class="control-label">{l s='Invoice'}</label>
+                    <label class="control-label">{l s='Facture'}</label>
                     <select name="discount_invoice">
                         {foreach from=$invoices_collection item=invoice}
                         <option value="{$invoice->id}" selected="selected">
@@ -69,11 +69,11 @@
                     <p class="checkbox">
                         <label class="control-label" for="discount_all_invoices">
                             <input type="checkbox" name="discount_all_invoices" id="discount_all_invoices" value="1" />
-                            {l s='Apply on all invoices'}
+                            {l s='Appliquer sur toutes les factures'}
                         </label>
                     </p>
                     <p class="help-block">
-                        {l s='If you chooses to create this discount for all invoices, only one discount will be created per order invoice.'}
+                        {l s='Si vous choisissez de créer cette remise pour toutes les factures, une seule remise sera créée par facture de commande.'}
                     </p>
                 </div>
             </div>

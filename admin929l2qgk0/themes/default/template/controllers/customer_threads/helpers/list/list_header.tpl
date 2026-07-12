@@ -29,15 +29,15 @@
 	<div class="pull-right col-xs-4 col-sm-3 col-md-2 col-lg-2">
 		<div class="list_availibility_container">
 			<button type="button" class="btn btn-default btn-left btn-block dropdown-toggle" data-toggle="dropdown" data-target="MeaningStatus">
-				<span>{l s='Thread Statuses'}
+				<span>{l s='Statuts des conversations'}
 				<i class="icon-caret-down pull-right"></i>
 			</button>
 			<div id="MeaningStatus" class="dropdown-menu">
 				<ul class="list-unstyled">
-					<li><p><i class="icon-circle text-success"></i> {l s='Open'}</p></li>
-					<li><p><i class="icon-circle text-danger"></i> {l s='Closed'}</p></li>
-					<li><p><i class="icon-circle text-warning"></i> {l s='Pending 1'}</p></li>
-					<li><p><i class="icon-circle text-warning"></i> {l s='Pending 2'}</p></li>
+					<li><p><i class="icon-circle text-success"></i> {l s='Ouvert'}</p></li>
+					<li><p><i class="icon-circle text-danger"></i> {l s='Fermé'}</p></li>
+					<li><p><i class="icon-circle text-warning"></i> {l s='En attente 1'}</p></li>
+					<li><p><i class="icon-circle text-warning"></i> {l s='En attente 2'}</p></li>
 				</ul>
 			</div>
 		</div>

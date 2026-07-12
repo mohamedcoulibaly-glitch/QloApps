@@ -317,6 +317,7 @@ class AdminHotelRoomsBookingController extends ModuleAdminController
             'id_room_type' => $this->id_room_type,
             'booking_product' => $this->booking_product,
             'is_occupancy_wise_search' => $isOccupancyWiseSearch,
+            'is_reception_profile' => $this->isReceptionProfile(),
         ));
         MediaCore::addJsDef(array(
             'initialDate' => $this->date_from
@@ -1038,11 +1039,37 @@ class AdminHotelRoomsBookingController extends ModuleAdminController
 
         $this->addCSS(_PS_JS_DIR_.'fullcalendar/main.css');
         $this->addJs(_PS_JS_DIR_.'fullcalendar/main.js');
+        $this->addJs(_PS_JS_DIR_.'fullcalendar/locales/fr.js');
 
         $this->addCSS(array(_MODULE_DIR_.'hotelreservationsystem/views/css/HotelReservationAdmin.css'));
-        $this->addJs(_MODULE_DIR_.$this->module->name.'/views/js/admin/hotel_rooms_booking.js');
+        if ($this->isReceptionProfile()) {
+            $this->addCSS(__PS_BASE_URI__.$this->admin_webpath.'/themes/'.$this->bo_theme.'/css/reception-modern.css');
+        }
+        $bookingJsPath = _PS_MODULE_DIR_.$this->module->name.'/views/js/admin/hotel_rooms_booking.js';
+        $this->addJs(_MODULE_DIR_.$this->module->name.'/views/js/admin/hotel_rooms_booking.js?v='.(int)filemtime($bookingJsPath));
 
         // add js for reallocation process
         $this->addJS(_PS_JS_DIR_.'admin/reallocation.js');
+    }
+
+    protected function isReceptionProfile()
+    {
+        if (!$this->context->employee || !$this->context->employee->id_profile) {
+            return false;
+        }
+
+        $profileName = Db::getInstance()->getValue('
+            SELECT `name`
+            FROM `'._DB_PREFIX_.'profile_lang`
+            WHERE `id_profile` = '.(int)$this->context->employee->id_profile.'
+                AND `id_lang` = '.(int)$this->context->language->id
+        );
+
+        if (!$profileName) {
+            return false;
+        }
+
+        $normalized = Tools::strtolower(Tools::replaceAccentedChars($profileName));
+        return in_array($normalized, array('reception', 'rception'));
     }
 }

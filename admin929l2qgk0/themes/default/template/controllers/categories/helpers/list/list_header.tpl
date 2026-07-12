@@ -54,9 +54,9 @@
 			<form action="{$REQUEST_URI}" method="post">
 			<div class="panel-heading">
 				{if $need_delete_mode}
-					{l s='What do you want to do with the products associated with this category?'}
+					{l s='Que souhaitez-vous faire avec les produits associés à cette catégorie ?'}
 				{else}
-					{l s='Deleting multiple categories'}
+					{l s='Suppression de plusieurs catégories'}
 				{/if}
 			</div>
 
@@ -64,23 +64,23 @@
 				<div class="radio">
 					<label for="deleteMode_linkanddisable">
 						<input type="radio" name="deleteMode" value="linkanddisable" id="deleteMode_linkanddisable" checked="checked" />
-						{l s='I want to associate the products without other categories to the parent category, then disable these products for now. I re-enable them when they are moved in their new category.'} <strong>{l s='(Recommended)'}</strong>
+						{l s='Je souhaite associer les produits sans autres catégories à la catégorie parente, puis désactiver ces produits pour le moment. Je les réactiverai lorsqu&#039;ils seront déplacés dans leur nouvelle catégorie.'} <strong>{l s='(Recommandé)'}</strong>
 					</label>
 				</div>
 				<div class="radio">
 					<label for="deleteMode_link">
 						<input type="radio" name="deleteMode" value="link" id="deleteMode_link" />
-						{l s='I want to associate the products without other categories to the parent category, and keep them enabled.'}
+						{l s='Je souhaite associer les produits sans autres catégories à la catégorie parente, et les garder actifs.'}
 					</label>
 				</div>
 				<div class="radio">
 					<label for="deleteMode_delete">
 						<input type="radio" name="deleteMode" value="delete" id="deleteMode_delete" />
-						{l s='I want to remove the products which are listed only within this category and no others.'}
+						{l s='Je souhaite supprimer les produits qui figurent uniquement dans cette catégorie et dans aucune autre.'}
 					</label>
 				</div>
 			{else}
-				<div class="alert alert-warning">{l s='Deleting this category will remove products linked only within this category and no others. Are you sure you want to continue?'}</div>
+				<div class="alert alert-warning">{l s='La suppression de cette catégorie supprimera les produits liés uniquement à cette catégorie et à aucune autre. Êtes-vous sûr de vouloir continuer ?'}</div>
 				<input type="hidden" name="deleteMode" value="delete" id="deleteMode_delete" />
 
 			{/if}
@@ -98,11 +98,11 @@
 				<div class="panel-footer">
 					<button type="submit" name="cancel" class="btn btn-default">
 						<i class="icon-remove"></i>
-						{l s='Cancel'}
+						{l s='Annuler'}
 					</button>
 					<button type="submit" class="btn btn-default">
 						<i class="icon-trash text-danger"></i>
-						{l s='Delete'}
+						{l s='Supprimer'}
 					</button>
 				</div>
 			</form>

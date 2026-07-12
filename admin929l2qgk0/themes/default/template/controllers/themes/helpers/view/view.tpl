@@ -51,9 +51,9 @@
 {/if}
 <div class="alert alert-warning">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
-    {l s='Warning: You may have to regenerate images to fit with this new theme.'}
+    {l s='Attention : Vous devrez peut-être régénérer les images pour qu&#039;elles correspondent à ce nouveau thème.'}
     <a href="{$image_link}">
-        <button class="btn btn-default">{l s='Go to the thumbnails regeneration page'}</button>
+        <button class="btn btn-default">{l s='Aller à la page de régénération des miniatures'}</button>
     </a>
 </div>
 
@@ -64,7 +64,7 @@
         <ul>
             {foreach $img_error['error'] as $error}
                 <li>
-                    {l s='Name image type:'} <strong>{$error['name']}</strong> {l s='(width: %1$spx, height: %2$spx).'|sprintf:$error['width']:$error['height']}
+                    {l s='Nom du type d&#039;image :'} <strong>{$error['name']}</strong> {l s='(width: %1$spx, height: %2$spx).'|sprintf:$error['width']:$error['height']}
                 </li>
             {/foreach}
         </ul>
@@ -74,11 +74,11 @@
 {if isset($img_error['ok'])}
     <div class="alert alert-success">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        {l s='Images have been correctly updated in the database:'}
+        {l s='Les images ont été correctement mises à jour dans la base de données :'}
         <ul>
             {foreach $img_error['ok'] as $error}
                 <li>
-                    {l s='Name image type:'} <strong>{$error['name']}</strong> {l s='(width: %1$spx, height: %2$spx).'|sprintf:$error['width']:$error['height']}
+                    {l s='Nom du type d&#039;image :'} <strong>{$error['name']}</strong> {l s='(width: %1$spx, height: %2$spx).'|sprintf:$error['width']:$error['height']}
                 </li>
             {/foreach}
         </ul>
@@ -87,6 +87,6 @@
 {/if}
 
 <a href="{$back_link}">
-    <button class="btn btn-default">{l s='Finish'}</button>
+    <button class="btn btn-default">{l s='Terminer'}</button>
 </a>
 

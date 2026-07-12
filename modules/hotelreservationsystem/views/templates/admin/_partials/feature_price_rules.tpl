@@ -40,15 +40,15 @@
     <div id="advanced_price_rule_{$key}" class="collapse advanced_price_rule_body {if isset($collapse)}in{/if}">
         <div class="form-group">
             <label for="restriction[{$key}][date_selection_type]" class="control-label col-xs-4">
-                {l s='Date Selection type' mod='hotelreservationsystem'}
+                {l s='Type de sélection de date' mod='hotelreservationsystem'}
             </label>
             <div class="col-xs-5">
                 <select class="form-control date_selection_type" name="restriction[{$key}][date_selection_type]" id="date_selection_type_{$key}">
-                    <option value="{HotelRoomTypeFeaturePricing::DATE_SELECTION_TYPE_RANGE}" {if isset($restriction['date_selection_type']) && $restriction['date_selection_type'] == HotelRoomTypeFeaturePricing::DATE_SELECTION_TYPE_RANGE}selected="seleted"{/if}>
-                        {l s='Date Range' mod='hotelreservationsystem'}
+                    <option value="{HotelRoomTypeFeaturePricing::DATE_SELECTION_TYPE_RANGE}" {if isset($restriction['date_selection_type']) && $restriction['date_selection_type'] == HotelRoomTypeFeaturePricing::DATE_SELECTION_TYPE_RANGE}selected="selected"{/if}>
+                        {l s='Plage de dates' mod='hotelreservationsystem'}
                     </option>
-                    <option value="{HotelRoomTypeFeaturePricing::DATE_SELECTION_TYPE_SPECIFIC}" {if isset($restriction['date_selection_type']) && $restriction['date_selection_type'] == HotelRoomTypeFeaturePricing::DATE_SELECTION_TYPE_SPECIFIC}selected="seleted"{/if}>
-                        {l s='Specific Date' mod='hotelreservationsystem'}
+                    <option value="{HotelRoomTypeFeaturePricing::DATE_SELECTION_TYPE_SPECIFIC}" {if isset($restriction['date_selection_type']) && $restriction['date_selection_type'] == HotelRoomTypeFeaturePricing::DATE_SELECTION_TYPE_SPECIFIC}selected="selected"{/if}>
+                        {l s='Date spécifique' mod='hotelreservationsystem'}
                     </option>
                 </select>
             </div>
@@ -68,7 +68,7 @@
 
         <div class="form-group specific_date_type_{$key}" {if !isset($restriction['date_selection_type']) || $restriction['date_selection_type'] == HotelRoomTypeFeaturePricing::DATE_SELECTION_TYPE_RANGE}style="display:none;"{/if}>
             <label class="col-xs-4 control-label required" for="restriction[{$key}][specific_date]" >
-                {l s='Specific Date' mod='hotelreservationsystem'}
+                {l s='Date spécifique' mod='hotelreservationsystem'}
             </label>
             <div class="col-xs-5">
                 <input type="text" id="specific_date_{$key}" name="restriction[{$key}][specific_date]" class="specific_date form-control datepicker-input" value="{if isset($restriction['specific_date'])}{$restriction['specific_date']}{else}{$date_from}{/if}" readonly/>
@@ -77,7 +77,7 @@
 
         <div class="form-group date_range_type_{$key}" {if isset($restriction['date_selection_type']) && $restriction['date_selection_type'] != HotelRoomTypeFeaturePricing::DATE_SELECTION_TYPE_RANGE}style="display:none;"{/if}>
             <label class="col-xs-4 control-label required" for="restriction[{$key}][date_from]" >
-                {l s='Date From' mod='hotelreservationsystem'}
+                {l s='Date du' mod='hotelreservationsystem'}
             </label>
             <div class="col-xs-5">
                 <input type="text" id="feature_plan_date_from_{$key}" name="restriction[{$key}][date_from]" class="feature_plan_date_from form-control datepicker-input" value="{if isset($restriction['date_from'])}{$restriction['date_from']}{else}{$date_from}{/if}" readonly/>
@@ -85,7 +85,7 @@
         </div>
         <div class="form-group date_range_type_{$key}" {if isset($restriction['date_selection_type']) && $restriction['date_selection_type'] != HotelRoomTypeFeaturePricing::DATE_SELECTION_TYPE_RANGE}style="display:none;"{/if}>
             <label class="col-xs-4 control-label required" for="restriction[{$key}][date_to]" >
-                {l s='Date To' mod='hotelreservationsystem'}
+                {l s='Date au' mod='hotelreservationsystem'}
             </label>
             <div class="col-xs-5">
                 <input type="text" id="feature_plan_date_to_{$key}" name="restriction[{$key}][date_to]" class="feature_plan_date_to form-control datepicker-input" value="{if isset($restriction['date_to'])}{$restriction['date_to']}{else}{$date_to}{/if}" readonly/>
@@ -94,16 +94,16 @@
 
         <div class="form-group special_days_content_{$key}" {if isset($restriction['date_selection_type']) && $restriction['date_selection_type'] != HotelRoomTypeFeaturePricing::DATE_SELECTION_TYPE_RANGE}style="display:none;"{/if}>
             <label class="control-label col-xs-4" for="restriction[{$key}][is_special_days_exists]">
-                <span class="label-tooltip" data-toggle="tooltip" data-html="true" title="" data-original-title="{l s='Enable this option to add restriction to specific week days (for example, weekends) of the selected date range.' mod='hotelreservationsystem'}">
-                    {l s='Restrict to Week Days' mod='hotelreservationsystem'}
+                <span class="label-tooltip" data-toggle="tooltip" data-html="true" title="" data-original-title="{l s='Activer cette option pour ajouter une restriction aux jours de la semaine spécifiques (par exemple, les week-ends) de la plage de dates sélectionnée.' mod='hotelreservationsystem'}">
+                    {l s='Restreindre aux jours de la semaine' mod='hotelreservationsystem'}
                 </span>
             </label>
             <div class="col-xs-5">
                 <span class="switch prestashop-switch fixed-width-lg">
                     <input type="radio" value="1" id="restriction[{$key}][is_special_days_exists_on]" name="restriction[{$key}][is_special_days_exists]" class="is_special_days_exists" {if isset($restriction['is_special_days_exists']) && $restriction['is_special_days_exists']}checked="checked"{/if}>
-                    <label for="restriction[{$key}][is_special_days_exists_on]">{l s='Yes' mod='hotelreservationsystem'}</label>
+                    <label for="restriction[{$key}][is_special_days_exists_on]">{l s='Oui' mod='hotelreservationsystem'}</label>
                     <input type="radio" value="0" id="restriction[{$key}][is_special_days_exists_off]" name="restriction[{$key}][is_special_days_exists]" class="is_special_days_exists" {if !isset($restriction['is_special_days_exists']) || !$restriction['is_special_days_exists']}checked="checked"{/if}>
-                    <label for="restriction[{$key}][is_special_days_exists_off]">{l s='No' mod='hotelreservationsystem'}</label>
+                    <label for="restriction[{$key}][is_special_days_exists_off]">{l s='Non' mod='hotelreservationsystem'}</label>
                     <a class="slide-button btn"></a>
                 </span>
             </div>
@@ -111,7 +111,7 @@
 
         <div class="form-group week_days week_days_{$key}" {if isset($restriction['special_days']) && is_array($restriction['special_days']) && isset($restriction['is_special_days_exists']) && $restriction['is_special_days_exists'] && isset($restriction['date_selection_type']) && $restriction['date_selection_type'] == HotelRoomTypeFeaturePricing::DATE_SELECTION_TYPE_RANGE}style="display:block;"{/if}>
             <label for="restriction[{$key}][special_days]" class="control-label col-xs-4">
-                {l s='Select Week Days' mod='hotelreservationsystem'}
+                {l s='Sélectionner les jours de la semaine' mod='hotelreservationsystem'}
             </label>
             <div class="col-xs-8 checkboxes-wrap">
             {foreach $week_days as $dayVal => $day}

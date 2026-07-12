@@ -61,7 +61,7 @@
 									- <span class="module-badge-partner help-tooltip text-warning" data-title="{l s="Official, QloApps certified module. Free, secure and includes updates!"}"><i class="icon-pushpin"></i> <small>{l s="Official"}</small></span>
 								{elseif isset($module->id) && $module->id gt 0}
 									{if isset($module->version_addons) && $module->version_addons}
-										<span class="label label-warning">{l s='Need update'}</span>
+										<span class="label label-warning">{l s='Mise à jour nécessaire'}</span>
 									{/if}
 								{/if}
 							</div>
@@ -70,7 +70,7 @@
 									{$module->description}
 								{/if}
 								{if isset($module->show_quick_view) &&  $module->show_quick_view}
-									<br><a href="{$currentIndex|escape:'html':'UTF-8'}&amp;token={$token|escape:'html':'UTF-8'}&amp;ajax=1&amp;action=GetModuleQuickView&amp;module={$module->name|urlencode}" class="fancybox-quick-view"><i class="icon-search"></i> {l s='Read more'}</a>
+									<br><a href="{$currentIndex|escape:'html':'UTF-8'}&amp;token={$token|escape:'html':'UTF-8'}&amp;ajax=1&amp;action=GetModuleQuickView&amp;module={$module->name|urlencode}" class="fancybox-quick-view"><i class="icon-search"></i> {l s='En savoir plus'}</a>
 								{/if}
 							</p>
 							{if isset($module->message) && (empty($module->name) !== false) && (!isset($module->type) || ($module->type != 'addonsMustHave' || $module->type !== 'addonsNative'))}<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>{$module->message}</div>{/if}
@@ -81,13 +81,13 @@
 							<div class="btn-group pull-right">
 								{if isset($module->type) && $module->type == 'addonsMustHave'}
 									<a class="btn btn-default _blank" href="{$module->addons_buy_url|replace:' ':'+'|escape:'html':'UTF-8'}">
-										<i class="icon-shopping-cart"></i> &nbsp;{if isset($module->price)}{if $module->price|floatval == 0}{l s='Free'}{elseif isset($module->id_currency)}{displayPrice price=$module->price currency=$module->id_currency}{/if}{/if}
+										<i class="icon-shopping-cart"></i> &nbsp;{if isset($module->price)}{if $module->price|floatval == 0}{l s='Gratuit'}{elseif isset($module->id_currency)}{displayPrice price=$module->price currency=$module->id_currency}{/if}{/if}
 									</a>
 								{else}
 									{if isset($module->id) && $module->id gt 0}
 										{if isset($module->version_addons) && $module->version_addons}
 											<a class="btn btn-warning" href="{$module->options.update_url|escape:'html':'UTF-8'}">
-												<i class="icon-refresh"></i> {l s='Update it!'}
+												<i class="icon-refresh"></i> {l s='Mettez-le à jour !'}
 											</a>
 										{elseif !isset($module->not_on_disk)}
 											{if $module->optionsHtml|count > 0}
@@ -96,23 +96,23 @@
 											{/if}
 										{else}
 											<a class="btn btn-danger" {if !empty($module->options.uninstall_onclick)}onclick="{$module->options.uninstall_onclick}"{/if} href="{$module->options.uninstall_url|escape:'html':'UTF-8'}">
-												<i class="icon-minus-sign-alt"></i>&nbsp;{l s='Uninstall'}
+												<i class="icon-minus-sign-alt"></i>&nbsp;{l s='Désinstaller'}
 											</a>
 										{/if}
 									{else}
 										{if isset($module->trusted) && $module->trusted}
 											{if $module->trusted == 2}
 												<a class="btn btn-success untrustedaddon" href="#" data-target="#moduleNotTrustedCountry" data-toggle="modal" data-link="{$module->options.install_url|escape:'html':'UTF-8'}" data-module-name="{$module->displayName|escape:'html':'UTF-8'}">
-													<i class="icon-plus-sign-alt"></i>&nbsp;{l s='Install'}
+													<i class="icon-plus-sign-alt"></i>&nbsp;{l s='Installer'}
 												</a>
 											{else}
 												<a class="btn btn-success" href="{$module->options.install_url|escape:'html':'UTF-8'}">
-													<i class="icon-plus-sign-alt"></i>&nbsp;{l s='Install'}
+													<i class="icon-plus-sign-alt"></i>&nbsp;{l s='Installer'}
 												</a>
 											{/if}
 										{else}
 										<a class="btn btn-success untrustedaddon" href="#" data-target="#moduleNotTrusted" data-toggle="modal" data-link="{$module->options.install_url|escape:'html':'UTF-8'}" data-module-display-name="{$module->displayName|escape:'html':'UTF-8'}" data-module-name="{$module->name|escape:'html':'UTF-8'}" data-module-image="{if isset($module->image)}{$module->image}{else}{$modules_uri}/{$module->name}/{$module->logo}{/if}" data-author-name="{$module->author|escape:'html':'UTF-8'}" data-author-uri="{if isset($module->author_uri)}{$module->author_uri|escape:'html':'UTF-8'}{/if}">
-											<i class="icon-plus-sign-alt"></i>&nbsp;{l s='Install'}
+											<i class="icon-plus-sign-alt"></i>&nbsp;{l s='Installer'}
 										</a>
 										{/if}
 									{/if}
@@ -156,19 +156,19 @@
 											{if isset($module->preferences) && isset($module->preferences['favorite']) && $module->preferences['favorite'] == 1}
 												<li>
 													<a class="action_module action_unfavorite toggle_favorite" data-module="{$module->name}" data-value="0" href="#">
-														<i class="icon-star"></i> {l s='Remove from Favorites'}
+														<i class="icon-star"></i> {l s='Retirer des favoris'}
 													</a>
 													<a class="action_module action_favorite toggle_favorite" data-module="{$module->name}" data-value="1" href="#" style="display: none;">
-														<i class="icon-star"></i> {l s='Mark as Favorite'}
+														<i class="icon-star"></i> {l s='Marquer comme favori'}
 													</a>
 												</li>
 											{else}
 												<li>
 													<a class="action_module action_unfavorite toggle_favorite" data-module="{$module->name}" data-value="0" href="#" style="display: none;">
-														<i class="icon-star"></i> {l s='Remove from Favorites'}
+														<i class="icon-star"></i> {l s='Retirer des favoris'}
 													</a>
 													<a class="action_module action_favorite toggle_favorite" data-module="{$module->name}" data-value="1" href="#">
-														<i class="icon-star"></i> {l s='Mark as Favorite'}
+														<i class="icon-star"></i> {l s='Marquer comme favori'}
 													</a>
 												</li>
 											{/if}
@@ -186,20 +186,20 @@
 	</table>
 	<div class="btn-group pull-left">
 		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-			{l s='Bulk actions'}
+			{l s='Actions groupées'}
 			 <span class="caret"></span>
 		</button>
 		<ul class="dropdown-menu">
 			<li>
 			 	<a href="#" onclick="modules_management('install')">
 					<i class="icon-plus-sign-alt"></i>&nbsp;
-					{l s='Install the selection'}
+					{l s='Installer la sélection'}
 				</a>
 			</li>
 			<li>
 				<a href="#" onclick="modules_management('uninstall')">
 					<i class="icon-minus-sign-alt"></i>&nbsp;
-					{l s='Uninstall the selection'}
+					{l s='Désinstaller la sélection'}
 				</a>
 			</li>
 		</ul>
@@ -209,7 +209,7 @@
 			<tr>
 				<td colspan="4" class="list-empty">
 					<div class="list-empty-msg">
-						<i class="icon-warning-sign list-empty-icon"></i> {l s='No modules available in this section.'}
+						<i class="icon-warning-sign list-empty-icon"></i> {l s='Aucun module disponible dans cette section.'}
 					</div>
 				</td>
 			</tr>

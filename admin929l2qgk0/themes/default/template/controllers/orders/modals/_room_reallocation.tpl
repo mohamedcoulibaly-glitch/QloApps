@@ -23,32 +23,32 @@
 <div class="modal-body">
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active">
-            <a  href="#reallocate_room_tab" aria-controls="reallocate" role="tab" data-toggle="tab">{l s='Room Reallocation'}</a>
+            <a  href="#reallocate_room_tab" aria-controls="reallocate" role="tab" data-toggle="tab">{l s='Réallocation de chambre'}</a>
         </li>
         <li role="presentation">
-            <a  href="#swap_room_tab" aria-controls="swap" role="tab" data-toggle="tab">{l s='Swap Room'}</a>
+            <a  href="#swap_room_tab" aria-controls="swap" role="tab" data-toggle="tab">{l s='Échanger la chambre'}</a>
         </li>
     </ul>
     <div class="tab-content active">
         <div role="tabpanel" class="tab-pane active" id="reallocate_room_tab">
             <div class="row">
                 <dl class="list-detail col-sm-6">
-                    <label class="label-title">{l s='Current Room Number'}</label>
+                    <label class="label-title">{l s='Numéro de chambre actuel'}</label>
                     <dd><i class="icon-bed"></i> &nbsp;<span class="modal_curr_room_num"></span></dd>
                 </dl>
                 <dl class="list-detail col-sm-6">
-                    <label class="label-title">{l s='Allotment type'}</label>
+                    <label class="label-title">{l s='Type d&#039;attribution'}</label>
                     <dd><span class="modal_curr_allotent_type"></span></dd>
                 </dl>
             </div>
             <div class="row">
                 <dl class="list-detail col-sm-6">
-                    <label class="label-title">{l s='Currently Alloted Customer'}</label>
+                    <label class="label-title">{l s='Client actuellement attribué'}</label>
                     <dd><i class="icon-user"></i> &nbsp;<span class="cust_name"></span></dd>
                     <dd><i class="icon-envelope"></i> &nbsp;<span class="cust_email"></span></dd>
                 </dl>
                 <dl class="list-detail col-sm-6 allotment_comment_block">
-                    <label class="label-title">{l s='Allotment Comment'}</label>
+                    <label class="label-title">{l s='Commentaire d&#039;attribution'}</label>
                     <dd><span class="modal_curr_allotment_comment"></span></dd>
                 </dl>
             </div>
@@ -58,20 +58,20 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="form-group col-sm-6">
-                            <label for="realloc_avail_room_type" class="control-label model-label">{l s='Room Type To Reallocate:'}</label>
+                            <label for="realloc_avail_room_type" class="control-label model-label">{l s='Type de chambre à réallouer :'}</label>
                             <input type="hidden" class="form-control modal_id_htl_booking" name="id_htl_booking">
                             <div class="realloc_avail_room_type_container">
                                 <select class="form-control" name="realloc_avail_room_type" id="realloc_avail_room_type">
-                                    <option value="0" selected="selected">{l s='Select Room Type'}</option>
+                                    <option value="0" selected="selected">{l s='Sélectionner un type de chambre'}</option>
                                 </select>
                             </div>
                             <p class="error_text" id="realloc_sel_rm_type_err_p"></p>
                         </div>
                         <div class="form-group col-sm-6">
-                            <label for="realloc_avail_rooms" class="control-label model-label">{l s='Room To Reallocate:'}</label>
+                            <label for="realloc_avail_rooms" class="control-label model-label">{l s='Chambre à réallouer :'}</label>
                             <div class="realloc_avail_rooms_container">
                                 <select class="form-control" name="realloc_avail_rooms" id="realloc_avail_rooms">
-                                    <option value="0" selected="selected">{l s='Select Rooms'}</option>
+                                    <option value="0" selected="selected">{l s='Sélectionner les chambres'}</option>
                                 </select>
                             </div>
                             <p class="error_text" id="realloc_sel_rm_err_p"></p>
@@ -79,11 +79,11 @@
                     </div>
                     <div class="row" id="reallocation_price_diff_block" style="display:none;">
                         <div class="form-group col-sm-6">
-                            <label for="reallocation_price_diff" class="control-label model-label">{l s='Price Difference'} *</label>
+                            <label for="reallocation_price_diff" class="control-label model-label">{l s='Différence de prix'} *</label>
                             <div class="input-group">
                                 <span class="input-group-addon">{$currency->prefix}{$currency->suffix}</span>
                                 <input class="alert-warning" type="text" name="reallocation_price_diff" id="reallocation_price_diff" value="0" />
-                                <span class="input-group-addon">{l s='Tax excl.'}</span>
+                                <span class="input-group-addon">{l s='HT'}</span>
                             </div>
                         </div>
                     </div>
@@ -105,22 +105,22 @@
         <div role="tabpanel" class="tab-pane" id="swap_room_tab">
             <div class="row">
                 <dl class="list-detail col-sm-6">
-                    <label class="label-title">{l s='Current Room Number'}</label>
+                    <label class="label-title">{l s='Numéro de chambre actuel'}</label>
                     <dd><i class="icon-bed"></i> &nbsp;<span class="modal_curr_room_num"></span></dd>
                 </dl>
                 <dl class="list-detail col-sm-6">
-                    <label class="label-title">{l s='Allotment type'}</label>
+                    <label class="label-title">{l s='Type d&#039;attribution'}</label>
                     <dd><span class="modal_curr_allotent_type"></span></dd>
                 </dl>
             </div>
             <div class="row">
                 <dl class="list-detail col-sm-6">
-                    <label class="label-title">{l s='Currently Alloted Customer'}</label>
+                    <label class="label-title">{l s='Client actuellement attribué'}</label>
                     <dd><i class="icon-user"></i> &nbsp;<span class="cust_name"></span></dd>
                     <dd><i class="icon-envelope"></i> &nbsp;<span class="cust_email"></span></dd>
                 </dl>
                 <dl class="list-detail col-sm-6 allotment_comment_block">
-                    <label class="label-title">{l s='Allotment Comment'}</label>
+                    <label class="label-title">{l s='Commentaire d&#039;attribution'}</label>
                     <dd><span class="modal_curr_allotment_comment"></span></dd>
                 </dl>
             </div>
@@ -131,7 +131,7 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-6">
-                            <label for="swap_avail_rooms" class="control-label model-label">{l s='Available rooms to swap'}</label>
+                            <label for="swap_avail_rooms" class="control-label model-label">{l s='Chambres disponibles pour l&#039;échange'}</label>
                             <input type="hidden" class="form-control modal_id_htl_booking" name="id_htl_booking">
                             <div class="swap_avail_rooms_container"></div>
 

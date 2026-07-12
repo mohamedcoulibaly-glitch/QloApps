@@ -58,13 +58,13 @@
 		});
 	</script>
 	<div id="container-customer" class="panel">
-		<h3><i class="icon-list-alt"></i> {l s='View your data'}</h3>
+		<h3><i class="icon-list-alt"></i> {l s='Vos données'}</h3>
 		<div class="alert alert-info">
-			<p>{l s='Please match each column of your source CSV file to one of the destination columns.'}</p>
+			<p>{l s='Veuillez associer chaque colonne de votre fichier CSV source à l&#039;une des colonnes de destination.'}</p>
 		</div>
 		<div class="form-horizontal">
 			<div class="form-group" {if !$import_matchs}style="display:none"{/if}>
-				<label class="control-label col-lg-3">{l s='Load a data matching configuration'}</label>
+				<label class="control-label col-lg-3">{l s='Charger une configuration de correspondance de données'}</label>
 				<div id="selectDivImportMatchs" class="col-lg-7">
 					<select id="valueImportMatchs">
 						{foreach $import_matchs as $match}
@@ -73,25 +73,25 @@
 					</select>
 				</div>
 				<div class="col-lg-2">
-					<a id="loadImportMatchs" href="#" class="btn btn-default"><i class="icon-cogs"></i> {l s='Load'}</a>
-					<a id="deleteImportMatchs" href="#" class="btn btn-default"><i class="icon-remove"></i> {l s='Delete'}</a>
+					<a id="loadImportMatchs" href="#" class="btn btn-default"><i class="icon-cogs"></i> {l s='Charger'}</a>
+					<a id="deleteImportMatchs" href="#" class="btn btn-default"><i class="icon-remove"></i> {l s='Supprimer'}</a>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-lg-3" for="newImportMatchs">{l s='Save your data matching configuration'}</label>
+				<label class="control-label col-lg-3" for="newImportMatchs">{l s='Enregistrer votre configuration de correspondance de données'}</label>
 				<div class="col-lg-7">
 					<input type="text" name="newImportMatchs" id="newImportMatchs" />		
 				</div>
 				<div class="col-lg-2">
-					<a id="saveImportMatchs" class="btn btn-default" href="#"><i class="icon-save"></i> {l s='Save'}</a>
+					<a id="saveImportMatchs" class="btn btn-default" href="#"><i class="icon-save"></i> {l s='Enregistrer'}</a>
 				</div>
 			</div>
 		</div>
 		<div id="error_duplicate_type" class="alert alert-warning" style="display:none;">
-			{l s='Two columns cannot have the same type of values'}
+			{l s='Deux colonnes ne peuvent pas avoir le même type de valeurs'}
 		</div>
 		<div id="required_column" class="alert alert-warning" style="display:none;">
-			{l s='This column must be set:'} <span id="missing_column">&nbsp;</span>
+			{l s='Cette colonne doit être définie :'} <span id="missing_column">&nbsp;</span>
 		</div>
 		<form action="{$current|escape:'html':'UTF-8'}&amp;token={$token|escape:'html':'UTF-8'}" method="post" id="import_form" name="import_form" class="form-horizontal">
 			<input type="hidden" name="csv" value="{$fields_value.csv}" />
@@ -111,7 +111,7 @@
 			<input type="hidden" name="separator" value="{$fields_value.separator}" />
 			<input type="hidden" name="multiple_value_separator" value="{$fields_value.multiple_value_separator}" />
 			<div class="form-group">
-				<label class="control-label col-lg-3" for="skip">{l s='Lines to skip'}</label>
+				<label class="control-label col-lg-3" for="skip">{l s='Lignes à ignorer'}</label>
 				<div class="col-lg-9">
 					<input class="fixed-width-sm" type="text" name="skip" id="skip" value="1" />
 					<p class="help-block">{l s='This number indicates how many of the first lines of your CSV file should be skipped when importing the data. For instance set it to 1 if the first row of your file contains headers.'}</p>
@@ -134,11 +134,11 @@
 			<div class="panel-footer">
 				<button type="button" class="btn btn-default" onclick="window.history.back();">
 					<i class="process-icon-cancel text-danger"></i>
-					{l s='Cancel'}
+					{l s='Annuler'}
 				</button>
 				<button id="import" name="import" type="submit" onclick="return (validateImportation(new Array({$res})));"  class="btn btn-default pull-right">
 					<i class="process-icon-ok text-success"></i>
-					{l s='Import .CSV data'}
+					{l s='Importer les données CSV'}
 				</button>
 			</div>
 		</form>

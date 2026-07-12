@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
 	<name>statscatalog</name>
-	<displayName><![CDATA[Hotel statistics]]></displayName>
+	<displayName><![CDATA[Statistiques hôtel]]></displayName>
 	<version><![CDATA[1.4.3]]></version>
-	<description><![CDATA[Adds a tab containing general statistics about your catalog to the Stats dashboard.]]></description>
+	<description><![CDATA[Ajoute un onglet contenant les statistiques générales de votre catalogue au tableau de bord des statistiques.]]></description>
 	<author><![CDATA[PrestaShop]]></author>
 	<tab><![CDATA[analytics_stats]]></tab>
 	<confirmUninstall><![CDATA[]]></confirmUninstall>

@@ -42,7 +42,7 @@
 							</select>
 						</div>
 						<div class="col-lg-6">
-							<input type="submit" class="btn btn-default" name="submitBulk" id="submitBulk" value="{l s='Apply'}" />
+							<input type="submit" class="btn btn-default" name="submitBulk" id="submitBulk" value="{l s='Appliquer'}" />
 						</div>
 					</div>
 					{else}
@@ -54,7 +54,7 @@
 									{foreach $zones as $z}
 										<option value="{$z['id_zone']}">{$z['name']}</option>
 									{/foreach}
-								</select>									
+								</select>
 							{/if}
 							</div>
 							<div class="col-lg-6">
@@ -64,12 +64,12 @@
 						{/foreach}
 					{/if}
 				{/if}
-				</div>			
+				</div>
 				{if !$simple_header && $list_total > 20}
 				<div class="col-lg-4">
 					{* Choose number of results per page *}
 					<div class="pagination">
-						{l s='Display'} 
+						{l s='Afficher'}
 						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 							{$selected_pagination}
 							<i class="icon-caret-down"></i>

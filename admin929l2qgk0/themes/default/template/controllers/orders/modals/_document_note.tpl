@@ -1,4 +1,4 @@
-{*
+﻿{*
 * NOTICE OF LICENSE
 *
 * This source file is subject to the Open Software License version 3.0
@@ -23,7 +23,7 @@
 <div class="modal-body">
     <form  action="{$current_index}&amp;vieworder&amp;id_order={$order->id}{if isset($smarty.get.token)}&amp;token={$smarty.get.token|escape:'html':'UTF-8'}{/if}" method="post">
         <div class="form-group">
-            <label class="control-label">{l s='Note Detail'}</label>
+            <label class="control-label">{l s='Détail de la note'}</label>
             <input type="hidden" name="id_order_invoice" id="id_order_invoice" value="" />
             <textarea name="note" id="editNote" class="edit-note textarea-autosize"></textarea>
         </div>

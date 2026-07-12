@@ -52,7 +52,7 @@
 {block name="leadin"}
 	<div style="{if $active}display:none{/if}">
 		<p class="alert alert-warning">
-			{l s='Your CMS page will be saved as a draft'}
+			{l s='Votre page CMS sera enregistrée en tant que brouillon'}
 		</p>
 	</div>
 {/block}

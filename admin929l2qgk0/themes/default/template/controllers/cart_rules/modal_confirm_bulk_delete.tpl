@@ -21,11 +21,11 @@
 *}
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal"><i class="icon-remove-sign"></i></button>
-    <h4 class="modal-title"><i class="icon icon-exclamation-triangle"></i>&nbsp;{l s='Confirm Delete'}</h4>
+    <h4 class="modal-title"><i class="icon icon-exclamation-triangle"></i>&nbsp;{l s='Confirmer la suppression'}</h4>
     {if isset($cartRules)}
-        <p>{l s='The following cart rules in your selection were created dynamically from refunds or credit slips. Please confirm if you also intend to delete these cart rules?'}</p>
+        <p>{l s='Les règles de panier suivantes ont été créées dynamiquement à partir de remboursements ou d&#039;avoirs. Veuillez confirmer si vous souhaitez également les supprimer.'}</p>
     {else}
-        <p>{l s='Are you sure, you want to delete the selected cart rules?'}</p>
+        <p>{l s='Êtes-vous sûr de vouloir supprimer les règles de panier sélectionnées ?'}</p>
 
     {/if}
 </div>
@@ -38,16 +38,16 @@
                         <th>
                         </th>
                         <th>
-                            {l s='Cart Rule'}
+                            {l s='Règle de panier'}
                         </th>
                         <th>
-                            {l s='Reason'}
+                            {l s='Raison'}
                         </th>
                         <th>
-                            {l s='Order'}
+                            {l s='Commande'}
                         </th>
                         <th>
-                            {l s='Amount'}
+                            {l s='Montant'}
                         </th>
                     </tr>
                 </thead>
@@ -61,14 +61,14 @@
                         </td>
                         <td>
                             {if $cartRule['generated_by'] == CartRule::GENERATED_BY_REFUND}
-                                <b>{l s='Generated against refund'}</b>
+                                <b>{l s='Généré contre un remboursement'}</b>
                                 (<a href="{$link->getAdminLink('AdminOrderRefundRequests')}&vieworder_return&id_order_return={$cartRule['id_generated_by']}" target="_blank">#{$cartRule['id_generated_by']}</a>)
                             {else if $cartRule['generated_by'] == CartRule::GENERATED_BY_ORDER_SLIP}
-                                <b>{l s='Generated against credit slip'}</b>
+                                <b>{l s='Généré contre un avoir'}</b>
                                 (<a href="{$link->getAdminLink('AdminPdf')}&submitAction=generateOrderSlipPDF&id_order_slip={$cartRule['id_generated_by']}" target="_blank">#{$cartRule['id_generated_by']}</a>)
                             {/if}
                             {if !$cartRule['cart_rule']->quantity}
-                                <span class="badge badge-danger">{l s='Used'}</span>
+                                <span class="badge badge-danger">{l s='Utilisé'}</span>
                             {/if}
                         </td>
                         <td>

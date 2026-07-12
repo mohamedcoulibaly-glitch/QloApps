@@ -22,10 +22,10 @@
 <div class="col-lg-8">
 	<input id="{$id|escape:'html':'UTF-8'}" type="file" name="{$name|escape:'html':'UTF-8'}"{if isset($url)} data-url="{$url|escape:'html':'UTF-8'}"{/if} class="hide" />
 	<button class="btn btn-default" data-style="expand-right" data-size="s" type="button" id="{$id|escape:'html':'UTF-8'}-add-button">
-		<i class="icon-plus-sign"></i> {l s='Add file'}
+		<i class="icon-plus-sign"></i> {l s='Ajouter un fichier'}
 	</button>
 <!--
-	<div class="alert alert-success" id="{$id|escape:'html':'UTF-8'}-success" style="display:none">{l s='Upload successful'}</div>
+	<div class="alert alert-success" id="{$id|escape:'html':'UTF-8'}-success" style="display:none">{l s='Téléchargement réussi'}</div>
 	<div class="alert alert-danger" id="{$id|escape:'html':'UTF-8'}-errors" style="display:none"></div>
 -->
 </div>

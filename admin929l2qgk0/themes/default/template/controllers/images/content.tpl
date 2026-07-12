@@ -36,10 +36,10 @@
             <div class="panel">
                 <h3>
                     <i class="icon-picture"></i>
-                    {l s='Move images'}
+                    {l s='Déplacer les images'}
                 </h3>
                 <div class="alert alert-warning">
-                    <p>{l s='You can choose to keep your images stored in the previous system. There\'s nothing wrong with that.'}</p>
+                    <p>{l s='You can choose to keep your images stored in the previous system. There&#039;s nothing wrong with that.'}</p>
                     <p>{l s='You can also decide to move your images to the new storage system. In this case, click on the "Move images" button below. Please be patient. This can take several minutes.'}</p>
                 </div>
                 <div class="alert alert-info">&nbsp;
@@ -47,7 +47,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12 pull-right">
-                        <button type="submit" name="submitMoveImages{$table}" class="btn btn-default pull-right" onclick="return confirm('{l s='Are you sure?'}');"><i class="process-icon-cogs"></i> {l s='Move images'}</button>
+                        <button type="submit" name="submitMoveImages{$table}" class="btn btn-default pull-right" onclick="return confirm('{l s='Êtes-vous sûr ?'}');"><i class="process-icon-cogs"></i> {l s='Déplacer les images'}</button>
                     </div>
                 </div>
             </div>
@@ -61,20 +61,20 @@
 		<div class="panel">
 			<h3>
                 <i class="icon-picture"></i>
-                {l s='Regenerate thumbnails'}
+                {l s='Régénérer les miniatures'}
             </h3>
 
 			<div class="alert alert-info">
-				{l s='Regenerates thumbnails for all existing images'}<br />
-				{l s='Please be patient. This can take several minutes.'}<br />
+				{l s='Régénère les miniatures pour toutes les images existantes'}<br />
+				{l s='Veuillez patienter. Cela peut prendre plusieurs minutes.'}<br />
 				{l s='Be careful! Manually uploaded thumbnails will be erased and replaced by automatically generated thumbnails.'}
 			</div>
 			
 			<div class="form-group">
-				<label class="control-label col-lg-3">{l s='Select an image'}</label>
+				<label class="control-label col-lg-3">{l s='Sélectionner une image'}</label>
 				<div class="col-lg-9">
 					<select name="type" onchange="changeFormat(this)">
-						<option value="all">{l s='All'}</option>
+						<option value="all">{l s='Tout'}</option>
 						{foreach $types AS $k => $type}
 							<option value="{$k}">{$type}</option>
 						{/foreach}
@@ -84,10 +84,10 @@
 
 			{foreach $types AS $k => $type}
 			<div class="form-group second-select format_{$k}" style="display:none;">			
-				<label class="control-label col-lg-3">{l s='Select a format'}</label>
+				<label class="control-label col-lg-3">{l s='Sélectionner un format'}</label>
 				<div class="col-lg-9 margin-form">
 					<select name="format_{$k}">
-						<option value="all">{l s='All'}</option>
+						<option value="all">{l s='Tout'}</option>
 						{foreach $formats[$k] AS $format}
 							<option value="{$format['id_image_type']}">{$format['name']}</option>
 						{/foreach}
@@ -105,17 +105,17 @@
 
 			<div class="form-group">
 				<label class="control-label col-lg-3">
-					{l s='Erase previous images'}
+					{l s='Effacer les images précédentes'}
 				</label>
 				<div class="col-lg-9">
 					<span class="switch prestashop-switch fixed-width-lg">
 						<input type="radio" name="erase" id="erase_on" value="1" checked="checked">
 						<label for="erase_on" class="radioCheck">
-							{l s='Yes'}
+							{l s='Oui'}
 						</label>
 						<input type="radio" name="erase" id="erase_off" value="0">
 						<label for="erase_off" class="radioCheck">
-							{l s='No'}
+							{l s='Non'}
 						</label>
 						<a class="slide-button btn"></a>
 					</span>
@@ -125,8 +125,8 @@
 				</div>
 			</div>
 			<div class="panel-footer">
-				<button type="submit" name="submitRegenerate{$table}" class="btn btn-default pull-right" onclick="return confirm('{l s='Are you sure?'}');">
-					<i class="process-icon-cogs"></i> {l s='Regenerate thumbnails'}
+				<button type="submit" name="submitRegenerate{$table}" class="btn btn-default pull-right" onclick="return confirm('{l s='Êtes-vous sûr ?'}');">
+					<i class="process-icon-cogs"></i> {l s='Régénérer les miniatures'}
 				</button>
 			</div>
 		</div>

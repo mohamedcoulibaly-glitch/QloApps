@@ -1,4 +1,4 @@
-{*
+﻿{*
 * 2007-2017 PrestaShop
 *
 * NOTICE OF LICENSE
@@ -33,16 +33,16 @@
 					<span class="title_box ">&nbsp;</span>
 				</th>
 				<th>
-					<span class="title_box ">{l s='Carrier'}</span>
+					<span class="title_box ">{l s='Transporteur'}</span>
 				</th>
 				<th>
-					<span class="title_box ">{l s='Weight'}</span>
+					<span class="title_box ">{l s='Poids'}</span>
 				</th>
 				<th>
-					<span class="title_box ">{l s='Shipping cost'}</span>
+					<span class="title_box ">{l s='Frais de livraison'}</span>
 				</th>
 				<th>
-					<span class="title_box ">{l s='Tracking number'}</span>
+					<span class="title_box ">{l s='Numéro de suivi'}</span>
 				</th>
 				<th></th>
 			</tr>
@@ -62,7 +62,7 @@
 					{/if}
 				</td>
 				<td>
-					<span class="shipping_number_show">{if $line.url && $line.tracking_number}<a class="_blank" href="{$line.url|replace:'@':$line.tracking_number}">{$line.tracking_number}</a>{else}{$line.tracking_number}{/if}</span>
+					<span class="shipping_number_show">{if $line.url && $line.tracking_number}<a target="_blank" rel="noopener noreferrer" href="{$line.url|replace:'@':$line.tracking_number}">{$line.tracking_number}</a>{else}{$line.tracking_number}{/if}</span>
 				</td>
 				<td>
 					{if $line.can_edit}
@@ -72,16 +72,16 @@
 								<input type="text" name="tracking_number" value="{$line.tracking_number|htmlentities}" />
 								<button type="submit" class="btn btn-default" name="submitShippingNumber">
 									<i class="icon-ok"></i>
-									{l s='Update'}
+									{l s='Mettre à jour'}
 								</button>
 							</span>
 							<a href="#" class="edit_shipping_number_link btn btn-default">
 								<i class="icon-pencil"></i>
-								{l s='Edit'}
+								{l s='Modifier'}
 							</a>
 							<a href="#" class="cancel_shipping_number_link btn btn-default" style="display: none;">
 								<i class="icon-remove"></i>
-								{l s='Cancel'}
+								{l s='Annuler'}
 							</a>
 						</form>
 					{/if}

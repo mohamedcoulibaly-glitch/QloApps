@@ -1,4 +1,4 @@
-{*
+﻿{*
 * NOTICE OF LICENSE
 *
 * This source file is subject to the Open Software License version 3.0
@@ -25,18 +25,18 @@
         <table class="table" id="customer_products_details">
             <thead>
                 <tr>
-                    <th><span class="title_box">{l s='Image'}</th>
-                    <th><span class="title_box">{l s='Name'}</span></th>
-                    <th><span class="title_box">{l s='Quantity'}</span></th>
-                    <th><span class="title_box">{l s='Price (Tax excl.)'}</span></th>
-                    <th><span class="title_box">{l s='Total Tax'}</span></th>
-                    <th><span class="title_box">{l s='Total Price (Tax incl.)'}</span></th>
+                    <th><span class="title_box">{l s='Image'}</span></th>
+                    <th><span class="title_box">{l s='Nom'}</span></th>
+                    <th><span class="title_box">{l s='Quantité'}</span></th>
+                    <th><span class="title_box">{l s='Prix (HT)'}</span></th>
+                    <th><span class="title_box">{l s='Taxe totale'}</span></th>
+                    <th><span class="title_box">{l s='Prix total (TTC)'}</span></th>
                     {if isset($refundReqProducts) && $refundReqProducts}
-                        <th><span class="title_box">{l s='Refund State'}</span></th>
-                        <th><span class="title_box">{l s='Refunded amount'}</span></th>
+                        <th><span class="title_box">{l s='État du remboursement'}</span></th>
+                        <th><span class="title_box">{l s='Montant remboursé'}</span></th>
                     {/if}
                     {if $can_edit}
-                        <th><span class="title_box">{l s='Actions'}</th>
+                        <th><span class="title_box">{l s='Actions'}</span></th>
                     {/if}
                 </tr>
             </thead>
@@ -65,7 +65,7 @@
                             </td>
                             <td class="unit_price_tax_excl">
                                 <p>{displayPrice price=$product.total_price_tax_excl currency=$currency->id}</p>
-                                <p class="help-block">{l s='Unit price'} : {displayPrice price=$product.unit_price_tax_excl currency=$currency->id}</p>
+                                <p class="help-block">{l s='Prix unitaire'} : {displayPrice price=$product.unit_price_tax_excl currency=$currency->id}</p>
                             </td>
                             <td>
                                 <span>{displayPrice price=($product.total_price_tax_incl - $product.total_price_tax_excl) currency=$currency->id}</span>
@@ -77,7 +77,7 @@
                                 <td>
                                     {if $product.id_service_product_order_detail|in_array:$refundReqProducts}
                                         {if $product.is_cancelled}
-                                            <span class="badge badge-danger">{l s='Cancelled'}</span>
+                                            <span class="badge badge-danger">{l s='Annulé'}</span>
                                         {elseif isset($product.refund_info) && (!$product.refund_info.refunded || $product.refund_info.id_customization)}
                                             <span class="badge" style="background-color:{$product.refund_info.color|escape:'html':'UTF-8'}">{$product.refund_info.name|escape:'html':'UTF-8'}</span>
                                         {else}
@@ -114,17 +114,17 @@
                                      {if isset($refundReqProducts) && $refundReqProducts && $product.id_service_product_order_detail|in_array:$refundReqProducts && $product.is_cancelled}
                                         <button href="#" class="btn btn-default delete_product_line">
                                             <i class="icon-trash"></i>
-                                            {l s='Delete'}
+                                            {l s='Supprimer'}
                                         </button>
                                     {else}
                                         <div class="btn-group">
                                             {* <button type="button" class="btn btn-default delete_product_line">
                                                 <i class="icon-trash"></i>
-                                                {l s='Delete'}
+                                                {l s='Supprimer'}
                                             </button> *}
                                             <button type="button" class="btn btn-default edit_product_change_link" data-product_line_data="{$product|json_encode|escape}">
                                                 <i class="icon-pencil"></i>
-                                                {l s='Edit'}
+                                                {l s='Modifier'}
                                             </button>
                                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                                 <span class="caret"></span>
@@ -133,7 +133,7 @@
                                                 <li>
                                                     <a href="#" class="delete_product_line">
                                                         <i class="icon-trash"></i>
-                                                        {l s='Delete'}
+                                                        {l s='Supprimer'}
                                                     </a>
                                                 </li>
                                             </ul>
@@ -142,11 +142,11 @@
                                     {* Update controls *}
                                     {* <button type="button" class="btn btn-default submitProductChange" style="display: none;">
                                         <i class="icon-ok"></i>
-                                        {l s='Update'}
+                                        {l s='Mettre à jour'}
                                     </button>
                                     <button type="button" class="btn btn-default cancel_product_change_link" style="display: none;">
                                         <i class="icon-remove"></i>
-                                        {l s='Cancel'}
+                                        {l s='Annuler'}
                                     </button> *}
                                 </td>
                             {/if}
@@ -164,7 +164,7 @@
                         <td class="list-empty hidden-print" colspan="{$colspan}">
                             <div class="list-empty-msg">
                                 <i class="icon-warning-sign list-empty-icon"></i>
-                                {l s='No products added yet'}
+                                {l s='Aucun produit ajouté'}
                             </div>
                         </td>
                     </tr>

@@ -456,6 +456,7 @@ p.room_cat_data
 /* ==== Google Map ==== */
  #googleMapContainer {
     height: 500px;
+    max-height: 80vh;
 }
 
 #map {

@@ -25,7 +25,7 @@
 {/if}
 	<div class="panel-heading">
 		<i class="icon-shopping-cart"></i>
-		{l s='Cart Details'}
+		{l s='Détails du panier'}
 	</div>
 	<div class="row">
 		<div class="col-lg-12 table-responsive">
@@ -33,17 +33,17 @@
 				{if isset($cart_detail_data) && $cart_detail_data}
 					<thead>
 						<tr>
-							<th><span class="title_box">{l s='Room No.'}</span></th>
-							<th><span class="title_box">{l s='Room Image'}</th>
-							<th><span class="title_box">{l s='Room Type'}</span></th>
-							<th><span class="title_box">{l s='Duration'}</span></th>
+							<th><span class="title_box">{l s='N° de chambre'}</span></th>
+							<th><span class="title_box">{l s='Image de la chambre'}</span></th>
+							<th><span class="title_box">{l s='Type de chambre'}</span></th>
+							<th><span class="title_box">{l s='Durée'}</span></th>
 							{if $occupancy_required_for_booking}
-							<th><span class="fixed-width-lg title_box">{l s='Occupancy'}</span></th>
+							<th><span class="fixed-width-lg title_box">{l s='Occupation'}</span></th>
 						{/if}
-						<th><span class="title_box">{l s='Unit Price (tax excl)'}</span></th>
-							<th><span class="title_box">{l s='Extra Services / Fees (tax excl)'}</span></th>
-							{* <th><span class="title_box">{l s='Total Rooms Price (tax excl)'}</span></th> *}
-							<th><span class="title_box">{l s='Total Price (tax excl)'}</span></th>
+						<th><span class="title_box">{l s='Prix unitaire (HT)'}</span></th>
+							<th><span class="title_box">{l s='Services/Frais supplémentaires (HT)'}</span></th>
+							{* <th><span class="title_box">{l s='Prix total des chambres (HT)'}</span></th> *}
+							<th><span class="title_box">{l s='Prix total (HT)'}</span></th>
 							<th></th>
 						</tr>
 					</thead>
@@ -52,7 +52,7 @@
 						{foreach from=$cart_detail_data item=data}
 							<tr  data-id-booking-data="{$data.id}" data-id-product="{$data.id_product}" data-id-room="{$data.id_room}" data-date-from="{$data.date_from}" data-date-to="{$data.date_to}" >
 								<td>{$data.room_num|escape:'html':'UTF-8'} {hook h='displayRoomNumAfter' data=$data type='adminOrder'}</td>
-								<td><img src="{$data.image_link|escape:'html':'UTF-8'}" title="Room image" /></td>
+								<td><img src="{$data.image_link|escape:'html':'UTF-8'}" alt="{l s='Image de la chambre'}" title="Room image" /></td>
 								<td>
 									<p>{$data.room_type|escape:'html':'UTF-8'}</p>
 								</td>
@@ -63,7 +63,7 @@
 										<div class="dropdown">
 											<button class="booking_guest_occupancy btn btn-default btn-left btn-block input-occupancy" type="button">
 												<span>
-													{if $data['adults']}{$data['adults']}{/if} {if $data['adults'] > 1}{l s='Adults'}{else}{l s='Adult'}{/if}{if {$data['children']}}, {$data['children']} {if $data['children'] > 1}{l s='Children'}{else}{l s='Child'}{/if}{/if}
+													{if $data['adults']}{$data['adults']}{/if} {if $data['adults'] > 1}{l s='Adultes'}{else}{l s='Adulte'}{/if}{if {$data['children']}}, {$data['children']} {if $data['children'] > 1}{l s='Enfants'}{else}{l s='Enfant'}{/if}{/if}
 												</span>
 											</button>
 											<div class="dropdown-menu booking_occupancy_wrapper fixed-width-xxl">
@@ -72,34 +72,34 @@
 													<input type="hidden" class="max_children" value="{if isset($data['room_type_info'])}{$data['room_type_info']['max_children']|escape:'html':'UTF-8'}{/if}">
 													<input type="hidden" class="max_guests" value="{if isset($data['room_type_info'])}{$data['room_type_info']['max_guests']|escape:'html':'UTF-8'}{/if}">
 													<div class="occupancy_info_block selected" occ_block_index="0">
-														<div class="occupancy_info_head col-sm-12"><span class="room_num_wrapper">{l s='Room - 1'}</span></div>
+														<div class="occupancy_info_head col-sm-12"><span class="room_num_wrapper">{l s='Chambre - 1'}</span></div>
 														<div class="row">
 															<div class="col-xs-6 occupancy_count_block">
 																<div class="col-sm-12">
-																	<label>{l s='Adults'}</label>
+																	<label>{l s='Adultes'}</label>
 																	<input type="number" class="form-control num_occupancy num_adults" name="occupancy[0][adults]" value="{$data['adults']}" min="1">
 																</div>
 															</div>
 															<div class="col-xs-6 occupancy_count_block">
 																<div class="col-sm-12">
-																	<label>{l s='Children'} <span class="label-desc-txt"></span></label>
+																	<label>{l s='Enfants'} <span class="label-desc-txt"></span></label>
 																	<input type="number" class="form-control num_occupancy num_children" name="occupancy[0][children]" value="{$data['children']}" min="0">
-																	({l s='Below'}  {$max_child_age|escape:'htmlall':'UTF-8'} {l s='years'})
+																	({l s='Moins de'}  {$max_child_age|escape:'htmlall':'UTF-8'} {l s='ans'})
 																</div>
 															</div>
 														</div>
 														<p style="display:none;"><span class="text-danger occupancy-input-errors"></span></p>
 														<div class="row children_age_info_block" {if !isset($data['child_ages']) || !$data['child_ages']}style="display:none"{/if}>
 															<div class="col-sm-12">
-																<label class="col-sm-12">{l s='All Children'}</label>
+																<label class="col-sm-12">{l s='Tous les enfants'}</label>
 																<div class="col-sm-12">
 																	<div class="row children_ages">
 																		{if isset($data['child_ages']) && $data['child_ages']}
 																			{foreach $data['child_ages'] as $childAge}
 																				<p class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 																					<select class="guest_child_age room_occupancies" name="occupancy[0][child_ages][]">
-																						<option value="-1" {if $childAge == -1}selected{/if}>{l s='Select age'}</option>
-																						<option value="0" {if $childAge == 0}selected{/if}>{l s='Under 1'}</option>
+																						<option value="-1" {if $childAge == -1}selected{/if}>{l s='Sélectionner l&#039;âge'}</option>
+																						<option value="0" {if $childAge == 0}selected{/if}>{l s='Moins de 1 an'}</option>
 																						{for $age=1 to ($max_child_age-1)}
 																							<option value="{$age|escape:'htmlall':'UTF-8'}" {if $childAge == $age}selected{/if}>{$age|escape:'htmlall':'UTF-8'}</option>
 																						{/for}
@@ -138,11 +138,11 @@
 								</td>
 								<td>
 									<button class="delete_hotel_cart_data btn btn-danger" data-id_room="{$data.id_room|escape:'html':'UTF-8'}" data-id_product="{$data.id_product|escape:'html':'UTF-8'}" data-id="{$data.id|escape:'html':'UTF-8'}" data-id_cart="{$data.id_cart|escape:'html':'UTF-8'}" data-date_to="{$data.date_to|escape:'html':'UTF-8'}" data-date_from="{$data.date_from|escape:'html':'UTF-8'}">
-										<i class="icon-trash"></i>&nbsp;{l s='Delete'}
+										<i class="icon-trash"></i>&nbsp;{l s='Supprimer'}
 									</button>
                                     <br />
-                                    <a href="#" id_hotel_cart_booking="{$data.id|escape:'html':'UTF-8'}" id_room="{$data.id_room|escape:'html':'UTF-8'}" date_from="{$data.date_from|escape:'html':'UTF-8'}" date_to="{$data.date_to|escape:'html':'UTF-8'}" id_product="{$data.id_product|escape:'html':'UTF-8'}" id_cart="{$data.id_cart|escape:'html':'UTF-8'}" class="open_rooms_extra_demands btn btn-success" title="{l s='Click here to add or remove the extra services of this room type.'}">
-                                        <i class="icon-pencil"></i>&nbsp;{l s='Services'}
+                                    <a href="#" id_hotel_cart_booking="{$data.id|escape:'html':'UTF-8'}" id_room="{$data.id_room|escape:'html':'UTF-8'}" date_from="{$data.date_from|escape:'html':'UTF-8'}" date_to="{$data.date_to|escape:'html':'UTF-8'}" id_product="{$data.id_product|escape:'html':'UTF-8'}" id_cart="{$data.id_cart|escape:'html':'UTF-8'}" class="open_rooms_extra_demands btn btn-success" title="{l s='Cliquez ici pour ajouter ou supprimer les services supplémentaires de ce type de chambre.'}">
+                                        <i class="icon-cog"></i>&nbsp;{l s='Services'}
                                     </a>
 								</td>
 							</tr>
@@ -161,8 +161,8 @@
 </div> *}
 
 {strip}
-	{addJsDefL name=txtExtraDemandSucc}{l s='Updated Successfully' js=1}{/addJsDefL}
-	{addJsDefL name=txtExtraDemandErr}{l s='Some error occurred while updating demands' js=1}{/addJsDefL}
+	{addJsDefL name=txtExtraDemandSucc}{l s='Mise à jour réussie' js=1}{/addJsDefL}
+	{addJsDefL name=txtExtraDemandErr}{l s='Une erreur s&#039;est produite lors de la mise à jour des demandes' js=1}{/addJsDefL}
 {/strip}
 
 {* Css for handling extra demands changes *}

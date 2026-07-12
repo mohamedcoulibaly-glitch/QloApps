@@ -30,14 +30,14 @@
 	<div class="panel">
 		<h3>
 			<i class="icon-warning-sign"></i>
-			{l s='Severity levels'}
+			{l s='Niveaux de gravité'}
 		</h3>
-		<p>{l s='Meaning of severity levels:'}</p>
+		<p>{l s='Signification des niveaux de gravité :'}</p>
 		<ol>
-			<li><span class="badge badge-success">{l s='Informative only'}</span></li>
-			<li><span class="badge badge-warning">{l s='Warning'}</span></li>
-			<li><span class="badge badge-danger">{l s='Error'}</span></li>
-			<li><span class="badge badge-critical">{l s='Major issue (crash)!'}</span></li>
+			<li><span class="badge badge-success">{l s='Informatif uniquement'}</span></li>
+			<li><span class="badge badge-warning">{l s='Avertissement'}</span></li>
+			<li><span class="badge badge-danger">{l s='Erreur'}</span></li>
+			<li><span class="badge badge-critical">{l s='Problème majeur (crash) !'}</span></li>
 		</ol>
 	</div>
 

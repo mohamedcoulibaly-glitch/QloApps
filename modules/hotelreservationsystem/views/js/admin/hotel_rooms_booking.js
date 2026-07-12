@@ -27,6 +27,12 @@ $(document).ready(function() {
         var calendar = new FullCalendar.Calendar($('#fullcalendar').get(0), {
             initialView: 'dayGridMonth',
             initialDate: initialDate,
+            locales: FullCalendar.globalLocales,
+            locale: 'fr',
+            firstDay: 1,
+            buttonText: {
+                today: 'Aujourd\'hui',
+            },
             events: {
                 url: rooms_booking_url,
                 method: 'POST',
@@ -63,15 +69,15 @@ $(document).ready(function() {
                     $(info.el).closest('td').find('.day-info').tooltip({
                         content: function()
                         {
-                            $('#date-stats-tooltop .tip_date').text(info.event.extendedProps.data.date_format);
+                            $('#date-stats-tooltip .tip_date').text(info.event.extendedProps.data.date_format);
                             $.each(info.event.extendedProps.data.stats, function(elem, val) {
                                 if (elem == 'num_part_avai') {
-                                    $('#date-stats-tooltop').find('.'+elem).hide().find('.tip_element_value').text('');
+                                    $('#date-stats-tooltip').find('.'+elem).hide().find('.tip_element_value').text('');
                                 } else {
-                                    $('#date-stats-tooltop').find('.'+elem).show().find('.tip_element_value').text(val);
+                                    $('#date-stats-tooltip').find('.'+elem).show().find('.tip_element_value').text(val);
                                 }
                             });
-                            return $('#date-stats-tooltop').html();
+                            return $('#date-stats-tooltip').html();
                         },
                         items: "div",
                         trigger : 'hover',
@@ -118,19 +124,19 @@ $(document).ready(function() {
                 $(info.el).tooltip({
                     content: function()
                     {
-                        $('#date-stats-tooltop .tip_date').text(info.event.extendedProps.data.date_from_format + ' - ' +info.event.extendedProps.data.date_to_format);
+                        $('#date-stats-tooltip .tip_date').text(info.event.extendedProps.data.date_from_format + ' - ' +info.event.extendedProps.data.date_to_format);
                         $.each(info.event.extendedProps.data.stats, function(elem, val) {
                             if (elem == 'num_part_avai') {
                                 if (val > 0) {
-                                    $('#date-stats-tooltop').find('.'+elem).show().find('.tip_element_value').text(val);
+                                    $('#date-stats-tooltip').find('.'+elem).show().find('.tip_element_value').text(val);
                                 } else {
-                                    $('#date-stats-tooltop').find('.'+elem).hide().find('.tip_element_value').text('');
+                                    $('#date-stats-tooltip').find('.'+elem).hide().find('.tip_element_value').text('');
                                 }
                             } else {
-                                $('#date-stats-tooltop').find('.'+elem).find('.tip_element_value').text(val);
+                                $('#date-stats-tooltip').find('.'+elem).find('.tip_element_value').text(val);
                             }
                         });
-                        return $('#date-stats-tooltop').html();
+                        return $('#date-stats-tooltip').html();
                     },
                     items: "div",
                     trigger : 'hover',

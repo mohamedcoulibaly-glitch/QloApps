@@ -36,11 +36,11 @@
 </div>
 
 <script type="text/javascript">
-	var carrier_translation_undefined = '{l s='undefined' js=1}';
+	var carrier_translation_undefined = '{l s='non défini' js=1}';
 
 	function removeCarrierLogo()
 	{
-		if (confirm('{l s='Are you sure you want to delete the logo?' js=1}'))
+		if (confirm('{l s='Êtes-vous sûr de vouloir supprimer le logo ?' js=1}'))
 		{
 			$('#carrier_logo_img').attr('src', '../img/admin/carrier-default.jpg');
 			$('#logo').val('null');

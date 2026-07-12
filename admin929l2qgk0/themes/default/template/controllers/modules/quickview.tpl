@@ -70,9 +70,9 @@
 		{/if}
 		<hr />
 		{if $is_addons_partner}
-			<a class="btn btn-success btn-lg pull-right" href="{$url}">{l s='Install module'}</a>
+			<a class="btn btn-success btn-lg pull-right" href="{$url}">{l s='Installer le module'}</a>
 		{else}
-			<a class="btn btn-success btn-lg pull-right" href="{$url}" onclick="return !window.open(this.href);">{l s='View on QloApps store'}</a>
+			<a class="btn btn-success btn-lg pull-right" href="{$url}" onclick="return !window.open(this.href);">{l s='Voir sur la boutique QloApps'}</a>
 		{/if}
 	</div>
 </div>

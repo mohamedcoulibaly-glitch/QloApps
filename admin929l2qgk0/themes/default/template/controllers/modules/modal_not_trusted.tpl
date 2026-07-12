@@ -27,7 +27,7 @@
 
 	<div class="modal-body">
 		<div class="alert alert-warning">
-			<h3>{l s='Do you want to install this module that could not be verified by QloApps?'}</h3>
+			<h3>{l s='Voulez-vous installer ce module qui n&#039;a pas pu être vérifié par QloApps ?'}</h3>
 
 			<p>{l s="This generally happens when the module isn't distributed through our official marketplace, QloApps Addons - or when your server failed to communicate with QloApps Addons."}</p>
 		</div>
@@ -43,15 +43,15 @@
 						<td><strong><span class="module-display-name-placeholder"></span></strong></td>
 					</tr>
 					<tr>
-						<td>{l s='Author'}</td>
+						<td>{l s='Auteur'}</td>
 						<td><strong><span class="author-name-placeholder"></span></strong></td>
 					</tr>
 				</table>
 			</div>
 
 			<div class="col-sm-12" style="text-align: center; padding-top: 12px;">
-				<a id="proceed-install-anyway" href="#" class="btn btn-warning">{l s='Proceed with the installation'}</a>
-				<button type="button" class="btn btn-default" data-dismiss="modal">{l s='Back to modules list'}</button>
+				<a id="proceed-install-anyway" href="#" class="btn btn-warning">{l s='Procéder à l&#039;installation'}</a>
+				<button type="button" class="btn btn-default" data-dismiss="modal">{l s='Retour à la liste des modules'}</button>
 			</div>
 		</div>
 	</div>
@@ -59,7 +59,7 @@
 	<div class="modal-footer">
 		<div class="alert alert-info">
 			<p>
-				{l s='Since you may not have downloaded this module from QloApps Addons, we cannot assert that the module is not adding some undisclosed functionalities. We advise you to install it only if you trust the source of the content.'}
+				{l s='Comme vous n&#039;avez peut-être pas téléchargé ce module depuis QloApps Addons, nous ne pouvons pas affirmer que le module n&#039;ajoute pas de fonctionnalités non divulguées. Nous vous conseillons de l&#039;installer uniquement si vous faites confiance à la source du contenu.'}
 				<a id="untrusted-show-risk" href="#"><strong>{l s="What's the risk?"}</strong></a>
 			</p>
 		</div>
@@ -70,13 +70,13 @@
 <div class="untrusted-content-more-info" style="display:none;">
 
 	<div class="modal-body">
-		<h4>{l s='Am I at Risk?'}</h4>
+		<h4>{l s='Suis-je en danger ?'}</h4>
 
 		<p>{l s="A module that hasn't been verified may be dangerous and could add hidden functionalities like backdoors, ads, hidden links, spam, etc. Don’t worry, this alert is simply a warning."}</p>
 
 		<p>{l s="QloApps, being an open-source software, has an awesome community with a long history of developing and sharing high quality modules. Before installing this module, making sure its author is a known community member is always a good idea (by checking [1]our forum[/1] for instance)." tags=['<a href="https://forums.qloapps.com/">']}</p>
 
-		<h4>{l s='What Should I Do?'}</h4>
+		<h4>{l s='Que dois-je faire ?'}</h4>
 
 		<p>{l s="If you trust or find the author of this module to be an active community member, you can proceed with the installation."}
 
@@ -85,7 +85,7 @@
 	</div>
 
 	<div class="modal-footer">
-		<a id="untrusted-show-action" class="btn btn-default" href="#">{l s='Back'}</a>
+		<a id="untrusted-show-action" class="btn btn-default" href="#">{l s='Retour'}</a>
 	</div>
 
 </div>

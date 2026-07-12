@@ -23,9 +23,9 @@
 <div class="panel">
 	<div class="panel-heading">
 		{if isset($edit)}
-			<i class='icon-pencil'></i>&nbsp;{l s='Edit Facility' mod='hotelreservationsystem'}
+			<i class='icon-pencil'></i>&nbsp;{l s='Modifier l\'équipement' mod='hotelreservationsystem'}
 		{else}
-			<i class='icon-plus'></i>&nbsp;{l s='Add Facility' mod='hotelreservationsystem'}
+			<i class='icon-plus'></i>&nbsp;{l s='Ajouter un équipement' mod='hotelreservationsystem'}
 		{/if}
 	</div>
 	<form id="{$table}_form" class="defaultForm form-horizontal" action="{$current}&{if !empty($submit_action)}{$submit_action}{/if}&token={$token}" method="post" enctype="multipart/form-data" {if isset($style)}style="{$style}"{/if}>
@@ -34,7 +34,7 @@
 		{/if}
 		{if count($languages) > 1}
 			<div class="col-sm-12">
-				<label class="control-label">{l s='Choose Language' mod='hotelreservationsystem'}</label>
+				<label class="control-label">{l s='Choisir la langue' mod='hotelreservationsystem'}</label>
 				<input type="hidden" name="choosedLangId" id="choosedLangId" value="{$currentLang.id_lang}">
 				<button type="button" id="multi_lang_btn" class="btn btn-default dropdown-toggle wk_language_toggle" data-toggle="dropdown">
 					{$currentLang.name}
@@ -49,13 +49,13 @@
 						</li>
 					{/foreach}
 				</ul>
-				<p class="help-block">{l s='Change language for updating information in multiple language.' mod='hotelreservationsystem'}</p>
+				<p class="help-block">{l s='Changez la langue pour mettre à jour les informations dans plusieurs langues.' mod='hotelreservationsystem'}</p>
 				<hr>
 			</div>
 		{/if}
 		<div class="form-group">
 			<label class="col-sm-3 control-label required" for="hotel_name" >
-				{l s='Facility Name :' mod='hotelreservationsystem'}
+				{l s='Nom de l\'équipement :' mod='hotelreservationsystem'}
 				{include file="../../../_partials/htl-form-fields-flag.tpl"}
 			</label>
 			<div class="col-sm-6">
@@ -73,7 +73,7 @@
 		</div>
 		<div class="form-group">
 			<label class="col-sm-3 control-label">
-				<span class="label-tooltip" data-toggle="tooltip" data-html="true" title="" data-original-title="{l s='Price of the facility will be calculated according to the price of the advance options.' mod='hotelreservationsystem'}">{l s='Create advance options' mod='hotelreservationsystem'}</span>
+				<span class="label-tooltip" data-toggle="tooltip" data-html="true" title="" data-original-title="{l s='Le prix de l\'équipement sera calculé selon le prix des options d\'avance.' mod='hotelreservationsystem'}">{l s='Créer des options d\'avance' mod='hotelreservationsystem'}</span>
 			</label>
 			<div class="col-sm-6">
 				<span class="switch prestashop-switch fixed-width-lg">
@@ -85,7 +85,7 @@
 					{elseif isset($globalDemands) && $globalDemands['adv_option']|@count}
 						checked="checked"
 					{/if}>
-					<label for="active_adv_option_on">{l s='Yes' mod='hotelreservationsystem'}</label>
+					<label for="active_adv_option_on">{l s='Oui' mod='hotelreservationsystem'}</label>
 					<input type="radio" value="0" id="active_adv_option_off" name="active_adv_option"
 					{if isset($smarty.post.active_adv_option)}
 						{if !$smarty.post.active_adv_option}
@@ -96,7 +96,7 @@
 					{elseif isset($globalDemands) && !$globalDemands['adv_option']|@count}
 						checked="checked"
 					{/if}>
-					<label for="active_adv_option_off">{l s='No' mod='hotelreservationsystem'}</label>
+					<label for="active_adv_option_off">{l s='Non' mod='hotelreservationsystem'}</label>
 					<a class="slide-button btn"></a>
 				</span>
 			</div>
@@ -110,13 +110,13 @@
 					<table class="table table-bordered adv_option_table">
 						<tr class="nodrag nodrop">
 							<th class="left">
-								<span>{l s='Option Name' mod='hotelreservationsystem'}</span>
+								<span>{l s='Nom de l\'option' mod='hotelreservationsystem'}</span>
 							</th>
 							<th class="left">
 								<span>{l s='Price' mod='hotelreservationsystem'}</span>
 							</th>
 							<th class="center">
-								<span>{l s='action' mod='hotelreservationsystem'}</span>
+								<span>{l s='Action' mod='hotelreservationsystem'}</span>
 							</th>
 						</tr>
 						{if isset($globalDemands['adv_option']) && $globalDemands['adv_option']}
@@ -191,7 +191,7 @@
 						<div class="col-sm-12">
 							<button id="add_more_options_button" class="btn btn-default" type="button">
 								<i class="icon-plus-circle"></i>
-								{l s='Add More Options' mod='hotelreservationsystem'}
+								{l s='Ajouter plus d\'options' mod='hotelreservationsystem'}
 							</button>
 						</div>
 					</div>
@@ -200,7 +200,7 @@
 		</div>
 		<div class="form-group" {if isset($smarty.post.active_adv_option)}{if $smarty.post.active_adv_option}style="display:none;"{/if}{elseif isset($globalDemands['adv_option']) && $globalDemands['adv_option']|@count}style="display:none;"{/if}>
 			<label class="col-sm-3 control-label required" >
-				{l s='Price' mod='hotelreservationsystem'}({l s='tax excl.' mod='hotelreservationsystem'})
+				{l s='Prix' mod='hotelreservationsystem'}({l s='ht.' mod='hotelreservationsystem'})
 			</label>
 			<div class="col-sm-3">
 				<div class="input-group">
@@ -213,11 +213,11 @@
 		{if isset($taxRuleGroups)}
 			<div class="form-group">
 				<label class="col-sm-3 control-label required" >
-					{l s='Tax Rule' mod='hotelreservationsystem'}
+					{l s='Règle de taxe' mod='hotelreservationsystem'}
 				</label>
 				<div class="col-sm-3">
 					<select name="id_tax_rules_group" id="id_tax_rules_group" class="form-control form-control-select" data-action="input_excl">
-						<option value="0">{l s='No tax' mod='hotelreservationsystem'}</option>
+						<option value="0">{l s='Pas de taxe' mod='hotelreservationsystem'}</option>
 						{foreach $taxRuleGroups as $tax_rule}
 							<option value="{$tax_rule.id_tax_rules_group|escape:'html':'UTF-8'}" {if isset($smarty.post.id_tax_rules_group) && ($smarty.post.id_tax_rules_group == $tax_rule.id_tax_rules_group)}selected{elseif isset($globalDemands['id_tax_rules_group']) && ($globalDemands['id_tax_rules_group'] == $tax_rule.id_tax_rules_group)}selected{/if}>
 								{$tax_rule.name|escape:'html':'UTF-8'}
@@ -229,7 +229,7 @@
 		{/if}
 		<div class="form-group">
 			<label class="col-sm-3 control-label">
-				<span class="label-tooltip" data-toggle="tooltip" data-html="true" data-original-title="{l s='Enable, if you want to add the price of this facility for each day in the booking. Disable, If you want to add price of the facility for entire date range of the booking.' mod='hotelreservationsystem'}">{l s='Per day price calculation' mod='hotelreservationsystem'}</span>
+				<span class="label-tooltip" data-toggle="tooltip" data-html="true" data-original-title="{l s='Activez, si vous souhaitez ajouter le prix de cet équipement pour chaque jour de la réservation. Désactivez, si vous souhaitez ajouter le prix de l\'équipement pour toute la durée de la réservation.' mod='hotelreservationsystem'}">{l s='Calcul du prix par jour' mod='hotelreservationsystem'}</span>
 			</label>
 			<div class="col-sm-6">
 				<span class="switch prestashop-switch fixed-width-lg">
@@ -241,7 +241,7 @@
 					{elseif isset($globalDemands['price_calc_method']) && $globalDemands['price_calc_method']}
 						checked="checked"
 					{/if}>
-					<label for="price_calc_method_on">{l s='Yes' mod='hotelreservationsystem'}</label>
+					<label for="price_calc_method_on">{l s='Oui' mod='hotelreservationsystem'}</label>
 					<input type="radio" value="0" id="price_calc_method_off" name="price_calc_method"
 					{if isset($smarty.post.price_calc_method)}
 						{if !$smarty.post.price_calc_method}
@@ -252,7 +252,7 @@
 					{elseif isset($globalDemands['price_calc_method']) && !$globalDemands['price_calc_method']}
 						checked="checked"
 					{/if}>
-					<label for="price_calc_method_off">{l s='No' mod='hotelreservationsystem'}</label>
+					<label for="price_calc_method_off">{l s='Non' mod='hotelreservationsystem'}</label>
 					<a class="slide-button btn"></a>
 				</span>
 			</div>
@@ -260,20 +260,20 @@
 		<div class="form-group">
 			<div class="col-lg-9 col-lg-offset-3">
 				<div class="alert alert-info">
-					{l s='Enable ("Per day price calculation"), if you want to add the price of this facility for each day in the booking. Disable, If you want to add price of the facility for entire date range of the booking.' mod='hotelreservationsystem'}
+					{l s='Activez (« Calcul du prix par jour »), si vous souhaitez ajouter le prix de cet équipement pour chaque jour de la réservation. Désactivez, si vous souhaitez ajouter le prix de l\'équipement pour toute la durée de la réservation.' mod='hotelreservationsystem'}
 				</div>
 			</div>
 		</div>
 
 		<div class="panel-footer">
 			<a href="{$link->getAdminLink('AdminRoomTypeGlobalDemand')|escape:'html':'UTF-8'}" class="btn btn-default">
-				<i class="process-icon-cancel"></i>{l s='Cancel' mod='hotelreservationsystem'}
+				<i class="process-icon-cancel"></i>{l s='Annuler' mod='hotelreservationsystem'}
 			</a>
 			<button type="submit" name="submitAdd{$table|escape:'html':'UTF-8'}" class="btn btn-default pull-right">
-				<i class="process-icon-save"></i> {l s='Save' mod='hotelreservationsystem'}
+				<i class="process-icon-save"></i> {l s='Enregistrer' mod='hotelreservationsystem'}
 			</button>
 			<button type="submit" name="submitAdd{$table|escape:'html':'UTF-8'}AndStay" class="btn btn-default pull-right">
-				<i class="process-icon-save"></i> {l s='Save and stay' mod='hotelreservationsystem'}
+				<i class="process-icon-save"></i> {l s='Enregistrer et rester' mod='hotelreservationsystem'}
 			</button>
 		</div>
 	</form>

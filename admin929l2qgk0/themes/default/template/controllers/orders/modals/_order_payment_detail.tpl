@@ -1,4 +1,4 @@
-{*
+﻿{*
 * NOTICE OF LICENSE
 *
 * This source file is subject to the Open Software License version 3.0
@@ -23,31 +23,31 @@
 <div class="modal-body">
     <div class="form-group row">
         <div class="col-sm-6">
-            <label class="control-label">{l s='Payment Date'}</label>
+            <label class="control-label">{l s='Date de paiement'}</label>
             <b><div id="payment_date"></div></b>
         </div>
         <div class="col-sm-6">
-            <label class="control-label">{l s='Payment Method'}</label>
+            <label class="control-label">{l s='Méthode de paiement'}</label>
             <b><div id="payment_method"></div></b>
         </div>
     </div>
     <div class="form-group row">
         <div class="col-sm-6">
-            <label class="control-label">{l s='Payment Source'}</label>
+            <label class="control-label">{l s='Source du paiement'}</label>
             <b><div id="payment_source"></div></b>
         </div>
         <div class="col-sm-6">
-            <label class="control-label">{l s='Transaction Id'}</label>
+            <label class="control-label">{l s='ID de transaction'}</label>
             <b><div id="transaction_id"></div></b>
         </div>
     </div>
     <div class="form-group row">
         <div class="col-sm-6">
-            <label class="control-label">{l s='Amount'}</label>
+            <label class="control-label">{l s='Montant'}</label>
             <b><div id="amount"></div></b>
         </div>
         <div class="col-sm-6">
-            <label class="control-label">{l s='Invoice'}</label>
+            <label class="control-label">{l s='Facture'}</label>
             <b><div id="invoice_number"></div></b>
         </div>
     </div>

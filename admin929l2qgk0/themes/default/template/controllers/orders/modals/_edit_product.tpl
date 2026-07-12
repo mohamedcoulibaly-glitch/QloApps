@@ -1,4 +1,4 @@
-{*
+﻿{*
 * NOTICE OF LICENSE
 *
 * This source file is subject to the Open Software License version 3.0
@@ -29,7 +29,7 @@
             {hook h='displayAdminOrderEditProductFieldsBefore'}
             <div class="row form-group">
                 <div class="col-sm-6">
-                    <label class="control-label">{l s='Unit Price (tax excl.)'}</label>
+                    <label class="control-label">{l s='Prix unitaire (HT)'}</label>
                     <div class="input-group">
                         {if $currency->format % 2}<div class="input-group-addon">{$currency->sign}</div>{/if}
                         <input class="form-control" type="text" name="edit_product[product_price_tax_excl]" id="edit_product_product_price_tax_excl" value="{$ServiceProductOrderDetail->unit_price_tax_excl}"/>
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="productQuantity col-sm-6" {if !$objProduct->allow_multiple_quantity} style="display:none" {/if}>
-                    <label class="control-label">{l s='Quantity'}</label>
+                    <label class="control-label">{l s='Quantité'}</label>
                     <input type="number" class="form-control" name="edit_product[product_quantity]" id="edit_product_product_quantity" value="{$ServiceProductOrderDetail->quantity}" min="1"/>
                 </div>
             </div>

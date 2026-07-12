@@ -24,18 +24,18 @@
     <input type="hidden" name="occupancy_loaded" value="1">
 	<div id="product-occupancy" class="panel product-tab">
 		<input type="hidden" name="submitted_tabs[]" value="Occupancy" />
-		<h3 class="tab"> <i class="icon-users"></i> {l s='Occupancy'}</h3>
+		<h3 class="tab"> <i class="icon-users"></i> {l s='Occupation'}</h3>
 
         <div class="alert alert-info">
-            {l s='Below, enter the base occupancy of this room type.'}
-            <p><b>{l s='Note'}</b>: {l s='Minimum 1 adult is madatory in the base occupancy of the room type'}</p>
+            {l s='Ci-dessous, entrez l&#039;occupation de base de ce type de chambre.'}
+            <p><b>{l s='Note'}</b>: {l s='Minimum 1 adulte est obligatoire dans l&#039;occupation de base du type de chambre'}</p>
         </div>
 
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="base_adults">
                 <span class="label-tooltip" data-toggle="tooltip"
 				title="{l s=''}">
-                    {l s='Base adults'}
+                    {l s='Adultes de base'}
                 </span>
 			</label>
 			<div class="col-sm-3">
@@ -46,7 +46,7 @@
 			<label class="control-label col-sm-2" for="base_children">
                 <span class="label-tooltip" data-toggle="tooltip"
 				title="{l s=''}">
-                    {l s='Base children'}
+                    {l s='Enfants de base'}
                 </span>
 			</label>
 			<div class="col-sm-3">
@@ -58,16 +58,16 @@
         <hr>
 
         <div class="alert alert-info">
-            {l s='Below, enter the maximum number of adults and children which can be accommodated in a room of this room type.'}
+            {l s='Ci-dessous, entrez le nombre maximum d&#039;adultes et d&#039;enfants pouvant être hébergés dans une chambre de ce type.'}
 			<br>
-            {l s='For maximum room occupancy, the total number of guests which can be accommodated in a room of this room type.'}
+            {l s='Pour l&#039;occupation maximale de la chambre, le nombre total d&#039;invités pouvant être hébergés dans une chambre de ce type.'}
         </div>
 
         <div class="form-group">
 			<label class="control-label col-sm-2" for="max_adults">
                 <span class="label-tooltip" data-toggle="tooltip"
-				title="{l s='Enter maximum number of adults can be accommodated in a room of this room type.'}">
-                    {l s='Maximum adults'}
+				title="{l s='Entrez le nombre maximum d&#039;adultes pouvant être hébergés dans une chambre de ce type.'}">
+                    {l s='Adultes maximum'}
                 </span>
 			</label>
 			<div class="col-sm-3">
@@ -77,8 +77,8 @@
         <div class="form-group">
 			<label class="control-label col-sm-2" for="max_children">
                 <span class="label-tooltip" data-toggle="tooltip"
-				title="{l s='Enter maximum number of children can be accommodated in a room of this room type.'}">
-                    {l s='Maximum children'}
+				title="{l s='Entrez le nombre maximum d&#039;enfants pouvant être hébergés dans une chambre de ce type.'}">
+                    {l s='Enfants maximum'}
                 </span>
 			</label>
 			<div class="col-sm-3">
@@ -88,8 +88,8 @@
         <div class="form-group">
 			<label class="control-label col-sm-2" for="max_guests">
                 <span class="label-tooltip" data-toggle="tooltip"
-				title="{l s='Enter maximum number of guests can be accommodated in a room of this room type.'}">
-                    {l s='Maximum room occupancy'}
+				title="{l s='Entrez le nombre maximum d&#039;invités pouvant être hébergés dans une chambre de ce type.'}">
+                    {l s='Occupation maximale de la chambre'}
                 </span>
 			</label>
 			<div class="col-sm-3">
@@ -100,15 +100,15 @@
 		<div class="panel-footer">
 			<a href="{$link->getAdminLink('AdminProducts')|escape:'html':'UTF-8'}{if isset($smarty.request.page) && $smarty.request.page > 1}&amp;submitFilterproduct={$smarty.request.page|intval}{/if}" class="btn btn-default">
 				<i class="process-icon-cancel"></i>
-				{l s='Cancel'}
+				{l s='Annuler'}
 			</a>
 			<button type="submit" name="submitAddproduct" class="btn btn-default pull-right checkOccupancySubmit" disabled="disabled">
 				<i class="process-icon-loading"></i>
-				{l s='Save'}
+				{l s='Enregistrer'}
 			</button>
 			<button type="submit" name="submitAddproductAndStay" class="btn btn-default pull-right checkOccupancySubmit"  disabled="disabled">
 				<i class="process-icon-loading"></i>
-					{l s='Save and stay'}
+					{l s='Enregistrer et rester'}
 			</button>
 		</div>
 	</div>

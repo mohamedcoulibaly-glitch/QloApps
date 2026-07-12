@@ -1,4 +1,4 @@
-{*
+﻿{*
 * NOTICE OF LICENSE
 *
 * This source file is subject to the Open Software License version 3.0
@@ -25,7 +25,7 @@
     <form id="customer-guest-details-form">
         <div class="form-group row">
             <div class="col-sm-2">
-            <label class="control-label">{l s='Title'}</label>
+            <label class="control-label">{l s='Titre'}</label>
                 <select name="id_gender">
                     {foreach from=$genders key=k item=gender}
                         <option value="{$gender->id_gender}"{if $customerGuestDetail->id_gender == $gender->id_gender} selected="selected"{/if}>{$gender->name}</option>
@@ -33,21 +33,21 @@
                 </select>
             </div>
             <div class="col-sm-5">
-                <label class="control-label">{l s='First Name'}</label>
+                <label class="control-label">{l s='Prénom'}</label>
                 <input type="text" value="{$customerGuestDetail->firstname}" name="firstname">
             </div>
             <div class="col-sm-5">
-                <label class="control-label">{l s='Last Name'}</label>
+                <label class="control-label">{l s='Nom'}</label>
                 <input type="text" value="{$customerGuestDetail->lastname}" name="lastname">
             </div>
         </div>
         <div class="form-group row">
             <div class="col-sm-6">
-                <label class="control-label">{l s='Email'}</label>
+                <label class="control-label">{l s='E-mail'}</label>
                 <input type="text" value="{$customerGuestDetail->email}" name="email">
             </div>
             <div class="col-sm-6">
-                <label class="control-label">{l s='Phone'}</label>
+                <label class="control-label">{l s='Téléphone'}</label>
                 <input type="text" value="{$customerGuestDetail->phone}" name="phone">
             </div>
         </div>
